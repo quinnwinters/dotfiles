@@ -10,7 +10,7 @@ else
 fi
 
 echo "Linking up proper aliases and zshrc files"
-ln -sfn .zsh_aliases ~/.aliases
-ln -sfn .zshrc ~/.zshrc
+ln -sfn $(pwd)/zsh/.zsh_aliases ~/.aliases
+ln -sfn $(pwd)/zsh/.zshrc ~/.zshrc
 echo "Finished configuring oh-my-zsh. Remember to change shell when the configuration is finished running"
 

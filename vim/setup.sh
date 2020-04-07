@@ -23,3 +23,8 @@ ln -s $(pwd)/vim/.editorconfig ~/.editorconfig
 source ~/.vimrc
 vim +PluginInstall +qall
 
+brew install cmake python mono go nodejs
+CUR_DIR=$(pwd)
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --all
+cd $CUR_DIR

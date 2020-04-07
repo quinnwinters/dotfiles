@@ -23,7 +23,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
-source /Users/your_user_name/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases
 
 #############################################################################
