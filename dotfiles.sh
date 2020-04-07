@@ -1,8 +1,10 @@
 #!/bin/bash 
 COMMAND=$1
 
-# Help flag
+# Generic flags
 SHOULD_PRINT_HELP=false
+SHOULD_REBOOT=false
+SHOULD_CHANGE_SHELL=false
 
 # Installation flags
 INSTALL_CORE=false
@@ -142,6 +144,11 @@ function brew_bundle() {
 
 function configure() {
   echo "Linking files and importing proper configs"
+  ./macos/setup.sh
+  ./zsh/setup.sh
+  ./vim/setup.sh
+  ./
+  
   echo "Finished setting up all the configs"
 }
 
@@ -169,10 +176,19 @@ function install() {
 
 if $SHOULD_PRINT_HELP ; then 
   print_help "$COMMAND"
+  exit 0
 elif [ $COMMAND == "install" ]; then 
   install
 elif [ $COMMAND == "configure" ]; then 
   configure 
 else 
   print_help
+fi
+
+if $SHOULD_CHANGE_SHELL ; then 
+  chsh -s /bin/zsh
+fi
+
+if $SHOULD_REBOOT ; then 
+  reboot
 fi
