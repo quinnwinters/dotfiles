@@ -1,0 +1,48 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{js,py}]
+charset = utf-8
+
+[*.py]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[Makefile]
+indent_style = tab
+
+[lib/**.js]
+indent_style = space
+indent_size = 2
+
+[{package.json, .travis.yml}]
+indent_style = space
+indent_size = 2
+
+[*.{cpp,hpp,js,ts,tsx,R,mm}]
+indent_style = space
+indent_size = 3
+end_of_line = lf
+max_line_length = 100
+
+[CMakeLists.txt]
+indent_style = space
+indent_size = 3
+
+[*.jl]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.{ml,mli,mll,mly}]
+indent_style = space
+indent_size = 2
+
+[{*.scala,*.sbt}]
+indent_size = 2
+max_line_length = 80
+

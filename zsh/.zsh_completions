@@ -1,0 +1,12 @@
+plugins=(
+  brew
+  docker
+  git
+  pip
+  pyenv
+  python
+  rsync
+  tmux
+  scala
+  sbt
+)
