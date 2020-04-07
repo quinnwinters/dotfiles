@@ -14,6 +14,8 @@ brew 'grep'
 brew 'mas'
 brew 'tree'
 brew 'trash'
+brew 'zsh'
+brew 'zsh-completions'
 
 # Core apps
 cask 'google-chrome'
