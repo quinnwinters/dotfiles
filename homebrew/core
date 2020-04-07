@@ -13,6 +13,7 @@ brew 'git'
 brew 'grep'
 brew 'mas'
 brew 'tree'
+brew 'trash'
 
 # Core apps
 cask 'google-chrome'

@@ -9,6 +9,8 @@ else
   curl -L http://install.ohmyz.sh | sh
 fi
 
-ln -s .zsh_aliases ~/.aliases
-ln -s .zshrc ~/.zshrc
-ln -s .zsh_completion ~/z.sh
+echo "Linking up proper aliases and zshrc files"
+ln -sfn .zsh_aliases ~/.aliases
+ln -sfn .zshrc ~/.zshrc
+echo "Finished configuring oh-my-zsh. Remember to change shell when the configuration is finished running"
+
