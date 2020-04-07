@@ -15,10 +15,10 @@ else
 fi
 
 cat ./vim/vimrc.template > ~/.vimrc
-ln -sfn ./vim/.vim_plugins > $VIM_RUNTIME_LOC/.vim_plugins
-ln -sfn ./vim/.vim_plugins_config > $VIM_RUNTIME_LOC/.vim_plugins_config
-ln -sfn ./vim/.vim_profile > $VIM_RUNTIME_LOC/.vim_profile
-ln -sfn ./vim/.editorconfig > ~/.editorconfig
+ln -s $(pwd)/vim/.vim_plugins $VIM_RUNTIME_LOC/.vim_plugins
+ln -s $(pwd)/vim/.vim_plugins_config $VIM_RUNTIME_LOC/.vim_plugins_config
+ln -s $(pwd)/vim/.vim_profile $VIM_RUNTIME_LOC/.vim_profile
+ln -s $(pwd)/vim/.editorconfig ~/.editorconfig
 
 source ~/.vimrc
 vim +PluginInstall +qall

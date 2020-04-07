@@ -26,9 +26,6 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set $LANG='en'
-set langmenu=en
-
 set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
