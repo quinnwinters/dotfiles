@@ -1,8 +1,8 @@
 #!/bin/bash 
-
-set -eu
-
 COMMAND=$1
+
+# Help flag
+SHOULD_PRINT_HELP=false
 
 # Installation flags
 INSTALL_CORE=false
@@ -19,9 +19,9 @@ CONFIGURE_MAC=false
 CONFIGURE_VIM=false
 CONFIGURE_ITERM=false
 CONFIGURE_FIREFOX=false
-CONFIGURE_DRIVE=false\
+CONFIGURE_DRIVE=false
 
-print_help() {
+function print_help() {
   if [ "$1"=="install" ]; then 
     echo "Usage for dotfiles install script:"
     echo "------------------------------------"
@@ -67,7 +67,8 @@ do
       INSTALL_WORK=true
       ;;
     -p|--personal)
-      INSTALL_PERSONAL=true
+      INSTALL_PERS=true
+      ;;
     -a|--all)
       INSTALL_ALL=true
       CONFIGURE_ALL=true
@@ -97,92 +98,81 @@ do
       CONFIGURE_DRIVE=true
       ;;
     -h|--help)
-      print_help COMMAND
+      SHOULD_PRINT_HELP=true
+      ;;
     *)
       break
       ;;
   esac
 done
 
-
-# Setup homebrew, update, and tap the homebrew/bundle
-setup_brew() {
+function setup_brew() {
   if test ! $(which brew); then 
     echo "Unable to find homebrew install. Installing now"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
-  
-  brew update
+  brew update 
+  brew upgrade
   brew tap homebrew/bundle
-
   touch Brewfile
 }
 
-# copy core brew instructions into Brewfile
-core_brew() {
+function core_brew() {
   cat Brewfile .homebrew/core > Brewfile
 }
 
-# copy work brew instructions into Brewfile
-work_brew() {
+function work_brew() {
   cat Brewfile .homebrew/work > Brewfile
 }
 
-personal_brew() {
+function personal_brew() {
   cat Brewfile .homebrew/personal > Brewfile
 }
 
-# copy personal brew instructions into Brewfile
-all_brew() {
+function all_brew() {
   cat .homebrew/core .homebrew/work .homebrew/personal > Brewfile 
 }
 
-# Verify the Brewfile file and then run brew and delete the Brewfile
-brew_bundle() {
-  brew upgrade
-  brew bundle check 
+function brew_bundle() {
+  brew bundle install
   brew bundle 
   brew cleanup
   rm -f Brewfile
 }
 
-configure() {
+function configure() {
   echo "Linking files and importing proper configs"
   echo "Finished setting up all the configs"
 }
 
-install() {
+function install() {
   echo "Installing new software based on your asks"
-  
-  # setting up homebrew properly 
   setup_brew 
-  # creating a local Brewfile 
-  if $CONFIGURE_ALL ; then 
+  if $INSTALL_ALL ; then 
     all_brew
   else 
-    if $CONFIGURE_CORE ; then 
+    if $INSTALL_CORE ; then 
       core_brew
-    elif $CONFIGURE_WORK ; then 
+    elif $INSTALL_WORK ; then 
       work_brew
-    elif $PERSONAL_BREW ; 
+    elif $INSTALL_PERS ; then 
       personal_brew
     fi
   fi 
-  
-  # actually run the brew 
   brew_bundle 
-
-  # Use the setup function to configure things appropriately
   if $CONFIGURE_ALL ; then 
     configure
   fi 
   echo "Finished installing software and running proper setups"
 }
 
-if declare -f "$1" > /dev/null
-then 
-  "$1"
+
+if $SHOULD_PRINT_HELP ; then 
+  print_help "$COMMAND"
+elif [ $COMMAND == "install" ]; then 
+  install
+elif [ $COMMAND == "configure" ]; then 
+  configure 
 else 
-  echo "$1 is not a supported operation. Please use 'install' or 'setup'" >&2
-  exit 1
-fi 
+  print_help
+fi
