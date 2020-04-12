@@ -7,11 +7,9 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-" Tools for working with git
-Plugin 'tpope/vim-fugitive' 
+Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-" Tools for navigation and editing
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdcommenter'
@@ -23,7 +21,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tomasr/molokai'
 
-" LaTeX Editing tools
 Plugin 'lervag/vimtex'
 
 call vundle#end()

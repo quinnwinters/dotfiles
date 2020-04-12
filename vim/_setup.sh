@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CFG=~/.config/nvim/
+
 if [[ -d $CFG ]] ; then
     echo "Neovim initialization directory is already present. Skipping setup"
 else
@@ -29,14 +30,13 @@ fi
 # link all the proper config files to proper places
 cat ./vim/init.vim.template > ~/.config/nvim/init.vim
 cat ./vim/vimrc.template > ~/.vimrc
-ln -s $(pwd)/vim/.vim_plugins $VIM_RUNTIME_LOC/.vim_plugins
-ln -s $(pwd)/vim/.vim_plugins_config $VIM_RUNTIME_LOC/.vim_plugins_config
-ln -s $(pwd)/vim/.vim_profile $VIM_RUNTIME_LOC/.vim_profile
-ln -s $(pwd)/vim/.editorconfig ~/.editorconfig
+cat ./vim/install_plugins.template > $VIM_RUNTIME_LOC/.vim_plugins
+cat ./vim/configure_plugins.template > $VIM_RUNTIME_LOC/.vim_plugins_config
+cat ./vim/profile.template > $VIM_RUNTIME_LOC/.vim_profile
+cat ./vim/editorconfig.template > ~/.editorconfig
 
 # Install vim plugins
 vim +PluginInstall +qall
-
 
 # Install YouCompleteMe autocomlete
 CUR_DIR=$(pwd)

@@ -1,8 +1,8 @@
 # Personal apps
 cask 'whatsapp'
 cask '1password'
-cask 'caffeine'
-cask 'flux'
+cask 'firefox'
+cask 'spotify'
 cask 'vlc'
-cask 'google-backup-and-sync'
 cask 'google-drive'
+cask 'google-drive-file-system'

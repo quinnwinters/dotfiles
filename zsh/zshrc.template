@@ -1,8 +1,9 @@
 #############################################################################
-##### 		ZSH and Oh-my-zsh setup requirements			#####
+##### 		ZSH and Oh-my-zsh setup requirements													#####
 #############################################################################
 
 export ZSH="/Users/quinnwinters/.oh-my-zsh"
+export EDITOR='nvim'
 
 ZSH_THEME="ys"
 
@@ -26,24 +27,18 @@ autoload -U compinit && compinit
 source ~/.aliases
 
 #############################################################################
-##### 		Misc. Functions and shortcusts for zsh			#####
+##### 		Misc. Functions and shortcusts for zsh												#####
 #############################################################################
-export EDITOR='vim'
-
-
 function psgrep() { ps auxf | grep -v grep GREP "$@" }
 function search() { find . -iname "*$@*" LESS }
 function up() {
-  if [[ "$#" < 1 ]] ; then 
-    cd .. 
-  else 
+  if [[ "$#" < 1 ]] ; then
+    cd ..
+  else
     CDSTR=""
-    for i in {1..$1} ; do 
+    for i in {1..$1} ; do
       CDSTR="../$CDSTR"
     done
     cd $CDSTR
   fi
 }
-
-
-
