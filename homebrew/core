@@ -16,6 +16,7 @@ brew 'tree'
 brew 'trash'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'neovim'
 
 # Core apps
 cask 'google-chrome'

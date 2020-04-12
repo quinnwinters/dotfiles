@@ -4,7 +4,7 @@
 
 export ZSH="/Users/quinnwinters/.oh-my-zsh"
 
-ZSH_THEME="gallois"
+ZSH_THEME="ys"
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_UPDATE_PROMPT="true"

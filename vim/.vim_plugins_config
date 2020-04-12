@@ -1,7 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden=0
@@ -26,4 +25,14 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='molokai'
 let g:molokai_original=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim LaTeX editor configuration and integration 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'
+map <leader>lpdf :LLPStartPreview
+
+
+
 

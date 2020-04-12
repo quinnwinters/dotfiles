@@ -23,11 +23,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tomasr/molokai'
 
-" Tools for specific languages
+" LaTeX Editing tools
 Plugin 'lervag/vimtex'
-Plugin 'xuhdev/vim-latex-live-preview'
-Plugin 'klen/python-mode'
-Plugin 'nvie/vim-flake8'
 
 call vundle#end()
 
