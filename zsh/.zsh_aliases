@@ -23,6 +23,8 @@ alias rsync='rsync --archive --compress-level=3 --copy-links --partial --inplace
 alias chown="chown --preserve-root"
 alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
+alias vim="nvim"
+alias vi="nvim"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"

@@ -1,12 +1,12 @@
 #!/bin/bash
 
 CFG=~/.config/nvim/
-if [[ -d $CFG ]] ; then 
+if [[ -d $CFG ]] ; then
     echo "Neovim initialization directory is already present. Skipping setup"
-else 
+else
     echo "Setting up neovim configuration"
     mkdir -p  $CFG
-    cat ./vim/init.vim.template > $CFG/init.vim 
+    cat ./vim/init.vim.template > $CFG/init.vim
 fi
 
 VNDL=~/.vim/bundle/Vundle.vim
@@ -25,16 +25,20 @@ else
   mkdir -p $VIM_RUNTIME_LOC
 fi
 
+# Setup init.vim and .vimrc files required for standard vim reading and then
+# link all the proper config files to proper places
+cat ./vim/init.vim.template > ~/.config/nvim/init.vim
 cat ./vim/vimrc.template > ~/.vimrc
 ln -s $(pwd)/vim/.vim_plugins $VIM_RUNTIME_LOC/.vim_plugins
 ln -s $(pwd)/vim/.vim_plugins_config $VIM_RUNTIME_LOC/.vim_plugins_config
 ln -s $(pwd)/vim/.vim_profile $VIM_RUNTIME_LOC/.vim_profile
 ln -s $(pwd)/vim/.editorconfig ~/.editorconfig
 
-source ~/.vimrc
+# Install vim plugins
 vim +PluginInstall +qall
 
-brew install cmake python mono go nodejs
+
+# Install YouCompleteMe autocomlete
 CUR_DIR=$(pwd)
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py --all
