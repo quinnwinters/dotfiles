@@ -19,8 +19,6 @@ CONFIGURE_TODO=false
 CONFIGURE_GIT=false
 CONFIGURE_MAC=false
 CONFIGURE_VIM=false
-CONFIGURE_ITERM=false
-CONFIGURE_FIREFOX=false
 CONFIGURE_DRIVE=false
 
 function start_task() {
@@ -70,9 +68,8 @@ function print_help() {
     echo "\t\t -g --git \t\t\t Configure gitignore and gitconfig"
     echo "\t\t -m --mac \t\t\t Configure macos core settings"
     echo "\t\t -v --vim \t\t\t Configure vim and various vim plugins"
-    echo "\t\t -i --iterm \t\t\t Configure iTerm2 themes and settings"
-    echo "\t\t -f --firefox \t\t Configure Firefox bookmarks and plugins"
     echo "\t\t -d --google-drive\t Configure Google Drive file mount"
+    echo "\t\t -x --todo-txt \t\t Configure todo.txt system"
     echo "\t\t -a --all \t\t Configure all settings"
     exit 0
   else
@@ -112,17 +109,17 @@ do
     -v|--vim)
       CONFIGURE_VIM=true
       ;;
-    -i|--iterm)
-      CONFIGURE_ITERM=true
-      ;;
     -f|--firefox)
       CONFIGURE_FIREFOX=true
       ;;
     -d|--google-drive)
       CONFIGURE_DRIVE=true
       ;;
+    -x|--todo-txt)
+      CONFIGURE_TODO=true
+      ;;
     -h|--help)
-      SHOULD_PRINT_HELP=true
+      print_help "$COMMAND"
       ;;
     *)
       break
@@ -155,22 +152,10 @@ function configure() {
     end_task "Configure - MAC"
   fi
 
-  if $CONFIGURE_ITERM || $CONFIGURE_ALL ; do
-    start_task "Configure - ITERM2"
-    sh ./iterm2/_setup.sh
-    end_task "Configure - ITERM2"
-  fi
-
   if $CONFIGURE_DRIVE || $CONFIGURE_ALL ; do
     start_task "Configure - GOOGLE DRIVE FILE SYSTEM"
     sh ./google-drive/_setup.sh
     end_task "Configure - GOOGLE DRIVE FILE SYSTEM"
-  fi
-
-  if $CONFIGURE_FIREFOX || $CONFIGURE_ALL ; do
-    start_task "Configure - FIREFOX"
-    sh ./firefox/_setup.sh
-    end_task "Configure - FIREFOX"
   fi
 
   if $CONFIGURE_ZSH || $CONFIGURE_ALL ; do
@@ -218,10 +203,7 @@ function install() {
   configure
 }
 
-
-if $SHOULD_PRINT_HELP ; then
-  print_help "$COMMAND"
-elif [ $COMMAND == "install" ]; then
+if [ $COMMAND == "install" ]; then
   install
 elif [ $COMMAND == "configure" ]; then
   configure
