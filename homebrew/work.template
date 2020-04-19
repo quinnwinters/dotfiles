@@ -1,6 +1,4 @@
 # Languages and programming tools
-brew 'python'
-brew 'python3'
 brew 'scala'
 brew 'sbt'
 brew 'ocaml'
@@ -19,26 +17,18 @@ brew 'opencv'
 
 # Command line utils
 brew 'awscli'
-brew 'mysql'
 brew 'node'
 brew 'yarn'
 brew 'nginx'
-brew 'moreutils'
-brew 'findutils'
-brew 'wget'
-brew 'curl'
-brew 'the_silver_searcher'
-brew 'jq'
-brew 'reattach-to-user-namespace'
-brew 'tmux'
-brew 'ack'
-brew 'zsh'
-brew 'htop'
 
 # More professional focused apps (e.g. IDEs)
 cask 'intellij-idea-ce'
 cask 'pycharm-idea-ce'
 cask 'rstudio'
-cask 'iterm2'
-cask 'virtualbox'
 cask 'mactex'
+cask 'virtualbox'
+
+# Fonts to make things work better
+cask 'font-source-code-pro'
+cask 'font-source-code-pro-code-pro-for-powerline'
+cask 'font-source-sans-pro'

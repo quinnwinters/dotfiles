@@ -757,4 +757,3 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/vim,sbt,zsh,java,xcode,julia,macos,scala,ocaml,latex,gradle,python,pycharm,intellij
-
