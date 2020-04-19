@@ -29,9 +29,11 @@ set guioptions-=L
 
 set nobackup
 set nowb
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set lbr
-set tw=120
+set tw=150
 set wrap
 
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>

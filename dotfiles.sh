@@ -1,5 +1,5 @@
 #!/bin/bash
-COMMAND=$1
+COMMAND="$1"
 
 # Generic flags
 SHOULD_PRINT_HELP=false
@@ -9,10 +9,10 @@ SHOULD_FORCE_DO=false
 INSTALL_CORE=false
 INSTALL_WORK=false
 INSTALL_PERS=false
-INSTALL_ALL=false
+INSTALL_ALL=true
 
 # configuration falgs
-CONFIGURE_ALL=false
+CONFIGURE_ALL=true
 CONFIGURE_ZSH=false
 CONFIGURE_TMUX=false
 CONFIGURE_TODO=false
@@ -23,24 +23,20 @@ CONFIGURE_DRIVE=false
 
 function start_task() {
   TASK_NAME="$1"
-
   echo ""
   echo "======================================================================"
   echo "     Starting Task: $TASK_NAME                                        "
   echo "======================================================================"
   echo ""
-
 }
 
 function end_task() {
   TASK_NAME="$1"
-
   echo ""
   echo "======================================================================"
   echo "     Finished Task: $TASK_NAME                                        "
   echo "======================================================================"
   echo ""
-
 }
 
 function print_help() {
@@ -74,7 +70,7 @@ function print_help() {
     exit 0
   else
     echo "Please use ./dotfiles.sh install --help or ./dotfiles.sh configure --help for usage"
-    echo 0
+    exit 0
   fi
 }
 
@@ -109,17 +105,11 @@ do
     -v|--vim)
       CONFIGURE_VIM=true
       ;;
-    -f|--firefox)
-      CONFIGURE_FIREFOX=true
-      ;;
     -d|--google-drive)
       CONFIGURE_DRIVE=true
       ;;
-    -x|--todo-txt)
-      CONFIGURE_TODO=true
-      ;;
     -h|--help)
-      print_help "$COMMAND"
+      SHOULD_PRINT_HELP=true
       ;;
     *)
       break
@@ -128,43 +118,43 @@ do
 done
 
 function configure() {
-  if $CONFIGURE_VIM || $CONFIGURE_ALL ; do
+  if $CONFIGURE_VIM || $CONFIGURE_ALL ; then
     start_task "Configure - VIM"
     sh ./vim/_setup.sh
     end_task "Configure - VIM"
   fi
 
-  if $CONFIGURE_TMUX || $CONFIGURE_ALL ; do
+  if $CONFIGURE_TMUX || $CONFIGURE_ALL ; then
     start_task "Configure - TMUX"
     sh ./tmux/_setup.sh
     end_task "Configure - TMUX"
   fi
 
-  if $CONFIGURE_GIT || $CONFIGURE_ALL ; do
+  if $CONFIGURE_GIT || $CONFIGURE_ALL ; then
     start_task "Configure - GIT"
     sh ./git/_setup.sh
     end_task "Configure - GIT"
   fi
 
-  if $CONFIGURE_MAC || $CONFIGURE_ALL ; do
+  if $CONFIGURE_MAC || $CONFIGURE_ALL ; then
     start_task "Configure - MAC"
     sh ./macos/_setup.sh
     end_task "Configure - MAC"
   fi
 
-  if $CONFIGURE_DRIVE || $CONFIGURE_ALL ; do
+  if $CONFIGURE_DRIVE || $CONFIGURE_ALL ; then
     start_task "Configure - GOOGLE DRIVE FILE SYSTEM"
     sh ./google-drive/_setup.sh
     end_task "Configure - GOOGLE DRIVE FILE SYSTEM"
   fi
 
-  if $CONFIGURE_ZSH || $CONFIGURE_ALL ; do
+  if $CONFIGURE_ZSH || $CONFIGURE_ALL ; then
     start_task "Configure - ZSH"
     sh ./zsh/_setup.sh
     end_task "Configure - ZSH"
   fi
 
-  if $CONFIGURE_TODO || $CONFIGURE_ALL ; do
+  if $CONFIGURE_TODO || $CONFIGURE_ALL ; then
     start_task "Configure - TODO.TXT"
     sh ./todo/_setup.sh
     end_task "Configure - TODO.TXT"
@@ -199,13 +189,13 @@ function install() {
       end_task "Install - PERSONAL"
     fi
   fi
-
+  echo "Got to the configure portion $CONFIGURE_ALL"
   configure
 }
 
-if [ $COMMAND == "install" ]; then
+if [ "$COMMAND" == "install" ] ; then
   install
-elif [ $COMMAND == "configure" ]; then
+elif [ "$COMMAND" == "configure" ] ; then
   configure
 else
   print_help

@@ -55,7 +55,6 @@ alias -g tailf="tail -f"
 alias -g tail10="tail -n 10"
 alias -g tail50="tail -n 50"
 
-
 # Other useful aliases
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias reload="exec ${SHELL} -l"
