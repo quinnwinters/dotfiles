@@ -23,53 +23,53 @@ CONFIGURE_DRIVE=false
 
 function start_task() {
   TASK_NAME="$1"
-  echo ""
-  echo "======================================================================"
-  echo "     Starting Task: $TASK_NAME                                        "
-  echo "======================================================================"
-  echo ""
+  printf ""
+  printf "======================================================================"
+  printf "     Starting Task: $TASK_NAME                                        "
+  printf "======================================================================"
+  printf ""
 }
 
 function end_task() {
   TASK_NAME="$1"
-  echo ""
-  echo "======================================================================"
-  echo "     Finished Task: $TASK_NAME                                        "
-  echo "======================================================================"
-  echo ""
+  printf ""
+  printf "======================================================================"
+  printf "     Finished Task: $TASK_NAME                                        "
+  printf "======================================================================"
+  printf ""
 }
 
 function print_help() {
   if [ "$1"=="install" ]; then
-    echo "Usage for dotfiles install script:"
-    echo "------------------------------------"
-    echo ""
-    echo "\t ./dotfiles.sh install [-c -w -p -a]"
-    echo ""
-    echo "\t\t -c --core \t\t Install core applications only"
-    echo "\t\t -w --work \t\t Install work applications only"
-    echo "\t\t -p --personal \t Install personal applications only"
-    echo "\t\t -a --all \t\t Install all applications and run configurations"
-    echo ""
-    echo ""
+    printf "Usage for dotfiles install script:"
+    printf "------------------------------------"
+    printf ""
+    printf "\t ./dotfiles.sh install [-c -w -p -a]"
+    printf ""
+    printf "\t\t -c --core \t\t Install core applications only"
+    printf "\t\t -w --work \t\t Install work applications only"
+    printf "\t\t -p --personal \t Install personal applications only"
+    printf "\t\t -a --all \t\t Install all applications and run configurations"
+    printf ""
+    printf ""
     exit 0
   elif [ "$1"=="configure" ]; then
-    echo "Usage for dotfiles configure script:"
-    echo "------------------------------------"
-    echo ""
-    echo "\t ./dotfiles.sh configure [-z -t -g -m -v -i -f -d -a]"
-    echo ""
-    echo "\t\t -z --zsh \t\t\t Configure zsh and oh-my-zsh"
-    echo "\t\t -t --tmux \t\t\t Configure tmux"
-    echo "\t\t -g --git \t\t\t Configure gitignore and gitconfig"
-    echo "\t\t -m --mac \t\t\t Configure macos core settings"
-    echo "\t\t -v --vim \t\t\t Configure vim and various vim plugins"
-    echo "\t\t -d --google-drive\t Configure Google Drive file mount"
-    echo "\t\t -x --todo-txt \t\t Configure todo.txt system"
-    echo "\t\t -a --all \t\t Configure all settings"
+    printf "Usage for dotfiles configure script:"
+    printf "------------------------------------"
+    printf ""
+    printf "\t ./dotfiles.sh configure [-z -t -g -m -v -i -f -d -a]"
+    printf ""
+    printf "\t\t -z --zsh \t\t\t Configure zsh and oh-my-zsh"
+    printf "\t\t -t --tmux \t\t\t Configure tmux"
+    printf "\t\t -g --git \t\t\t Configure gitignore and gitconfig"
+    printf "\t\t -m --mac \t\t\t Configure macos core settings"
+    printf "\t\t -v --vim \t\t\t Configure vim and various vim plugins"
+    printf "\t\t -d --google-drive\t Configure Google Drive file mount"
+    printf "\t\t -x --todo-txt \t\t Configure todo.txt system"
+    printf "\t\t -a --all \t\t Configure all settings"
     exit 0
   else
-    echo "Please use ./dotfiles.sh install --help or ./dotfiles.sh configure --help for usage"
+    printf "Please use ./dotfiles.sh install --help or ./dotfiles.sh configure --help for usage"
     exit 0
   fi
 }
@@ -189,7 +189,7 @@ function install() {
       end_task "Install - PERSONAL"
     fi
   fi
-  echo "Got to the configure portion $CONFIGURE_ALL"
+  printf "Got to the configure portion $CONFIGURE_ALL"
   configure
 }
 
