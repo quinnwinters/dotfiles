@@ -57,7 +57,7 @@ alias -g tail50="tail -n 50"
 
 # Other useful aliases
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-alias reload="exec ${SHELL} -l"
+alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
 alias json="python -m json.tool"
 alias updateAllBrewPackages="brew update && brew upgrade"
