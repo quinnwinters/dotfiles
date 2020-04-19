@@ -11,7 +11,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-# Better defaults 
+# Better defaults
 alias ls="ls -lhAFG"
 alias sl="ls"
 alias grep="grep --color=auto"
@@ -19,7 +19,7 @@ alias rm="trash -v -F"
 alias cp="cp -i"
 alias mv="mv -i"
 alias help="man"
-alias rsync='rsync --archive --compress-level=3 --copy-links --partial --inplace --progress --rsh=ssh -r' 
+alias rsync='rsync --archive --compress-level=3 --copy-links --partial --inplace --progress --rsh=ssh -r'
 alias chown="chown --preserve-root"
 alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"

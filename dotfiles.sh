@@ -74,41 +74,40 @@ function print_help() {
   fi
 }
 
-while test $
-do
-    case "$1" in
-    -c|--core)
+while test $; do
+  case "$1" in
+    -c | --core)
       INSTALL_CORE=true
       ;;
-    -w|--work)
+    -w | --work)
       INSTALL_WORK=true
       ;;
-    -p|--personal)
+    -p | --personal)
       INSTALL_PERS=true
       ;;
-    -a|--all)
+    -a | --all)
       INSTALL_ALL=true
       CONFIGURE_ALL=true
       ;;
-    -z|--zsh)
+    -z | --zsh)
       CONFIGURE_ZSH=true
       ;;
-    -t|--tmux)
+    -t | --tmux)
       CONFIGURE_TMUX=true
       ;;
-    -g|--git)
+    -g | --git)
       CONFIGURE_GIT=true
       ;;
-    -m|--mac)
+    -m | --mac)
       CONFIGURE_MAC=true
       ;;
-    -v|--vim)
+    -v | --vim)
       CONFIGURE_VIM=true
       ;;
-    -d|--google-drive)
+    -d | --google-drive)
       CONFIGURE_DRIVE=true
       ;;
-    -h|--help)
+    -h | --help)
       SHOULD_PRINT_HELP=true
       ;;
     *)
@@ -118,43 +117,43 @@ do
 done
 
 function configure() {
-  if "$CONFIGURE_VIM" || "$CONFIGURE_ALL" ; then
+  if "$CONFIGURE_VIM" || "$CONFIGURE_ALL"; then
     start_task "Configure - VIM"
     sh ./vim/_setup.sh
     end_task "Configure - VIM"
   fi
 
-  if "$CONFIGURE_TMUX" || "$CONFIGURE_ALL" ; then
+  if "$CONFIGURE_TMUX" || "$CONFIGURE_ALL"; then
     start_task "Configure - TMUX"
     sh ./tmux/_setup.sh
     end_task "Configure - TMUX"
   fi
 
-  if "$CONFIGURE_GIT" || "$CONFIGURE_ALL" ; then
+  if "$CONFIGURE_GIT" || "$CONFIGURE_ALL"; then
     start_task "Configure - GIT"
     sh ./git/_setup.sh
     end_task "Configure - GIT"
   fi
 
-  if "$CONFIGURE_MAC" || "$CONFIGURE_ALL" ; then
+  if "$CONFIGURE_MAC" || "$CONFIGURE_ALL"; then
     start_task "Configure - MAC"
     sh ./macos/_setup.sh
     end_task "Configure - MAC"
   fi
 
-  if "$CONFIGURE_DRIVE" || "$CONFIGURE_ALL" ; then
+  if "$CONFIGURE_DRIVE" || "$CONFIGURE_ALL"; then
     start_task "Configure - GOOGLE DRIVE FILE SYSTEM"
     sh ./google-drive/_setup.sh
     end_task "Configure - GOOGLE DRIVE FILE SYSTEM"
   fi
 
-  if "$CONFIGURE_ZSH" || "$CONFIGURE_ALL" ; then
+  if "$CONFIGURE_ZSH" || "$CONFIGURE_ALL"; then
     start_task "Configure - ZSH"
     sh ./zsh/_setup.sh
     end_task "Configure - ZSH"
   fi
 
-  if "$CONFIGURE_TODO" || "$CONFIGURE_ALL" ; then
+  if "$CONFIGURE_TODO" || "$CONFIGURE_ALL"; then
     start_task "Configure - TODO.TXT"
     sh ./todo/_setup.sh
     end_task "Configure - TODO.TXT"
@@ -162,26 +161,26 @@ function configure() {
 }
 
 function install() {
-  if "$INSTALL_ALL" ; then
+  if "$INSTALL_ALL"; then
     start_task "Install - ALL"
     setup_brew
     all_brew
     brew_bundle
     end_task "Install - ALL"
   else
-    if "$INSTALL_CORE" ; then
+    if "$INSTALL_CORE"; then
       start_task "Install - CORE"
       setup_brew
       core_brew
       brew_bundle
       end_task "Install - CORE"
-    elif "$INSTALL_WORK" ; then
+    elif "$INSTALL_WORK"; then
       start_task "Install - WORK"
       setup_brew
       work_brew
       brew_bundle
       end_task "Install - WORK"
-    elif "$INSTALL_PERS" ; then
+    elif "$INSTALL_PERS"; then
       start_task "Install - PERSONAL"
       setup_brew
       personal_brew
@@ -193,9 +192,9 @@ function install() {
   configure
 }
 
-if [ "$COMMAND" == "install" ] ; then
+if [ "$COMMAND" == "install" ]; then
   install
-elif [ "$COMMAND" == "configure" ] ; then
+elif [ "$COMMAND" == "configure" ]; then
   configure
 else
   print_help

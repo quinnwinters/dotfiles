@@ -8,5 +8,5 @@ else
   curl -L http://install.ohmyz.sh | sh
 fi
 
-cat ./zsh/aliases.template > ~/.aliases
-cat ./zsh/zshrc.template > ~/.zshrc
+cat ./zsh/aliases.template >~/.aliases
+cat ./zsh/zshrc.template >~/.zshrc

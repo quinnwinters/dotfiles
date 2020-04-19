@@ -20,7 +20,6 @@ printf ""
 GDIR=/Volumes/GoogleDrive/My\ Drive
 DDIR=/Users/quinnwinters/Documents
 
-
 while read -r response; do
   case "$response" in
     verified)
