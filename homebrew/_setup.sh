@@ -1,6 +1,6 @@
 #!/bin/bash
-
-if [[ "$(which -s brew)" != 0 ]] ; then 
+brewver=$(brew --version 2>&1)
+if [[ $? != 0 ]] ; then 
     echo "Installing homebrew package manager"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 else

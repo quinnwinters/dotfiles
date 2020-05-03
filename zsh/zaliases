@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
 
-# Some opinionated easy commmands
-alias commit="git add -u && git commit -a -m"
-
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-
 # Better defaults
 alias ls="ls -lhAFG"
 alias sl="ls"
@@ -25,19 +14,8 @@ alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
 alias vim="nvim"
 alias vi="nvim"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-# Navigation aliases
-alias code="cd ~/Documents/GitHub && ls"
-
-# Build system aliases
-alias py="python3"
-alias gw="./gradlew"
-alias lpdf="pdflatex *.tex"
-alias opdf="open *.pdf"
+alias df="df -h"
+alias du="du -h -d 2"
 
 # Useful piping aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -59,8 +37,4 @@ alias -g tail50="tail -n 50"
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
-alias json="python -m json.tool"
-alias updateAllBrewPackages="brew update && brew upgrade"
-alias updateAllPipPackages="pip3 list --outdated | cut -d' ' -f1 | tail -n +3 | xargs pip3 install --upgrade"
-alias updateAllOpamPackages="opam update && opam upgrade"
-alias update="updateAllBrewPackages && updateAllPipPackages && conda update --all && updateAllOpamPackages && upgrade_oh_my_zsh"
+alias jsonVerify="python -m json.tool"

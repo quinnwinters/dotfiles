@@ -1,7 +1,17 @@
 #!/bin/bash
+pyver=$(python3 --version 2>&1)
+if [[ $? != 0 ]] ; then
+  echo "Installing python3"
+  brew install python3
+fi
+
+nvimver=$(nvim --version 2>&1)
+if [[ $? != 0]] ; then 
+  echo "Installing neovim"
+  brew install neovim
+fi 
 
 CFG=~/.config/nvim/
-
 if [[ -d $CFG ]]; then
   echo "Neovim initialization directory is already present. Skipping setup"
 else
@@ -26,19 +36,13 @@ else
   mkdir -p "$VIM_RUNTIME_LOC"
 fi
 
-# Setup init.vim and .vimrc files required for standard vim reading and then
-# link all the proper config files to proper places
-cat ./vim/init.vim.template >~/.config/nvim/init.vim
-cat ./vim/vimrc.template >~/.vimrc
-cat ./vim/install_plugins.template >"$VIM_RUNTIME_LOC"/.vim_plugins
-cat ./vim/configure_plugins.template >"$VIM_RUNTIME_LOC"/.vim_plugins_config
-cat ./vim/profile.template >"$VIM_RUNTIME_LOC"/.vim_profile
-cat ./vim/editorconfig.template >~/.editorconfig
 
-# Install vim plugins
+ln -s $(pwd)/init.vim ~/.config/nvim/init.vim
+ln -s $(pwd)/vim_runtime ~/.vim_runtime
+ln -s $(pwd)/editorconfig ~/.editorconfig
+ln -s $(pwd)/vimrc ~/.vimrc 
+
 vim +PluginInstall +qall
-
-# Install YouCompleteMe autocomlete
 CUR_DIR=$PWD
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py --all

@@ -4,37 +4,31 @@ This is a collection of setup scripts and dotfiles that I use when re-imaging my
 
 ## Usage
 
-The main script here will install and reset things as well. Usage is as follows
+The main script here will install and reset things as well. You can run the whole script fairly easily with just 
 
 ```bash
-(TODO: quinnwinters)
+sudo ./dotfiles.sh
 ```
 
-## My core setup
+Note you have to use `sudo` just because a lot of the various different sub-tasks requrie it. If you want to run sub-tasks individually that's fairly simple as well. You can just run `./{directory}/_setup.sh`.
 
-My tool chain is: 
-* **Web tools:** Firefox (Plugins for: ) 
-* **Utilities/Lifesavers:** Alfred, Magnet 
-* **Terminal:** iTerm2, oh-my-zsh (+plugins), vim, tmux, brew
-* **Additional language installs:** Julia, LaTeX, R, OCaml, Scala 
-* **Scientific/Programming:** Rstudio, IntelliJ, Docker
-* **Media**: VLC, Spotify, Anki
+The "modules" as well as their documentation is pretty simple. Each one is intentially self-contained (i.e. does a bunch of checks for dependency installs before running). 
 
-I also install other apps that I know are generally useful e.g. Google Chrome, Apple's Work suite, TexStudio etc. That said, they generally stay in the background for me so I added a flag for them so that I only have to install them if I want to.  
+There's self contained installation/configuration scripts for: 
+* [Homebrew](./homebrew/_setup.sh)
+* [Vim](./vim/_setup.sh)
+* [Zsh](./zsh/_setup.sh)
+* [Git](./git/_setup.sh)
+* [Tmux](./tmux/_setup.sh)
+* [Python](./python/_setup.sh)
+* [Scala](./scala/_setup.sh)
+* [Ocaml](./ocaml/_setup.sh)
+* [LaTeX](./latex/_setup.sh)
+* [iTerm2](./iterm2/_setup.sh)
+* [Todo.Txt](./todo/_setup.sh)
+* [MacOS](./macos/_setup.sh)
+* [Google Drive File System](./google-drive/_setup.sh)
+* [Google Chrome](./google-chrome/_setup.sh)
+* [Alfred](./alfred/_setup.sh)
 
-### Firefox setup
-### iTerm2 setup
-### Shell setup (oh-my-zsh + plugins)
-### Vim setup
-### Shortcut for just the bare basics
-
-## Additional setup for my personal laptop
-
-In addition to the applications that I install across all my computers and setups, I have some additional setup measures for my personal laptop. These steps are only executed when including the proper flags. In addition to my core setup, I have the setup script manage: 
-* Firefox bookmarks and plugins
-* Google drive filesystem mount and symlinks to main directories
-* 1Password
-
-### Firefox additions
-### Google drive filesystem and linkage
-### 1Password 
+If you want to read the full documentation, can you fiew that in the [docs directory](./docs/REAMDME.md)

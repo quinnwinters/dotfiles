@@ -12,14 +12,7 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
-[Makefile]
-indent_style = tab
-
-[lib/**.js]
-indent_style = space
-indent_size = 2
-
-[{package.json, .travis.yml}]
+[*.{json,yml}]
 indent_style = space
 indent_size = 2
 
@@ -28,10 +21,6 @@ indent_style = space
 indent_size = 3
 end_of_line = lf
 max_line_length = 100
-
-[CMakeLists.txt]
-indent_style = space
-indent_size = 3
 
 [*.jl]
 indent_style = space
