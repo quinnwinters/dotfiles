@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DOT_DIR="$(pwd)"
-source $DOT_DIR/scripts/printingutils.sh
+source $DOT_DIR/scripts/printing_utils.sh
 
 dotfiles
 
