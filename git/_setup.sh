@@ -4,7 +4,7 @@ ln -sf ./gitconfig ~/.gitconfig
 ln -sf ./gitignore ~/.gitignore
 
 REPODIR=~/Documents/GitHub
-if [[ ! -d $REPODIR ]] ; then 
+if [[ ! -d $REPODIR ]] ; then
     echo "Making directory for all git projects: $REPODIR"
     mkdir -vp $REPODIR
 fi
@@ -18,7 +18,7 @@ curl -k "https://api.github.com/users/quinnwinters/repos?page=1&per_page=100" | 
     xargs -L1 git clone
 cd $PWD
 
-if [[ ! -d ~/.aliases ]] ; then 
+if [[ ! -d ~/.aliases ]] ; then
   echo "Creating alias directory at ~/.aliases"
   mkdir -vp ~/.aliases
 fi

@@ -1,7 +1,7 @@
 alias gaa="git add --all"
 alias gcb="git checkout -b"
 alias gcm="git commit -v -a -m"
-alias gl="git pull 
+alias gl="git pull" 
 alias master="git checkout master && git pull"
 alias develop="git checkout develop && git pull"
 alias github="cd ~/Documents/GitHub && ls -lhAFG"

@@ -29,5 +29,5 @@ There's self contained installation/configuration scripts for:
 * [Google Drive File System](./google-drive/_setup.sh)
 * [Alfred](./alfred/_setup.sh)
 * [Mutt](./mutt/_setup.sh)
-* [Cron](./cron/_setup.sh) which relies on the scripts in `/scripts`
+* [Cron](./cron/_setup.sh)
 
