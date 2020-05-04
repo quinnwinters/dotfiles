@@ -6,7 +6,7 @@ if [[ $? != 0 ]] ; then
 fi
 
 nvimver=$(nvim --version 2>&1)
-if [[ $? != 0]] ; then 
+if [[ $? != 0 ]] ; then 
   echo "Installing neovim"
   brew install neovim
 fi 
@@ -28,19 +28,10 @@ else
   git clone https://github.com/VundleVim/Vundle.vim.git "$VNDL"
 fi
 
-VIM_RUNTIME_LOC=~/.vim_runtime
-if [[ -d VIM_RUNTIME_LOC ]]; then
-  echo "Vim runtime directory is already present. Skipping creation"
-else
-  echo "Creating vim runtime directory"
-  mkdir -p "$VIM_RUNTIME_LOC"
-fi
-
-
-ln -s $(pwd)/init.vim ~/.config/nvim/init.vim
-ln -s $(pwd)/vim_runtime ~/.vim_runtime
-ln -s $(pwd)/editorconfig ~/.editorconfig
-ln -s $(pwd)/vimrc ~/.vimrc 
+ln -sf $(pwd)/vim_runtime ~/.vim_runtime
+ln -sf $(pwd)/init.vim ~/.config/nvim/init.vim
+ln -sf $(pwd)/editorconfig ~/.editorconfig
+ln -sf $(pwd)/vimrc ~/.vimrc 
 
 vim +PluginInstall +qall
 CUR_DIR=$PWD

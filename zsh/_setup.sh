@@ -19,11 +19,11 @@ if [[ ! -d "$ZSH" ]] ; then
 fi
 
 if [[ ! -d ~/.aliases ]] ; then 
-  echo "Creating alias directory at ~/.aliases"
+  echo "Creating aliases directory"
   mkdir -vp ~/.aliases
-fi
+fi 
 
-ln -s $(pwd)/zaliases ~/.zaliases
-ln -s $(pwd)/zcompletions ~/.zcompletions
-ln -s $(pwd)/zshenv ~/.zshenv
-ln -s $(pwd)/zshrc ~/.zshrc
+ln -sf $(pwd)/zaliases ~/.zaliases
+ln -sf $(pwd)/zcompletions ~/.zcompletions
+ln -sf $(pwd)/zshenv ~/.zshenv
+ln -sf $(pwd)/zshrc ~/.zshrc
