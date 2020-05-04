@@ -10,6 +10,7 @@ DISABLE_UPDATE_PROMPT="true"
 HIST_STAMPS="yyyy-mm-dd"
 plugins=(git) # no fancy plugins because they're usually slow 
 
+source ~/.bashrc
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
 source ~/.zaliases

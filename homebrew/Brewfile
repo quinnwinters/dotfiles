@@ -29,6 +29,7 @@ brew 'readline'
 brew 'sqlite3'
 brew 'xz'
 brew 'zlib'
+brew 'mutt'
 
 # ========================================================= #
 # |     PROGRAMMING LANGUAGES AND PACKAGE MANAGMENT       | #

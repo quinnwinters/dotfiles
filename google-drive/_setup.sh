@@ -41,7 +41,7 @@ while read -r response; do
       link_gdrive Video  
       echo ""
       echo "Created links for google drive folders in proper places"
-      exit 0
+      break
       ;;
     *)
       echo "You have not verified that the drive is mounted properly."

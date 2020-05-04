@@ -16,7 +16,7 @@ ln -sf $(pwd)/config ~/.ssh/config
 numkeys=$(ls -al ~/.ssh | grep -i ".pub" | wc -l | grep -oE '\d+')
 if [[ numkeys=="0" ]] ; then 
     echo "Issuing a new ssh key for github logins"
-    ssh-keygen -t rsa -b 4096 -C "email@quinnwinters.dev"
+    ssh-keygen -t rsa -b 4096 -C "$MYEMAIL"
 fi
 
 eval "$(ssh-agent -s)"
@@ -39,7 +39,7 @@ echo ""
 while read -r response; do
   case "$response" in
     verified)
-      exit 0
+      break
       ;;
     *)
       echo "Please add your public key to github"
