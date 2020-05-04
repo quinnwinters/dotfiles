@@ -1,20 +1,20 @@
 #!/bin/bash
 
-export DOT_DIR="$(pwd)"
+export DOT_DIR="$PWD"
 echo 'export DOT_DIR="$(pwd)"' >> ~/.bashrc
-source $DOT_DIR/scripts/printing_utils.sh
+source "$DOT_DIR"/scripts/printing_utils.sh
 
 dotfiles
 
 function run_submodule() {
   DIR="$1"
-  PWD=$(pwd)
+  PWD=$PWD
   task "Runing setup instructions for dotfiles/$DIR"
   echo "About to change directory to run $DIR/_setup.sh"
-  cd $DIR
+  cd "$DIR"
   sudo chmod +x ./_setup.sh
   ./_setup.sh
-  cd $DOT_DIR
+  cd "$DOT_DIR"
   echo "Finished setting up $DIR"
 }
 

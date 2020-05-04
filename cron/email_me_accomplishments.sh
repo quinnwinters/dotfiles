@@ -8,7 +8,7 @@ if [[ ! -z "$TODO_DIR" ]] ; then
     exit 1
 fi
 
-cd $TODO_DIR
+cd "$TODO_DIR"
 
 git pull
 
@@ -25,7 +25,7 @@ $(t ls | grep x)
 Current Projects
 ---
 $(t listproj)
-" | mutt $MYEMAIL -s $SUBJECT
+" | mutt "$MYEMAIL" -s "$SUBJECT"
 
 t archive
 
