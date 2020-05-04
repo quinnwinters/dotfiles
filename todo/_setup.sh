@@ -20,8 +20,14 @@ fi
 git clone git@github.com:DoctorRadar/todotxt_cli_date_add.git $ACTIONSDIR/add 
 chmod +x $ACTIONSDIR/add/add
 
-curl -k https://raw.githubusercontent.com/todotxt/todo.txt-cli/addons/.todo.actions.d/addx > $ACTIONSDIR/addx
-chmod +x $ACTIONSDIR/addx
+git clone git@github.com:rebeccamorgan/due.git $ACTIONSDIR/due 
+chmod +x $ACTIONSDIR/due/due
+
+git clone git@github.com:civrot/todo_txt_actions $ACTIONSDIR/standup
+chmod +x $ACTIONSDIR/standup/standup
+
+git clone git@github.com:tgdnt/stale $ACTIONSDIR/stale
+chomd +x $ACTIONSDIR/stale/stale 
 
 git clone git@github.com:timpulver/todo.txt-graph.git $ACTIONSDIR/graph
 

@@ -1,5 +1,7 @@
+export TODO_DIR=~/Documents/GitHub/quinnwinters-todo
+
 source /usr/local/opt/todo-txt/etc/bash_completion.d/todo_completion complete -F _todo t
-alias t="/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg"
+alias t="/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg -n -a -f "
 
 alias ta="t add"
 alias tls="t list"
@@ -17,3 +19,4 @@ alias tFinance="tAddToProject Finance"
 alias tAwait="tAddToContext waiting"
 alias tEmail="tAddToContext email"
 alias tCall="tAddToContext call"
+alias tBlocker="tAddToContext impediment"

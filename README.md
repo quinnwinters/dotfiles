@@ -31,4 +31,3 @@ There's self contained installation/configuration scripts for:
 * [Mutt](./mutt/_setup.sh)
 * [Cron](./cron/_setup.sh) which relies on the scripts in `/scripts`
 
-If you want to read the full documentation, can you fiew that in the [docs directory](./docs/REAMDME.md)
