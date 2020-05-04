@@ -182,29 +182,3 @@ defaults write com.apple.dock show-recents -bool false
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-
-for app in "Activity Monitor" \
-  "Address Book" \
-  "Calendar" \
-  "cfprefsd" \
-  "Contacts" \
-  "Dock" \
-  "Finder" \
-  "Google Chrome Canary" \
-  "Google Chrome" \
-  "Mail" \
-  "Messages" \
-  "Opera" \
-  "Photos" \
-  "Safari" \
-  "SizeUp" \
-  "Spectacle" \
-  "SystemUIServer" \
-  "Terminal" \
-  "Transmission" \
-  "Tweetbot" \
-  "Twitter" \
-  "iCal"; do
-  killall "$app" &>/dev/null
-done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
