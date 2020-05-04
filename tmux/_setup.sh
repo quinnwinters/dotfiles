@@ -1,7 +1,7 @@
 #!/bin/bash
 
 tmuxver=$(tmux -V 2>&1)
-if [[ $? != -]] ; then 
+if [[ $? != 0 ]] ; then 
     echo "Installing tmux"
     brew install tmux 
 fi
