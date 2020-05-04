@@ -1,16 +1,16 @@
 #!/bin/bash
 
-if [[ ! -z "$MYEMAIL" ]] ; then 
+if [[ ! -z "$MYEMAIL" ]] ; then
     exit 1
 fi
 
-if [[ ! -z "$TODO_DIR" ]] ; then 
+if [[ ! -z "$TODO_DIR" ]] ; then
     exit 1
-fi 
+fi
 
 cd $TODO_DIR
 
-git pull 
+git pull
 
 SUBJECT="[TODO] $(date +'%Y-%m-%d') - Weekly Accomplishments"
 echo "
@@ -25,11 +25,11 @@ $(t ls | grep x)
 Current Projects
 ---
 $(t listproj)
-" > | mutt $MYEMAIL -s $SUBJECT 
+" | mutt $MYEMAIL -s $SUBJECT
 
 t archive
 
-git add . 
+git add .
 git commit -m "$SUBJECT"
 git push
 

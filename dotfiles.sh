@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DOT_DIR="$(pwd)"
-echo 'export DOT_DIR=$(pwd)' >> ~/.bashrc
+echo 'export DOT_DIR="$(pwd)"' >> ~/.bashrc
 source $DOT_DIR/scripts/printing_utils.sh
 
 dotfiles
@@ -21,7 +21,7 @@ function run_submodule() {
 run_submodule homebrew
 run_submodule zsh
 run_submodule ssh
-run_submodule vim 
+run_submodule vim
 run_submodule latex
 run_submodule git
 run_submodule python
