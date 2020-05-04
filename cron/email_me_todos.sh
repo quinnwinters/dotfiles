@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [[ ! -z "$MYEMAIL" ]] ; then
-    exit 1
+if [[ ! -z "$MYEMAIL" ]]; then
+  exit 1
 fi
 
-if [[ ! -z "$TODO_DIR" ]] ; then
-    exit 1
+if [[ ! -z "$TODO_DIR" ]]; then
+  exit 1
 fi
 
 cd "$TODO_DIR"

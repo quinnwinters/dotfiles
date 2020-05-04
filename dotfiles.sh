@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DOT_DIR="$PWD"
-echo 'export DOT_DIR="$(pwd)"' >> ~/.bashrc
+echo 'export DOT_DIR="$(pwd)"' >>~/.bashrc
 source "$DOT_DIR"/scripts/printing_utils.sh
 
 dotfiles
@@ -32,4 +32,3 @@ run_submodule macos
 run_submodule mutt
 run_submodule tmux
 run_submodule cron
-
