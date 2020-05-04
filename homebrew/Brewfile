@@ -1,0 +1,95 @@
+# ========================================================= #
+# |     CORE BREW TAPS AND INSTALLS                       | #
+# ========================================================= #
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/bundle'
+
+brew 'zsh'
+brew 'zsh-completitions'
+brew 'coreutils'
+brew 'moreutils'
+brew 'findutils'
+
+# ========================================================= #
+# |     COMMAND LINE UTILS AND UNIX BASICS                | #
+# ========================================================= #
+brew 'git'
+brew 'tree'
+brew 'trash'
+brew 'wget'
+brew 'curl'
+brew 'jq'
+brew 'ack'
+brew 'tmux'
+brew 'htop'
+brew 'openssl'
+brew 'readline'
+brew 'sqlite3'
+brew 'xz'
+brew 'zlib'
+
+# ========================================================= #
+# |     PROGRAMMING LANGUAGES AND PACKAGE MANAGMENT       | #
+# ========================================================= #
+brew 'python'
+brew 'python3'
+brew 'scala'
+brew 'ocaml'
+brew 'r'
+brew 'java'
+brew 'julia'
+
+brew 'sbt'
+brew 'opam'
+brew 'gradle'
+brew 'pyenv'
+brew 'node'
+brew 'yarn'
+
+# ========================================================= #
+# |     DEVELOPMENT TOOLS; IDEs AND TEXT EDITORS          | #
+# ========================================================= #
+brew 'virtualenv'
+brew 'pyenv'
+brew 'jupyter'
+brew 'apache-spark'
+
+cask 'mactex'
+cask 'intellij-idea-ce'
+cask 'pycharm-idea-ce'
+cask 'rstudio'
+cask 'virtualbox'
+cask 'visual-studio-code'
+cask 'texstudio'
+cask 'iterm2'
+cask 'conda'
+
+brew 'vim'
+brew 'neovim'
+
+# ========================================================= #
+# |     USER FACING APPLICATIONS AND MAC TOOLS            | #
+# ========================================================= #
+cask 'alfred'
+cask 'caffeine'
+cask '1password'
+cask 'google-chrome'
+cask 'google-drive'
+cask 'google-drive-file-system'
+cask 'spotify'
+cask 'anki'
+cask 'whatsapp'
+cask 'vlc'
+cask 'zoom'
+cask 'qgis'
+cask 'docker'
+cask 'nordvpn'
+
+appstore 'Magnet'
+appstore 'Notability'
+appstore 'Kindle'
+
+
+

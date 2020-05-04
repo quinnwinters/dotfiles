@@ -2,28 +2,28 @@
 
 ln -s $(pwd)/drivealiases ~/.aliases/drivealiases
 
-printf "=========================================================================="
-printf "   MANUAL ACTION REQUORED-MANUAL ACTION REQUIRED-MANUAL ACTION REQUIRED"
-printf "=========================================================================="
-printf ""
-printf ""
-printf "Now the start up script will pause because you need to configure the "
-printf "Google Drive file system mount -- use this to back up files"
-printf "----------"
-printf "Steps: "
-printf " 1. Open up google drive file system application"
-printf " 2. Log into google drive file system with google credentials"
-printf " 3. Verify that the Google Drive file system in '/Volumes"
-printf " 4. Type the word verified to continue the setup process"
-printf ""
-printf ""
-printf ""
+echo "=========================================================================="
+echo "   MANUAL ACTION REQUORED-MANUAL ACTION REQUIRED-MANUAL ACTION REQUIRED"
+echo "=========================================================================="
+echo ""
+echo ""
+echo "Now the start up script will pause because you need to configure the "
+echo "Google Drive file system mount -- use this to back up files"
+echo "----------"
+echo "Steps: "
+echo " 1. Open up google drive file system application"
+echo " 2. Log into google drive file system with google credentials"
+echo " 3. Verify that the Google Drive file system in '/Volumes"
+echo " 4. Type the word verified to continue the setup process"
+echo ""
+echo ""
+echo ""
 
 GDIR=/Volumes/GoogleDrive/My\ Drive
 DDIR=/Users/quinnwinters/Documents
 
 function link_gdrive() {
-  ln -s $GDIR/$1 $DDIR/$1
+  ln -sf $GDIR/$1 $DDIR/$1
 }
 
 while read -r response; do
@@ -39,13 +39,13 @@ while read -r response; do
       link_gdrive Pictures
       link_gdrive Shared
       link_gdrive Video  
-      printf ""
-      printf "Created links for google drive folders in proper places"
+      echo ""
+      echo "Created links for google drive folders in proper places"
       exit 0
       ;;
     *)
-      printf "You have not verified that the drive is mounted properly."
-      printf "Please follow steps 1-4"
+      echo "You have not verified that the drive is mounted properly."
+      echo "Please follow steps 1-4"
       ;;
   esac
 done
