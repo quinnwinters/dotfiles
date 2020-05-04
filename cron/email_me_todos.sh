@@ -1,20 +1,20 @@
 #!/bin/bash
 
-if [[ ! -z "$MYEMAIL" ]] ; then 
+if [[ ! -z "$MYEMAIL" ]] ; then
     exit 1
 fi
 
-if [[ ! -z "$TODO_DIR" ]] ; then 
+if [[ ! -z "$TODO_DIR" ]] ; then
     exit 1
-fi 
+fi
 
 cd $TODO_DIR
 
-git pull 
+git pull
 
 SUBJECT="[TODO] $(date +'%Y-%m-%d')"
-echo "$(t ls)" > | mutt $MYEMAIL -s $SUBJECT 
+echo "$(t ls)" | mutt $MYEMAIL -s $SUBJECT
 
-git add . 
+git add .
 git commit -m "$SUBJECT"
 git push
