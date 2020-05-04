@@ -32,10 +32,6 @@ run_submodule latex
 run_submodule git
 run_submodule python
 run_submodule jvm
-# run_submodule ocaml
-# run_submodule tmux
-# run_submodule todo
+run_submodule todo
 run_submodule google-drive
-# run_submodule google-chrome
-# run_submodule alfred
 

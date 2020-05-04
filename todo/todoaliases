@@ -1,0 +1,19 @@
+source /usr/local/opt/todo-txt/etc/bash_completion.d/todo_completion complete -F _todo t
+alias t="/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg"
+
+alias ta="t add"
+alias tls="t list"
+alias td="t do"
+
+function tAddToContext() { t add "@$1 ${@:2}" }
+function tAddToProject() { t add "+$1 ${@:2}" }
+
+alias tMagic="tAddToProject Magic"
+alias tMath="tAddToProject Math"
+alias tGradApps="tAddToProject GradApps"
+alias tPersonal="tAddToProject Personal"
+alias tWorkout="tAddToProject Workout"
+alias tFinance="tAddToProject Finance"
+alias tAwait="tAddToContext waiting"
+alias tEmail="tAddToContext email"
+alias tCall="tAddToContext call"
