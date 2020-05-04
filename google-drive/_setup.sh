@@ -1,44 +1,51 @@
 #!/bin/bash
 
-printf "=========================================================================="
-printf "   MANUAL ACTION REQUORED-MANUAL ACTION REQUIRED-MANUAL ACTION REQUIRED"
-printf "=========================================================================="
-printf ""
-printf ""
-printf "Now the start up script will pause because you need to configure the "
-printf "Google Drive file system mount -- use this to back up files"
-printf "----------"
-printf "Steps: "
-printf " 1. Open up google drive file system application"
-printf " 2. Log into google drive file system with google credentials"
-printf " 3. Verify that the Google Drive file system in '/Volumes"
-printf " 4. Type the word verified to continue the setup process"
-printf ""
-printf ""
-printf ""
+ln -sf $(pwd)/drivealiases ~/.aliases/drivealiases
+
+echo "=========================================================================="
+echo "   MANUAL ACTION REQUORED-MANUAL ACTION REQUIRED-MANUAL ACTION REQUIRED"
+echo "=========================================================================="
+echo ""
+echo ""
+echo "Now the start up script will pause because you need to configure the "
+echo "Google Drive file system mount -- use this to back up files"
+echo "----------"
+echo "Steps: "
+echo " 1. Open up google drive file system application"
+echo " 2. Log into google drive file system with google credentials"
+echo " 3. Verify that the Google Drive file system in '/Volumes"
+echo " 4. Type the word verified to continue the setup process"
+echo ""
+echo ""
+echo ""
 
 GDIR=/Volumes/GoogleDrive/My\ Drive
 DDIR=/Users/quinnwinters/Documents
 
+function link_gdrive() {
+  ln -sf $GDIR/$1 $DDIR/$1
+}
+
 while read -r response; do
   case "$response" in
     verified)
-      ln -sfn "$GDIR"/Todo "$DDIR"/Todo
-      ln -sfn "$GDIR"/Shared "$DDIR"/Shared
-      ln -sfn "$GDIR"/Misc "$DDIR"/Misc
-      ln -sfn "$GDIR"/Media "$DDIR"/Media
-      ln -sfn "$GDIR"/Math "$DDIR"/Math
-      ln -sfn "$GDIR"/Grad-Apps "$DDIR"/Grad-Apps
-      ln -sfn "$GDIR"/GitHub "$DDIR"/GitHub
-      ln -sfn "$GDIR"/Finance "$DDIR"/Finance
-      ln -sfn "$GDIR"/Courses "$DDIR"/Courses
-      printf ""
-      printf "Created links for google drive folders in proper places"
-      exit 0
+      link_gdrive Courses
+      link_gdrive Finance
+      link_gdrive GradApps
+      link_gdrive Magic
+      link_gdrive Mathematics
+      link_gdrive Misc 
+      link_gdrive Notability
+      link_gdrive Pictures
+      link_gdrive Shared
+      link_gdrive Videos  
+      echo ""
+      echo "Created links for google drive folders in proper places"
+      break
       ;;
     *)
-      printf "You have not verified that the drive is mounted properly."
-      printf "Please follow steps 1-4"
+      echo "You have not verified that the drive is mounted properly."
+      echo "Please follow steps 1-4"
       ;;
   esac
 done
