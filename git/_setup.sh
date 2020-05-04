@@ -23,4 +23,4 @@ if [[ ! -d ~/.aliases ]] ; then
   mkdir -vp ~/.aliases
 fi
 
-ln -sf gitaliases ~/.aliases/gitaliases
+ln -sf $(pwd)/gitaliases ~/.aliases/gitaliases

@@ -13,5 +13,5 @@ if [[ ! -d $TEXTEMPLATES ]] ; then
 fi
 
 ln -s $(pwd)/mathematics-header.tex ~/.latex_templates/mathematics-header.tex
-ln -s texaliases ~/.aliases/texaliases
+ln -s $(pwd)/texaliases ~/.aliases/texaliases
 

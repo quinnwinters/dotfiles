@@ -37,7 +37,7 @@ if [[ $? != 0 ]] ; then
     export PATH="/usr/local/anaconda3/bin:$PATH"
 fi
 
-ln -s pyaliases ~/.aliases/pyaliases
+ln -s $(pwd)/pyaliases ~/.aliases/pyaliases
 
 while read version ; do 
     echo "Installing (or reloading) Python version: $version"

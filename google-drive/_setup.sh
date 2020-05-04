@@ -38,7 +38,7 @@ while read -r response; do
       link_gdrive Notability
       link_gdrive Pictures
       link_gdrive Shared
-      link_gdrive Video  
+      link_gdrive Videos  
       echo ""
       echo "Created links for google drive folders in proper places"
       break

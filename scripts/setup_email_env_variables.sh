@@ -6,7 +6,7 @@ if [[ ! $MYEMAIL =~ [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4} ]] ; then
         read -r response 
         if [[ $response =~ [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4} ]] ; then 
             export MYEMAIL="$response"
-            echo 'export MYEMAIL=$response' >> ~/.bashrc
+            echo 'export MYEMAIL=$MYEMAIL' >> ~/.bashrc
             break
         else 
             echo "This email appears invalid. Please try again"
