@@ -9,6 +9,6 @@ fi
 
 brew install rcmdnk/file/brew-file
 
-ln -s $(pwd)/Brewfile ~/.brewfile
+ln -sf$(pwd)/Brewfile ~/.brewfile
 export HOMEBREW_BREWFILE=~/.brewfile
 brew file install

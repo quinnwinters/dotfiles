@@ -8,13 +8,14 @@ dotfiles
 
 function run_submodule() {
   DIR="$1"
-  cat ./docs/README.md $DIR/_desc.md > ./docs/README.md
   PWD=$(pwd)
   task "Runing setup instructions for dotfiles/$DIR"
-  cd ./$DIR
-  sudo chmod +x _setup.sh
+  echo "About to change directory to run $DIR/_setup.sh"
+  cd $DIR
+  sudo chmod +x ./_setup.sh
   ./_setup.sh
-  cd $PWD
+  cd $DOT_DIR
+  echo "Finished setting up $DIR"
 }
 
 run_submodule homebrew

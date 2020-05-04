@@ -8,8 +8,8 @@ if [ ! -d "$TODO_DIR" ]; then
   git clone git@github.com:quinnwinters/quinnwinters-todo $TODO_DIR
 fi
 
-ln -s $(pwd)/todo.cfg ~/.todo.cfg
-ln -s $(pwd)/todoaliases ~/.aliases/todoaliases
+ln -sf $(pwd)/todo.cfg ~/.todo.cfg
+ln -sf $(pwd)/todoaliases ~/.aliases/todoaliases
 
 ACTIONSDIR=$TODO_DIR/.todo.actions.d 
 if [[ ! -d $ACTIONSDIR ]] ; then 
@@ -27,7 +27,7 @@ git clone git@github.com:civrot/todo_txt_actions $ACTIONSDIR/standup
 chmod +x $ACTIONSDIR/standup/standup
 
 git clone git@github.com:tgdnt/stale $ACTIONSDIR/stale
-chomd +x $ACTIONSDIR/stale/stale 
+chmod +x $ACTIONSDIR/stale/stale 
 
 git clone git@github.com:timpulver/todo.txt-graph.git $ACTIONSDIR/graph
 

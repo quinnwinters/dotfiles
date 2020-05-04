@@ -20,7 +20,7 @@ if [[ numkeys=="0" ]] ; then
 fi
 
 eval "$(ssh-agent -s)"
-pbcopy < ~/.ssh/id_rs.pub
+pbcopy < ~/.ssh/id_rsa.pub
 
 echo "=========================================================================="
 echo "   MANUAL ACTION REQUORED-MANUAL ACTION REQUIRED-MANUAL ACTION REQUIRED"

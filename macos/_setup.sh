@@ -9,14 +9,14 @@ while true; do
   kill -0 "$$" || exit
 done 2>/dev/null &
 
-./__appearence.sh
-./__energy.sh
-./__finder.sh
-./__internationalization.sh
-./__missioncontrol.sh
-./__trackpad.sh
-./__typing.sh
-./__ux.sh
+sudo ./__appearence.sh
+sudo ./__energy.sh
+sudo ./__finder.sh
+sudo ./__internationalization.sh
+sudo ./__missioncontrol.sh
+sudo ./__trackpad.sh
+sudo ./__typing.sh
+sudo ./__ux.sh
 
 killall Dock
 killall Finder 

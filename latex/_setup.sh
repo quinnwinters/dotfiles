@@ -12,6 +12,6 @@ if [[ ! -d $TEXTEMPLATES ]] ; then
     mkdir -vp $TEXTEMPLATES
 fi
 
-ln -s $(pwd)/mathematics-header.tex ~/.latex_templates/mathematics-header.tex
-ln -s $(pwd)/texaliases ~/.aliases/texaliases
+ln -sf $(pwd)/mathematics-header.tex ~/.latex_templates/mathematics-header.tex
+ln -sf $(pwd)/texaliases ~/.aliases/texaliases
 

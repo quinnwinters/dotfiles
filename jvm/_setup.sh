@@ -27,5 +27,5 @@ if [[ $? != 0 ]] ; then
     brew install apache-spark
 fi
 
-ln -s $(pwd)/jvmaliases ~/.aliases/jvmaliases
+ln -sf $(pwd)/jvmaliases ~/.aliases/jvmaliases
 

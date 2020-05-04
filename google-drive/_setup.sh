@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ln -s $(pwd)/drivealiases ~/.aliases/drivealiases
+ln -sf $(pwd)/drivealiases ~/.aliases/drivealiases
 
 echo "=========================================================================="
 echo "   MANUAL ACTION REQUORED-MANUAL ACTION REQUIRED-MANUAL ACTION REQUIRED"
