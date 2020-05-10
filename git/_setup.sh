@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ln -sf ./gitconfig ~/.gitconfig
-ln -sf ./gitignore ~/.gitignore
+ln -sf $(pwd)/gitconfig ~/.gitconfig
+ln -sf $(pwd)/gitignore ~/.gitignore
 
 REPODIR=~/Documents/GitHub
 if [[ ! -d $REPODIR ]] ; then

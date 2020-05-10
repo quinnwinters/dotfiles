@@ -3,12 +3,11 @@
 # ========================================================= #
 export ZSH="/Users/quinnwinters/.oh-my-zsh"
 
-
-ZSH_THEME="gallois"
+ZSH_THEME="ys"
 HYPHEN_INSENSITIVE="true"
 DISABLE_UPDATE_PROMPT="true"
 HIST_STAMPS="yyyy-mm-dd"
-plugins=(git) # no fancy plugins because they're usually slow 
+plugins=( git )
 
 source ~/.bashrc
 source $ZSH/oh-my-zsh.sh
@@ -39,5 +38,4 @@ function up() {
     cd $CDSTR
   fi
 }
-
 

@@ -47,18 +47,12 @@
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-  trustctime = false
-  precomposeunicode = false
-  untrackedCache = true
 
 [apply]
   whitespace = fix
 
 [alias]
-  a = add
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
-  s = status -s
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
   tags = tag -l
   branches = branch -a
   remotes = remote -v
@@ -67,3 +61,6 @@
   retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
   contributors = shortlog --summary --numbered
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+[user]
+	name = Quinn Winters
+	email = 
