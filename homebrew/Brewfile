@@ -8,6 +8,7 @@ tap 'homebrew/bundle'
 
 brew 'zsh'
 brew 'zsh-completitions'
+brew 'zsh-syntax-highlighting'
 brew 'coreutils'
 brew 'moreutils'
 brew 'findutils'

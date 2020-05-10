@@ -1,22 +1,22 @@
 export TODO_DIR=~/Documents/GitHub/quinnwinters-todo
 
 source /usr/local/opt/todo-txt/etc/bash_completion.d/todo_completion complete -F _todo t
-alias t="/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg -n -a -f "
+alias t="/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg -a -f "
 
 alias ta="t add"
-alias tls="t list"
+alias tls="clear && t -n list"
 alias td="t do"
 
-function tAddToContext() { t add "@$1 ${@:2}" }
-function tAddToProject() { t add "+$1 ${@:2}" }
+function ZHIDDEN_tAddToContext() { t add "@$1 ${@:2}" }
+function ZHIDDEN_tAddToProject() { t add "+$1 ${@:2}" }
 
-alias tMagic="tAddToProject Magic"
-alias tMath="tAddToProject Math"
-alias tGradApps="tAddToProject GradApps"
-alias tPersonal="tAddToProject Personal"
-alias tWorkout="tAddToProject Workout"
-alias tFinance="tAddToProject Finance"
-alias tAwait="tAddToContext waiting"
-alias tEmail="tAddToContext email"
-alias tCall="tAddToContext call"
-alias tBlocker="tAddToContext impediment"
+alias tMagic="ZHIDDEN_tAddToProject Magic"
+alias tMath="ZHIDDEN_tAddToProject Math"
+alias tGradApps="ZHIDDEN_tAddToProject GradApps"
+alias tPersonal="ZHIDDEN_tAddToProject Personal"
+alias tWorkout="ZHIDDEN_tAddToProject Workout"
+alias tFinance="ZHIDDEN_tAddToProject Finance"
+alias tAwait="ZHIDDEN_tAddToContext waiting"
+alias tEmail="ZHIDDEN_tAddToContext email"
+alias tCall="ZHIDDEN_tAddToContext call"
+alias tBlocker="ZHIDDEN_tAddToContext impediment"
