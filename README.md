@@ -23,11 +23,9 @@ There's self contained installation/configuration scripts for:
 * [Python](./python/_setup.sh)
 * [Java & Scala](./jvm/_setup.sh)
 * [LaTeX](./latex/_setup.sh)
-* [iTerm2](./iterm2/_setup.sh)
 * [Todo.Txt](./todo/_setup.sh)
 * [MacOS](./macos/_setup.sh)
 * [Google Drive File System](./google-drive/_setup.sh)
-* [Alfred](./alfred/_setup.sh)
-* [Mutt](./mutt/_setup.sh)
 * [Cron](./cron/_setup.sh)
 
+Additionally I have profiles saved for iterm2 and alfred in their respective folders
