@@ -369,6 +369,7 @@
     "Blue Component" : 0.10051459074020386,
     "Red Component" : 0.10051589459180832
   },
+  "Initial Text" : "sh $DOT_DIR\/iterm2\/scripts\/opening_script_for_programming_profile.sh",
   "Screen" : -2,
   "HotKey Characters Ignoring Modifiers" : "",
   "Bound Hosts" : [
@@ -756,7 +757,7 @@
     "Red Component" : 0.10051589459180832,
     "Blue Component" : 0.10051459074020386
   },
-  "Initial Text" : "tls",
+  "Initial Text" : "tmux new-session -A -s todo-txt ; tls",
   "Screen" : -2,
   "HotKey Characters Ignoring Modifiers" : "",
   "Bound Hosts" : [
@@ -1198,7 +1199,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.12638211250305176
   },
-  "Initial Text" : "",
+  "Initial Text" : "sh $DOT_DIR\/iterm2\/scripts\/opening_script_for_programming_profile.sh",
   "Screen" : -2,
   "HotKey Characters Ignoring Modifiers" : "",
   "Bound Hosts" : [
