@@ -1,21 +1,20 @@
 #!/bin/bash
 
 curdir=$PWD
-if [[ -z "$MYEMAIL" ]] ; then
-    echo "Unable to find email"
-    exit 1
+if [[ -z "$MYEMAIL" ]]; then
+  echo "Unable to find email"
+  exit 1
 fi
 
-if [[ -z "$TODO_DIR" ]] ; then
-    echo "Unable to find todo directory"
-    exit 1
+if [[ -z "$TODO_DIR" ]]; then
+  echo "Unable to find todo directory"
+  exit 1
 fi
 
 cd "$TODO_DIR"
 
 echo "Updating todos with changes from remote"
 git pull
-
 
 SUBJECT="[TODO] $(date +'%Y-%m-%d') - Weekly Accomplishments"
 echo "Sending email with subject $SUBJECT"

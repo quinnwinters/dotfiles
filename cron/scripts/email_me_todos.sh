@@ -2,14 +2,14 @@
 
 curdir=$PWD
 
-if [[ -z "$MYEMAIL" ]] ; then
-    echo "Unable to detect email"
-    exit 1
+if [[ -z "$MYEMAIL" ]]; then
+  echo "Unable to detect email"
+  exit 1
 fi
 
-if [[ -z "$TODO_DIR" ]] ; then
-    echo "Unable to locate todo directory"
-    exit 1
+if [[ -z "$TODO_DIR" ]]; then
+  echo "Unable to locate todo directory"
+  exit 1
 fi
 
 echo "Going to todo git location"

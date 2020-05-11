@@ -10,5 +10,3 @@ echo "(Suggestions: {project}-{branch})"
 read -r session
 
 tmux new-session -A -s "$session"
-
-
