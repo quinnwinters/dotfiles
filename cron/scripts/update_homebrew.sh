@@ -1,5 +1,5 @@
-#!/bin/bash 
+#!/bin/bash
 
 brew update
-brew upgrade 
-brew cleanup 
+brew upgrade
+brew cleanup

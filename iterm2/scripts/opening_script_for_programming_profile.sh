@@ -9,6 +9,4 @@ echo "an existing session. Type the name of the session to attach or create"
 echo "(Suggestions: {project}-{branch})"
 read -r session
 
-tmux new-session -A -s $session
-
-
+tmux new-session -A -s "$session"
