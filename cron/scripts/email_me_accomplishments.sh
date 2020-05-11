@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curdir=$(pwd)
+curdir=$PWD
 if [[ -z "$MYEMAIL" ]] ; then
     echo "Unable to find email"
     exit 1
@@ -11,7 +11,7 @@ if [[ -z "$TODO_DIR" ]] ; then
     exit 1
 fi
 
-cd $TODO_DIR
+cd "$TODO_DIR"
 
 echo "Updating todos with changes from remote"
 git pull
@@ -31,7 +31,7 @@ $(/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg -a -f -p ls | grep x)
 Current Projects
 ---
 $(/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg -a -f -p listproj)
-" | mutt $MYEMAIL -s "$SUBJECT"
+" | mutt "$MYEMAIL" -s "$SUBJECT"
 
 echo "Archiving tasks that you completed this week"
 /usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg -a -f -p archive
@@ -41,4 +41,4 @@ git add -u
 git commit -m "$SUBJECT"
 git push
 
-cd $curdir
+cd "$curdir"
