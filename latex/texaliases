@@ -1,2 +1,2 @@
 export TEXTEMPLATES=~/.latex_templates
-alias addMathTexHeader="cp $TEXTEMPLATES/mathematics-header.tex ."
+alias addMathTexHeader="cp $TEXTEMPLATES/mathematics-template.tex ."
