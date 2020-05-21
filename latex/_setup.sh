@@ -7,11 +7,12 @@ if [[ $? != 0 ]] ; then
 fi
 
 TEXTEMPLATES=~/.latex_templates
-if [[ ! -d $TEXTEMPLATES ]] ; then 
+if [[ ! -d $TEXTEMPLATES ]] ; then
     echo "Making LaTeX templates collection: $TEXTEMPLATES"
     mkdir -vp $TEXTEMPLATES
 fi
 
-ln -sf $(pwd)/mathematics-header.tex ~/.latex_templates/mathematics-header.tex
+
+ln -sf $(pwd)/mathematics-template.tex ~/.latex_templates/mathematics-template.tex
 ln -sf $(pwd)/texaliases ~/.aliases/texaliases
 

@@ -1,0 +1,167 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% Theorem options
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{axiom}{Axiom}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{example}{Example}
+\newtheorem*{solution}{\textsc{Solution}}
+\newtheorem*{notation}{Notation}
+\newtheorem*{remark}{Remark}
+\newtheorem*{warning}{Warning}
+\newtheorem*{exercise}{Exercise}
+
+
+% Display and notes
+\newcommand{\note}[2]{\underbrace_{#1}{#2}
+\newcommand{\ds}{\displaystyle}
+
+% Calculus
+\newcommand{\limn}{\displaystyle\lim_{n\to\infty}}
+\newcommand{\limx}[1]{\displaystyle\lim_{x\to#1}}
+\newcommand{\limto}[2]{\displaystyle\lim_{#1 \to #2}}
+\newcommand{\limxpl}[1]{\displaystyle\lim_{x \to #1 +}}
+\newcommand{\limtopl}[2]{\displaystyle\lim{#1 \to #2 +}}
+\newcommand{\limxmn}[1]{\displaystyle\lim_{x \to #1 -}}
+\newcommand{\limtomn}[1]{\displaystyle\lim_{#1 \to #2 - }}
+\newcommand{\limsupn}{\displaystyle\limsup_{n\to\infty}}
+\newcommand{\liminfn}{\displaystyle\liminf_{n\to\infty}}
+\newcommand{\limsupx}[1]{\displaystyle\limsup_{x\to #1}}
+\newcommand{\liminfx}[1]{\displaystyle\liminf_{x\to #1}}
+\newcommand{\limsupto}[2]{\displaystyle\limsup_{#1 \to #2}}
+\newcommand{\liminfto}[2]{\displaystyle\liminf_{#1 \to #2}}
+\newcommand{\sumLe}[1]{\displaystyle\sum_{n \le #1}}
+\newcommand{\sumGe}[1]{\displaystyle\sum_{n \ge #1}}
+\newcommand{\sumRng}[2]{\displaystyle\sum_{#1 \le n \le #2}}
+\newcommand{\sumN}{\displaystyle\sum_{n\in\N}}
+\newcommand{\suminN}[1]{\displaystyle\sum_{#1 \in \N}}
+\newcommand{\sumZ}{\displaystyle\sum_{n\in\Z}}
+\newcommand{\suminZ}[1]{\displaystyle\sum_{#1 \in \Z}}
+\newcommand{\sumI}[1]{\displaystyle\sum_{#1 \in I}}
+\newcommand{\sumSet}[2]{\displaystyle\sum_{#1 \in #2}}
+\newcommand{\intR}{\displaystyle \int_\R}
+\newcommand{\intinf}{\displaystyle \int_{-\infty}^{\infty}}
+\newcommand{\intab}{\displaystyle \int_a^b}
+\newcommand{\intto}[2]{\displaystyle \int_{#1}^{#2}}
+\newcommand{\intA}{\displaystyle \int_A}
+\newcommand{\intset}[1]{\displaystyle \int_{#1}}
+\newcommand{\ddx}{\displaystyle \frac{d}{dx}}
+\newcommand{\dd}[1]{\displaystyle \frac{d}{d #1}}
+\newcommand{\dydx}{\displaystyle \frac{dy}{dx}}
+\newcommand{\ppx}{\displaystyle\frac{\partial}{\partial x}}
+\newcommand{\pp}[1]{\displaystyle\frac{\partial}{\partial #1}}
+\newcommand{\ph}{\varphi}
+\newcommand{\ep}{\varepsilon}
+
+% Matrix groups
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Or}{\mathrm{O}}
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\PSO}{\mathrm{PSO}}
+\newcommand{\PSU}{\mathrm{PSU}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\Spin}{\mathrm{Spin}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\Mat}{\mathrm{Mat}}
+
+% Special sets
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rpl}{\mathbb{R}_{+}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\D}{\mathbb{D}}
+
+% Norms and inner products
+\newcommand{\abs}[1]{\displaystyle \left\lvert #1\right\rvert}
+\newcommand{\norm}[1]{\displaystyle \left\lVert #1 \right\rVert}
+\newcommand{\pnorm}[1]{\displaystyle \left\lVert #1 \right\rVert_p}
+\newcommand{\opnorm}[1]{\displaystyle \left\lVert #1 \right\rVert_{\mathrm{op}}}
+\newcommand{\ket}[1]{\displaystyle \left\lvert #1\right\rangle}
+\newcommand{\bra}[1]{\displaystyle \left\langle #1 \right\rvert}
+\newcommand{\braket}[2]{\displaystyle \left\langle #1\middle\vert #2 \right\rangle}
+\newcommand{\ipr}[2]{\displaystyle \left\langle #1 , #2 \right\rangle} 
+
+% Probability
+\DeclareMathOperator{\Bernoulli}{Bernoulli}
+\DeclareMathOperator{\betaD}{Beta}
+\DeclareMathOperator{\bias}{Bias}
+\DeclareMathOperator{\binomial}{Binomial}
+\DeclareMathOperator{\corr}{Corr}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\gammaD}{Gamma}
+\DeclareMathOperator{\multinomial}{Multinomial}
+\DeclareMathOperator{\Poisson}{Poisson}
+\DeclareMathOperator{\var}{Var}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+
+% Algebra
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{Tr}
+
+% Others
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Gr}{\mathrm{Gr}}
+\newcommand{\Id}{\mathsf{Id}}
+\newcommand{\Ps}{\mathcal{P}}
+\newcommand{\wsto}{\stackrel{\mathrm{w}^*}{\to}}
+\newcommand{\wto}{\stackrel{\mathrm{w}}{\to}}
+\let\Im\relax
+\let\Re\relax
+\DeclareMathOperator{\area}{area}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\cosec}{cosec}
+\DeclareMathOperator{\cosech}{cosech}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\orb}{orb}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\otp}{otp}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\vol}{vol}
+
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelenumi}{(\roman{*})}
+
+\title{<Title of the document>}
+\author{Quinn Winters}
+\date{Last Compiled: \today}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\end{document}
+
