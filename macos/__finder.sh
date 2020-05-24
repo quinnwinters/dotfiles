@@ -1,12 +1,12 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
-if [[ ! -d ~/Documents/screenshots ]] ; then 
+if [[ ! -d ~/Documents/screenshots ]] ; then
     mkdir -vp ~/Documents/screenshots
-fi 
-defaults write com.apple.screencapture location -string "${HOME}/Documents/screenshots"
+fi
+defaults write com.apple.screencapture location -string "/Users/quinnwinters/Pictures/screenshots"
 defaults write com.apple.screencapture type -string "png"
 defaults write com.apple.screencapture disable-shadow -bool true
 
