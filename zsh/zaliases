@@ -49,4 +49,3 @@ function TAGFILE() {
     newFile="[$tagsCollection] $fileName"
     mv $fileName $newFile
 }
-
