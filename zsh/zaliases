@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 # Better defaults
-alias ls="ls -lhAFG"
+alias ls="tree -Caluv --dirsfirst -L 1"
 alias sl="ls"
+alias l="tree -Caluv --dirsfirst -L"
 alias grep="grep --color=auto"
 alias rm="trash -v -F"
 alias cp="cp -i"
@@ -48,4 +49,3 @@ function TAGFILE() {
     newFile="[$tagsCollection] $fileName"
     mv $fileName $newFile
 }
-
