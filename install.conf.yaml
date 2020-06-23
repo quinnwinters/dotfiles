@@ -1,0 +1,12 @@
+# Some highly opinionated defaults
+- defaults:
+    link: 
+      create: true
+      relink: true
+      force: true
+    shell: 
+      quiet: true
+      stdin: true
+      stdout: true
+
+    

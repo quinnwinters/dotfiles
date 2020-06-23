@@ -1,0 +1,13 @@
+alias master="git checkout master && git pull"
+alias develop="git checkout develop && git pull"
+alias github="cd ~/Documents/GitHub && ls -lhAFG"
+
+function gCommitWChangelog() {
+    git commit -m "(1){@:2}"
+}
+
+alias gAdd="gCommitWChangelog added"
+alias gFix="gCommitWChangelog fixed"
+alias gRemove="gCommitWChangelog removed"
+alias gDeprecate="gCommitWChangelog deprecated"
+alias gSecurity="gCommitWChangelog security"
