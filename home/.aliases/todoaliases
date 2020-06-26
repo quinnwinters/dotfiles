@@ -1,0 +1,22 @@
+export TODO_DIR=~/Documents/GitHub/quinnwinters-todo
+
+source /usr/local/opt/todo-txt/etc/bash_completion.d/todo_completion complete -F _todo t
+alias t="/usr/local/opt/todo-txt/bin/todo.sh -d ~/.todo.cfg -a -f "
+
+alias ta="t add"
+alias tls="clear && t -n list"
+alias td="t do"
+
+function ZHIDDEN_tAddToContext() { t add "@1{@:2}" }
+function ZHIDDEN_tAddToProject() { t add "+1{@:2}" }
+
+alias tMagic="ZHIDDEN_tAddToProject Magic"
+alias tMath="ZHIDDEN_tAddToProject Math"
+alias tGradApps="ZHIDDEN_tAddToProject GradApps"
+alias tPersonal="ZHIDDEN_tAddToProject Personal"
+alias tWorkout="ZHIDDEN_tAddToProject Workout"
+alias tFinance="ZHIDDEN_tAddToProject Finance"
+alias tAwait="ZHIDDEN_tAddToContext waiting"
+alias tEmail="ZHIDDEN_tAddToContext email"
+alias tCall="ZHIDDEN_tAddToContext call"
+alias tBlocker="ZHIDDEN_tAddToContext impediment"

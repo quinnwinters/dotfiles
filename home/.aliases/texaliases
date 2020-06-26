@@ -1,0 +1,1 @@
+alias touchtex="cp ~/.tex_templates latex-doc.tex.template"

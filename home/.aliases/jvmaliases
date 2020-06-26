@@ -1,0 +1,4 @@
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+alias gw="./gradlew"
