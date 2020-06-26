@@ -1,4 +1,4 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 # Always show scroll bars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -10,7 +10,7 @@ sudo systemsetup -setrestartfreeze on
 sudo pmset -c sleep 0
 sudo pmset -b sleep 5
 sudo pmset -a standbydelay 86400
-sudo systemsetup -setcomputersleep Off > /dev/null
+sudo systemsetup -setcomputersleep Off >/dev/null
 sudo pmset -a hibernatemode 0
 sudo rm /private/var/vm/sleepimage
 sudo touch /private/var/vm/sleepimage
@@ -47,15 +47,15 @@ defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-sudo systemsetup -settimezone "America/New_York" > /dev/null
+sudo systemsetup -settimezone "America/New_York" >/dev/null
 
-# Setup my dock 
+# Setup my dock
 defaults write com.apple.dock static-only -bool true
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock show-recents -bool false
-find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+find "$HOME/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
 # Setup my trackpad
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -79,4 +79,4 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null

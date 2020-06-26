@@ -18,7 +18,7 @@ source ~/.zcompletions
 # the idea here is that other directories can specify aliases that you might
 # what for specific programs, independently add them to this aliases directory
 # and zsh will pick them up on reload
-if [[ -d ~/.aliases ]] ; then 
+if [[ -d ~/.aliases ]] ; then
   for f in ~/.aliases/* ; do source $f; done
 fi
 
