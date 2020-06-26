@@ -1,28 +1,27 @@
 # Some highly opinionated defaults
 - defaults:
-    link: 
+    link:
       create: true
       relink: true
       force: true
       glob: true
-    shell: 
+    shell:
       quiet: true
       stdin: true
       stdout: true
 
-- brewfile: [ 'profiles/personal-mac/Brewfile' ] 
+- brewfile: ["profiles/personal-mac/Brewfile"]
 
 - clean:
-    - '~'
-    - '~/Documents/GitHub'
+    - "~"
+    - "~/Documents/GitHub"
 
 - create:
-    - '~/.conda/'
-    - '~/.conda/environments/'
-    - '~/.cron/'
-    - '~/Documents/GitHub/'
-    - '~/Pictures/screenshots/'
-
+    - "~/.conda/"
+    - "~/.conda/environments/"
+    - "~/.cron/"
+    - "~/Documents/GitHub/"
+    - "~/Pictures/screenshots/"
 
 - link:
     ~/.aliases: home/.aliases
