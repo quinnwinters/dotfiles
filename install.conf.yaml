@@ -1,0 +1,43 @@
+# Some highly opinionated defaults
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+      glob: true
+    shell:
+      quiet: true
+      stdin: true
+      stdout: true
+
+- brewfile: ["profiles/personal-mac/Brewfile"]
+
+- clean:
+    - "~"
+    - "~/Documents/GitHub"
+
+- create:
+    - "~/.conda/"
+    - "~/.conda/environments/"
+    - "~/.cron/"
+    - "~/Documents/GitHub/"
+    - "~/Pictures/screenshots/"
+
+- link:
+    ~/.aliases: home/.aliases
+    ~/.automation_scripts: home/.automation_scripts
+    ~/.conda-env: home/.conda-env
+    ~/.cron/jobs: home/.cron/jobs
+    ~/.ssh/config: home/.ssh/config
+    ~/.tex_templates: home/.tex_templates
+    ~/.vim_runtime: home/.vim_runtime
+    ~/.vim/init.vim: home/.vim/init.vim
+    ~/.gitconfig: home/.gitconfig
+    ~/.gitignore: home/.ignore
+    ~/.tmux.cfg: home/.tmux.cfg
+    ~/.todo.cfg: home/.todo.cfg
+    ~/.vimrc: home/.vimrc
+    ~/.zshrc: home/.zshrc
+    ~/.zaliases: home/.zaliases
+    ~/.zcompletions: home/.zcompletions
+    ~/.zshenv: home/.zshenv
