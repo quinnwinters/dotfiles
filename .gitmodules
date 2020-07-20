@@ -8,3 +8,6 @@
 [submodule "dotbot-pip"]
 	path = dotbot-pip
 	url = https://github.com/sobolevn/dotbot-pip.git
+[submodule "dotbot-conda"]
+	path = dotbot-conda
+	url = https://github.com/quinnwinters/dotbot-conda

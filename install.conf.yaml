@@ -17,8 +17,6 @@
     - "~/Documents/GitHub"
 
 - create:
-    - "~/.conda/"
-    - "~/.conda/environments/"
     - "~/.cron/"
     - "~/Documents/GitHub/"
     - "~/Pictures/screenshots/"
@@ -41,3 +39,7 @@
     ~/.zaliases: home/.zaliases
     ~/.zcompletions: home/.zcompletions
     ~/.zshenv: home/.zshenv
+
+- conda-env:
+    - '~/.conda-env/data-science-2.yml'
+    - '~/.conda-env/data-science-2.yml'
