@@ -41,5 +41,5 @@
     ~/.zshenv: home/.zshenv
 
 - conda-env:
-    - '~/.conda-env/data-science-2.yml'
-    - '~/.conda-env/data-science-2.yml'
+    - "~/.conda-env/data-science-2.yml"
+    - "~/.conda-env/data-science-2.yml"
