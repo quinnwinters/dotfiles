@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 # Better defaults
-alias ls="tree -Caluv --dirsfirst -L 1"
+alias ls="exa -l -a --group-directories-first -h"
 alias sl="ls"
-alias l="tree -Caluv --dirsfirst -L"
 alias grep="grep --color=auto"
-alias rm="trash -v -F"
+alias tm="trash -v -F"
 alias cp="cp -i"
 alias mv="mv -i"
 alias help="man"
