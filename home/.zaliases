@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Better defaults
-alias ls="exa -l --group-directories-first -h"
+alias ls="exa -l -a --group-directories-first -h"
 alias sl="ls"
 alias grep="grep --color=auto"
 alias tm="trash -v -F"
