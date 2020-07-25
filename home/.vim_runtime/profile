@@ -12,6 +12,7 @@ set tabstop=4                   " Tab = 4 spaces
 set shiftwidth=4                " Tab = 4 spaces
 set softtabstop=4               " Tab = 4 spaces 
 set nowrap                      " Long lines are lines
+
 " Autocomplete in visual mode
 set wildmenu                    " Autocomplete commands
 set wildmode=longest:list,full  " Autocomplete goes longest -> first full

@@ -10,7 +10,7 @@
       stdin: true
       stdout: true
 
-- brewfile: ["profiles/personal-mac/Brewfile"]
+- brewfile: ["home/Brewfile"]
 
 - clean:
     - "~"
@@ -24,6 +24,7 @@
 - link:
     ~/.aliases: home/.aliases
     ~/.automation_scripts: home/.automation_scripts
+    ~/.Brewfile: home/Brewfile
     ~/.conda-env: home/.conda-env
     ~/.cron/jobs: home/.cron/jobs
     ~/.ssh/config: home/.ssh/config
