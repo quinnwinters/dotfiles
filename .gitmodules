@@ -5,9 +5,9 @@
 [submodule "dotbot-brew"]
 	path = dotbot-brew
 	url = https://github.com/d12frosted/dotbot-brew.git
-[submodule "dotbot-pip"]
-	path = dotbot-pip
-	url = https://github.com/sobolevn/dotbot-pip.git
 [submodule "dotbot-conda"]
 	path = dotbot-conda
 	url = https://github.com/quinnwinters/dotbot-conda
+[submodule "dotbot-ghq"]
+	path = dotbot-ghq
+	url = https://github.com/klane/dotbot-ghq.git

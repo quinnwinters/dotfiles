@@ -1,3 +1,5 @@
+30 23 * * * brew file update
 30 8 * * * sh ~/.automation_scripts/email_daily_todos.sh
+30 20 * * * sh ~/.automation_scripts/email_daily_todos.sh
 0 16 * * 5 sh ~/.automation_scripts/email_weekly_metrics.sh
-0 0 * * 0 sh ~/.automation_scripts/update.sh
+

@@ -61,6 +61,10 @@
   retag = "!r() { git tag -d Misplaced &1 && git tag $1; }; r"
   contributors = shortlog --summary --numbered
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+
 [user]
 	name = Quinn Winters
 	email =
+
+[ghq]
+  root = ~/Code

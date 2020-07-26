@@ -14,11 +14,11 @@
 
 - clean:
     - "~"
-    - "~/Documents/GitHub"
+    - "~/Code"
 
 - create:
     - "~/.cron/"
-    - "~/Documents/GitHub/"
+    - "~/Code"
     - "~/Pictures/screenshots/"
 
 - link:
@@ -42,5 +42,14 @@
     ~/.zshenv: home/.zshenv
 
 - conda-env:
-    - "~/.conda-env/data-science-2.yml"
-    - "~/.conda-env/data-science-2.yml"
+    - "~/.conda-env/data-science.yml"
+    - "~/.conda-env/geography.yml"
+    - "~/.conda-env/numerics.yml"
+    - "~/.conda-env/pyspark.yml"
+
+- ghq:
+    - quinnwinters/quinnwinters.github.io
+    - quinnwinters/spark-mmq
+    - quinnwinters/dotbot-conda
+    - quinnwinters/dotbot-hyper
+    - quinnwinters/mathematics-gre

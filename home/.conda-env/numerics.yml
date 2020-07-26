@@ -1,0 +1,9 @@
+name: numerics
+channels:
+  - defaults
+dependencies: 
+  - blas
+  - matplotlib
+  - numpy
+  - scipy
+  
