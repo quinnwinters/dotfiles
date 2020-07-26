@@ -1,0 +1,6 @@
+name: pyspark
+channels:
+  - defaults
+dependencies: 
+  - pyspark 
+  

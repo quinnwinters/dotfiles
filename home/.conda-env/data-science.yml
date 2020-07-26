@@ -1,0 +1,13 @@
+name: data-science
+channels:
+  - defaults
+dependencies: 
+  - blas
+  - pandas
+  - matplotlib
+  - numpy
+  - scipy
+  - scikit-learn
+  - tensorflow
+  - keras
+  
