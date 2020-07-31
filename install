@@ -20,4 +20,5 @@ git submodule update --init --recursive "$DOTBOT_DIR"
   --plugin-dir dotbot-brew \
   --plugin-dir dotbot-conda \
   --plugin-dir dotbot-ghq \
+  --plugin-dir dotbot-hyper \
   -c "$CONFIG" "${@}"

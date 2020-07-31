@@ -11,3 +11,6 @@
 [submodule "dotbot-ghq"]
 	path = dotbot-ghq
 	url = https://github.com/klane/dotbot-ghq.git
+[submodule "dotbot-hyper"]
+	path = dotbot-hyper
+	url = https://github.com/quinnwinters/dotbot-hyper
