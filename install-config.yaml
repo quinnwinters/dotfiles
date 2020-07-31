@@ -10,8 +10,6 @@
       stdin: true
       stdout: true
 
-- brewfile: ["home/Brewfile"]
-
 - clean:
     - "~"
     - "~/Code"
@@ -20,6 +18,13 @@
     - "~/.cron/"
     - "~/Code"
     - "~/Pictures/screenshots/"
+
+- ghq:
+    - quinnwinters/quinnwinters.github.io
+    - quinnwinters/spark-mmq
+    - quinnwinters/dotbot-conda
+    - quinnwinters/dotbot-hyper
+    - quinnwinters/mathematics-gre
 
 - link:
     ~/.aliases: home/.aliases
@@ -42,18 +47,13 @@
     ~/.zshenv: home/.zshenv
     ~/.hyperlayout: home/.hyperlayout
 
+- brewfile: [ ~/.Brewfile ] 
+
 - conda-env:
     - "~/.conda-env/data-science.yml"
     - "~/.conda-env/geography.yml"
     - "~/.conda-env/numerics.yml"
     - "~/.conda-env/pyspark.yml"
-
-- ghq:
-    - quinnwinters/quinnwinters.github.io
-    - quinnwinters/spark-mmq
-    - quinnwinters/dotbot-conda
-    - quinnwinters/dotbot-hyper
-    - quinnwinters/mathematics-gre
 
 - hyper:
     - hypercwd
@@ -72,3 +72,9 @@
     - config-hyperterm
     - hyperlayout
     - hypernasa
+
+- shell:
+   - git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+   - vim +PluginInstall +qall
+   - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   - chsh -s $(which zsh)
