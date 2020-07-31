@@ -3,12 +3,7 @@
     link:
       create: true
       relink: true
-      force: true
       glob: true
-    shell:
-      quiet: true
-      stdin: true
-      stdout: true
 
 - clean:
     - "~"
