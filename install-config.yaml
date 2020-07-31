@@ -40,6 +40,7 @@
     ~/.zaliases: home/.zaliases
     ~/.zcompletions: home/.zcompletions
     ~/.zshenv: home/.zshenv
+    ~/.hyperlayout: home/.hyperlayout
 
 - conda-env:
     - "~/.conda-env/data-science.yml"
@@ -53,3 +54,22 @@
     - quinnwinters/dotbot-conda
     - quinnwinters/dotbot-hyper
     - quinnwinters/mathematics-gre
+
+- hyper:
+    - hypercwd
+    - hyper-sync-settings
+    - hyperlinks
+    - hyper-startup
+    - hyper-alt-click
+    - hyper-search
+    - hyper-quit
+    - hyper-match
+    - hyper-transparent
+    - hyper-spotify
+    - hyper-window-size
+    - hyper-tab-touchbar
+    - hyperterm-visor
+    - config-hyperterm
+    - hyperlayout
+    - hypernasa
+
