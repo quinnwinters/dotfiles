@@ -24,6 +24,7 @@
 - link:
     ~/.aliases: home/.aliases
     ~/.automation_scripts: home/.automation_scripts
+    ~/.bashrc: home/.bashrc
     ~/.Brewfile: home/.Brewfile
     ~/.conda-env: home/.conda-env
     ~/.cron/jobs: home/.cron/jobs
@@ -60,16 +61,13 @@
     - hyper-quit
     - hyper-match
     - hyper-transparent
-    - hyper-spotify
-    - hyper-window-size
     - hyper-tab-touchbar
     - hyperterm-visor
-    - config-hyperterm
     - hyperlayout
-    - hypernasa
 
 - shell:
    - git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
    - vim +PluginInstall +qall
    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    - chsh -s $(which zsh)
+
