@@ -13,11 +13,8 @@ else
     brew update
 fi 
 
-echo "Making sure to pull down relevant submodules for dotbot plugins"
-git submodule update --init --recursive
-
 CONFIG="install-config.yaml"
-DOTBOT_DIR="dotbot"
+DOTBOT_DIR="tooling/dotbot"
 
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -29,8 +26,8 @@ git submodule update --init --recursive "$DOTBOT_DIR"
 "$BASEDIR/$DOTBOT_DIR/$DOTBOT_BIN" \
   --verbose \
   -d "$BASEDIR" \
-  --plugin-dir dotbot-brew \
-  --plugin-dir dotbot-conda \
-  --plugin-dir dotbot-ghq \
-  --plugin-dir dotbot-hyper \
+  --plugin-dir tooling/dotbot-brew \
+  --plugin-dir tooling/dotbot-conda \
+  --plugin-dir tooling/dotbot-ghq \
+  --plugin-dir tooling/dotbot-hyper \
   -c "$CONFIG" "${@}"

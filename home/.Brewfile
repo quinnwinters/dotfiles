@@ -93,6 +93,7 @@ cask 'java'
 cask 'macdown'
 cask 'mactex'
 cask 'miniconda'
+cask 'spotify'
 cask 'vlc'
 cask 'whatsapp'
 
