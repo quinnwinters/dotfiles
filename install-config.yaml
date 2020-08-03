@@ -1,25 +1,10 @@
-# Some highly opinionated defaults
-- defaults:
-    link:
-      create: true
-      relink: true
-      glob: true
-
 - clean:
     - "~"
     - "~/Code"
 
 - create:
-    - "~/.cron/"
     - "~/Code"
     - "~/Pictures/screenshots/"
-
-- ghq:
-    - quinnwinters/quinnwinters.github.io
-    - quinnwinters/spark-mmq
-    - quinnwinters/dotbot-conda
-    - quinnwinters/dotbot-hyper
-    - quinnwinters/mathematics-gre
 
 - link:
     ~/.alfred: home/.alfred
@@ -29,6 +14,7 @@
     ~/.Brewfile: home/.Brewfile
     ~/.conda-env: home/.conda-env
     ~/.cron/jobs: home/.cron/jobs
+    ~/.ghqrepos: home/.ghqrepos
     ~/.gitconfig: home/.gitconfig
     ~/.gitignore: home/.ignore
     ~/.hyperlayout: home/.hyperlayout
@@ -44,7 +30,9 @@
     ~/.zshenv: home/.zshenv
     ~/.zshrc: home/.zshrc
 
-- brewfile: [ ~/.Brewfile ] 
+- brewfile: [ "~/.Brewfile" ] 
+
+- ghqfile: [ "~/.ghqrepos" ]
 
 - conda-env:
     - "~/.conda-env/data-science.yml"
@@ -65,10 +53,4 @@
     - hyper-tab-touchbar
     - hyperterm-visor
     - hyperlayout
-
-- shell:
-   - git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-   - vim +PluginInstall +qall
-   - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-   - chsh -s $(which zsh)
 

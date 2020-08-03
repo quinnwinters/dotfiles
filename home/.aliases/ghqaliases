@@ -1,0 +1,7 @@
+function ghq_and_update() {
+    ghq "$@" 
+    ghq list > ~/.ghqrepos 
+}
+
+alias ghq=ghq_and_update
+
