@@ -63,8 +63,21 @@
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
 
 [user]
-	name = Quinn Winters
-	email =
+    name = Quinn Winters
+    email =
 
 [ghq]
-  root = ~/Code
+    root = ~/Code
+
+[ghq "https://github.com"]
+    root = ~/Code
+
+[ghq "https://github.com/quinnwinters/dotbot-.*"]
+    root = ~/Code/dotbot
+
+[ghq "https://github.com/.*/dotbot.*"]
+    root = ~/Code/dotbot
+
+[ghq "https://github.com/quinnwinters/"]
+    root = ~/Code/quinnwinters
+
