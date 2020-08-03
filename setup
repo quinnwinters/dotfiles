@@ -4,8 +4,8 @@ set -e
 
 export GHQ_ROOT=~/Code
 
-which -s brew
-if [[ $? != 0 ]] ; then 
+if ! which -s brew
+then 
     echo "No homebrew found, installing via curl/bash"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 else 
