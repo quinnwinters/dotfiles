@@ -30,9 +30,9 @@
     ~/.zshenv: home/.zshenv
     ~/.zshrc: home/.zshrc
 
-- brewfile: [ "~/.Brewfile" ] 
+- brewfile: ["~/.Brewfile"]
 
-- ghqfile: [ "~/.ghqrepos" ]
+- ghqfile: ["~/.ghqrepos"]
 
 - conda-env:
     - "~/.conda-env/data-science.yml"
@@ -53,4 +53,3 @@
     - hyper-tab-touchbar
     - hyperterm-visor
     - hyperlayout
-
