@@ -94,7 +94,6 @@ cask 'mactex'
 cask 'miniconda'
 cask 'notion'
 cask 'spotify'
-cask 'visual-studio-code'
 cask 'vlc'
 cask 'whatsapp'
 
