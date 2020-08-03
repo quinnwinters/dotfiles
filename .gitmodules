@@ -1,16 +1,15 @@
-[submodule "dotbot"]
-	path = dotbot
+[submodule "tooling/dotbot"]
+	path = tooling/dotbot
 	url = https://github.com/anishathalye/dotbot
-	ignore = dirty
-[submodule "dotbot-brew"]
-	path = dotbot-brew
-	url = https://github.com/d12frosted/dotbot-brew.git
-[submodule "dotbot-conda"]
-	path = dotbot-conda
-	url = https://github.com/quinnwinters/dotbot-conda
-[submodule "dotbot-ghq"]
-	path = dotbot-ghq
-	url = https://github.com/klane/dotbot-ghq.git
-[submodule "dotbot-hyper"]
-	path = dotbot-hyper
+[submodule "tooling/dotbot-hyper"]
+	path = tooling/dotbot-hyper
 	url = https://github.com/quinnwinters/dotbot-hyper
+[submodule "tooling/dotbot-conda"]
+	path = tooling/dotbot-conda
+	url = https://github.com/quinnwinters/dotbot-conda
+[submodule "tooling/dotbot-ghq"]
+	path = tooling/dotbot-ghq
+	url = https://github.com/klane/dotbot-ghq
+[submodule "tooling/dotbot-brew"]
+	path = tooling/dotbot-brew
+	url = https://github.com/d12frosted/dotbot-brew

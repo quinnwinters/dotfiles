@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -e
+
+export GHQ_ROOT=~/Code
+
+if ! which -s brew
+then
+  echo "No homebrew found, installing via curl/bash"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+else
+  echo "Updating homebrew"
+  brew update
+fi
+
+CONFIG="install-config.yaml"
+DOTBOT_DIR="tooling/dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "$BASEDIR"
+git -C "$DOTBOT_DIR" submodule sync --quiet --recursive
+git submodule update --init --recursive "$DOTBOT_DIR"
+
+"$BASEDIR/$DOTBOT_DIR/$DOTBOT_BIN" \
+  --verbose \
+  -d "$BASEDIR" \
+  --plugin-dir tooling/dotbot-brew \
+  --plugin-dir tooling/dotbot-conda \
+  --plugin-dir tooling/dotbot-ghq \
+  --plugin-dir tooling/dotbot-hyper \
+  -c "$CONFIG" "${@}"
