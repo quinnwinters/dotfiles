@@ -72,12 +72,6 @@
 [ghq "https://github.com"]
     root = ~/Code
 
-[ghq "https://github.com/quinnwinters/dotbot-.*"]
-    root = ~/Code/dotbot
-
-[ghq "https://github.com/.*/dotbot.*"]
-    root = ~/Code/dotbot
-
 [ghq "https://github.com/quinnwinters/"]
-    root = ~/Code/quinnwinters
+    root = ~/Code
 
