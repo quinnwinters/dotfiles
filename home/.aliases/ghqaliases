@@ -5,4 +5,4 @@ function ghq_and_update() {
 }
 
 alias ghq=ghq_and_update
-
+alias code="cd $(ghq root)" 
