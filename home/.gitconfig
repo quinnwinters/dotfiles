@@ -74,3 +74,5 @@
 
 [ghq "https://github.com/quinnwinters/"]
     root = ~/Code
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
