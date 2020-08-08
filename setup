@@ -8,9 +8,6 @@ if ! which -s brew
 then
   echo "No homebrew found, installing via curl/bash"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-else
-  echo "Updating homebrew"
-  brew update
 fi
 
 CONFIG="install-config.yaml"
