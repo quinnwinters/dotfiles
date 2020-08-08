@@ -1,5 +1,5 @@
 - defaults:
-    link: 
+    link:
       force: true
       relink: true
       create: true
@@ -19,7 +19,7 @@
     - "~/Code"
     - "~/Pictures/screenshots/"
 
-- brewfile: 
+- brewfile:
     - home/.Brewfile
 
 - shell:
@@ -76,4 +76,3 @@
     - hyper-tab-touchbar
     - hyperterm-visor
     - hyperlayout
-
