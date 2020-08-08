@@ -62,7 +62,6 @@ module.exports = {
       "hyper-startup",
       "hyper-alt-click",
       "hyper-search",
-      "hyper-quit",
       "hyper-match",
       "hyper-transparent",
       "hyper-tab-touchbar",
