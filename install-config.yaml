@@ -48,6 +48,7 @@
     ~/.gitignore: home/.ignore
     ~/.hyper.js: home/.hyper.js
     ~/.hyperlayout: home/.hyperlayout
+    ~/.mackup.cfg: home/.mackup.cfg
     ~/.ssh/config: home/.ssh/config
     ~/.tmux.cfg: home/.tmux.cfg
     ~/.tex_templates: home/.tex_templates
