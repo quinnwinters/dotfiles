@@ -22,16 +22,16 @@
 - brewfile: 
     - home/.Brewfile
 
-- ghqfile:
-    - file: home/.ghqrepos
-      flags: [-p, --silent, --update]
-
 - shell:
     - sh scripts/github-ssh.sh
     - sh scripts/macos.sh
     - sh scripts/vundle.sh
     - sh scripts/oh-my-zsh.sh
     - sh scripts/google-drive.sh
+
+- ghqfile:
+    - file: home/.ghqrepos
+      flags: [-p, --silent, --update]
 
 - link:
     ~/.alfred: home/.alfred
