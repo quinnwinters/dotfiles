@@ -45,6 +45,7 @@
     ~/.ghqrepos: home/.ghqrepos
     ~/.gitconfig: home/.gitconfig
     ~/.gitignore: home/.ignore
+    ~/.hyper.js: home/.hyper.js
     ~/.hyperlayout: home/.hyperlayout
     ~/.ssh/config: home/.ssh/config
     ~/.tmux.cfg: home/.tmux.cfg
