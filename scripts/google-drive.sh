@@ -32,11 +32,11 @@ while read -r response; do
       link_gdrive GradApps
       link_gdrive Magic
       link_gdrive Mathematics
-      link_gdrive Misc 
+      link_gdrive Misc
       link_gdrive Notability
       link_gdrive Pictures
       link_gdrive Shared
-      link_gdrive Videos  
+      link_gdrive Videos
       echo ""
       echo "Created links for google drive folders in proper places"
       break
@@ -47,4 +47,3 @@ while read -r response; do
       ;;
   esac
 done
-

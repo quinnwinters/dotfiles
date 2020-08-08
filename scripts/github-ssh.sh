@@ -19,13 +19,13 @@ echo ""
 echo ""
 
 echo "Enter your email (the one you use with github)"
-read -r email 
+read -r email
 ssh-keygen -t rsa -b 4096 -C "$email"
 eval "$(ssh -agent -s)"
 echo "Enter the path to your key to add to the ssh-agent"
 read -r sshkey
 ssh-add -K "$sshkey"
-pbcopy < "$sshkey"
+pbcopy <"$sshkey"
 echo "Go to github.com and paste your key into your ssh key list in settings"
 echo "When that is done, type verified below"
 
@@ -42,4 +42,3 @@ while read -r response; do
       ;;
   esac
 done
-
