@@ -1,8 +1,6 @@
 function ghq_and_update() {
-    \ghq "$@" 
-    \ghq list > ~/.ghqrepos
-    sort ~/.ghqrepos | uniq -u > ~/.ghqrepos
+    \ghq $@ 
+    {\ghq list ; cat $DOT_DIR/home/.ghqrepos } | sort | uniq -u > $DOT_DIR/home/.ghqrepos
 }
-
 alias ghq=ghq_and_update
-alias code="cd $(ghq root)" 
+alias code="cd $(\ghq root)"
