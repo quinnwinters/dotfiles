@@ -4,7 +4,7 @@ GDIR=/Volumes/GoogleDrive/My\ Drive
 DDIR=/Users/quinnwinters/Documents
 
 function link_gdrive() {
-  ln -sf $GDIR/$1 $DDIR/$1
+  ln -sf "$GDIR/$1" "$DDIR/$1"
 }
 
 echo "=========================================================================="
