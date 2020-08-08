@@ -18,7 +18,6 @@
     ~/.gitconfig: home/.gitconfig
     ~/.gitignore: home/.ignore
     ~/.hyperlayout: home/.hyperlayout
-    ~/.mackup: home/.mackup
     ~/.ssh/config: home/.ssh/config
     ~/.tmux.cfg: home/.tmux.cfg
     ~/.tex_templates: home/.tex_templates
