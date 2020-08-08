@@ -1,3 +1,16 @@
+- defaults:
+    link: 
+      force: true
+      relink: true
+      create: true
+    clean:
+      force: true
+      recursive: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+
 - clean:
     - "~"
     - "~/Code"
@@ -6,13 +19,28 @@
     - "~/Code"
     - "~/Pictures/screenshots/"
 
+- brewfile: 
+    - home/.Brewfile
+
+- ghqfile:
+    - file: home/.ghqrepos
+      flags: [-p, --silent, --update]
+
+- shell:
+    - sh scripts/github-ssh.sh
+    - sh scripts/macos.sh
+    - sh scripts/vundle.sh
+    - sh scripts/oh-my-zsh.sh
+    - sh scripts/google-drive.sh
+
 - link:
     ~/.alfred: home/.alfred
     ~/.aliases: home/.aliases
-    ~/.automation_scripts: home/.automation_scripts
+    ~/.automation: home/.automation
     ~/.bashrc: home/.bashrc
     ~/.Brewfile: home/.Brewfile
     ~/.conda-env: home/.conda-env
+    ~/.config/nvim/init.vim: home/.config/nvim/init.vim
     ~/.cron/jobs: home/.cron/jobs
     ~/.ghqrepos: home/.ghqrepos
     ~/.gitconfig: home/.gitconfig
@@ -28,12 +56,6 @@
     ~/.zcompletions: home/.zcompletions
     ~/.zshenv: home/.zshenv
     ~/.zshrc: home/.zshrc
-
-- brewfile: ["~/.Brewfile"]
-
-- ghqfile:
-    - file: home/.ghqrepos
-      flags: [-p, --silent, --update]
 
 - conda-env:
     - "~/.conda-env/data-science.yml"
@@ -54,3 +76,4 @@
     - hyper-tab-touchbar
     - hyperterm-visor
     - hyperlayout
+
