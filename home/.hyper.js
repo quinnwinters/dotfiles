@@ -55,10 +55,10 @@ module.exports = {
     hyperTransparent: {
       backgroundColor: '#5d0e99',
       opacity: 0.4,
-      vibrancy: 'medium-light'
+      vibrancy: 'ultra-dark'
     },
     visor: {
-      hotkey: 'CommandOrControl+Shift+/'
+      hotkey: 'CommandOrControl+Enter'
     }
   },
 
