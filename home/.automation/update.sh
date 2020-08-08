@@ -1,5 +1,6 @@
-#!/bin/bash
-
 brew update
 brew upgrade
-brew cleanup
+conda env list --json\
+    | grep miniconda\
+    | tr -d '",'\
+    | xargs -n1 conda update --update-all --prefix
