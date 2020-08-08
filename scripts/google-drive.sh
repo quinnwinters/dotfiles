@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GDIR=/Volumes/GoogleDrive/My\ Drive
+GDIR=/Users/quinnwinters/Google\ Drive
 DDIR=/Users/quinnwinters/Documents
 
 function link_gdrive() {
