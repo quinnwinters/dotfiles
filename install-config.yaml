@@ -28,6 +28,7 @@
     - sh scripts/vundle.sh
     - sh scripts/oh-my-zsh.sh
     - sh scripts/google-drive.sh
+    - sh scripts/mackup-restore.sh
     - crontab $DOT_DIR/.cron/jobs
 
 - ghqfile:
@@ -48,6 +49,7 @@
     ~/.gitignore: home/.ignore
     ~/.hyper.js: home/.hyper.js
     ~/.hyperlayout: home/.hyperlayout
+    ~/.mackup.cfg: home/.mackup.cfg
     ~/.ssh/config: home/.ssh/config
     ~/.tmux.cfg: home/.tmux.cfg
     ~/.tex_templates: home/.tex_templates
