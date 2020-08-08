@@ -32,11 +32,9 @@
 
 - brewfile: ["~/.Brewfile"]
 
-- ghq:
-    - github.com/quinnwinters/dotbot-conda
-    - github.com/quinnwinters/dotbot-hyper
-    - github.com/quinnwinters/dotbot-mackup
-    - github.com/quinnwinters/spark-mmq
+- ghqfile: 
+    - file: home/.ghqrepos
+      flags: [-p, --silent, --update]
 
 - conda-env:
     - "~/.conda-env/data-science.yml"
