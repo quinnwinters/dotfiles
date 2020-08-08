@@ -1,2 +1,3 @@
 1 4 * * 6 /bin/bash ~/.automation/update.sh
 1 7 * * * /bin/bash ~/.automation/backup-dotfiles.sh
+1 2 * * * /bin/bash ~/.automation/backup-mackup.sh
