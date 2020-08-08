@@ -52,7 +52,7 @@ module.exports = {
       macOptionSelectionMode: "vertical",
       webGLRenderer: true,
       commands: ["sh ~/.automation/new-shell-session.sh"],
-      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.4, vibrancy: '' },
+      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.4, vibrancy: "" },
       visor: { hotkey: "CommandOrControl+Enter" },
    },
 
@@ -67,7 +67,7 @@ module.exports = {
       "hyper-transparent",
       "hyper-tab-touchbar",
       "hyperterm-visor",
-      "hyperlayout"
+      "hyperlayout",
    ],
 
    localPlugins: [],
