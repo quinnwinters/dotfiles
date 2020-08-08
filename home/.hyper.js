@@ -66,7 +66,7 @@ module.exports = {
       "hyper-transparent",
       "hyper-tab-touchbar",
       "hyperterm-visor",
-      "hyperlayout"
+      "hyperlayout",
    ],
 
    localPlugins: [],
