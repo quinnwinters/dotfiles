@@ -51,8 +51,15 @@ module.exports = {
     quickEdit: false,
     macOptionSelectionMode: 'vertical',
     webGLRenderer: true,
-
-    // for advanced config flags please refer to https://hyper.is/#cfg
+    commands: [ 'sh ~/.automation/new-shell-session.sh' ]
+    hyperTransparent: {
+      backgroundColor: '#5d0e99',
+      opacity: 0.4,
+      vibrancy: 'medium-light'
+    }
+    visor: {
+      hotkey: 'CommandOrControl+Shift+/'
+    }
   },
 
   plugins: [
