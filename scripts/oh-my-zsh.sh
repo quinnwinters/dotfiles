@@ -1,7 +1,10 @@
 #!/bin/bash
 
-ZSH=~/.oh-my-zsh
-if [[ ! -d "$ZSH" ]]; then
+if [[ $(zsh --version 2>&1) != 0 ]]; then
+  brew install zsh zsh-completitions
+fi
+
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   curl -L http://install.ohmyz.sh | sh
 fi
 

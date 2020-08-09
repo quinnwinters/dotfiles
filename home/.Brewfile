@@ -113,5 +113,4 @@ brew 'python'
 brew 'svn'
 
 # App Store applications
-mas 'Spark', id: 1176895641
 mas 'Xcode', id: 497799835

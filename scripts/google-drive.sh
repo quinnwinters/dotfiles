@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GDIR=/Users/quinnwinters/Google\ Drive
-DDIR=/Users/quinnwinters/Documents
+GDIR=$HOME/Google\ Drive
+DDIR=$HOME/Documents
 
 function link_gdrive() {
   ln -sf "$GDIR/$1" "$DDIR/$1"
@@ -22,8 +22,9 @@ echo " 3. Verify that the Google Drive file system in '/Volumes"
 echo " 4. Type the word verified to continue the setup process"
 echo ""
 echo ""
+echo "(download link: https://www.google.com/drive/download/)"
 echo ""
-
+echo ""
 while read -r response; do
   case "$response" in
     verified)

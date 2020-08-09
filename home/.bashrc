@@ -1,1 +1,1 @@
-export DOT_DIR=~/Documents/dotfiles
+export DOT_DIR=$HOME/Documents/dotfiles
