@@ -1,8 +1,8 @@
-# QWINTERS Dotfiles
+# QWINTERS MacOS Dotfiles
 
 A simple and easy way to setup my dotfiles using dotbot. The config is located
 at `install-config.yaml` and the main install shell script is the simple `setup`
-file.
+file (note these dotfiles will not work on non-Mac systems).
 
 ## Install
 
