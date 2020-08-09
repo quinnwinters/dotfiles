@@ -2,16 +2,16 @@
   "entries": {
     "tap": {
       "homebrew/core": {
-        "revision": "d4faba30b0a8b735350b91a1bbfa105e1c60e99d"
+        "revision": "013a769fb67e743da1cee5ec59f65c3d8e127d4f"
       },
       "homebrew/cask-fonts": {
         "revision": "45270c52e8b346c7bc26209c15f2d65d59b7317a"
       },
       "homebrew/cask-versions": {
-        "revision": "7c1191a6e8085e28040aa16c73db8bfdf024e588"
+        "revision": "995c8c74e0b57464f6c80a34cde1e2582ab5c129"
       },
       "homebrew/cask": {
-        "revision": "5fc6c7e17f8f3595e4ab9eef5b7b09e7b2276342"
+        "revision": "e3f311f7a54c746ff25d1f5105073649018bba1c"
       },
       "mas-cli/tap": {
         "revision": "f7ee1df8c6d68cc900d9be61db66a7fd533a0a76"
@@ -1361,7 +1361,28 @@
       },
       "rcmdnk/file/brew-file": null,
       "python": null,
-      "svn": null
+      "svn": null,
+      "mackup": {
+        "version": "0.8.29",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/mackup-0.8.29.catalina.bottle.tar.gz",
+              "sha256": "be195c66e0330cd8cbc4bef06e8be0d919d613774870de537af8b6ef81d22ad2"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/mackup-0.8.29.mojave.bottle.tar.gz",
+              "sha256": "8ee4dc679e9c944d3407febb22b7b0cb59fc2cd45308ffaf637ff0e11bb26604"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/mackup-0.8.29.high_sierra.bottle.tar.gz",
+              "sha256": "da0ee240b7e1b3626becaea6b66673a58a9c0ec803e6e5da4e4f95672a51879b"
+            }
+          }
+        }
+      }
     },
     "cask": {
       "font-roboto": {
@@ -1501,7 +1522,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.4.9",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "d4faba30b0a8b735350b91a1bbfa105e1c60e99d",
+        "Homebrew/homebrew-core": "013a769fb67e743da1cee5ec59f65c3d8e127d4f",
         "CLT": "12.0.0.0.1.1595091463",
         "Xcode": "11.6",
         "macOS": "10.15.6"

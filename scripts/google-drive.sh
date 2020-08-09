@@ -28,16 +28,7 @@ echo ""
 while read -r response; do
   case "$response" in
     verified)
-      link_gdrive Courses
-      link_gdrive Finance
-      link_gdrive GradApps
-      link_gdrive Magic
-      link_gdrive Mathematics
-      link_gdrive Misc
-      link_gdrive Notability
-      link_gdrive Pictures
-      link_gdrive Shared
-      link_gdrive Videos
+      find "$GDIR" -type d -maxdepth 1 | link_gdrive
       echo ""
       echo "Created links for google drive folders in proper places"
       break
