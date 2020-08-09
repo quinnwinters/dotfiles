@@ -22,18 +22,6 @@
 - brewfile:
     - home/.Brewfile
 
-- shell:
-    - sh scripts/github-ssh.sh
-    - sh scripts/macos.sh
-    - sh scripts/vundle.sh
-    - sh scripts/oh-my-zsh.sh
-    - sh scripts/google-drive.sh
-    - crontab $DOT_DIR/.cron/jobs
-
-- ghqfile:
-    - file: home/.ghqrepos
-      flags: [-p, --silent, --update]
-
 - link:
     ~/.alfred: home/.alfred
     ~/.aliases: home/.aliases
@@ -58,6 +46,14 @@
     ~/.zshenv: home/.zshenv
     ~/.zshrc: home/.zshrc
 
+- shell:
+    - sh scripts/github-ssh.sh
+    - sh scripts/macos.sh
+    - sh scripts/vundle.sh
+    - sh scripts/oh-my-zsh.sh
+    - sh scripts/google-drive.sh
+    - crontab $DOT_DIR/.cron/jobs
+
 - conda-env:
     - "~/.conda-env/data-science.yml"
     - "~/.conda-env/geography.yml"
@@ -75,3 +71,8 @@
     - hyper-tab-touchbar
     - hyperterm-visor
     - hyperlayout
+
+- ghqfile:
+    - file: home/.ghqrepos
+      flags: [-p, --silent, --update]
+

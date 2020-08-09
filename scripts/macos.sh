@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Setup background picture
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "$DOT_DIR/wallpaper.jpg"'
+
 # Always show scroll bars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
