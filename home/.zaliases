@@ -20,9 +20,11 @@ alias du="du -h -d 2"
 # Useful piping aliases
 alias alert='notify-send --urgency=low -i "([? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias -g G="| grep -i"
+alias -g H="| head"
+alias -G T="| tail"
 alias -g HN="| head -n"
 alias -g TN="| tail -n"
-alias -g LESS="| less -N"
+alias -g V="| nvim -"
 alias -g S="| sort"
 alias -g U="| uniq -c"
 alias -g LINES="| wc -l"

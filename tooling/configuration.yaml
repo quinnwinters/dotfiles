@@ -5,7 +5,6 @@
       create: true
     clean:
       force: true
-      recursive: true
     shell:
       stdin: true
       stdout: true
@@ -14,6 +13,8 @@
 - clean:
     - "~"
     - "~/Code"
+    - "~/Pictures"
+    - "~/Documents"
 
 - create:
     - "~/Code"
@@ -46,6 +47,8 @@
     ~/.zcompletions: home/.zcompletions
     ~/.zshenv: home/.zshenv
     ~/.zshrc: home/.zshrc
+    ~/Backup: backups
+    ~/Pictures/media: media
 
 - shell:
     - sh scripts/github-ssh.sh

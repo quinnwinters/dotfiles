@@ -8,9 +8,12 @@ file (note these dotfiles will not work on non-Mac systems).
 
 To install, all you have to do is run the following command in your terminal:
 
-```
+```bash
 git clone https://github.com/quinnwinters/dotfiles ~/dotfiles && sh ~/dotfiles/setup
 ```
+
+_Warning: You might want to change settings, wallpaper.jpg, ghqrepos, and conda-env to suit your personal preferences_
+
 
 ## Steps in Installation
 
@@ -24,26 +27,11 @@ git clone https://github.com/quinnwinters/dotfiles ~/dotfiles && sh ~/dotfiles/s
 * Setup Oh-my-zsh
 * Mount Google Drive and link documents folder
 * Schedule regular cron jobs
-* Create conda environments
+<* Create conda environments
 * Add hyper plugins
 * Clone/update repos with ghq
 
 ## Some specifics
 
-### Directory structure
-
-I'm opinionated so I like to have my directory structure look like the following:
-```
-/Users/quinnwinters:
-    Code:
-        github.com:
-            quinnwinters:
-                <repos>
-            <other organizations/user code folders>
-    Documents:
-        dotfiles
-        <directories from google drive>
-
-```
-
+See [DOCUMENTATION.md](./DOCUMENTATION.md) for more details. 
 

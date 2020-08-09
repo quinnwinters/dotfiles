@@ -9,7 +9,7 @@ if ! which -s brew; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-CONFIG="install-config.yaml"
+CONFIG="tooling/configuration.yaml"
 DOTBOT_DIR="tooling/dotbot"
 
 DOTBOT_BIN="bin/dotbot"
