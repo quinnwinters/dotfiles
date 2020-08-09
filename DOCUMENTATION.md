@@ -49,7 +49,9 @@ Some important notes:
 ### Brewfile backups
 
 A lot of the installed elements of the brew file are fairly standard. Here are the major ones that are worth noting (because I use them pretty much everyday):
-* 
+* Python, Java, Git, Scala, OCaml, and their package managers and environment managers as well
+* Apache Spark, Cassandra, Posgres, Docker, and other dev tools and useful clis
+* Some mac apps liek 1Password, Chrome, Alfred, Hyper, and Notion
 
 The brewfile is managed with [brew wrap](https://homebrew-file.readthedocs.io/en/latest/brew-wrap.html), which ensures that the brew file is always up to date. There is a regular cron job that commits the current changes to a backup branch.
 
@@ -69,18 +71,28 @@ This is scheduled to run daily using a cronjob.
 
 ### Shell of choice: oh-my-zsh 
 
-I use [oh-my-zsh](https://ohmyz.sh/) for my shell of choice. I keep my 
-
-
-### Vim + Vundle for Text Editing
+I use [oh-my-zsh](https://ohmyz.sh/) for my shell of choice. I keep my aliases in `~/.aliases` and have a `~/.zshrc` that relies on those aliases and oh-my-zsh both being setup. Your milage may vary if you wind up tweaking this. 
 
 ### Hyper as an aesthetically pleasing terminal
 
+[Hyper](https://hyper.is) is my terminal of choice. If you haven't used it before, it's important to note that the configuration is easy to manage: it's located at `~/.hyper.js` and that includes all the plugins. Once plugins are installed they are automatically refreshed. There is a dotbot plugin included to install hyper plugins (so you can see in the logs if any downloads fail). 
+
 ### ghq for repo management and updates
+
+All my repos that I install, I install with [ghq](https://github.com/x-motemen/ghq). I created an aliases for `ghq` that updates the file everytime I run `ghq get`. Additionally there are aliases for regularly accessed folder such as `~/Code`, `~/Code/github.com` etc.
 
 ### Tmux (and ssh) 
 
+In order to make sure my worksessions are easily accessible (and not tied to a specific terminal window) I have a script that runs on new hyper windows that will create/bind to a tmux session. This is also configured to run when ssh-ing on to machines to ensure that those sessions are also accessible if a connection drops for example. 
+
 ### Mackup backups
 
+I use mackup to backup things that are harder to backup in `dotfiles` - specifically programs like Bartender and Magnet where the preferences are hidden. Mackup basically runs the same link commands you would normally run, but the actual files are abstracted away to make things easier. This is currently whitelist only because using it with files already controlled by other dotbot tasks may get dicey. 
+
 ### Regular Cronjobs
+
+I have regular cronjobs to deal with standard maintance tasks. Currently that includes:
+* A regular update job for conda, homebrew, ghq, etc
+* A backup job that takes current changes and pushes them up to a backup branch
+* A backup job for mackup files that could change
 
