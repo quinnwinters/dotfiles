@@ -36,4 +36,5 @@ See [DOCUMENTATION.md](./DOCUMENTATION.md) for more details.
 
 ## Changelog
 
-See [CHANGELOG.md](./CHANGELOG.md) for release notes (not updated between releases).
+See [CHANGELOG.md](./CHANGELOG.md) for release notes (not updated between
+releases).
