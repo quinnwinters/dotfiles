@@ -59,7 +59,7 @@ the major ones that are worth noting (because I use them pretty much everyday):
 - Python, Java, Git, Scala, OCaml, and their package managers and environment
   managers as well
 - Apache Spark, Cassandra, Posgres, Docker, and other dev tools and useful clis
-- Some mac apps liek 1Password, Chrome, Alfred, Hyper, and Notion
+- Some mac apps like 1Password, Chrome, Alfred, Hyper, and Notion
 
 The brewfile is managed with
 [brew wrap](https://homebrew-file.readthedocs.io/en/latest/brew-wrap.html),
