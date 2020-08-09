@@ -31,7 +31,7 @@ following:
       - github.com:
           - quinnwinters: <repos I maintain>
           - <other organizations/user code folders>
-  - Djjjocuments:
+  - Documents:
       - dotfiles
       - <directories from google drive>
   - Downloads: <Where the downloads go>
