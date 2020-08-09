@@ -3,4 +3,7 @@ function ghq_and_update() {
     {\ghq list ; cat $DOT_DIR/home/.ghqrepos } | sort | uniq -u > $DOT_DIR/home/.ghqrepos
 }
 alias ghq=ghq_and_update
-alias code="cd $(\ghq root)"
+alias ghqr="cd $(\ghq root)"
+alias github="cd $(\ghq root)/github.com"
+alias code="cd $(\ghq root)/github.com/$(id -un)"
+
