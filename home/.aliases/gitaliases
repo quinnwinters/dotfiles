@@ -1,6 +1,5 @@
 alias master="git checkout master && git pull"
 alias develop="git checkout develop && git pull"
-alias github="cd ~/Documents/GitHub && ls -lhAFG"
 
 function gCommitWChangelog() {
     git commit -m "$1: ${@:2}"
