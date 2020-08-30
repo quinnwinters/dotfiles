@@ -107,6 +107,8 @@ cask 'steam'
 cask 'vlc'
 cask 'whatsapp'
 
+tap 'd12frosted/emacs-plus'
+
 tap 'mas-cli/tap'
 
 tap 'rcmdnk/file'
