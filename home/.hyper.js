@@ -53,7 +53,7 @@ module.exports = {
       webGLRenderer: true,
       commands: ["sh ~/.automation/new-shell-session.sh"],
       hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.65, vibrancy: "" },
-      visor: { hotkey: "CommandOrControl+Enter" },
+      visor: { hotkey: "CommandOrControl+Esc" },
    },
 
    plugins: [
