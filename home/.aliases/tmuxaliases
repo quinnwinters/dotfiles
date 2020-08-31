@@ -1,1 +1,16 @@
+function HELPER_load_tmux_session() {
+    session="$@"
+    if [ ! $(tmux has-session -t "$session") ] ; then 
+        tmux new -s "$session" -d
+    fi 
+
+    if [ ! $TMUX ] ; then 
+        tmux attach -t "$session"
+    else
+        tmux switch -t "$session"
+    fi 
+}
+
 alias ssh="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
+alias tmx="sh ~/.automation/new-shell-session.sh"
+alias t="HELPER_load_tmux_session"
