@@ -107,13 +107,18 @@ All my repos that I install, I install with
 updates the file everytime I run `ghq get`. Additionally there are aliases for
 regularly accessed folder such as `~/Code`, `~/Code/github.com` etc.
 
-### Tmux (and ssh)
+### Tmux / Vim / SSH session management
 
-In order to make sure my worksessions are easily accessible (and not tied to a
-specific terminal window) I have a script that runs on new hyper windows that
-will create/bind to a tmux session. This is also configured to run when ssh-ing
-on to machines to ensure that those sessions are also accessible if a connection
-drops for example.
+My philosophy is that the navigation for these different things should be easy
+and unified. I'm in no ways a super user of any of these tools, so I went with 
+something that would be easy for me to remember. In general `C-<Key>` is used 
+for vim bindings and `M-<Key>` is used for tmux bindings. 
+
+I have the following preferred navigation system
+- hjkl -> use the standard vim navigation keys for vim splits and for tmux panes
+- s -> split the window/pane to the side
+- v -> split the window/pane along the bottom
+- q -> close the pane
 
 ### Mackup backups
 
