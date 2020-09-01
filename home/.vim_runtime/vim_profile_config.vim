@@ -13,9 +13,9 @@
 let mapleader = ";"
 nmap <leader>w :w!<cr>
 nmap <leader>wq :wqa!<cr>
-nmap <leader>q :q!<cr>
-nmap <leader>| :vsplit<cr>
-nmap <leader>- :split<cr>
+nmap <leader>s :vsplit<cr>
+nmap <leader>v :split<cr>
+nmap <leader>q :close<cr>
 
 
 " Navigation shortcuts
@@ -24,9 +24,10 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <C-|> :vpslit<cr>
-map <C--> :split<cr>
- 
+
+" Some nice editing shortcuts
+noremap Y y$
+nnoremap U <C-r>
 
 " File read behaviors
 "   Make vim behave more like other text editors by auto-reloading edits, 
@@ -61,7 +62,6 @@ set incsearch
 vnoremap <silent> <leader>* :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> <leader># :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
-
 
 " Do nice things with triming extra spaces
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
