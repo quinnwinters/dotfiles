@@ -17,11 +17,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 
 Plugin 'lervag/vimtex'
+
 Plugin 'sirver/ultisnips'
+Plugin 'honza/vim-snippets'
 
 Plugin 'valloric/youcompleteme'
-
-Plugin 'honza/vim-snippets'
 
 Plugin 'tpope/vim-surround'
 

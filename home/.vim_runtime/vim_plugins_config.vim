@@ -32,9 +32,9 @@ let g:molokai_original=1
 
 
 " UltiSnips for snippets for code + LaTeX
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsExpandTrigger = '<C-;>'
+let g:UltiSnipsJumpForwardTrigger = '<C-;>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-:>'
 let g:UltiSnipsSnippetsDir = "~/.vim_snippets"
 
 " Vimtex and Vim Snippets for LaTeX
