@@ -42,6 +42,7 @@
     ~/.tmux.conf: home/.tmux.cfg
     ~/.tex_templates: home/.tex_templates
     ~/.vim_runtime: home/.vim_runtime
+    ~/.vim_snippets: home/.vim_snippets
     ~/.vimrc: home/.vimrc
     ~/.zaliases: home/.zaliases
     ~/.zcompletions: home/.zcompletions

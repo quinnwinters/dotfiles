@@ -29,3 +29,19 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='molokai'
 let g:molokai_original=1
+
+
+" UltiSnips for snippets for code + LaTeX
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsSnippetsDir = "~/.vim_snippets"
+
+" Vimtex and Vim Snippets for LaTeX
+let g:tex_flavor='latex'
+let g:vimtex_view_mode='skim'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+
