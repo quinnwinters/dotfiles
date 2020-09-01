@@ -1,12 +1,9 @@
-// Future versions of Hyper may add additional config options,
-// which will not automatically be merged into this file.
-// See https://hyper.is#cfg for all currently supported options.
-
 module.exports = {
    config: {
+      modifierKeys: { altIsMeta: true },
       updateChannel: "stable",
-      fontSize: 11,
-      fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      fontSize: 13,
+      fontFamily: '"Fira Code", Menlo, "Courier New", monospace',
       fontWeight: "normal",
       fontWeightBold: "bold",
       lineHeight: 1,
@@ -52,12 +49,11 @@ module.exports = {
       macOptionSelectionMode: "vertical",
       webGLRenderer: true,
       commands: ["sh ~/.automation/new-shell-session.sh"],
-      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.65, vibrancy: "" },
+      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.7, vibrancy: "" },
       visor: { hotkey: "CommandOrControl+Esc" },
    },
 
    plugins: [
-      "hypercwd",
       "hyperlinks",
       "hyper-startup",
       "hyper-alt-click",

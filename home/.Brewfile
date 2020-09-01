@@ -78,7 +78,11 @@ brew 'zsh-completions'
 brew 'zsh-syntax-highlighting'
 
 tap 'homebrew/cask-fonts'
+cask 'font-fira-code'
+cask 'font-monoid'
 cask 'font-roboto'
+
+tap 'homebrew/cask-fonts'
 
 tap 'homebrew/cask-versions'
 
