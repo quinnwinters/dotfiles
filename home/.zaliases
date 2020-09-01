@@ -15,7 +15,7 @@ alias chgrp="chgrp --preserve-root"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-alias e="emacs"
+alias e="nvim"
 alias df="df -h"
 alias du="du -h -d 2"
 
