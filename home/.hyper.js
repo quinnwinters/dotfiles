@@ -63,7 +63,7 @@ module.exports = {
       "hyper-tab-touchbar",
       "hyperterm-visor",
       "hyperlayout",
-      "hypercwd"
+      "hypercwd",
    ],
 
    localPlugins: [],

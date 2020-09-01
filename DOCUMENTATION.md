@@ -110,11 +110,12 @@ regularly accessed folder such as `~/Code`, `~/Code/github.com` etc.
 ### Tmux / Vim / SSH session management
 
 My philosophy is that the navigation for these different things should be easy
-and unified. I'm in no ways a super user of any of these tools, so I went with 
-something that would be easy for me to remember. In general `C-<Key>` is used 
-for vim bindings and `M-<Key>` is used for tmux bindings. 
+and unified. I'm in no ways a super user of any of these tools, so I went with
+something that would be easy for me to remember. In general `C-<Key>` is used
+for vim bindings and `M-<Key>` is used for tmux bindings.
 
 I have the following preferred navigation system
+
 - hjkl -> use the standard vim navigation keys for vim splits and for tmux panes
 - s -> split the window/pane to the side
 - v -> split the window/pane along the bottom
