@@ -5,8 +5,8 @@
 module.exports = {
    config: {
       updateChannel: "stable",
-      fontSize: 11,
-      fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      fontSize: 13,
+      fontFamily: '"Fira Code", Menlo, "Courier New", monospace',
       fontWeight: "normal",
       fontWeightBold: "bold",
       lineHeight: 1,
@@ -52,12 +52,11 @@ module.exports = {
       macOptionSelectionMode: "vertical",
       webGLRenderer: true,
       commands: ["sh ~/.automation/new-shell-session.sh"],
-      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.65, vibrancy: "" },
+      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.70, vibrancy: "" },
       visor: { hotkey: "CommandOrControl+Esc" },
    },
 
    plugins: [
-      "hypercwd",
       "hyperlinks",
       "hyper-startup",
       "hyper-alt-click",
