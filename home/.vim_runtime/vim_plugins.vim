@@ -5,17 +5,28 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'tpope/vim-fugitive'
+
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+
+Plugin 'lervag/vimtex'
+Plugin 'sirver/ultisnips'
+
 Plugin 'valloric/youcompleteme'
+
 Plugin 'honza/vim-snippets'
+
 Plugin 'tpope/vim-surround'
+
 Plugin 'editorconfig/editorconfig-vim'
+
 Plugin 'tomasr/molokai'
 call vundle#end()
 

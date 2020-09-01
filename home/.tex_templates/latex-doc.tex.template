@@ -7,6 +7,15 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{transparent}
+
+% some pdf page options
+\usepackage{pdfpages}
+\pdfminorversion=7
+\pdfsuppresswarningpagegroup=1
 
 % Theorem options
 \theoremstyle{definition}
