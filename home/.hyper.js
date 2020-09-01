@@ -1,9 +1,6 @@
-// Future versions of Hyper may add additional config options,
-// which will not automatically be merged into this file.
-// See https://hyper.is#cfg for all currently supported options.
-
 module.exports = {
    config: {
+      modifierKeys: { altIsMeta: true },
       updateChannel: "stable",
       fontSize: 13,
       fontFamily: '"Fira Code", Menlo, "Courier New", monospace',
