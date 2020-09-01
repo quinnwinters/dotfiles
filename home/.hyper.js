@@ -49,7 +49,7 @@ module.exports = {
       macOptionSelectionMode: "vertical",
       webGLRenderer: true,
       commands: ["sh ~/.automation/new-shell-session.sh"],
-      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.70, vibrancy: "" },
+      hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.7, vibrancy: "" },
       visor: { hotkey: "CommandOrControl+Esc" },
    },
 
