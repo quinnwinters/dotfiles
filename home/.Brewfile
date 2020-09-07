@@ -95,6 +95,8 @@ cask 'discord'
 cask 'docker'
 cask 'flux'
 cask 'freedom'
+cask 'github'
+cask 'gitter'
 cask 'google-chrome'
 cask 'handbrake'
 cask 'hyper'
@@ -107,6 +109,7 @@ cask 'mactex'
 cask 'miniconda'
 cask 'notion'
 cask 'skim'
+cask 'skype'
 cask 'slack'
 cask 'spotify'
 cask 'steam'
@@ -125,10 +128,10 @@ brew 'python'
 brew 'svn'
 
 # App Store applications
-mas 'Notability', id: 736189492
-mas 'Messenger', id: 1480068668
 mas 'iMovie', id: 408981434
-mas 'Xcode', id: 497799835
 mas 'Keynote', id: 409183694
-mas 'Todoist', id: 585829637
 mas 'Magnet', id: 441258766
+mas 'Messenger', id: 1480068668
+mas 'Notability', id: 736189492
+mas 'Todoist', id: 585829637
+mas 'Xcode', id: 497799835

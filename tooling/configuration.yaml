@@ -54,6 +54,7 @@
 - shell:
     - sh scripts/github-ssh.sh
     - sh scripts/macos.sh
+    - sh scripts/dock.sh
     - sh scripts/vundle.sh
     - sh scripts/oh-my-zsh.sh
     - sh scripts/google-drive.sh
