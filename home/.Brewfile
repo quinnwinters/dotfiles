@@ -101,6 +101,7 @@ cask 'hyper'
 cask 'intellij-idea-ce'
 cask 'istat-menus'
 cask 'java'
+cask 'launchcontrol'
 cask 'macdown'
 cask 'mactex'
 cask 'miniconda'
@@ -124,4 +125,10 @@ brew 'python'
 brew 'svn'
 
 # App Store applications
+mas 'Notability', id: 736189492
+mas 'Messenger', id: 1480068668
+mas 'iMovie', id: 408981434
 mas 'Xcode', id: 497799835
+mas 'Keynote', id: 409183694
+mas 'Todoist', id: 585829637
+mas 'Magnet', id: 441258766
