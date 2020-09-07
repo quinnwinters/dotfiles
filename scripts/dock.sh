@@ -8,8 +8,8 @@ defaults write com.apple.dock persistent-apps -array
 ##################################################################################################
 
 function add_application_to_doc() {
-    wait
-    defaults write com.apple.dock persistent-apps -array-add "
+  wait
+  defaults write com.apple.dock persistent-apps -array-add "
         <dict>
             <key>tile-data</key>
             <dict>
@@ -25,8 +25,8 @@ function add_application_to_doc() {
 }
 
 function add_blankspaces_to_doc() {
-    wait
-    defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+  wait
+  defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
 }
 
 add_blankspaces_to_doc
