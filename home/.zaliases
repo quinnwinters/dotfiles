@@ -45,7 +45,7 @@ alias jsonVerify="python -m json.tool"
 
 
 # Funciton to tagfiles
-function TAGFILE() {
+function HELPER_rename_file_with_tags() {
     fileName="$argv[$#]"
     tags="'${@[1, -2]}"
     tagsCollection=`echo $tags | sed -e "s/ /, /g" | tr -d \'`
