@@ -14,6 +14,9 @@ alias testCommit="HELPER_git_commit_w_changelog test"
 alias buildCommit="HELPER_git_commit_w_changelog build"
 alias refactorCommit="HELPER_git_commit_w_changelog refactor"
 alias revertCommit="HELPER_git_commit_w_changelog revert"
+alias ciCommit="HELPER_git_commit_w_changelog ci"
+alias choreCommit="HELPER_git_commit_w_changelog chore"
+alias testCommit="HELPER_git_commit_w_changelog test"
 
 function HELPER_setup_github_apps() {
   if [[ ! -d "./.git" ]] ; then 
