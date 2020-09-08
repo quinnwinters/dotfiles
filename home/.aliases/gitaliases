@@ -1,22 +1,27 @@
 alias master="git checkout master && git pull"
 alias develop="git checkout develop && git pull"
+alias branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+alias cleanBranches="git fetch --all -p; git branch -vv | grep ": gone]" | awk '{ print $1 }' | xargs -n 1 git branch -D"
 
-function gCommitWChangelog() {
+
+function HELPER_git_commit_w_changelog() {
     git commit -m "$1: ${@:2}"
 }
 
-alias featCommit="gCommitWChangelog feat"
-alias fixCommit="gCommitWChangelog fix"
-alias breakCommit="gCommitWChangelog 'BREAKING CHANGE'"
-alias docsCommit="gCommitWChangelog docs"
-alias styleCommit="gCommitWChangelog style"
-alias perfCommit="gCommitWChangelog perf"
-alias testCommit="gCommitWChangelog test"
-alias buildCommit="gCommitWChangelog build"
-alias refactorCommit="gCommitWChangelog refactor"
-alias revertCommit="gCommitWChangelog revert"
+alias featCommit="HELPER_git_commit_w_changelog feat"
+alias fixCommit="HELPER_git_commit_w_changelog fix"
+alias docsCommit="HELPER_git_commit_w_changelog docs"
+alias styleCommit="HELPER_git_commit_w_changelog style"
+alias perfCommit="HELPER_git_commit_w_changelog perf"
+alias testCommit="HELPER_git_commit_w_changelog test"
+alias buildCommit="HELPER_git_commit_w_changelog build"
+alias refactorCommit="HELPER_git_commit_w_changelog refactor"
+alias revertCommit="HELPER_git_commit_w_changelog revert"
+alias ciCommit="HELPER_git_commit_w_changelog ci"
+alias choreCommit="HELPER_git_commit_w_changelog chore"
+alias testCommit="HELPER_git_commit_w_changelog test"
 
-function setup_github_apps() {
+function HELPER_setup_github_apps() {
   if [[ ! -d "./.git" ]] ; then 
     echo "ERROR: Can only setup github apps for a project with git in root."
     echo "Please move to git project root"
@@ -43,5 +48,3 @@ function setup_github_apps() {
 
   echo "Github apps configured"
 }
-
-alias ghAppsInit="setup_github_apps"

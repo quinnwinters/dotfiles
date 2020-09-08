@@ -1,1 +1,1 @@
-alias touchtex="cp ~/.tex_templates/latex-doc.tex.template"
+alias HELPER_new_tex_file="cp ~/.tex_templates/latex-doc.tex.template"
