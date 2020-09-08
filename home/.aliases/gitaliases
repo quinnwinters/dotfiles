@@ -1,5 +1,8 @@
 alias master="git checkout master && git pull"
 alias develop="git checkout develop && git pull"
+alias branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+alias cleanBranches="git fetch --all -p; git branch -vv | grep ": gone]" | awk '{ print $1 }' | xargs -n 1 git branch -D"
+
 
 function HELPER_git_commit_w_changelog() {
     git commit -m "$1: ${@:2}"
