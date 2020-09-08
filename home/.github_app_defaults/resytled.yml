@@ -1,0 +1,7 @@
+auto: true
+exclude:
+  - "backup/**/*"
+  - "**/*.patch"
+  - "**/node_modules/**/*"
+  - "**/vendor/**/*"
+  - ".github/workflows/**/*"
