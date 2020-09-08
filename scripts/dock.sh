@@ -31,8 +31,12 @@ function add_blankspaces_to_doc() {
 
 add_blankspaces_to_doc
 
+# (TODO: qwinters) Figure out how to add MacOS default apps to dock here
+add_blankspaces_to_doc
+
 # Some basic Utilities
 add_application_to_doc "1Password 7"
+add_application_to_doc "LaunchD Task Scheduler"
 add_application_to_doc "Freedom"
 add_application_to_doc "iStat Menus"
 add_blankspaces_to_doc
