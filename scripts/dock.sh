@@ -55,6 +55,7 @@ add_application_to_doc "GitHub Desktop"
 add_application_to_doc "Hyper"
 add_application_to_doc "Docker"
 add_application_to_doc "IntelliJ IDEA CE"
+add_application_to_doc "PyCharm CE"
 add_blankspaces_to_doc
 
 # Video and Chat

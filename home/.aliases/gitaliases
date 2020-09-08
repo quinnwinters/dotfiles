@@ -16,3 +16,32 @@ alias buildCommit="gCommitWChangelog build"
 alias refactorCommit="gCommitWChangelog refactor"
 alias revertCommit="gCommitWChangelog revert"
 
+function setup_github_apps() {
+  if [[ ! -d "./.git" ]] ; then 
+    echo "ERROR: Can only setup github apps for a project with git in root."
+    echo "Please move to git project root"
+    return 1
+  fi
+
+  if [[ -d "./.github" ]] ; then 
+    echo "Github apps already present. Exiting"
+    return 0
+  fi 
+
+  mkdir -p .github
+  cp ~/.github_app_defaults/* .github/
+
+  if [[ ! -f .restyled.yaml ]] ; then 
+    cp .github/restyled.yml .restyled.yaml
+  fi 
+
+  rm .github/restyled.yaml
+
+  git add .github/*
+  git add .restyled.yaml
+  featCommit "Adding github app configurations"
+
+  echo "Github apps configured"
+}
+
+alias ghAppsInit="setup_github_apps"

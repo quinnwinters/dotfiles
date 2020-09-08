@@ -1,0 +1,11 @@
+- locations:
+    - title
+  terms:
+    - WIP
+    - WORK IN PROGRESS
+    - in progress
+- locations:
+    - label_name
+  terms:
+    - work_in_progress
+    - do_not_merge
