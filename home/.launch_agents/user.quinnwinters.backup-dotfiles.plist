@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>Backups - Dotfiles Git Backup</string>
+        <key>StartInterval</key>
+        <integer>7200</integer>
+        <key>ProgramArguments</key>
+        <array>
+            <string>sh</string>
+            <string>~/.automation/backup-dotfiles.sh</string>
+        </array>
+        <key>disabled</key>
+        <true/>
+    </dict>
+</plist>

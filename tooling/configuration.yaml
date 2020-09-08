@@ -3,6 +3,7 @@
       force: true
       relink: true
       create: true
+      glob: true
     clean:
       force: true
     shell:
@@ -31,7 +32,6 @@
     ~/.Brewfile: home/.Brewfile
     ~/.conda-env: home/.conda-env
     ~/.config/nvim/init.vim: home/.config/nvim/init.vim
-    ~/.cron/jobs: home/.cron/jobs
     ~/.ghqrepos: home/.ghqrepos
     ~/.gitconfig: home/.gitconfig
     ~/.gitignore: home/.ignore
@@ -58,8 +58,7 @@
     - sh scripts/vundle.sh
     - sh scripts/oh-my-zsh.sh
     - sh scripts/google-drive.sh
-    - crontab $DOT_DIR/.cron/jobs
-
+    - cp home/.launch_agents/*.plist ~/Library/LaunchAgents/
 - conda-env:
     - "~/.conda-env/data-science.yml"
     - "~/.conda-env/geography.yml"
