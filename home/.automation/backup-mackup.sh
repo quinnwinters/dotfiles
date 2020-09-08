@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mackup backup
+mackup backup -f
