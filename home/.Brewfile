@@ -106,6 +106,7 @@ cask 'java'
 cask 'mactex'
 cask 'miniconda'
 cask 'notion'
+cask 'pycharm-ce'
 cask 'skim'
 cask 'skype'
 cask 'slack'
@@ -127,8 +128,8 @@ brew 'svn'
 
 # App Store applications
 mas 'iMovie', id: 408981434
+mas 'LaunchD', id: Scheduler',
 mas 'Magnet', id: 441258766
 mas 'Messenger', id: 1480068668
 mas 'Notability', id: 736189492
 mas 'Xcode', id: 497799835
-mas 'LaunchD Task Scheduler', id: 620249105
