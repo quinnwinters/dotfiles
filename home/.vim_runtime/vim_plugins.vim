@@ -18,6 +18,8 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'lervag/vimtex'
 
+Plugin 'evandew/supertab'
+
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 

@@ -30,11 +30,19 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='molokai'
 let g:molokai_original=1
 
+" Configure YouCompleteMe completitions with Supertab
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabeDefaultCompletionType ='<C-n>'
 
-" UltiSnips for snippets for code + LaTeX
-let g:UltiSnipsExpandTrigger = '<C-;>'
-let g:UltiSnipsJumpForwardTrigger = '<C-;>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-:>'
+" YouCompleteMe other setttings
+let g:ycm_filepath_blacklist = {'html': 1, 'jsx': 1, 'xml': 1, 'tex': 1}
+" Configure UltiSnips with Supertab
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" UltiSnips other settings
 let g:UltiSnipsSnippetsDir = "~/.vim_snippets"
 
 " Vimtex and Vim Snippets for LaTeX
