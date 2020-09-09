@@ -95,7 +95,7 @@ cask 'discord'
 cask 'docker'
 cask 'flux'
 cask 'freedom'
-cask 'github'
+cask 'gitkraken'
 cask 'gitter'
 cask 'google-chrome'
 cask 'handbrake'
@@ -112,6 +112,7 @@ cask 'skype'
 cask 'slack'
 cask 'spotify'
 cask 'steam'
+cask 'texstudio'
 cask 'vlc'
 cask 'whatsapp'
 
@@ -132,4 +133,5 @@ mas 'LaunchD', id: Scheduler',
 mas 'Magnet', id: 441258766
 mas 'Messenger', id: 1480068668
 mas 'Notability', id: 736189492
+mas 'Things', id: 904280696
 mas 'Xcode', id: 497799835

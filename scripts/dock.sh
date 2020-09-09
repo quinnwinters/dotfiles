@@ -46,12 +46,14 @@ add_application_to_doc "Google Chrome"
 add_application_to_doc "WhatsApp"
 add_application_to_doc "Messenger"
 add_application_to_doc "Notion"
+add_application_to_doc "Things"
 add_application_to_doc "Slack"
 add_blankspaces_to_doc
 
 # Coding applications
 add_application_to_doc "Gitter"
-add_application_to_doc "GitHub Desktop"
+add_application_to_doc "GitKraken"
+add_application_to_doc "texstudio"
 add_application_to_doc "Hyper"
 add_application_to_doc "Docker"
 add_application_to_doc "IntelliJ IDEA CE"

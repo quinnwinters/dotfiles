@@ -46,10 +46,6 @@ set scrolloff=5
 set showmatch
 set ruler
 
-" Spell check settings
-setlocal spell
-set spelllang=en_us
-
 " Text editing settings
 "   Always prefer spaces and do it smartly. Also don't force new line wraps
 set expandtab 
