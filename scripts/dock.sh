@@ -23,8 +23,6 @@ function HELPER_add_apple_default_app_to_doc() {
         </dict>"
 }
 
-
-
 function HELPER_add_external_user_app_to_doc() {
   wait
   defaults write com.apple.dock persistent-apps -array-add "
