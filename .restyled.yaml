@@ -1,4 +1,4 @@
-auto: true
+commit_template: "style: Restyled by ${restyler.name}"
 exclude:
   - "backup/**/*"
   - "**/*.patch"
