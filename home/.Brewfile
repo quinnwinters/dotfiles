@@ -112,6 +112,7 @@ cask 'skype'
 cask 'slack'
 cask 'spotify'
 cask 'steam'
+cask 'texstudio'
 cask 'vlc'
 cask 'whatsapp'
 

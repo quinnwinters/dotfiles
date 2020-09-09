@@ -52,6 +52,7 @@ add_blankspaces_to_doc
 # Coding applications
 add_application_to_doc "Gitter"
 add_application_to_doc "GitHub Desktop"
+add_application_to_doc "texstudio"
 add_application_to_doc "Hyper"
 add_application_to_doc "Docker"
 add_application_to_doc "IntelliJ IDEA CE"
