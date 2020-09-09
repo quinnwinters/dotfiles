@@ -134,3 +134,4 @@ mas 'Magnet', id: 441258766
 mas 'Messenger', id: 1480068668
 mas 'Notability', id: 736189492
 mas 'Xcode', id: 497799835
+mas 'Things', id: 904280696

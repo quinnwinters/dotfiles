@@ -46,6 +46,7 @@ add_application_to_doc "Google Chrome"
 add_application_to_doc "WhatsApp"
 add_application_to_doc "Messenger"
 add_application_to_doc "Notion"
+add_application_to_doc "Things"
 add_application_to_doc "Slack"
 add_blankspaces_to_doc
 
