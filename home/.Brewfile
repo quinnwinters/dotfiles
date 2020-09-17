@@ -102,7 +102,7 @@ cask 'handbrake'
 cask 'hyper'
 cask 'intellij-idea-ce'
 cask 'istat-menus'
-cask 'java'
+cask 'loopback'
 cask 'mactex'
 cask 'miniconda'
 cask 'notion'
@@ -126,6 +126,9 @@ brew 'rcmdnk/file/brew-file'
 # Other Homebrew packages
 brew 'python'
 brew 'svn'
+
+# Other Cask applications
+cask 'java'
 
 # App Store applications
 mas 'iMovie', id: 408981434
