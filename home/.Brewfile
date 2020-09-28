@@ -1,6 +1,3 @@
-
-# tap repositories and their packages
-
 tap homebrew/core
 brew ack
 brew aom
@@ -238,7 +235,6 @@ cask caffeine
 cask discord
 cask docker
 cask flux
-cask fog
 cask freedom
 cask gitkraken
 cask gitter
@@ -253,6 +249,7 @@ cask macdown
 cask mactex
 cask miniconda
 cask notion
+cask openoffice
 cask pycharm-ce
 cask skim
 cask skype
