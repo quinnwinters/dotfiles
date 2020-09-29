@@ -1,3 +1,5 @@
+# tap repositories and their packages
+
 tap homebrew/core
 brew ack
 brew aom
@@ -24,6 +26,7 @@ brew dav1d
 brew docbook
 brew docbook-xsl
 brew eigen
+brew emacs
 brew epsilon
 brew exa
 brew expat
@@ -250,17 +253,20 @@ cask mactex
 cask miniconda
 cask notion
 cask openoffice
+cask podcastmenu
 cask pycharm-ce
 cask skim
 cask skype
 cask slack
-cask spotify
 cask steam
 cask texstudio
 cask vlc
 cask whatsapp
 cask xquartz
 cask ytmdesktop-youtube-music
+
+tap d12frosted/emacs-plus
+brew emacs-plus@27
 
 tap mas-cli/tap
 
@@ -274,9 +280,12 @@ cask java
 appstore 1287445660 Agenda (11.0.1)
 appstore 1055511498 Day One (5.3)
 appstore 408981434 iMovie (10.1.16)
+appstore 409183694 Keynote (10.2)
 appstore 620249105 LaunchD Task Scheduler (1.0.6)
 appstore 441258766 Magnet (2.4.8)
 appstore 1480068668 Messenger (63.3.112)
 appstore 736189492 Notability (4.4.1)
+appstore 409203825 Numbers (10.2)
+appstore 409201541 Pages (10.2)
 appstore 904280696 Things (3.13)
 appstore 497799835 Xcode (12.0.1)
