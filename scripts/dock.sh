@@ -72,6 +72,7 @@ HELPER_add_apple_default_app_to_doc "Preview"
 HELPER_add_blankspaces_to_doc
 
 # Productivity applications
+HELPER_add_external_user_app_to_doc "Anki"
 HELPER_add_external_user_app_to_doc "Things3"
 HELPER_add_external_user_app_to_doc "Google Chrome"
 HELPER_add_external_user_app_to_doc "WhatsApp"

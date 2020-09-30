@@ -1,3 +1,4 @@
+
 # tap repositories and their packages
 
 tap homebrew/core
@@ -233,6 +234,7 @@ tap homebrew/cask
 cask 1password
 cask adoptopenjdk
 cask alfred
+cask anki
 cask bartender
 cask caffeine
 cask discord
