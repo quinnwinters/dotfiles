@@ -262,21 +262,16 @@ cask skype
 cask slack
 cask steam
 cask texstudio
+cask visual-studio-code
 cask vlc
 cask whatsapp
 cask xquartz
 cask ytmdesktop-youtube-music
 
-tap d12frosted/emacs-plus
-brew emacs-plus@27
-
 tap mas-cli/tap
 
 tap rcmdnk/file
 brew brew-file
-
-# Other Cask applications
-cask java
 
 # App Store applications
 appstore 1287445660 Agenda (11.0.1)

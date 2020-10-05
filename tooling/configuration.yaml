@@ -21,9 +21,6 @@
     - "~/Code"
     - "~/Pictures/screenshots/"
 
-- brewfile:
-    - home/.Brewfile
-
 - link:
     ~/.alfred: home/.alfred
     ~/.aliases: home/.aliases
@@ -52,6 +49,9 @@
     ~/Backup: backups
     ~/Pictures/media: media
 
+- brewfile:
+    - home/.Brewfile
+
 - shell:
     - sh scripts/github-ssh.sh
     - sh scripts/macos.sh
@@ -60,6 +60,7 @@
     - sh scripts/oh-my-zsh.sh
     - sh scripts/google-drive.sh
     - cp home/.launch_agents/*.plist ~/Library/LaunchAgents/
+
 - conda-env:
     - "~/.conda-env/data-science.yml"
     - "~/.conda-env/geography.yml"
