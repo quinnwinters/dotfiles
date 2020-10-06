@@ -163,6 +163,7 @@ brew pkg-config
 brew poppler
 brew popt
 brew postgresql
+brew postgresql@10
 brew proj
 brew protobuf
 brew pyenv
@@ -174,6 +175,7 @@ brew rav1e
 brew rbenv
 brew readline
 brew reattach-to-user-namespace
+brew redis
 brew rtmpdump
 brew rubberband
 brew ruby
@@ -272,6 +274,11 @@ tap mas-cli/tap
 
 tap rcmdnk/file
 brew brew-file
+
+# Other Homebrew packages
+brew Warning: Treating postgres as a formula. For the cask use homebrew/cask/postgres
+brew Warning: Treating postgres as a formula. For the cask use homebrew/cask/postgres
+brew postgres
 
 # App Store applications
 appstore 1287445660 Agenda (11.0.1)

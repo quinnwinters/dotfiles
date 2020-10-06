@@ -25,6 +25,7 @@
     ~/.alfred: home/.alfred
     ~/.aliases: home/.aliases
     ~/.automation: home/.automation
+    ~/.bash_profile: home/.bash_profile 
     ~/.bashrc: home/.bashrc
     ~/.Brewfile: home/.Brewfile
     ~/.conda-env: home/.conda-env
@@ -45,6 +46,7 @@
     ~/.work: work
     ~/.zaliases: home/.zaliases
     ~/.zcompletions: home/.zcompletions
+    ~/.zlogin: home/.zlogin
     ~/.zshenv: home/.zshenv
     ~/.zshrc: home/.zshrc
     ~/Backup: backups
@@ -54,7 +56,8 @@
     - home/.Brewfile
 
 - shell:
-    - sh scripts/github-ssh.sh
+    - shell: sh scripts/github-ssh.sh
+      if: 
     - sh scripts/macos.sh
     - sh scripts/dock.sh
     - sh scripts/vundle.sh
