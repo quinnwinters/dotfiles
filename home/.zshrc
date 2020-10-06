@@ -22,6 +22,11 @@ if [[ -d ~/.aliases ]] ; then
   for f in ~/.aliases/**/* ; do source $f; done
 fi
 
+# Source work specific information which should be added on work computers only in the work/ folder
+if [[ -d ~/.work ]] ; then 
+  for f in ~/.work/**/* ; do source $f ; done
+fi 
+
 # ========================================================= #
 # |     MISC FUNCTIONS THAT WILL PROBABLY BE USED OFTEN   | #
 # ========================================================= #

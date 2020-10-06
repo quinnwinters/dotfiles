@@ -42,6 +42,7 @@
     ~/.vim_runtime: home/.vim_runtime
     ~/.vim_snippets: home/.vim_snippets
     ~/.vimrc: home/.vimrc
+    ~/.work: work
     ~/.zaliases: home/.zaliases
     ~/.zcompletions: home/.zcompletions
     ~/.zshenv: home/.zshenv
