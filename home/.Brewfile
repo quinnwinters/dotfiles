@@ -278,6 +278,7 @@ brew brew-file
 # Other Homebrew packages
 brew Warning: Treating postgres as a formula. For the cask use homebrew/cask/postgres
 brew Warning: Treating postgres as a formula. For the cask use homebrew/cask/postgres
+brew android-studio
 brew postgres
 
 # App Store applications
