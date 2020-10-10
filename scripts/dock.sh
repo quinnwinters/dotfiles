@@ -66,6 +66,7 @@ HELPER_add_blankspaces_to_doc
 HELPER_add_external_user_app_to_doc "Numbers"
 HELPER_add_external_user_app_to_doc "Keynote"
 HELPER_add_external_user_app_to_doc "Pages"
+HELPER_add_external_user_app_to_doc "texstudio"
 HELPER_add_external_user_app_to_doc "Notion"
 HELPER_add_external_user_app_to_doc "Agenda"
 HELPER_add_apple_default_app_to_doc "Preview"
@@ -81,11 +82,9 @@ HELPER_add_external_user_app_to_doc "Messenger"
 HELPER_add_blankspaces_to_doc
 
 # Coding applications
-HELPER_add_external_user_app_to_doc "Slack"
-HELPER_add_external_user_app_to_doc "Gitter"
-HELPER_add_external_user_app_to_doc "texstudio"
-HELPER_add_external_user_app_to_doc "Hyper"
 HELPER_add_external_user_app_to_doc "Docker"
+HELPER_add_external_user_app_to_doc "Hyper"
+HELPER_add_external_user_app_to_doc "Visual Studio Code"
 HELPER_add_external_user_app_to_doc "IntelliJ IDEA CE"
 HELPER_add_external_user_app_to_doc "PyCharm CE"
 HELPER_add_blankspaces_to_doc
