@@ -4,3 +4,18 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 export PATH="/usr/local/anaconda3/bin:$PATH"
+
+function HELPER_create_local_conda_env() {
+   conda env create --prefix ./conda-env/"$@"
+}
+
+function HELPER_load_local_conda_env() {
+  if [[ -d conda-env ]] ; then 
+    for env in ls conda-env/* ; do conda activate ./conda-env/$d ; done 
+  else 
+    echo "Unable to find conda environment. Try creating one with condaCreateLocalEnv"
+  fi 
+}
+
+alias condaCreateLocalEnv="HELPER_create_local_conda_env"
+alias condaActivateLocalEnv="HELPER_load_local_conda_env"

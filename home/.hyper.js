@@ -48,7 +48,7 @@ module.exports = {
       quickEdit: false,
       macOptionSelectionMode: "vertical",
       webGLRenderer: true,
-      commands: ["sh ~/.automation/new-shell-session.sh"],
+      commands: ["tmx"],
       hyperTransparent: { backgroundColor: "#5d0e99", opacity: 0.7, vibrancy: "" },
       visor: { hotkey: "CommandOrControl+'" },
    },
