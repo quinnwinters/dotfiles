@@ -1,9 +1,8 @@
-  
+export PATH="/usr/local/anaconda3/bin:$PATH"
+
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-
-export PATH="/usr/local/anaconda3/bin:$PATH"
 
 function HELPER_create_local_conda_env() {
    conda env create --prefix ./conda-env/"$@"
@@ -19,3 +18,4 @@ function HELPER_load_local_conda_env() {
 
 alias condaCreateLocalEnv="HELPER_create_local_conda_env"
 alias condaActivateLocalEnv="HELPER_load_local_conda_env"
+alias pip="pip3"

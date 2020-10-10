@@ -83,6 +83,15 @@
     - hyperterm-visor
     - hyperlayout
 
+- vscode:
+    - "EditorConfig.EditorConfig"
+    - "ms-python.python"
+    - "dbaeumer.vscode-eslint"
+    - "ms-vscode.cpptools"
+    - "visualstudioexptteam.vscodeintellicode"
+    - "eamodio.gitlens"
+    - "esbenp.prettier-vscode"
+
 - ghqfile:
     - file: home/.ghqrepos
       flags: [-p, --silent, --update]
