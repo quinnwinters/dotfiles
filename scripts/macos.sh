@@ -53,7 +53,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bo
 sudo systemsetup -settimezone "America/New_York" >/dev/null
 
 # Setup my dock
-defaults write com.apple.dock static-only -bool true
+defaults write com.apple.dock static-only -bool false
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 defaults write com.apple.dock autohide -bool true
