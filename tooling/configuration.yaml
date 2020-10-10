@@ -25,7 +25,7 @@
     ~/.alfred: home/.alfred
     ~/.aliases: home/.aliases
     ~/.automation: home/.automation
-    ~/.bash_profile: home/.bash_profile 
+    ~/.bash_profile: home/.bash_profile
     ~/.bashrc: home/.bashrc
     ~/.Brewfile: home/.Brewfile
     ~/.conda-env: home/.conda-env
@@ -57,7 +57,7 @@
 
 - shell:
     - shell: sh scripts/github-ssh.sh
-      if: 
+      if:
     - sh scripts/macos.sh
     - sh scripts/dock.sh
     - sh scripts/vundle.sh
