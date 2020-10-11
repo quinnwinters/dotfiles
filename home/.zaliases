@@ -9,9 +9,6 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias help="man"
 alias rsync='rsync --archive --compress-level=3 --copy-links --partial --inplace --progress --rsh=ssh -r'
-alias chown="chown --preserve-root"
-alias chmod="chmod --preserve-root"
-alias chgrp="chgrp --preserve-root"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
@@ -31,6 +28,7 @@ alias -g S="| sort"
 alias -g U="| uniq -c"
 alias -g LINES="| wc -l"
 alias -g HISTOGRAM="| sort | uniq -c | sort -n"
+alias -g C="| pbcopy"
 
 # Some file manipulation tools
 alias -g tailf="tail -f"
@@ -42,7 +40,8 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
 alias jsonVerify="python -m json.tool"
-
+alias isoFormatTs="date +\"%Y-%m-%dT%H:%M:%SZ\""
+alias isoFormatDate="date \"+%Y-%m-%d\""
 
 # Funciton to tagfiles
 function HELPER_rename_file_with_tags() {

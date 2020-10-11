@@ -1,0 +1,22 @@
+- defaults:
+    link:
+      force: true
+      relink: true
+      create: true
+      glob: true
+    clean:
+      force: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+
+- clean:
+    - "~"
+    - "~/Code"
+    - "~/Pictures"
+    - "~/Documents"
+
+- create:
+    - "~/Code"
+    - "~/Pictures/screenshots/"

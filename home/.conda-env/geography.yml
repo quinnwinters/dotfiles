@@ -1,6 +1,0 @@
-name: geography
-channels:
-  - defaults
-dependencies: 
-  - gdal
-  

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+osascript -e "tell application 'Finder' to set desktop picture to POSIX file '$DOT_DIR/media/wallpaper-1.jpg'"
+
 defaults write com.apple.dock persistent-apps -array
 
 ##################################################################################################
