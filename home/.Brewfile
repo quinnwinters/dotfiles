@@ -215,6 +215,7 @@ brew xerces-c
 brew xmlto
 brew xvid
 brew xz
+brew yadm
 brew yarn
 brew zeromq
 brew zlib
