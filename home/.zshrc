@@ -3,7 +3,7 @@
 # ========================================================= #
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="ys"
+ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE="true"
 DISABLE_UPDATE_PROMPT="true"
 HIST_STAMPS="yyyy-mm-dd"
