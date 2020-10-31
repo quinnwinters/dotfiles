@@ -1,5 +1,5 @@
 /Users/quinnwinters/.Brewfile is already there.
-Do you want to overwrite it? [y/n]: Ok, old input file was moved to 
+Do you want to overwrite it? [y/n]: Ok, old input file was moved to
 ack
 aom
 apache-spark
