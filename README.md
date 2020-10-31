@@ -17,7 +17,7 @@ conda-env to suit your personal preferences_
 
 ## Some specifics
 
-See [DOCUMENTATION.md](./DOCUMENTATION.md) for more details.
+See [DOCUMENTATION.md](./tooling/DOCUMENTATION.md) for more details.
 
 ## Changelog
 

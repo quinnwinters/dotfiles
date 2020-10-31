@@ -7,6 +7,7 @@ brew aom
 brew apache-spark
 brew apr
 brew apr-util
+brew argtable
 brew autoconf
 brew awscli
 brew bash
@@ -41,6 +42,7 @@ brew frei0r
 brew fribidi
 brew fzf
 brew gcc
+brew gcovr
 brew gdal
 brew gdbm
 brew gdk-pixbuf
@@ -110,6 +112,7 @@ brew libtermkey
 brew libtiff
 brew libtool
 brew libunistring
+brew libusb
 brew libuv
 brew libvidstab
 brew libvorbis
@@ -125,6 +128,7 @@ brew mackup
 brew mas
 brew maven
 brew maven-completion
+brew meson
 brew metis
 brew mono
 brew moreutils
@@ -136,6 +140,7 @@ brew neovim
 brew netcdf
 brew nettle
 brew nginx
+brew ninja
 brew node
 brew nspr
 brew nss
@@ -169,8 +174,10 @@ brew protobuf
 brew pyenv
 brew pyqt
 brew python@3.8
+brew python@3.9
 brew qt
 brew r
+brew ragel
 brew rav1e
 brew rbenv
 brew readline
@@ -237,9 +244,11 @@ tap homebrew/cask
 cask 1password
 cask adoptopenjdk
 cask alfred
+cask android-studio
 cask anki
 cask bartender
 cask caffeine
+cask chrysalis
 cask discord
 cask docker
 cask flux
@@ -248,9 +257,9 @@ cask gitkraken
 cask gitter
 cask google-chrome
 cask handbrake
-cask hyper
 cask intellij-idea-ce
 cask istat-menus
+cask iterm2
 cask launchcontrol
 cask loopback
 cask macdown
@@ -271,27 +280,22 @@ cask whatsapp
 cask xquartz
 cask ytmdesktop-youtube-music
 
+tap d12frosted/emacs-plus
+brew emacs-plus@27
+
 tap mas-cli/tap
 
 tap rcmdnk/file
 brew brew-file
 
-# Other Homebrew packages
-brew Warning: Treating postgres as a formula. For the cask use homebrew/cask/postgres
-brew Warning: Treating postgres as a formula. For the cask use homebrew/cask/postgres
-brew android-studio
-brew postgres
-
 # App Store applications
-appstore 1287445660 Agenda (11.0.1)
-appstore 1055511498 Day One (5.3)
+appstore 682658836 GarageBand (10.3.5)
+appstore 939343785 Icon Set Creator (1.1.12)
 appstore 408981434 iMovie (10.1.16)
 appstore 409183694 Keynote (10.2)
-appstore 620249105 LaunchD Task Scheduler (1.0.6)
-appstore 441258766 Magnet (2.4.8)
-appstore 1480068668 Messenger (63.3.112)
-appstore 736189492 Notability (4.4.1)
+appstore 419330170 Moom (3.2.17)
 appstore 409203825 Numbers (10.2)
 appstore 409201541 Pages (10.2)
 appstore 904280696 Things (3.13)
-appstore 497799835 Xcode (12.0.1)
+appstore 1384080005 Tweetbot (3.4.3)
+appstore 497799835 Xcode (12.1)

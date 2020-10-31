@@ -1,26 +1,3 @@
-- defaults:
-    link:
-      force: true
-      relink: true
-      create: true
-      glob: true
-    clean:
-      force: true
-    shell:
-      stdin: true
-      stdout: true
-      stderr: true
-
-- clean:
-    - "~"
-    - "~/Code"
-    - "~/Pictures"
-    - "~/Documents"
-
-- create:
-    - "~/Code"
-    - "~/Pictures/screenshots/"
-
 - link:
     ~/.alfred: home/.alfred
     ~/.aliases: home/.aliases
@@ -28,6 +5,7 @@
     ~/.bash_profile: home/.bash_profile
     ~/.bashrc: home/.bashrc
     ~/.Brewfile: home/.Brewfile
+    ~/.condarc: home/.condarc
     ~/.conda-env: home/.conda-env
     ~/.config/nvim/init.vim: home/.config/nvim/init.vim
     ~/.ghqrepos: home/.ghqrepos
@@ -43,7 +21,6 @@
     ~/.vim_runtime: home/.vim_runtime
     ~/.vim_snippets: home/.vim_snippets
     ~/.vimrc: home/.vimrc
-    ~/.work: work
     ~/.zaliases: home/.zaliases
     ~/.zcompletions: home/.zcompletions
     ~/.zlogin: home/.zlogin
@@ -56,41 +33,12 @@
     - home/.Brewfile
 
 - shell:
-    - shell: sh scripts/github-ssh.sh
-      if:
+    - sh scripts/aesthetic.sh
     - sh scripts/macos.sh
-    - sh scripts/dock.sh
-    - sh scripts/vundle.sh
     - sh scripts/oh-my-zsh.sh
-    - sh scripts/google-drive.sh
+    - sh scripts/virtualenvs.sh
+    - sh scripts/vundle.sh
     - cp home/.launch_agents/*.plist ~/Library/LaunchAgents/
-
-- conda-env:
-    - "~/.conda-env/data-science.yml"
-    - "~/.conda-env/geography.yml"
-    - "~/.conda-env/numerics.yml"
-    - "~/.conda-env/pyspark.yml"
-
-- hyper:
-    - hypercwd
-    - hyperlinks
-    - hyper-startup
-    - hyper-alt-click
-    - hyper-search
-    - hyper-match
-    - hyper-transparent
-    - hyper-tab-touchbar
-    - hyperterm-visor
-    - hyperlayout
-
-- vscode:
-    - "EditorConfig.EditorConfig"
-    - "ms-python.python"
-    - "dbaeumer.vscode-eslint"
-    - "ms-vscode.cpptools"
-    - "visualstudioexptteam.vscodeintellicode"
-    - "eamodio.gitlens"
-    - "esbenp.prettier-vscode"
 
 - ghqfile:
     - file: home/.ghqrepos

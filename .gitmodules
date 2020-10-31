@@ -1,12 +1,6 @@
 [submodule "tooling/dotbot"]
 	path = tooling/dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "tooling/dotbot-hyper"]
-	path = tooling/dotbot-hyper
-	url = https://github.com/quinnwinters/dotbot-hyper
-[submodule "tooling/dotbot-conda"]
-	path = tooling/dotbot-conda
-	url = https://github.com/quinnwinters/dotbot-conda
 [submodule "tooling/dotbot-ghq"]
 	path = tooling/dotbot-ghq
 	url = https://github.com/klane/dotbot-ghq

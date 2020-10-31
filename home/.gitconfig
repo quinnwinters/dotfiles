@@ -63,7 +63,7 @@
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
 
 [user]
-    name = Quinn Winters
+  name = Quinn Winters
 	email = email@quinnwinters.dev
 
 [ghq]
@@ -78,3 +78,5 @@
 	required = true
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true

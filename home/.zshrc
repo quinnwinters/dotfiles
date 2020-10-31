@@ -9,6 +9,38 @@ DISABLE_UPDATE_PROMPT="true"
 HIST_STAMPS="yyyy-mm-dd"
 plugins=( git )
 
+SPACESHIP_PROMPT_ORDER=(
+  user
+  host
+  dir
+  exit_code
+  char
+)
+
+SPACESHIP_RPROMPT_ORDER=(
+  time
+  git
+  node
+  venv
+  pyenv
+  conda
+  docker
+)
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_USER_SHOW=needed
+SPACESHIP_HOST_PREFIX="@ "
+SPACESHIP_DIR_PREFIX=""
+SPACESHIP_GIT_SYMBOL="• "
+SPACESHIP_NODE_SYMBOL="node.js "
+SPACESHIP_DOCKER_SYMBOL="docker "
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_CONDA_SYMBOL="conda "
+SPACESHIP_PYENV_SYMBOL="py "
+SPACESHIP_VENV_SYMBOL="venv "
+
+
 source ~/.bashrc
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
@@ -38,19 +70,3 @@ function up() {
     cd $CDSTR
   fi
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-#
