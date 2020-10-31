@@ -43,4 +43,3 @@
 - ghqfile:
     - file: home/.ghqrepos
       flags: [-p, --silent, --update]
-
