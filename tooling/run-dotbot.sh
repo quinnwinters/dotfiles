@@ -19,4 +19,4 @@ echo "[DOTFILES] Running dotbot cli"
   -d "$DOT_DIR" \
   --plugin-dir tooling/dotbot-brew \
   --plugin-dir tooling/dotbot-ghq \
- "${@}"
+  "${@}"
