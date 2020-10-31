@@ -14,9 +14,9 @@ git -C "$DOTBOT_MODULE_DIR" submodule sync --quiet --recursive
 git submodule update --init --recursive "$DOTBOT_MODULE_DIR"
 
 echo "[DOTFILES] Running dotbot cli"
-$DOT_DIR/tooling/dotbot/bin/dotbot \
+"$DOT_DIR"/tooling/dotbot/bin/dotbot \
   --verbose \
   -d "$DOT_DIR" \
   --plugin-dir tooling/dotbot-brew \
   --plugin-dir tooling/dotbot-ghq \
- "${@}"
+  "${@}"
