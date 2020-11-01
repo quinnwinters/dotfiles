@@ -1,7 +1,6 @@
 #!/bin/bash
 
-osascript -e "tell application 'Finder' to set desktop picture to POSIX file '$DOT_DIR/media/wallpaper-1.jpg'"
-
+osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$DOT_DIR/media/wallpaper-1.jpg\""
 defaults write com.apple.dock persistent-apps -array
 
 ##################################################################################################
@@ -78,6 +77,8 @@ HELPER_add_blankspaces_to_doc
 HELPER_add_external_user_app_to_doc "Anki"
 HELPER_add_external_user_app_to_doc "Things3"
 HELPER_add_external_user_app_to_doc "Google Chrome"
+HELPER_add_external_user_app_to_doc "Boxy for Gmail"
+HELPER_add_external_user_app_to_doc "Boxy for Calendar"
 HELPER_add_external_user_app_to_doc "WhatsApp"
 HELPER_add_apple_default_app_to_doc "Messages"
 HELPER_add_external_user_app_to_doc "Messenger"
@@ -85,7 +86,7 @@ HELPER_add_blankspaces_to_doc
 
 # Coding applications
 HELPER_add_external_user_app_to_doc "Docker"
-HELPER_add_external_user_app_to_doc "Hyper"
+HELPER_add_external_user_app_to_doc "iTerm"
 HELPER_add_external_user_app_to_doc "Visual Studio Code"
 HELPER_add_external_user_app_to_doc "IntelliJ IDEA CE"
 HELPER_add_external_user_app_to_doc "PyCharm CE"

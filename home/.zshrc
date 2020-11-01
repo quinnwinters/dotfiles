@@ -40,12 +40,23 @@ SPACESHIP_CONDA_SYMBOL="conda "
 SPACESHIP_PYENV_SYMBOL="py "
 SPACESHIP_VENV_SYMBOL="venv "
 
+if [[ ! -d $HOME/.venv ]] ; then
+  mkdir -p $HOME/.venv
+fi
 
-source ~/.bashrc
+if [[ ! -d $HOME/.venv/base ]] ; then
+  pythbin=$(which python)
+  pyloc=$(dirname pythbin)
+  $pyloc/pip install virtualenv
+  $pyloc/python virtualenv ~/.venv/base
+fi
+
+source $HOME/.venv/base/bin/activate
+source $HOME/.bashrc
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
-source ~/.zaliases
-source ~/.zcompletions
+source $HOME/.zaliases
+source $HOME/.zcompletions
 
 # the idea here is that other directories can specify aliases that you might
 # what for specific programs, independently add them to this aliases directory
