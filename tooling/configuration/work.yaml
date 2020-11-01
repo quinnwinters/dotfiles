@@ -12,17 +12,15 @@
     ~/.gitconfig: home/.gitconfig
     ~/.github_app_defaults: home/.github_app_defaults
     ~/.gitignore: home/.ignore
-    ~/.hyper.js: home/.hyper.js
-    ~/.hyperlayout: home/.hyperlayout
     ~/.mackup.cfg: home/.mackup.cfg
     ~/.ssh/config: home/.ssh/config
     ~/.tmux.conf: home/.tmux.cfg
     ~/.tex_templates: home/.tex_templates
+    ~/.venv_defs: home/.venv_defs
     ~/.vim_runtime: home/.vim_runtime
     ~/.vim_snippets: home/.vim_snippets
     ~/.vimrc: home/.vimrc
     ~/.work: work
-    ~/.venvs: home/.venvs
     ~/.zaliases: home/.zaliases
     ~/.zcompletions: home/.zcompletions
     ~/.zlogin: home/.zlogin

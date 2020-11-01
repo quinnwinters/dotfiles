@@ -172,6 +172,8 @@ brew postgresql@10
 brew proj
 brew protobuf
 brew pyenv
+brew pyenv-virtualenv
+brew pyenv-virtualenvwrapper
 brew pyqt
 brew python@3.8
 brew python@3.9
