@@ -46,12 +46,13 @@ fi
 
 if [[ ! -d $HOME/.venv/base ]] ; then
   pythbin=$(which python)
-  pyloc=$(dirname pythbin)
-  $pyloc/pip install virtualenv
-  $pyloc/python virtualenv ~/.venv/base
+  pyloc=$(dirname $pythbin)
+  $pyloc/pip3 install virtualenv
+  $pyloc/python3 -m virtualenv ~/.venv/base
 fi
 
 source $HOME/.venv/base/bin/activate
+source $HOME/.bash_profile
 source $HOME/.bashrc
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
