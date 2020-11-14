@@ -245,45 +245,19 @@ tap homebrew/cask-versions
 tap homebrew/cask
 cask 1password
 cask adoptopenjdk
-cask alfred
-cask android-studio
-cask anki
-cask bartender
 cask caffeine
-cask chrysalis
-cask discord
-cask docker
 cask flux
-cask freedom
-cask gitkraken
-cask gitter
-cask google-chrome
-cask handbrake
-cask intellij-idea-ce
-cask istat-menus
 cask iterm2
 cask launchcontrol
 cask loopback
-cask macdown
 cask mactex
 cask miniconda
-cask notion
-cask openoffice
 cask podcastmenu
-cask pycharm-ce
-cask skim
-cask skype
-cask slack
-cask steam
-cask texstudio
 cask visual-studio-code
 cask vlc
 cask whatsapp
 cask xquartz
 cask ytmdesktop-youtube-music
-
-tap d12frosted/emacs-plus
-brew emacs-plus@27
 
 tap mas-cli/tap
 
@@ -291,13 +265,9 @@ tap rcmdnk/file
 brew brew-file
 
 # App Store applications
-appstore 682658836 GarageBand (10.3.5)
-appstore 939343785 Icon Set Creator (1.1.12)
+appstore 1287445660 Agenda. (11.2.1)
 appstore 408981434 iMovie (10.1.16)
-appstore 409183694 Keynote (10.2)
 appstore 419330170 Moom (3.2.17)
-appstore 409203825 Numbers (10.2)
-appstore 409201541 Pages (10.2)
 appstore 904280696 Things (3.13)
 appstore 1384080005 Tweetbot (3.4.3)
 appstore 497799835 Xcode (12.1)

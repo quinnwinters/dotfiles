@@ -1,4 +1,5 @@
 alias master="git checkout master && git pull"
+alias main="git checkout main && git pull"
 alias develop="git checkout develop && git pull"
 alias branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias cleanBranches="git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
