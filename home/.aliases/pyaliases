@@ -1,4 +1,3 @@
-alias pycharm="open -na \"PyCharm CE.app\" --args \"$@\""
 function py() {
     source $HOME/.venv/$@/bin/activate
 }

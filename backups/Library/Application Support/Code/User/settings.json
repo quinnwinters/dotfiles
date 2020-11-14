@@ -1,5 +1,4 @@
 {
-  "terminal.integrated.scrollback": 1e16,
   "workbench.editor.enablePreview": false,
   "cortex-debug.armToolchainPath": "/Users/quinnwinters/gcc-arm-none-eabi-9-2019-q4-major/bin",
   "editor.suggestSelection": "first",
@@ -16,8 +15,6 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "git.autofetch": true,
-  "terminal.integrated.inheritEnv": false,
   "debug.onTaskErrors": "abort",
-  "terminal.integrated.shell.osx": "/bin/zsh",
   "explorer.confirmDelete": false
 }

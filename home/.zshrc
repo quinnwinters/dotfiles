@@ -40,6 +40,7 @@ SPACESHIP_CONDA_SYMBOL="conda "
 SPACESHIP_PYENV_SYMBOL="py "
 SPACESHIP_VENV_SYMBOL="venv "
 
+<<<<<<< HEAD
 if [[ ! -d $HOME/.venv ]] ; then
   mkdir -p $HOME/.venv
 fi
@@ -53,6 +54,20 @@ fi
 
 source $HOME/.venv/base/bin/activate
 source $HOME/.bash_profile
+=======
+if [[ ! -d $HOME/.venv ]] ; then
+  mkdir -p $HOME/.venv
+fi
+
+if [[ ! -d $HOME/.venv/base ]] ; then
+  pythbin=$(which python)
+  pyloc=$(dirname pythbin)
+  $pyloc/pip install virtualenv
+  $pyloc/python virtualenv ~/.venv/base
+fi
+
+source $HOME/.venv/base/bin/activate
+>>>>>>> d4c6529... feat: adding a base python environment + new apps
 source $HOME/.bashrc
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
@@ -82,3 +97,8 @@ function up() {
     cd $CDSTR
   fi
 }
+
+# Source work specific information which should be added on work computers only in the work/ folder
+if [[ -d ~/.work/sourceable ]] ; then
+  for f in ~/.work/sourceable/* ; do source $f ; done
+fi

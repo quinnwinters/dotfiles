@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Alfred ghq</name>
-  <version>1.0</version>
-  <bundle>com.jackchuka.ghq</bundle>
-  <updated>1596070989</updated>
-  <file>ghq.alfredworkflow</file>
-</workflow>
