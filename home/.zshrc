@@ -55,16 +55,16 @@ fi
 source $HOME/.venv/base/bin/activate
 source $HOME/.bash_profile
 =======
-if [[ ! -d $HOME/.venv ]] ; then 
+if [[ ! -d $HOME/.venv ]] ; then
   mkdir -p $HOME/.venv
 fi
 
-if [[ ! -d $HOME/.venv/base ]] ; then 
+if [[ ! -d $HOME/.venv/base ]] ; then
   pythbin=$(which python)
   pyloc=$(dirname pythbin)
   $pyloc/pip install virtualenv
   $pyloc/python virtualenv ~/.venv/base
-fi 
+fi
 
 source $HOME/.venv/base/bin/activate
 >>>>>>> d4c6529... feat: adding a base python environment + new apps
@@ -102,4 +102,3 @@ function up() {
 if [[ -d ~/.work/sourceable ]] ; then
   for f in ~/.work/sourceable/* ; do source $f ; done
 fi
-
