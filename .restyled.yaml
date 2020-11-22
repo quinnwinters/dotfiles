@@ -1,8 +1,2 @@
 commit_template: "style: Restyled by ${restyler.name}"
-exclude:
-  - "install"
-  - "backup/**/*"
-  - "**/*.patch"
-  - "**/node_modules/**/*"
-  - "**/vendor/**/*"
-  - ".github/workflows/**/*"
+
