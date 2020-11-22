@@ -1,0 +1,132 @@
+" ========================================================= "
+" |     Vundle Plugin Install                             | "
+" ========================================================= "
+
+" Setup Vundle
+set nocompatible
+set rtp+=~/.vim/bundle/Vundle.vim
+
+" Install Plugins
+call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'editorconfig/editorconfig-vim'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'valloric/youcompleteme'
+    Plugin 'preservim/nerdcommenter'
+    Plugin 'preservim/nerdtree'
+    Plugin 'vim-syntastic/syntastic'
+call vundle#end()
+
+" ========================================================= "
+" |     Basic Editing Settings                            | "
+" ========================================================= "
+
+" Editing Settings
+set number
+set showmatch
+set colorcolumn=100
+set ruler
+set nowrap
+set autoread
+set expandtab
+set updatetime=100
+set signcolumn=yes
+
+" Git Gutter Visual Cues 
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = 'm'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '-'
+let g:gitgutter_sign_removed_above_and_below = '-'
+let g:gitgutter_sign_modified_removed = '-'
+
+" Airline
+let g:airline_statusline_ontop=1
+"   Straight tab differentiators
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" YouCompleteMe
+let g:ycm_complete_in_strings = 0
+let g:ycm_complete_in_comments = 0
+"   JAVA 
+let g:syntastic_java_checkers = []
+let g:EclimFileTypeValidate = 0
+
+" File Settings
+set nobackup
+set noswapfile
+
+" Search Settings
+set hlsearch
+set ignorecase
+set incsearch
+
+" ========================================================= "
+" |     Navigation shortcuts                              | "
+" ========================================================= "
+
+" Basic shortcuts
+nnoremap U <C-r>
+
+" Ctrl-based shortcuts
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Leader-based shortcuts
+let mapleader = ";"
+map <leader>w :w!<cr>
+map <leader>wq :wqa!<cr>
+map <leader>q :qa!<cr>
+
+"       Git (Fugitive+Git Gutter) shortcuts
+map <leader>g :Git
+map <leader>gdf :Gdiffsplit<cr>
+map <leader>ggr :Glgrep
+map <leader>gdflines :GitGutterLineHighlightsToggle<cr>
+map <leader>gs <Plug>(GitGutterStageHunk)
+map <leader>gu <Plug>(GitGutterUndoHunk)
+
+"       Find and replace with * or # and r 
+vnoremap <silent> <leader>* :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> <leader># :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
+"       NERD Commenter Settings
+let g:NERDCreateDefaultMappings = 0 
+map <leader>/ :NERDCommenterToggle
+
+"       NERD Tree Settings
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+map <leader>t :NERDTreeToggle<cr>
+let g:NERDTreeDirArrowExpandable = '>'
+let g:NERDTreeDirArrowCollapsible = 'v'
+
+" Strip trailing whitespace (;ss)
+function! StripWhitespace()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	:%s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+" Save a file as root (,W)
+noremap <leader>W :w !sudo tee % > /dev/null<CR>
+
+" Automatic commands
+if has("autocmd")
+	" Enable file type detection
+	filetype on
+	" Treat .json files as .js
+	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+	" Treat .md files as Markdown
+	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+endif

@@ -1,0 +1,110 @@
+# ========================================================= "
+# |     Core ZSH Settings                                 | "
+# ========================================================= "
+export VISUAL=nvim
+export EDITOR=$VISUAL
+export GIT_EDITOR=$VISUAL
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' insert-tab pending
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# ========================================================= "
+# |    Prompt                                             | "
+# ========================================================= "
+SPACESHIP_PROMPT_ORDER=(
+  user
+  host
+  dir
+  exit_code
+  char
+)
+
+SPACESHIP_RPROMPT_ORDER=(
+  time
+  git
+  node
+  venv
+  pyenv
+  conda
+  docker
+)
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_USER_SHOW=needed
+SPACESHIP_HOST_PREFIX="@ "
+SPACESHIP_DIR_PREFIX=""
+SPACESHIP_GIT_SYMBOL="git "
+SPACESHIP_GIT_STATUS_RENAMED="Mod"
+SPACESHIP_GIT_STATUS_MODIFIED="Mod"
+SPACESHIP_GIT_STATUS_DELETED="Del"
+SPACESHIP_GIT_STATUS_AHEAD="+"
+SPACESHIP_GIT_STATUS_BEHIND="-"
+SPACESHIP_GIT_STATUS_DIVERGED="+/-"
+SPACESHIP_NODE_SYMBOL="node.js "
+SPACESHIP_DOCKER_SYMBOL="docker "
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_CONDA_SYMBOL="conda "
+SPACESHIP_PYENV_SYMBOL="py "
+SPACESHIP_VENV_SYMBOL="venv "
+
+autoload -U promptinit; promptinit
+prompt spaceship
+
+# ========================================================= "
+# |    Aliases                                            | "
+# ========================================================= "
+# Basic aliases
+alias e='nvim'
+alias v='nvim'
+alias vim='nvim'
+alias l='exa --long --header --git --group-directories-first' 
+alias ls='l'
+alias sl='ls'
+alias move='rsync --archive --compress-level=3 --copy-links --partial --inplace --progress --rsh=ssh -r'
+alias free='df -h'
+alias used='du -h -d 2'
+alias reload="exec $SHELL -l"
+alias path='echo -e ${PATH//:/\\n}'
+alias isoTime='date +"%H:%M:%SZ"'
+alias isoTimestamp='date +"%Y-%m-%dT%H:%M:%SZ"'
+alias isoDate='date +"%Y-%m-%d"'
+
+# Piping Aliases
+alias alertMe='notify-send --urgency=low -i "([?=0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+alias alert='| alertMe'
+alias gr='| grep -i --color=auto'
+alias h='| head'
+alias hn='| head -n'
+alias h5='| head -n 5'
+alias h10='| head -n 10'
+alias t='| tail'
+alias tf='| tail -f'
+alias tn='| tail -n'
+alias t5='| tail -n 5'
+alias t10='| tail -n 10'
+alias s='| sort'
+alias u='| uniq -c'
+alias c='| pbcopy'
+
+# Git aliases
+alias g='git'
+alias gaa='git add -u'
+function HELPER_ghq_and_update_ghqfile() {
+    ghq $@ 
+    { ghq list ; cat $DOT_DIR/home/.ghqrepos } | sort | uniq -u > $DOT_DIR/home/.ghqrepos
+}
+alias gh=HELPER_ghq_and_update_ghqfile
+alias gp="g gp"
+alias gl="g gl"
+alias gco="git checkout"
+
+
+# TMUX aliases 
+alias sshTmux="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
+alias tls='tmux choose-tree -Zw'
+

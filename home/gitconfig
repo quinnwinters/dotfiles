@@ -1,0 +1,68 @@
+# ========================================================= #
+# |     BASIC SETTINGS                                    | #
+# ========================================================= #
+[user]
+  name = Quinn Winters
+	email = email@quinnwinters.dev
+
+[core]
+  excludesfile = ~/.gitignore
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[apply]
+  whitespace = fix
+
+[init]
+	defaultBranch = main
+
+# ========================================================= #
+# |     COLORS FOR BETTER FORMATTING                      | #
+# ========================================================= #
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+# ========================================================= #
+# |     CORE SHORTCUTS                                    | #
+# ========================================================= #
+[alias]
+  l = !"git log --pretty=oneline -n 20 --graph --abbrev-commit"
+  s = !"git status -s"
+
+  gl = !"git pull --recurse-submodules"
+  gp = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+
+  df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+  feat = !"git commit -m \"feat: {$@}\""
+  fix = !"git commit -m \"fix: $@\""
+  style = !"git commit -m \"style: $@\""
+  refactor = !"git commit -m \"refactor: $@\""
+  cfeat = !"git commit -m \"feat($1): $@{1:}\""
+  cfix = !"git commit -m \"fix($1): $@{1:}\""
+  cstyle = !"git commit -m \"style($1): $@{1:}\""
+  crefactor = !"git commit -m \"refactor($1): $@{1:}\""
+
+[ghq]
+    root = ~/Code
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
