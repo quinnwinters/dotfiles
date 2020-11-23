@@ -35,7 +35,7 @@ set expandtab
 set updatetime=100
 set signcolumn=yes
 
-" Git Gutter Visual Cues 
+" Git Gutter Visual Cues
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = 'm'
 let g:gitgutter_sign_removed = '-'
@@ -52,7 +52,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " YouCompleteMe
 let g:ycm_complete_in_strings = 0
 let g:ycm_complete_in_comments = 0
-"   JAVA 
+"   JAVA
 let g:syntastic_java_checkers = []
 let g:EclimFileTypeValidate = 0
 
@@ -92,13 +92,13 @@ map <leader>gdflines :GitGutterLineHighlightsToggle<cr>
 map <leader>gs <Plug>(GitGutterStageHunk)
 map <leader>gu <Plug>(GitGutterUndoHunk)
 
-"       Find and replace with * or # and r 
+"       Find and replace with * or # and r
 vnoremap <silent> <leader>* :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> <leader># :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 "       NERD Commenter Settings
-let g:NERDCreateDefaultMappings = 0 
+let g:NERDCreateDefaultMappings = 0
 map <leader>/ :NERDCommenterToggle
 
 "       NERD Tree Settings
