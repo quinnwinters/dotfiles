@@ -1,9 +1,0 @@
-[submodule "tooling/dotbot"]
-	path = tooling/dotbot
-	url = https://github.com/anishathalye/dotbot
-[submodule "tooling/dotbot-ghq"]
-	path = tooling/dotbot-ghq
-	url = https://github.com/klane/dotbot-ghq
-[submodule "tooling/dotbot-brew"]
-	path = tooling/dotbot-brew
-	url = https://github.com/d12frosted/dotbot-brew
