@@ -1,14 +1,12 @@
-#!/bin/sh 
+#!/bin/sh
 export DOT_DIR="$PWD"
-
 
 # ========================================================= #
 # |     RUN ONE TIME SCRIPTS                              | #
 # ========================================================= #
-if [[ $* == *--fresh-install* ]] ; then 
-    for script in ./scripts/fresh-install/* ; do sh "$script" ; done
+if [[ $* == *--fresh-install* ]]; then
+  for script in ./scripts/fresh-install/*; do sh "$script"; done
 fi
-
 
 # ========================================================= #
 # |     SETUP HOME CONFIGS                                | #
@@ -28,16 +26,16 @@ ln "$DOT_DIR"/home/zshrc "$HOME"/.zshrc
 # ========================================================= #
 # |     INSTALL REQUIRED TOOLS                            | #
 # ========================================================= #
-if [[ ! $* == *--skip-brew* ]] ; then 
-    brew update 
-    brew upgrade
-    brew-file install -f ./home/brewfile
-    brew cleanup
-fi 
+if [[ ! $* == *--skip-brew* ]]; then
+  brew update
+  brew upgrade
+  brew-file install -f ./home/brewfile
+  brew cleanup
+fi
 
 # ========================================================= #
 # |     RUN REGULAR SCRIPTS                               | #
 # ========================================================= #
-if [[ ! $* == *--skip-scripts* ]] ; then 
-    for script in ./scripts/refreshable/* ; do sh "$script" ; done 
-fi 
+if [[ ! $* == *--skip-scripts* ]]; then
+  for script in ./scripts/refreshable/*; do sh "$script"; done
+fi

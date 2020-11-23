@@ -4,8 +4,11 @@ osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
 sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
 
 # ========================================================= #
 # |     UI/UX Settings                                    | #
@@ -21,7 +24,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
-
 # ========================================================= #
 # |     Coding Setting Modifications                      | #
 # ========================================================= #
@@ -30,7 +32,6 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
 
 # ========================================================= #
 # |     Basic Aesthetics                                  | #
@@ -51,7 +52,6 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
-
 # ========================================================= #
 # |     Sleep and Screen Lock Settings                    | #
 # ========================================================= #
@@ -68,7 +68,6 @@ sudo touch /private/var/vm/sleepimage
 sudo chflags uchg /private/var/vm/sleepimage
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
-
 
 # ========================================================= #
 # |    Screenshot settings                                | #
