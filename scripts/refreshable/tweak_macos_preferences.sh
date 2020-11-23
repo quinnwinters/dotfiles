@@ -37,9 +37,9 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # ========================================================= #
 # sudo rm -f /System/Library/CoreServices/DefaultBackground.jpg
 # sudo ln -s $DOT_DIR/media/wallpaper-1.jpg /System/Library/CoreServices/DefaultBackground.jpg
-location=$(realpath $DOT_DIR/media/wallpaper-1.jpg)
+location=$(realpath "$DOT_DIR"/media/wallpaper-1.jpg)
 command="tell application \"Finder\" to set desktop picture to POSIX file \"$location\""
-osascript -e $command
+osascript -e "$command"
 
 # ========================================================= #
 # |     Interantionalization Settings                     | #
@@ -73,7 +73,7 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # ========================================================= #
 # |    Screenshot settings                                | #
 # ========================================================= #
-mkdir -p $HOME/Pictures/screenshots
+mkdir -p "$HOME"/Pictures/screenshots
 defaults write com.apple.screencapture location -string "~/Pictures/screenshots"
 defaults write com.apple.screencapture type -string "png"
 defaults write com.apple.screencapture disable-shadow -bool true
