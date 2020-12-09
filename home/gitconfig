@@ -49,6 +49,8 @@
 
   df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
+  ch = !"history | grep -i '(git commit|g feat|g fix|g style|g refactor|g cfeat|g cfix|g cstyle|g crefactor)'"
+
   feat = !"git commit -m \"feat: {$@}\""
   fix = !"git commit -m \"fix: $@\""
   style = !"git commit -m \"style: $@\""
