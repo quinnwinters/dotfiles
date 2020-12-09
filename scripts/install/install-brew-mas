@@ -1,0 +1,39 @@
+#!/bin/sh
+
+applications=(
+    "Microsoft OneNote"
+    "Microsoft Word"
+    "Microsoft Excel"
+    "Microsoft PowerPoint"
+    "Microsoft OneDrive"
+    "Pages"
+    "Keynote"
+    "Numbers"
+    "Things 3"
+    "Tweetbot"
+    "iMovie"
+    "Garage Band"
+)
+
+
+header """WARNING - Mac Application Store Installation
+About to install the following application using the mas cli (https://github.com/mas-cli/mas).
+Installations will be done using the 'lucky' feature, which means that the first result will be
+installed. The following applications will be installed:
+
+Applications: $applications
+
+If you have not setup iCloud/purchases, you might want to skip this step
+"""
+
+echo "Install applications from mac app store?"
+select yn in "Yes" "No"
+if [[ $yn == "Yes" ]] ; then 
+    brew install mas
+    mas upgrade
+    for application in $applications ; do 
+        mas lucky $application
+    done
+else 
+    echo "Skipping Mac Application Store Installs"
+fi

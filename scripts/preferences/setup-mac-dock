@@ -1,0 +1,51 @@
+#!/bin/bash
+
+osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$DOT_DIR/media/wallpaper-1.jpg\""
+defaults write com.apple.dock persistent-apps -array
+
+function HELPER_add_apple_default_app_to_dock() {
+  wait
+  defaults write com.apple.dock persistent-apps -array-add "
+        <dict>
+            <key>tile-data</key>
+            <dict>
+                <key>file-data</key>
+                <dict>
+                    <key>_CFURLString</key>
+                    <string>/System/Applications/$1.app</string>
+                    <key>_CFURLStringType</key>
+                    <integer>0</integer>
+                </dict>
+            </dict>
+        </dict>"
+}
+
+function HELPER_add_external_user_app_to_dock() {
+  wait
+  defaults write com.apple.dock persistent-apps -array-add "
+        <dict>
+            <key>tile-data</key>
+            <dict>
+                <key>file-data</key>
+                <dict>
+                    <key>_CFURLString</key>
+                    <string>/Applications/$1.app</string>
+                    <key>_CFURLStringType</key>
+                    <integer>0</integer>
+                </dict>
+            </dict>
+        </dict>"
+}
+
+# Apple default utilities
+HELPER_add_external_user_app_to_dock "1Password 7"
+HELPER_add_external_user_app_to_dock "Things 3"
+HELPER_add_external_user_app_to_dock "Microsoft OneNote"
+HELPER_add_external_user_app_to_dock "Microsoft Outlook"
+HELPER_add_apple_default_app_to_dock "Safari"
+HELPER_add_external_user_app_to_dock "WhatsApp"
+HELPER_add_apple_default_app_to_dock "Podcasts"
+HELPER_add_apple_default_app_to_dock "Preview"
+HELPER_add_external_user_app_to_dock "iTerm2"
+
+killall Dock
