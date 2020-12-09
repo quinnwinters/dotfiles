@@ -17,6 +17,7 @@ ln "$DOT_DIR"/home/editorconfig "$HOME"/.editorconfig
 ln "$DOT_DIR"/home/ghqrepos "$HOME"/.ghqrepos
 ln "$DOT_DIR"/home/gitconfig "$HOME"/.gitconfig
 ln "$DOT_DIR"/home/gitignore "$HOME"/.gitignore
+ln "$DOT_DIR"/home/ipython "$HOME"/.ipython
 ln "$DOT_DIR"/home/ssh/config "$HOME"/.ssh/config
 ln "$DOT_DIR"/home/tmux.cfg "$HOME"/.tmux.cfg
 ln "$DOT_DIR"/home/vimrc "$HOME"/.vimrc

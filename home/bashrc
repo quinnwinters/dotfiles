@@ -1,2 +1,3 @@
 export HOMEBREW_BREWFILE=$HOME/.brewfile
 export DOT_DIR=$(find $HOME -type d -name dotfiles)
+export MACPREFS_BACKUP_DIR="$HOME/.backup"

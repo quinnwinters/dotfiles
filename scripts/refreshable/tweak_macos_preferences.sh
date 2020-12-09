@@ -23,6 +23,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+defaults write com.apple.dock autohide-delay -float 1000
 
 # ========================================================= #
 # |     Coding Setting Modifications                      | #
@@ -76,3 +77,5 @@ mkdir -p "$HOME"/Pictures/screenshots
 defaults write com.apple.screencapture location -string "~/Pictures/screenshots"
 defaults write com.apple.screencapture type -string "png"
 defaults write com.apple.screencapture disable-shadow -bool true
+
+killall Dock
