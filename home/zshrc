@@ -12,6 +12,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+if [[ -f "$HOME/.git-completion.bash" ]] ; then 
+    source $HOME/.git-completion.bash
+fi
 
 # ========================================================= "
 # |    Prompt                                             | "
@@ -63,9 +66,11 @@ prompt spaceship
 alias e='nvim'
 alias v='nvim'
 alias vim='nvim'
-alias l='exa --long --header --git --group-directories-first'
-alias ls='l'
+alias ls='ls --lahF --color=auto'
 alias sl='ls'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias sudo='sudo '
 alias move='rsync --archive --compress-level=3 --copy-links --partial --inplace --progress --rsh=ssh -r'
 alias free='df -h'
 alias used='du -h -d 2'
