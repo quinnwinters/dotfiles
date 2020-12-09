@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat $DOT_DIR/home/ghqrepos | ghq get

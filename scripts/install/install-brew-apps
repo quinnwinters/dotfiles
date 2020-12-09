@@ -1,0 +1,34 @@
+#!/bin/sh
+
+brew tap homebrew/core
+
+brew update
+brew upgrade
+
+applications=(
+    awscli
+    coreutils
+    curl
+    findutils
+    ghq
+    gibo
+    grep
+    jq
+    neovim
+    node
+    pyenv
+    pyenv-virtualenv
+    pyenv-virtualenv-wrapper
+    sqlite
+    tmux
+    yarn
+    zsh
+    zsh-completions
+    zsh-syntax-highlighting
+)
+
+for application in $applications ; do 
+    brew install --upgrade --force $application
+done
+
+brew cleanup

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [[ ! ${xcode-select --version} ]] ; then 
+    echo "[DOTFILES] No xcode-select tools found. Running 'sudo xcode-select install' to get xcode-select tools"
+    sudo xcode-select --install
+else 
+    echo "[DOTFILES] Confirmed that xcode-select tools are installed"
+fi
+
+if [[ ! ${brew --version} ]] ; then
+  echo "[DOTFILES] No homebrew found, installing via curl/bash"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  brew install brew-file
+else
+  echo "[DOTFILES] Confirmed that homebrew is installed"
+fi
+
+if [[ ! ${boxes -v} ]] ; then
+  echo "[DOTFILES] Installing boxes, print utility used throughout dotfile scripts"
+fi
+
+export function header() {
+    echo "$@" | boxes -d simple -p a1l2r2
+}
+
+if [[ ! -f "$HOME/.git-completion.bash" ]] ; then 
+    curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > "$HOME/git-completion.bash"
+fi 

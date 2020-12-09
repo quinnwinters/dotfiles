@@ -1,0 +1,40 @@
+#!/bin/sh
+
+brew tap homebrew/cask
+brew tap homebrew/cask-versions
+
+brew update
+brew upgrade
+
+applications=(
+    1password
+    bartender
+    caffeine
+    chrysalis
+    discord
+    docker
+    flux
+    gimp
+    google-chrome
+    handbrake
+    intellij-idea-ce
+    iterm2
+    pycharm-ce
+    skype
+    signal
+    spectacle
+    sqlectron
+    texstudio
+    whatsapp
+    ytmdesktop-youtube-music
+    virtualbox
+    visual-studio-code
+    vlc
+    zoom
+)
+
+for application in $applications ; do 
+    brew install --cask $application
+done
+
+brew cleanup 
