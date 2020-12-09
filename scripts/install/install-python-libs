@@ -1,0 +1,23 @@
+#!/bin/sh
+
+libraries=(
+    pandas
+    numpy
+    scipy
+    sympy
+    matplotlib
+    tensorflow
+    keras
+    sqlalchemy
+    psycopg2
+)
+
+env=$HOME/.virtualenvs/base-python
+if [[ ! -d $env ]] || [[ -! -f $env/bin/activate ]] ; then 
+    virtualenv $env
+fi
+
+for lib in $libraries ; do 
+    $env/bin/pip3 install $lib
+done
+
