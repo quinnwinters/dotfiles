@@ -18,9 +18,9 @@ if [[ -d ~/.vim/bundle/YouCompleteMe ]]; then
   cd "$DOT_DIR"
 fi
 
-if [[ ! -d ~/.config/nvim ]] ; then 
+if [[ ! -d ~/.config/nvim ]] ; then
 	mkdir -p ~/.config/nvim
-fi 
+fi
 
 echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath

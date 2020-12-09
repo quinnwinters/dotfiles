@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ -d /Applications/OneDrive.app ]] ; then 
+if [[ -d /Applications/OneDrive.app ]] ; then
     header """Microsoft OneDrive Sync
 About to setup authentication with Microsoft OneDrive and link folders up. If you
 have already set this up you should skip this step

@@ -27,7 +27,7 @@ applications=(
     zsh-syntax-highlighting
 )
 
-for application in $applications ; do 
+for application in $applications ; do
     brew install --upgrade --force $application
 done
 

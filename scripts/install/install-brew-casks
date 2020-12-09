@@ -33,8 +33,8 @@ applications=(
     zoom
 )
 
-for application in $applications ; do 
+for application in $applications ; do
     brew install --cask $application
 done
 
-brew cleanup 
+brew cleanup

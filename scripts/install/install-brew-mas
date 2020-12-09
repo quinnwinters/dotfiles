@@ -28,12 +28,12 @@ If you have not setup iCloud/purchases, you might want to skip this step
 
 echo "Install applications from mac app store?"
 select yn in "Yes" "No"
-if [[ $yn == "Yes" ]] ; then 
+if [[ $yn == "Yes" ]] ; then
     brew install mas
     mas upgrade
-    for application in $applications ; do 
+    for application in $applications ; do
         mas lucky $application
     done
-else 
+else
     echo "Skipping Mac Application Store Installs"
 fi

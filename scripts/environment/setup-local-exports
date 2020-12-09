@@ -17,8 +17,8 @@ echo "Would you like to manually edit the ~/.bashrc before sourcing it?"
 select yn in "Yes" "No"
 if [[ $yn == "Yes" ]] ; then
     vi ~/.bashrc
-else 
+else
     echo "Skipping manual edits for ~/.bashrc"
-fi 
+fi
 
 source ~/.bashrc

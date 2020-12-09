@@ -13,11 +13,10 @@ libraries=(
 )
 
 env=$HOME/.virtualenvs/base-python
-if [[ ! -d $env ]] || [[ -! -f $env/bin/activate ]] ; then 
+if [[ ! -d $env ]] || [[ -! -f $env/bin/activate ]] ; then
     virtualenv $env
 fi
 
-for lib in $libraries ; do 
+for lib in $libraries ; do
     $env/bin/pip3 install $lib
 done
-
