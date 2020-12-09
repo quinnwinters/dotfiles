@@ -12,7 +12,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [[ -f "$HOME/.git-completion.bash" ]] ; then 
+if [[ -f "$HOME/.git-completion.bash" ]] ; then
     source $HOME/.git-completion.bash
 fi
 
@@ -120,18 +120,18 @@ alias tls='tmux choose-tree -Zw'
 # Code formatter aliases
 function restyle() {
     gitdir="$(git rev-parse --show-toplevel)"
-        
-    if [[ -z ${gitdir+x} ]] ; then 
+
+    if [[ -z ${gitdir+x} ]] ; then
         directory=$gitdir
     else
         directory="$(pwd)"
     fi
 
-    if [[ which prettier ]] ; then  
+    if [[ which prettier ]] ; then
         prettier --write $directory
-    fi 
+    fi
 
-    if [[ which black ]] ; then 
+    if [[ which black ]] ; then
         black $directory
     fi
 }
