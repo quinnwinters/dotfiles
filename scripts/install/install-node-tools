@@ -1,5 +1,5 @@
 #!/bin/sh 
-
+npm install -g prettier
 npm install -g vtop 
 npm install -g commitizen
 npm install -g yo
