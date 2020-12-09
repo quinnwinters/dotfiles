@@ -1,0 +1,23 @@
+########################################################################################################
+#                                                                                                      #
+#  BASHRC SETTINGS                                                                                     #
+#  The ~/.bashrc file gives preferences for bash shell which is used for both interactive and          #
+#  non-interactive modes. Please be judicious when editing and adding to this file because unexepcted  #
+#  name conflicts can easily occur with other scripts that might run non-interactively usin bash       #
+#                                                                                                      #
+########################################################################################################
+
+# Uncomment this to prevent running bash non-interactively
+# [[ $- == *i* ]] || return 
+
+# Uncomment this to check window size after each command and adjust column/line size
+# shopt -s checkwinsize
+
+# Uncomment this to use ** for zero or more directories in glob statements
+# shopt -s globstar
+
+# Uncomment to turn on colored prompts by default
+# force_color_prompt=yes
+
+# Uncomment this line to append to history file instead of overwriting it 
+# shopt -s histappend
