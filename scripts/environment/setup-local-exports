@@ -2,23 +2,26 @@
 
 echo "Setting up ~/.bashrc from template"
 
-# Start with a standard template (currently empty but might change)
-cat ../templates/local_exports_template >> ~/.bashrc
-
 # Add the dot dir export
 dot_dir_repo=$(basename `git rev-parse --show-toplevel`)
 dot_dir_loc=$(find $HOME -type d -name $dot_dir_repo)
+
+# Start with a standard template (currently empty but might change)
+cat $dot_dir_loc/templates/local_exports_template >> ~/.bashrc
 echo "export DOT_DIR=$dot_dir_loc" >> ~/.bashrc
 
 # Add user name
 echo "export MAC_USERNAME=$(whoami)" >> ~/.bashrc
-
 echo "Would you like to manually edit the ~/.bashrc before sourcing it?"
-select yn in "Yes" "No"
-if [[ $yn == "Yes" ]] ; then
-    vi ~/.bashrc
-else 
-    echo "Skipping manual edits for ~/.bashrc"
-fi 
+
+select yn in "Yes" "No" ; do 
+    if [[ $yn == "Yes" ]] ; then
+        vi ~/.bashrc
+        return 
+    else 
+        echo "Skipping manual edits for ~/.bashrc"
+        return 
+    fi 
+done
 
 source ~/.bashrc

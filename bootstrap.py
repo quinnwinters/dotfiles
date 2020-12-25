@@ -12,14 +12,13 @@ class SetupTask:
         self.command = shlex.split("sh ./scripts/" + script_location)
 
     def add_to_parser(self, parser):
-        helper_description = "Use this flag to run: $DOT_DIR/scripts{script_location} (default: {default_value})".format(script_location=script_location, default_value=default_value)
+        helper_description = "Use this flag to run: $DOT_DIR/scripts{script_location} (default: {default_value})".format(script_location=self.script_location, default_value=self.default_value)
         parser.add_argument(
             self.flag,
-            description=helper_description,
             help=helper_description,
             type=bool,
             action="store",
-            default=default_value
+            default=self.default_value
         )
 
     def run(self):
@@ -46,7 +45,7 @@ for task in TASKS:
     task.add_to_parser(parser)
 
 if __name__ == "__main__":
-    args = parser.parse_arguments()
+    args = parser.parse_args()
     for task in TASKS:
         if args[task.flag]:
             task.run()

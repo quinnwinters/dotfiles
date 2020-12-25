@@ -1,5 +1,9 @@
 #!/bin/sh
 
+dot_dir_repo=$(basename `git rev-parse --show-toplevel`)
+dot_dir_loc=$(find $HOME -type d -name $dot_dir_repo)
+
+DOT_DIR=$dot_dir_loc
 ln -sfn "$DOT_DIR"/home/condarc "$HOME"/.condarc
 ln -sfn "$DOT_DIR"/home/editorconfig "$HOME"/.editorconfig
 ln -sfn "$DOT_DIR"/home/ghqrepos "$HOME"/.ghqrepos
