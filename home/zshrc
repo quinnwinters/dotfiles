@@ -84,20 +84,20 @@ alias isoDate='date +"%Y-%m-%d"'
 # Piping Aliases
 alias alertMe='notify-send --urgency=low -i "([?=0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias alert='| alertMe'
-alias gr='| grep -i --color=auto'
-alias h='| head'
-alias hn='| head -n'
-alias h5='| head -n 5'
-alias h10='| head -n 10'
-alias t='| tail'
-alias tf='| tail -f'
-alias tn='| tail -n'
-alias t5='| tail -n 5'
-alias t10='| tail -n 10'
-alias s='| sort'
-alias u='| uniq -c'
-alias c='| pbcopy'
+alias -g alert='| alertMe'
+alias -g gr='| grep -i --color=auto'
+alias -g h='| head'
+alias -g hn='| head -n'
+alias -g h5='| head -n 5'
+alias -g h10='| head -n 10'
+alias -g t='| tail'
+alias -g tf='| tail -f'
+alias -g tn='| tail -n'
+alias -g t5='| tail -n 5'
+alias -g t10='| tail -n 10'
+alias -g s='| sort'
+alias -g u='| uniq -c'
+alias -g c='| pbcopy'
 
 # Git aliases
 alias g='git'
@@ -135,3 +135,18 @@ function restyle() {
         black $directory
     fi
 }
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

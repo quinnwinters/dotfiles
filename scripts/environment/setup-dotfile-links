@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ln -sfn "$DOT_DIR"/home/condarc "$HOME"/.condarc
 ln -sfn "$DOT_DIR"/home/editorconfig "$HOME"/.editorconfig
 ln -sfn "$DOT_DIR"/home/ghqrepos "$HOME"/.ghqrepos
 ln -sfn "$DOT_DIR"/home/gitconfig "$HOME"/.gitconfig

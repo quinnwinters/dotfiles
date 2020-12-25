@@ -9,10 +9,10 @@ class SetupTask:
         self.flag = flag
         self.script_location = script_location
         self.default_value = default_value
-        self.command = shlex.split(f"sh ./scripts/{script_location}")
+        self.command = shlex.split("sh ./scripts/" + script_location)
 
     def add_to_parser(self, parser):
-        helper_description = f"Use this flag to run: $DOT_DIR/scripts{self.script_location} (default: {self.default_value})"
+        helper_description = "Use this flag to run: $DOT_DIR/scripts{script_location} (default: {default_value})".format(script_location=script_location, default_value=default_value)
         parser.add_argument(
             self.flag,
             description=helper_description,

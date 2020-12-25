@@ -8,11 +8,14 @@ brew upgrade
 
 applications=(
     1password
+    alfred
+    anaconda
     bartender
     caffeine
     chrysalis
     discord
     docker
+    dropbox
     flux
     gimp
     google-chrome
