@@ -53,7 +53,9 @@ SPACESHIP_DOCKER_SYMBOL="docker "
 SPACESHIP_AWS_SHOW=false
 SPACESHIP_GCLOUD_SHOW=false
 SPACESHIP_CONDA_SYMBOL="conda "
+SPACESHIP_PYENV_SHOW=false
 SPACESHIP_PYENV_SYMBOL="py "
+SPACESHIP_VENV_SHOW=false
 SPACESHIP_VENV_SYMBOL="venv "
 
 autoload -U promptinit; promptinit
@@ -115,26 +117,8 @@ alias gco="git checkout"
 
 # TMUX aliases
 alias sshTmux="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
+alias sst=sshTmux
 alias tls='tmux choose-tree -Zw'
-
-# Code formatter aliases
-function restyle() {
-    gitdir="$(git rev-parse --show-toplevel)"
-
-    if [[ -z ${gitdir+x} ]] ; then
-        directory=$gitdir
-    else
-        directory="$(pwd)"
-    fi
-
-    if [[ which prettier ]] ; then
-        prettier --write $directory
-    fi
-
-    if [[ which black ]] ; then
-        black $directory
-    fi
-}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

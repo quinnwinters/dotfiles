@@ -39,15 +39,15 @@ function HELPER_add_external_user_app_to_dock() {
 
 # Apple default utilities
 HELPER_add_external_user_app_to_dock "1Password 7"
-HELPER_add_external_user_app_to_dock "Things 3"
+HELPER_add_external_user_app_to_dock "Things3"
 HELPER_add_external_user_app_to_dock "Microsoft OneNote"
 HELPER_add_external_user_app_to_dock "Microsoft Outlook"
-HELPER_add_apple_default_app_to_dock "Safari"
+HELPER_add_external_user_app_to_dock "Safari"
 HELPER_add_external_user_app_to_dock "WhatsApp"
 HELPER_add_apple_default_app_to_dock "Music"
 HELPER_add_apple_default_app_to_dock "Podcasts"
 HELPER_add_apple_default_app_to_dock "Preview"
 HELPER_add_external_user_app_to_dock "Visual Studio Code"
-HELPER_add_external_user_app_to_dock "iTerm2"
+HELPER_add_external_user_app_to_dock "iTerm"
 
 killall Dock

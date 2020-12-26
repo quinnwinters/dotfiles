@@ -15,7 +15,6 @@ done 2>/dev/null &
 #############################################################
 #       UI/UX Settings                                      #
 #############################################################
-sudo nvram SystemAudioVolume#" "
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -35,16 +34,6 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-#############################################################
-#       Basic Aesthetics                                    #
-#############################################################
-
-# sudo rm -f /System/Library/CoreServices/DefaultBackground.jpg
-# sudo ln -s $DOT_DIR/media/wallpaper-1.jpg /System/Library/CoreServices/DefaultBackground.jpg
-location#$(realpath "$DOT_DIR"/media/wallpaper-1.jpg)
-command#"tell application \"Finder\" to set desktop picture to POSIX file \"$location\""
-osascript -e "$command"
 
 #############################################################
 #       Interantionalization Settings                       #
@@ -67,9 +56,6 @@ sudo pmset -b sleep 5
 sudo pmset -a standbydelay 86400
 sudo systemsetup -setcomputersleep Off >/dev/null
 sudo pmset -a hibernatemode 0
-sudo rm /private/var/vm/sleepimage
-sudo touch /private/var/vm/sleepimage
-sudo chflags uchg /private/var/vm/sleepimage
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
