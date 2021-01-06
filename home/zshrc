@@ -1,8 +1,9 @@
 source $HOME/.bashrc
 
-# ========================================================= "
-# |     Core ZSH Settings                                 | "
-# ========================================================= "
+# ========================================================= #
+# |     Core ZSH Settings                                 | #
+# ========================================================= #
+
 export VISUAL=nvim
 export EDITOR=$VISUAL
 export GIT_EDITOR=$VISUAL
@@ -16,9 +17,10 @@ if [[ -f "$HOME/.git-completion.bash" ]] ; then
     source $HOME/.git-completion.bash
 fi
 
-# ========================================================= "
-# |    Prompt                                             | "
-# ========================================================= "
+# ========================================================= #
+# |    Prompt                                             | #
+# ========================================================= #
+
 SPACESHIP_PROMPT_ORDER=(
   user
   host
@@ -61,10 +63,10 @@ SPACESHIP_VENV_SYMBOL="venv "
 autoload -U promptinit; promptinit
 prompt spaceship
 
-# ========================================================= "
-# |    Aliases                                            | "
-# ========================================================= "
-# Basic aliases
+# ========================================================= #
+# |    Basic Aliases                                      | #
+# ========================================================= #
+
 alias e='nvim'
 alias v='nvim'
 alias vim='nvim'
@@ -82,8 +84,135 @@ alias path='echo -e ${PATH//:/\\n}'
 alias isoTime='date +"%H:%M:%SZ"'
 alias isoTimestamp='date +"%Y-%m-%dT%H:%M:%SZ"'
 alias isoDate='date +"%Y-%m-%d"'
+alias diff="colordiff --ignore-space-change -u"
+alias crontab="VIM_CRONTAB=true crontab"
 
-# Piping Aliases
+function clip() {
+    pbcopy < "${@}"
+}
+
+
+# ========================================================= #
+# |    Adv. Navigation Aliases                            | #
+# ========================================================= #
+
+# Given a file, detects what type it is and:
+# 1) cd's to it if it's a directory
+# 2) opens it in Vim if it's a text file
+# 3) throws an error if it's a binary file
+function smart_open {
+    filepath="${1}"
+    if ! [ -e "${filepath}" ]; then
+        echo "Error: No such file at '${filepath}'" >&2
+        return 1
+    fi
+
+    # TODO Handle multiple input files
+    filetype="$(file "${filepath}" | awk '{print $NF}')"
+    return_code=0
+    case "${filetype}" in
+        text)
+            vim "${filepath}"
+            ;;
+        directory)
+            cd "${filepath}"
+            ;;
+        *)
+            # TODO handle PDF & JPG types
+            echo "Error: Unknown filetype '${filetype}'" >&2
+            return_code=1
+            ;;
+    esac
+    return "${return_code}"
+}
+alias o="smart_open"
+
+# Make find not suck, and exclude some sensible defaults
+alias cif="find . ! -name '*.class' -and -iname"
+function fuzzy_find() { 
+    ARGS="${@}"
+    cif "*${ARGS// /*}*"
+}
+function fuzzy_ls() {
+    ARGS="${@}"
+    cif "*${ARGS// /*}*" -maxdepth 1
+}
+alias fl="fuzzy_ls"
+alias ff="fuzzy_find"
+
+# $1 - arguments to pass to ls
+# $2 - function to use to sort ls results (head|tail)
+# $3 - number of results to ask for from head/tail
+function _ls_results {
+    ls "$1" | "$2" -n "$3"
+}
+
+# Returns the __ most-recently-modified files
+function newest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-tr' 'tail' "$NUM_RESULTS"
+}
+alias latest="newest"
+
+# Returns the __ least-recently-modified files
+function oldest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-tr' 'head' "$NUM_RESULTS"
+}
+alias earliest="oldest"
+
+# Returns the __ first files alphabetically from ls
+function first {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '' 'head' "$NUM_RESULTS"
+}
+
+# Returns the __ last files alphabetically from ls
+function last {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '' 'tail' "$NUM_RESULTS"
+}
+
+# Returns the __ biggest files by filesize
+function biggest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-Sr' 'head' "$NUM_RESULTS"
+}
+
+# Returns the __ smallest files by filesize
+function smallest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-Sr' 'tail' "$NUM_RESULTS"
+}
+
+
+# ========================================================= #
+# |    Piping Aliases                                     | #
+# ========================================================= #
 alias alertMe='notify-send --urgency=low -i "([?=0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias -g alert='| alertMe'
@@ -101,24 +230,132 @@ alias -g s='| sort'
 alias -g u='| uniq -c'
 alias -g c='| pbcopy'
 
-# Git aliases
+
+# ========================================================= #
+# |    Git Aliases                                        | #
+# ========================================================= #
 alias g='git'
 alias gaa='git add -u'
-alias gcb='git checkout -b'
+
+# Given a branch name, check it out if it exists or create it 
+# otherwise
+function HELPER_smart_branch_checkout() {
+    local branch="$1"
+    git fetch --all
+    ex_loc=$(git branch --list ${branch})
+    ex_rem=$(git ls-remote --heads origin ${branch})
+    if [[ -z ${ex_loc} ]] ; then 
+        git checkout $branch
+    elif [[ -z ${ex_rem} ]] ; then 
+        git fetch origin $branch 
+        git checkout $branch 
+    else
+        git checkout -b $branch 
+    fi
+}
+
+alias gc='HELPER_smart_branch_checkout'
+alias gco="g checkout"
+alias gcb="g checkout - b"
+alias gp="g gp"
+alias gl="g gl"
+alias gcmsg="g commit -m"
+alias gfeat="g feat"
+alias gfix="g fix"
+alias gref="g refactor"
+alias gdocs="g docs"
+alias gstyle="g style"
+alias gco="git checkout"
+
 function HELPER_ghq_and_update_ghqfile() {
     ghq $@
     { ghq list ; cat $DOT_DIR/home/.ghqrepos } | sort | uniq -u > $DOT_DIR/home/.ghqrepos
 }
 alias gh=HELPER_ghq_and_update_ghqfile
-alias gp="g gp"
-alias gl="g gl"
-alias gco="git checkout"
 
 
-# TMUX aliases
-alias sshTmux="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
-alias sst=sshTmux
-alias tls='tmux choose-tree -Zw'
+# ========================================================= #
+# |    Java/Gradle Aliases                                | #
+# ========================================================= #
+
+# Searches for a gradlew file up the tree and uses it for gradle commands
+# Add 'nocd' as the first argument to run the gradle commands from the directory you're in at the moment
+function gradle_search() {
+    ORIG_DIR="$PWD"
+    while [[ "$PWD" != "/" ]]; do
+        if [[ -f "./gradlew" ]]; then
+            if [[ "$1" == "nocd" ]]; then
+                GRADLE_DIR=$(pwd)
+                cd "$ORIG_DIR"
+                echo "$GRADLE_DIR"/gradlew "${@:2}"
+                "$GRADLE_DIR"/gradlew "${@:2}"
+            else
+                ./gradlew --daemon "$@"
+                cd "$ORIG_DIR"
+            fi
+            return 0
+        else
+            cd ..
+        fi
+    done
+    cd "${ORIG_DIR}"
+    echo "No gradlew file found in any parent directories" >&2
+}
+alias gw="gradle_search"
+
+
+# ========================================================= #
+# |    Tmux Aliases                                       | #
+# ========================================================= #
+function HELPER_smart_activate_switch_or_create_tmux_session() {
+    # if an argument is provided, use it as the sesion name
+    # and then create it detatched and attach to it
+    if [[ $# = 1 ]] ; then 
+        local session_name="$1"
+        tmux has-session -t $session_name 2>/dev/null
+        if [[ $? != 0 ]] ; then 
+            tmux new-session -s $session_name -d
+        fi
+        tmux switch-client -t $session_name || tmux attach -t $session_name
+    elif [[ ! -z "$TMUX" ]] ; then 
+        tmux new-session -A -s main 
+    else
+        tmux choose-tree -Zw || tmux attach -t main
+    fi
+}
+alias t="HELPER_smart_activate_switch_or_create_tmux_session"
+alias ssh="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux' | alertMe"
+
+# Call this script and pass a text file with a list of servers. You will ssh to the servers as the current user.
+# Once connected use Ctrl + a to enter commands
+# de/syncronize panes = Ctrl + a + s
+# Change panes = Ctrl + a + arrow-keys
+# Zoom into pane = Ctrl + a + z
+function parallel_tmux_file() {
+    parallel_tmux $(cat $1)
+}
+
+function parallel_tmux() {
+    tmux new-session -s $(date +"%F_%H-%M-%S") -d
+    count=-1
+    for i in "${@}"; do
+      let count=${count}+1
+      if [ $count -eq 0 ]; then
+        tmux new-window "ssh $i"
+      else
+        tmux split-window -h "ssh $i"
+        tmux select-layout tiled
+      fi
+    done
+    tmux set-window-option synchronize-panes on
+    tmux attach
+}
+alias pt=parallel_tmux
+alias ptf=parallel_tmux_file
+
+# ========================================================= #
+# |    Conda setup                                        | #
+# ========================================================= #
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
