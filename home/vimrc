@@ -1,5 +1,5 @@
 " Vundle plugins
-" Setup Vundle Plugins 
+" Setup Vundle Plugins
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -22,13 +22,13 @@ Plugin 'SirVer/ultisnips' " Install UltiSnips for snippet engine
 Plugin 'honza/vim-snippets' " Vim snippets for Python/Javascript/Scala
 Plugin 'ervandew/supertab' " SuperTab allows both YouCompeleteMe and UltiSnips to be used together
 call vundle#end()
-filetype plugin indent on 
+filetype plugin indent on
 
 " Visual editor settings
 set number " Always show line numbers
 set showmatch " Always show bracket/paren matches
 set colorcolumn=100 " Add a column at char=100 for visual indic of end of line
-set ruler " Show position of cursor at all times 
+set ruler " Show position of cursor at all times
 set nowrap " Do not wrap lines
 set updatetime=100 " Update time
 set signcolumn=yes " Column for diff relative to disk
@@ -41,7 +41,7 @@ set guioptions-=L
 
 " Remove annoying alerts on error
 set novisualbell
-set noerrorbells 
+set noerrorbells
 
 " Whitespace / indentation settings
 set autoindent " Copy indent from current line when making new line
@@ -70,7 +70,7 @@ colorscheme solarized
 
 " File modification settings
 set nobackup " No backups (expected)
-set noswapfile " No swapfiles (everything should be in git anyways) 
+set noswapfile " No swapfiles (everything should be in git anyways)
 set autoread " Automatically read changes made to disk
 set encoding=utf8
 
@@ -112,7 +112,7 @@ endfunction
 
 function! CmdLine(str)
     call feedkeys(":" . a:str)
-endfunction 
+endfunction
 
 " fzf shortcut for searching files
 map <C-space> :Files<cr>
@@ -135,7 +135,7 @@ let g:NERDCompactSexyComs = 1 " Use compact synatx for prettified multi-line com
 let g:NERDDefaultAlign = 'left' " Align line-wise comment delimeters instead of code indentation
 let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
-let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not  
+let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not
 vmap <C-/> :NERDCommenterToggle<cr>
 
 " Tab completition for both YouCompleteMe and UltiSnips (using SuperTab)
