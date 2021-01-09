@@ -12,25 +12,14 @@ applications=(
     anaconda
     bartender
     caffeine
-    chrysalis
-    discord
     docker
     dropbox
-    flux
-    gimp
-    google-chrome
     handbrake
-    intellij-idea-ce
     iterm2
-    pycharm-ce
-    skype
     signal
     spectacle
     sqlectron
-    texstudio
     whatsapp
-    ytmdesktop-youtube-music
-    virtualbox
     visual-studio-code
     vlc
     zoom
