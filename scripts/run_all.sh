@@ -17,4 +17,3 @@ sh ./install/install-vim-plugins
 # Tweak preferences
 sh ./preferences/setup-macos-prefs
 sh ./preferences/setup-mac-dock
-
