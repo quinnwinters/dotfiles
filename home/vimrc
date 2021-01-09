@@ -79,6 +79,11 @@ set wildmenu " tab-complition for command menu
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
+" Vim splitting for panes
+map <C-v> :vsplit<cr>
+map <C-z> :split<cr>
+map <C-n> :tabnew<cr>
+
 " Search settings
 set hlsearch " highlight search results
 set ignorecase " ignore case when searching
@@ -114,16 +119,16 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
 
+" NERD Tree Toggle
+map <C-n> :NERDTreeToggle<cr>
+
 " fzf shortcut for searching files
-map <C-space> :Files<cr>
+map <C-t> :Files<cr>
 
 " lightline status line theme
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
-
-" NERDTree shortcuts
-map <C-t> :NERDTreeToggle<cr>
 
 " Enable indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
