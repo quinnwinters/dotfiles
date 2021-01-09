@@ -119,9 +119,6 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
 
-" NERD Tree Toggle
-map <C-n> :NERDTreeToggle<cr>
-
 " fzf shortcut for searching files
 map <C-t> :Files<cr>
 
