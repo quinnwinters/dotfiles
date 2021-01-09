@@ -6,7 +6,6 @@ brew update
 brew upgrade
 
 applications=(
-    awscli
     coreutils
     curl
     findutils
@@ -16,9 +15,6 @@ applications=(
     jq
     neovim
     node
-    pyenv
-    pyenv-virtualenv
-    pyenv-virtualenv-wrapper
     sqlite
     tmux
     yarn
