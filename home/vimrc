@@ -1,28 +1,150 @@
-" Editing Settings
-set number
-set showmatch
-set colorcolumn=100
-set ruler
-set nowrap
-set autoread
-set expandtab
-set updatetime=100
-set signcolumn=yes
+" Vundle plugins
+" Setup Vundle Plugins
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
 
-" File Settings
-set nobackup
-set noswapfile
+" Specify Vundle Plugins
+call vundle#begin()
+Plugin 'junegunn/fzf' " fzf for file searching/opening
+Plugin 'itchyny/lightline.vim'  " Lightline for status line
+Plugin 'mg979/vim-visual-multi' " Multiline editing (similar to sublime/vscode)
+Plugin 'preservim/nerdtree' " NERDTree for nice file navigation
+Plugin 'editorconfig/editorconfig-vim' " Use the editorconfig files for syntax/settings
+Plugin 'dense-analysis/ale' " Linting engine display linting errors in sign column
+Plugin 'airblade/vim-gitgutter' " Git gutter to show git status
+Plugin 'christoomey/vim-tmux-navigator' " Tmux/Vim unified navigation
+Plugin 'nathanaelkane/vim-indent-guides' " Tab/indent guidelines
+Plugin 'altercation/vim-colors-solarized' " Enable solarized color scheme
+Plugin 'scrooloose/nerdcommenter' " Easy commenting / comment wrapping
+Plugin 'valloric/youcompleteme' " Add code <Tab> completition
+Plugin 'SirVer/ultisnips' " Install UltiSnips for snippet engine
+Plugin 'honza/vim-snippets' " Vim snippets for Python/Javascript/Scala
+Plugin 'ervandew/supertab' " SuperTab allows both YouCompeleteMe and UltiSnips to be used together
+call vundle#end()
+filetype plugin indent on
 
-" Search Settings
-set hlsearch
-set ignorecase
-set incsearch
+" Visual editor settings
+set number " Always show line numbers
+set showmatch " Always show bracket/paren matches
+set colorcolumn=100 " Add a column at char=100 for visual indic of end of line
+set ruler " Show position of cursor at all times
+set nowrap " Do not wrap lines
+set updatetime=100 " Update time
+set signcolumn=yes " Column for diff relative to disk
 
-" Basic shortcuts
-nnoremap U <C-r>
+" Disable scrollbars
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
 
-" Ctrl-based shortcuts
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" Remove annoying alerts on error
+set novisualbell
+set noerrorbells
+
+" Whitespace / indentation settings
+set autoindent " Copy indent from current line when making new line
+set tabstop=4 " One tab = 4 spaces (specifically useful for python)
+set shiftwidth=4 "One tab = 4 spaces
+set softtabstop=-1 " Use same value as shiftwidth
+set smarttab " Tab defaults to &shiftwidth
+set expandtab " Auto exapnd tab to spaces
+
+" File type specific plugins allowed
+filetype plugin on
+filetype indent on
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+
+" Enable syntax highlighting and dark solarized theme
+syntax enable
+set background=dark
+colorscheme solarized
+
+" File modification settings
+set nobackup " No backups (expected)
+set noswapfile " No swapfiles (everything should be in git anyways)
+set autoread " Automatically read changes made to disk
+set encoding=utf8
+
+" Shell settings
+set wildmenu " tab-complition for command menu
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+
+" Search settings
+set hlsearch " highlight search results
+set ignorecase " ignore case when searching
+set smartcase " ...unless query has capital letters
+set incsearch " search incrementally forwards/backwards
+
+" Search shortcuts: space -> search fwd, ctrl-space -> search backwards
+map <space> /
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction
+
+" fzf shortcut for searching files
+map <C-space> :Files<cr>
+
+" lightline status line theme
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+" NERDTree shortcuts
+map <C-t> :NERDTreeToggle<cr>
+
+" Enable indent guidelines by default
+let g:indent_guides_enable_on_vim_startup = 1
+
+" NERD Commenter settings
+let g:NERDCreateDefaultMappings = 1 " Create default mappings
+let g:NERDSpaceDelims = 1 " Add spaces after comment delimeters by default
+let g:NERDCompactSexyComs = 1 " Use compact synatx for prettified multi-line comments
+let g:NERDDefaultAlign = 'left' " Align line-wise comment delimeters instead of code indentation
+let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
+let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not
+vmap <C-/> :NERDCommenterToggle<cr>
+
+" Tab completition for both YouCompleteMe and UltiSnips (using SuperTab)
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
