@@ -6,13 +6,9 @@ applications=(
     "Microsoft Excel"
     "Microsoft PowerPoint"
     "Microsoft OneDrive"
-    "Pages"
-    "Keynote"
-    "Numbers"
     "Things 3"
     "Tweetbot"
     "iMovie"
-    "Garage Band"
 )
 
 
