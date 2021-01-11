@@ -10,10 +10,7 @@ for github once per computer.
 echo "Do you want to continue with setting up github ssh authentication? [Y/n]"
 
 select yn in "Yes" "No" ; do
-    if [[ $yn  == "No" ]] ; then 
-        echo "Skipping github over ssh setup"
-        return
-    else  
+    if [[ $yn  == "Yes" ]] ; then 
         echo "Enter your github email below:"
         read -r email
         ssh-keygen -t rsa -b 4096 -C "$email"
@@ -24,19 +21,10 @@ select yn in "Yes" "No" ; do
         pbcopy <"$sshkey"
         echo "Go to https://github.com/settings/keys and paste your key into your ssh key list in settings"
         sleep 10
-        echo "When that is done, type verified below"
-        while read -r response; do
-        case "$response" in
-            verified)
-            echo "Trust with github should be established!"
-            return
-            ;;
-            *)
-            echo "You have not verified that the git-ssh is setup!!"
-            echo "Please follow the instructions to continue"
-            ;;
-        esac
-        done
+        break
+    else
+        echo "Skipping setting up github ssh"
+	break
     fi
 done
 
