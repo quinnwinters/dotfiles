@@ -1,23 +1,11 @@
 #!/bin/sh
 
-applications=(
-    "Microsoft OneNote"
-    "Microsoft Word"
-    "Microsoft Excel"
-    "Microsoft PowerPoint"
-    "Microsoft OneDrive"
-    "Things 3"
-    "Tweetbot"
-    "iMovie"
-)
-
-
 header """WARNING - Mac Application Store Installation
 About to install the following application using the mas cli (https://github.com/mas-cli/mas).
 Installations will be done using the 'lucky' feature, which means that the first result will be
 installed. The following applications will be installed:
 
-Applications: $applications
+Applications: Microsoft Office/Things 3/Tweetbot/iMovie
 
 If you have not setup iCloud/purchases, you might want to skip this step
 """
@@ -27,9 +15,14 @@ select yn in "Yes" "No"
 if [[ $yn == "Yes" ]] ; then 
     brew install mas
     mas upgrade
-    for application in $applications ; do 
-        mas lucky $application
-    done
+    mas lucky "Microsoft OneNote"
+    mas lucky "Microsoft Word"
+    mas lucky "Microsoft Excel"
+    mas lucky "Microsoft PowerPoint"
+    mas lucky "Microsoft OneDrive"
+    mas lucky "Things 3"
+    mas lucky "Tweetbot"
+    mas lucky "iMovie"
 else 
     echo "Skipping Mac Application Store Installs"
 fi

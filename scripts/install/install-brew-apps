@@ -5,26 +5,20 @@ brew tap homebrew/core
 brew update
 brew upgrade
 
-applications=(
-    coreutils
-    curl
-    findutils
-    ghq
-    gibo
-    grep
-    jq
-    neovim
-    node
-    sqlite
-    tmux
-    yarn
-    zsh
-    zsh-completions
-    zsh-syntax-highlighting
-)
-
-for application in $applications ; do 
-    brew install --upgrade --force $application
-done
+brew install --force coreutils 
+brew install --force curl
+brew install --force findutils
+brew install --force ghq
+brew install --force gibo
+brew install --force grep
+brew install --force jq
+brew install --force neovim
+brew install --force node
+brew install --force sqlite
+brew install --force tmux
+brew install --force yarn
+brew install --force zsh
+brew install --force zsh-completions
+brew install --force zsh-syntax-highlighting
 
 brew cleanup

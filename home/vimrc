@@ -17,7 +17,6 @@ Plugin 'christoomey/vim-tmux-navigator' " Tmux/Vim unified navigation
 Plugin 'nathanaelkane/vim-indent-guides' " Tab/indent guidelines
 Plugin 'altercation/vim-colors-solarized' " Enable solarized color scheme
 Plugin 'scrooloose/nerdcommenter' " Easy commenting / comment wrapping
-Plugin 'valloric/youcompleteme' " Add code <Tab> completition
 Plugin 'SirVer/ultisnips' " Install UltiSnips for snippet engine
 Plugin 'honza/vim-snippets' " Vim snippets for Python/Javascript/Scala
 Plugin 'ervandew/supertab' " SuperTab allows both YouCompeleteMe and UltiSnips to be used together
@@ -66,7 +65,6 @@ endif
 " Enable syntax highlighting and dark solarized theme
 syntax enable
 set background=dark
-colorscheme solarized
 
 " File modification settings
 set nobackup " No backups (expected)
@@ -139,14 +137,3 @@ let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (us
 let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not
 vmap <C-/> :NERDCommenterToggle<cr>
-
-" Tab completition for both YouCompleteMe and UltiSnips (using SuperTab)
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
