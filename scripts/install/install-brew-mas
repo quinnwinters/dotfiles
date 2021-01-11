@@ -10,19 +10,24 @@ Applications: Microsoft Office/Things 3/Tweetbot/iMovie
 If you have not setup iCloud/purchases, you might want to skip this step
 """
 
+brew install mas
+mas upgrade
+
 echo "Install applications from mac app store?"
-select yn in "Yes" "No"
-if [[ $yn == "Yes" ]] ; then 
-    brew install mas
-    mas upgrade
-    mas lucky "Microsoft OneNote"
-    mas lucky "Microsoft Word"
-    mas lucky "Microsoft Excel"
-    mas lucky "Microsoft PowerPoint"
-    mas lucky "Microsoft OneDrive"
-    mas lucky "Things 3"
-    mas lucky "Tweetbot"
-    mas lucky "iMovie"
-else 
-    echo "Skipping Mac Application Store Installs"
-fi
+
+select yn in "Yes" "No" ; do 
+    if [[ $yn == "Yes" ]] ; then
+        mas lucky "Microsoft OneNote"
+        mas lucky "Microsoft Word"
+        mas lucky "Microsoft Excel"
+        mas lucky "Microsoft PowerPoint"
+        mas lucky "Microsoft OneDrive"
+        mas lucky "Things 3"
+        mas lucky "Tweetbot"
+        mas lucky "iMovie"
+        break 
+    else 
+        echo "Skipping mac app installs"
+        break 
+    fi 
+done
