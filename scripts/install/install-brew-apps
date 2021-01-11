@@ -14,6 +14,7 @@ brew install --force grep
 brew install --force jq
 brew install --force neovim
 brew install --force node
+brew install --force python
 brew install --force sqlite
 brew install --force tmux
 brew install --force yarn

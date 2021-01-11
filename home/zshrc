@@ -372,3 +372,4 @@ eval "$(pyenv init -)"
 # fi
 # unset __conda_setup
 # <<< conda initialize <<<
+fpath=($fpath "/Users/qwinters/.zfunctions")
