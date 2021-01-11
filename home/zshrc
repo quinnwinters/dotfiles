@@ -8,14 +8,19 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 export GIT_EDITOR=$VISUAL
 
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' insert-tab pending
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# these don't work on M1 Mac
+# autoload -Uz compinit && compinit
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# zstyle ':completion:*' insert-tab pending
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [[ -f "$HOME/.git-completion.zsh" ]] ; then
-    source $HOME/.git-completion.zsh
-fi
+autoload -Uz promptinit
+promptinit
+prompt restore
+
+# if [[ -f "$HOME"/.git-completion.zsh ]] ; then
+#     source "$HOME"/.git-completion.zsh
+# fi
 
 # ========================================================= #
 # |    Prompt                                             | #
@@ -59,9 +64,6 @@ SPACESHIP_PYENV_SHOW=false
 SPACESHIP_PYENV_SYMBOL="py "
 SPACESHIP_VENV_SHOW=false
 SPACESHIP_VENV_SYMBOL="venv "
-
-autoload -U promptinit; promptinit
-prompt spaceship
 
 # ========================================================= #
 # |    Basic Aliases                                      | #
