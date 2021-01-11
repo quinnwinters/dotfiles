@@ -11,6 +11,8 @@ which -s brew
 if [[ $? != 0 ]] ; then
   echo "No homebrew found, installing via curl/bash"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> "$HOME"/.zprofile
+  eval $(/opt/homebrew/bin/brew shellenv)
 else
   echo "Confirmed that homebrew is installed"
 fi
@@ -18,6 +20,7 @@ fi
 which -s boxes
 if [[ $? != 0 ]] ; then
   echo "Installing boxes, print utility used throughout dotfile scripts"
+  brew install boxes
 fi
 
 function header() {
@@ -25,5 +28,5 @@ function header() {
 }
 
 if [[ ! -f "$HOME/.git-completion.zsh" ]] ; then 
-    curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh" > "$HOME/git-completion.bash"
+    curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh" > "$HOME/git-completion.zsh"
 fi 
