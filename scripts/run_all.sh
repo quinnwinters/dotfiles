@@ -1,19 +1,21 @@
 #!/bin/sh
 
+DOTDIR=$(git rev-parse --show-toplevel)
+
 # Setup the environment
-sh ./environment/setup-shell-tools
-sh ./environment/setup-local-exports
-sh ./environment/setup-github-ssh
-sh ./environment/setup-onedrive-docs
-sh ./environment/setup-dotfile-links
+sh "$DOTDIR"/environment/setup-shell-tools
+sh "$DOTDIR"/environment/setup-local-exports
+sh "$DOTDIR"/environment/setup-github-ssh
+sh "$DOTDIR"/environment/setup-onedrive-docs
+sh "$DOTDIR"/environment/setup-dotfile-links
 
 # Install software
-sh ./install/install-brew-apps
-sh ./install/install-brew-casks
-sh ./install/install-brew-mas
-sh ./install/install-ghq-repos
-sh ./install/install-vim-plugins
+sh "$DOTDIR"/install/install-brew-apps
+sh "$DOTDIR"/install/install-brew-casks
+sh "$DOTDIR"/install/install-brew-mas
+sh "$DOTDIR"/install/install-ghq-repos
+sh "$DOTDIR"/install/install-vim-plugins
 
 # Tweak preferences
-sh ./preferences/setup-macos-prefs
-sh ./preferences/setup-mac-dock
+sh "$DOTDIR"/preferences/setup-macos-prefs
+sh "$DOTDIR"/preferences/setup-mac-dock
