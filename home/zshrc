@@ -9,10 +9,10 @@ export EDITOR=$VISUAL
 export GIT_EDITOR=$VISUAL
 
 # these don't work on M1 Mac
-# autoload -Uz compinit && compinit
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# zstyle ':completion:*' insert-tab pending
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' insert-tab pending
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -Uz promptinit
 promptinit
@@ -72,8 +72,6 @@ SPACESHIP_VENV_SYMBOL="venv "
 alias e='nvim'
 alias v='nvim'
 alias vim='nvim'
-alias ls='ls --lahFG':
-alias sl='ls'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias diff='diff --color=auto'
@@ -375,3 +373,8 @@ eval "$(pyenv init -)"
 # unset __conda_setup
 # <<< conda initialize <<<
 fpath=($fpath "/Users/qwinters/.zfunctions")
+fpath=($fpath "/Users/qwinters/.zfunctions")
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt spaceship
