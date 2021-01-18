@@ -269,7 +269,7 @@ alias gw="gradle_search"
 # ========================================================= #
 # |    Tmux Aliases                                       | #
 # ========================================================= #
-function t() {
+function HELPER_tmux_launcher() {
   if [[ $# -eq 1 ]] ; then
     session=$1
   else
@@ -283,13 +283,10 @@ function t() {
     tmux new -s $session -d
   fi
 
-  if [[ -z $TMUX ]] ; then
-    tmux switch-client -t $session
-  else
-    tmux attach -t $session
-  fi
+  tmux switch-client -t $session || tmux attach -t $session
 }
 alias ssh="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux' | alertMe"
+alias t="HELPER_tmux_launcher"
 
 # Call this script and pass a text file with a list of servers. You will ssh to the servers as the current user.
 # Once connected use Ctrl + a to enter commands
