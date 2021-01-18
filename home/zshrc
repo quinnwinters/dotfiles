@@ -269,25 +269,27 @@ alias gw="gradle_search"
 # ========================================================= #
 # |    Tmux Aliases                                       | #
 # ========================================================= #
-function HELPER_smart_activate_switch_or_create_tmux_session() {
-    # if an argument is provided, use it as the sesion name
-    # and then create it detatched and attach to it
-    if [[ $# = 1 ]] ; then
-        local session_name="$1"
-        tmux has-session -t $session_name 2>/dev/null
-        if [[ $? != 0 ]] ; then
-            tmux new-session -s $session_name -d
-        fi
-        tmux switch-client -t $session_name || tmux attach -t $session_name
-    elif [[ ! -z "$TMUX" ]] ; then
-        tmux new-session -A -s main
-    else
-        tmux choose-tree -Zw || tmux attach -t main
-    fi
+function t() {
+  if [[ $# -eq 1 ]] ; then
+    session=$1
+  else
+    tmux ls
+    echo "Choose your session or specify a new one:\n"
+    read session
+  fi
+
+  tmux has-session -t $session 2>/dev/null
+  if [[ $? != 0 ]] ; then
+    tmux new -s $session -d
+  fi
+
+  if [[ -z $TMUX ]] ; then
+    tmux switch-client -t $session
+  else
+    tmux attach -t $session
+  fi
 }
-alias t="HELPER_smart_activate_switch_or_create_tmux_session"
 alias ssh="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux' | alertMe"
-alias tmuxStart="tmux ls && read tmux_session && tmux attach -t ${tmux_session:-default} || tmux new -s ${tmux_session:-default}"
 
 # Call this script and pass a text file with a list of servers. You will ssh to the servers as the current user.
 # Once connected use Ctrl + a to enter commands
