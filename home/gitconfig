@@ -54,22 +54,10 @@
 [alias]
   l = !"git log --pretty=oneline -n 20 --graph --abbrev-commit"
   s = !"git status -s"
-
   gl = !"git pull --recurse-submodules"
   gp = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-
   df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
   ch = !"history | grep -i '(git commit|g feat|g fix|g style|g refactor|g cfeat|g cfix|g cstyle|g crefactor)'"
-
-  feat = !"git commit -m \"feat: {$@}\""
-  fix = !"git commit -m \"fix: $@\""
-  style = !"git commit -m \"style: $@\""
-  refactor = !"git commit -m \"refactor: $@\""
-  cfeat = !"git commit -m \"feat($1): $@{1:}\""
-  cfix = !"git commit -m \"fix($1): $@{1:}\""
-  cstyle = !"git commit -m \"style($1): $@{1:}\""
-  crefactor = !"git commit -m \"refactor($1): $@{1:}\""
 
 [ghq]
     root = ~/Code
