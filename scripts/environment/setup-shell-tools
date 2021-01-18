@@ -1,32 +1,32 @@
 #!/bin/bash
 
-if [[ ! ${xcode-select --version} ]] ; then 
-    echo "No xcode-select tools found. Running 'sudo xcode-select install' to get xcode-select tools"
-    sudo xcode-select --install
-else 
-    echo "Confirmed that xcode-select tools are installed"
+if [[ ! ${xcode-select --version} ]]; then
+  echo "No xcode-select tools found. Running 'sudo xcode-select install' to get xcode-select tools"
+  sudo xcode-select --install
+else
+  echo "Confirmed that xcode-select tools are installed"
 fi
 
 which -s brew
-if [[ $? != 0 ]] ; then
+if [[ $? != 0 ]]; then
   echo "No homebrew found, installing via curl/bash"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> "$HOME"/.zprofile
-  eval $(/opt/homebrew/bin/brew shellenv)
+  echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>"$HOME"/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   echo "Confirmed that homebrew is installed"
 fi
 
 which -s boxes
-if [[ $? != 0 ]] ; then
+if [[ $? != 0 ]]; then
   echo "Installing boxes, print utility used throughout dotfile scripts"
   brew install boxes
 fi
 
 function header() {
-    echo "$@" | boxes -d simple -p a1l2r2
+  echo "$@" | boxes -d simple -p a1l2r2
 }
 
-if [[ ! -f "$HOME/.git-completion.zsh" ]] ; then 
-    curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh" > "$HOME/git-completion.zsh"
-fi 
+if [[ ! -f "$HOME/.git-completion.zsh" ]]; then
+  curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh" >"$HOME/git-completion.zsh"
+fi

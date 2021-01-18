@@ -9,23 +9,21 @@ for github once per computer.
 
 echo "Do you want to continue with setting up github ssh authentication? [Y/n]"
 
-select yn in "Yes" "No" ; do
-    if [[ $yn  == "Yes" ]] ; then 
-        echo "Enter your github email below:"
-        read -r email
-        ssh-keygen -t rsa -b 4096 -C "$email"
-        eval "$(ssh -agent -s)"
-        echo "Enter the location of where you stored your key to add it to your ssh agent"
-        read -r sshkey
-        ssh-add -K "$sshkey"
-        pbcopy <"$sshkey"
-        echo "Go to https://github.com/settings/keys and paste your key into your ssh key list in settings"
-        sleep 10
-        break
-    else
-        echo "Skipping setting up github ssh"
-	break
-    fi
+select yn in "Yes" "No"; do
+  if [[ $yn == "Yes" ]]; then
+    echo "Enter your github email below:"
+    read -r email
+    ssh-keygen -t rsa -b 4096 -C "$email"
+    eval "$(ssh -agent -s)"
+    echo "Enter the location of where you stored your key to add it to your ssh agent"
+    read -r sshkey
+    ssh-add -K "$sshkey"
+    pbcopy <"$sshkey"
+    echo "Go to https://github.com/settings/keys and paste your key into your ssh key list in settings"
+    sleep 10
+    break
+  else
+    echo "Skipping setting up github ssh"
+    break
+  fi
 done
-
-

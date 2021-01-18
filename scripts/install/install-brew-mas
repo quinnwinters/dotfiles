@@ -15,19 +15,19 @@ mas upgrade
 
 echo "Install applications from mac app store?"
 
-select yn in "Yes" "No" ; do 
-    if [[ $yn == "Yes" ]] ; then
-        mas lucky "Microsoft OneNote"
-        mas lucky "Microsoft Word"
-        mas lucky "Microsoft Excel"
-        mas lucky "Microsoft PowerPoint"
-        mas lucky "Microsoft OneDrive"
-        mas lucky "Things 3"
-        mas lucky "Tweetbot"
-        mas lucky "iMovie"
-        break 
-    else 
-        echo "Skipping mac app installs"
-        break 
-    fi 
+select yn in "Yes" "No"; do
+  if [[ $yn == "Yes" ]]; then
+    mas lucky "Microsoft OneNote"
+    mas lucky "Microsoft Word"
+    mas lucky "Microsoft Excel"
+    mas lucky "Microsoft PowerPoint"
+    mas lucky "Microsoft OneDrive"
+    mas lucky "Things 3"
+    mas lucky "Tweetbot"
+    mas lucky "iMovie"
+    break
+  else
+    echo "Skipping mac app installs"
+    break
+  fi
 done

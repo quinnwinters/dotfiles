@@ -8,7 +8,7 @@
 ########################################################################################################
 
 # Uncomment this to prevent running bash non-interactively
-# [[ $- == *i* ]] || return 
+# [[ $- == *i* ]] || return
 
 # Uncomment this to check window size after each command and adjust column/line size
 # shopt -s checkwinsize
@@ -19,7 +19,7 @@
 # Uncomment to turn on colored prompts by default
 #force_color_prompt=yes
 
-# Uncomment this line to append to history file instead of overwriting it 
+# Uncomment this line to append to history file instead of overwriting it
 #shopt -s histappend
 
 # Don't put duplicate lines or lines starting with space in the history.
