@@ -9,10 +9,10 @@ fi
 
 pip install neovim
 vim +PluginInstall +qall
-cwd=$(pwd)
-cd $HOME/.vim/bundle/youcompleteme
+cwd=$PWD
+cd "$HOME"/.vim/bundle/youcompleteme
 python install --all
-cd $cwd
+cd "$cwd"
 
 echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath

@@ -21,7 +21,7 @@ if [[ -f "$HOME"/.bashrc ]] ; then
         fi
     done
 fi
-cat $dot_dir_loc/templates/local_exports_template >> ~/.bashrc
+cat "$dot_dir_loc"/templates/local_exports_template >> ~/.bashrc
 echo "export DOT_DIR=$dot_dir_loc" >> ~/.bashrc
 
 # Add user name

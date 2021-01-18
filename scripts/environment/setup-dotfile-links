@@ -2,7 +2,7 @@
 
 # If Vundle is not installed, install it so that vim doesn't complain when linking vimrc
 if [[ ! -d "$HOME"/.vim/bundle/Vundle.vim ]] ; then 
-    mkdir -p $HOME/.vim/bundle
+    mkdir -p "$HOME"/.vim/bundle
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
