@@ -5,7 +5,7 @@ brew tap homebrew/core
 brew update
 brew upgrade
 
-brew install --force coreutils 
+brew install --force coreutils
 brew install --force curl
 brew install --force findutils
 brew install --force ghq

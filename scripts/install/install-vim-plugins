@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ ! -f "/opt/homebrew/anaconda3/bin/conda" ]] ; then
+if [[ ! -f "/opt/homebrew/anaconda3/bin/conda" ]]; then
   brew install --cask anaconda
 fi
 
@@ -16,6 +16,6 @@ cd "$cwd"
 
 echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath
-    source ~/.vimrc""" >> ~/.config/nvim/init.vim
+    source ~/.vimrc""" >>~/.config/nvim/init.vim
 
 conda activate base
