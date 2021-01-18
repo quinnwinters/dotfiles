@@ -287,6 +287,7 @@ function HELPER_smart_activate_switch_or_create_tmux_session() {
 }
 alias t="HELPER_smart_activate_switch_or_create_tmux_session"
 alias ssh="ssh -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux' | alertMe"
+alias tmuxStart="tmux ls && read tmux_session && tmux attach -t ${tmux_session:-default} || tmux new -s ${tmux_session:-default}"
 
 # Call this script and pass a text file with a list of servers. You will ssh to the servers as the current user.
 # Once connected use Ctrl + a to enter commands
