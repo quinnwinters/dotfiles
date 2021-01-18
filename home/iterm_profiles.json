@@ -44,12 +44,7 @@
       },
       "Icon": 0,
       "Ambiguous Double Width": false,
-      "Jobs to Ignore": [
-        "rlogin",
-        "ssh",
-        "slogin",
-        "telnet"
-      ],
+      "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Badge Font": "Menlo-Bold",
       "Ansi 15 Color": {
         "Green Component": 1,
@@ -385,12 +380,7 @@
       "Disable Window Resizing": true,
       "Description": "Default",
       "Close Sessions On End": 1,
-      "Jobs to Ignore": [
-        "rlogin",
-        "ssh",
-        "slogin",
-        "telnet"
-      ],
+      "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Scrollback Lines": 1000,
       "HotKey Window Reopens On Activation": false,
       "Draw Powerline Glyphs": true,
