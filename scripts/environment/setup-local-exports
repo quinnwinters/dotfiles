@@ -3,25 +3,39 @@
 echo "Setting up ~/.bashrc from template"
 
 # Add the dot dir export
-dot_dir_repo=$(basename `git rev-parse --show-toplevel`)
-dot_dir_loc=$(find $HOME -type d -name $dot_dir_repo)
+dot_dir_loc=$(git rev-parse --show-toplevel)
 
 # Start with a standard template (currently empty but might change)
-cat $dot_dir_loc/templates/local_exports_template >> ~/.bashrc
-echo "export DOT_DIR=$dot_dir_loc" >> ~/.bashrc
+if [[ -f "$HOME"/.bashrc ]]; then
+  echo "There is already a bash template in place. Everything about to be done is additive"
+  echo "Do you want to backup the existing file before proceeding?"
+  select yn in "Yes" "No"; do
+    if [[ $yn == "Yes" ]]; then
+      echo "Old bashrc now located at ~/.bashrc.backup"
+      mv ~/.bashrc ~/.bashrc.backup
+      break
+    else
+      echo "Deleting old bashrc"
+      rm -f ~/.bashrc
+      break
+    fi
+  done
+fi
+cat "$dot_dir_loc"/templates/local_exports_template >>~/.bashrc
+echo "export DOT_DIR=$dot_dir_loc" >>~/.bashrc
 
 # Add user name
-echo "export MAC_USERNAME=$(whoami)" >> ~/.bashrc
+echo "export MAC_USERNAME=$(whoami)" >>~/.bashrc
 echo "Would you like to manually edit the ~/.bashrc before sourcing it?"
 
-select yn in "Yes" "No" ; do 
-    if [[ $yn == "Yes" ]] ; then
-        vi ~/.bashrc
-        return 
-    else 
-        echo "Skipping manual edits for ~/.bashrc"
-        return 
-    fi 
+select yn in "Yes" "No"; do
+  if [[ $yn == "Yes" ]]; then
+    vi ~/.bashrc
+    break
+  else
+    echo "Skipping manual edits for ~/.bashrc"
+    break
+  fi
 done
 
 source ~/.bashrc

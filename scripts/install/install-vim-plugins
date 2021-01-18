@@ -1,14 +1,21 @@
 #!/bin/sh
 
-if [[ ! -d $HOME/.venv/neovim ]]; then
-  virtualenv "$HOME"/.venv/neovim
-  "$HOME"/.venv/neovim/bin/pip install -r "$DOT_DIR"/home/.ven_defs/neovim
+if [[ ! -f "/opt/homebrew/anaconda3/bin/conda" ]]; then
+  brew install --cask anaconda
 fi
 
-if [[ ! -d ~/.config/nvim ]] ; then 
-	mkdir -p ~/.config/nvim
-fi 
+/opt/homebrew/anaconda3/bin/conda environment -n neovim
+/opt/homebrew/anaconda3/bin/conda activate neovim
+
+pip install neovim
+vim +PluginInstall +qall
+cwd=$PWD
+cd "$HOME"/.vim/bundle/youcompleteme
+python install --all
+cd "$cwd"
 
 echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath
-    source ~/.vimrc""" >> ~/.config/nvim/init.vim
+    source ~/.vimrc""" >>~/.config/nvim/init.vim
+
+conda activate base

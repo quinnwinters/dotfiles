@@ -40,7 +40,7 @@ function HELPER_add_external_user_app_to_dock() {
 # Apple default utilities
 HELPER_add_external_user_app_to_dock "1Password 7"
 HELPER_add_external_user_app_to_dock "Things3"
-HELPER_add_external_user_app_to_dock "Calendar"
+HELPER_add_apple_default_app_to_dock "Calendar"
 HELPER_add_apple_default_app_to_dock "Mail"
 HELPER_add_external_user_app_to_dock "Microsoft OneNote"
 HELPER_add_external_user_app_to_dock "Safari"

@@ -1,4 +1,6 @@
 source $HOME/.bashrc
+export ZSH="/Users/qwinters/.oh-my-zsh"
+
 
 # ========================================================= #
 # |     Core ZSH Settings                                 | #
@@ -7,61 +9,22 @@ source $HOME/.bashrc
 export VISUAL=nvim
 export EDITOR=$VISUAL
 export GIT_EDITOR=$VISUAL
+ZSH_THEME="gallois"
+HIST_STAMPS="yyyy-dd-mm"
+
+plugins=(
+  docker
+  git
+  git-auto-fetch
+  jsontools
+)
+
+source $ZSH/oh-my-zsh.sh
 
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-if [[ -f "$HOME/.git-completion.bash" ]] ; then
-    source $HOME/.git-completion.bash
-fi
-
-# ========================================================= #
-# |    Prompt                                             | #
-# ========================================================= #
-
-SPACESHIP_PROMPT_ORDER=(
-  user
-  host
-  dir
-  exit_code
-  char
-)
-
-SPACESHIP_RPROMPT_ORDER=(
-  time
-  git
-  node
-  venv
-  pyenv
-  conda
-  docker
-)
-
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_USER_SHOW=needed
-SPACESHIP_HOST_PREFIX="@ "
-SPACESHIP_DIR_PREFIX=""
-SPACESHIP_GIT_SYMBOL="git "
-SPACESHIP_GIT_STATUS_RENAMED="Mod"
-SPACESHIP_GIT_STATUS_MODIFIED="Mod"
-SPACESHIP_GIT_STATUS_DELETED="Del"
-SPACESHIP_GIT_STATUS_AHEAD="+"
-SPACESHIP_GIT_STATUS_BEHIND="-"
-SPACESHIP_GIT_STATUS_DIVERGED="+/-"
-SPACESHIP_NODE_SYMBOL="node.js "
-SPACESHIP_DOCKER_SYMBOL="docker "
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_GCLOUD_SHOW=false
-SPACESHIP_CONDA_SYMBOL="conda "
-SPACESHIP_PYENV_SHOW=false
-SPACESHIP_PYENV_SYMBOL="py "
-SPACESHIP_VENV_SHOW=false
-SPACESHIP_VENV_SYMBOL="venv "
-
-autoload -U promptinit; promptinit
-prompt spaceship
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ========================================================= #
 # |    Basic Aliases                                      | #
@@ -70,8 +33,6 @@ prompt spaceship
 alias e='nvim'
 alias v='nvim'
 alias vim='nvim'
-alias ls='ls --lahFN --color=auto --group-directories-first'
-alias sl='ls'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias diff='diff --color=auto'
@@ -234,38 +195,38 @@ alias -g c='| pbcopy'
 # ========================================================= #
 # |    Git Aliases                                        | #
 # ========================================================= #
-alias g='git'
-alias gaa='git add -u'
+# alias g='git'
+# alias gaa='git add -u'
 
-# Given a branch name, check it out if it exists or create it
-# otherwise
-function HELPER_smart_branch_checkout() {
-    local branch="$1"
-    git fetch --all
-    ex_loc=$(git branch --list ${branch})
-    ex_rem=$(git ls-remote --heads origin ${branch})
-    if [[ -z ${ex_loc} ]] ; then
-        git checkout $branch
-    elif [[ -z ${ex_rem} ]] ; then
-        git fetch origin $branch
-        git checkout $branch
-    else
-        git checkout -b $branch
-    fi
-}
+# # Given a branch name, check it out if it exists or create it
+# # otherwise
+# function HELPER_smart_branch_checkout() {
+#     local branch="$1"
+#     git fetch --all
+#     ex_loc=$(git branch --list ${branch})
+#     ex_rem=$(git ls-remote --heads origin ${branch})
+#     if [[ -z ${ex_loc} ]] ; then
+#         git checkout $branch
+#     elif [[ -z ${ex_rem} ]] ; then
+#         git fetch origin $branch
+#         git checkout $branch
+#     else
+#         git checkout -b $branch
+#     fi
+# }
 
-alias gc='HELPER_smart_branch_checkout'
-alias gco="g checkout"
-alias gcb="g checkout - b"
-alias gp="g gp"
-alias gl="g gl"
-alias gcmsg="g commit -m"
-alias gfeat="g feat"
-alias gfix="g fix"
-alias gref="g refactor"
-alias gdocs="g docs"
-alias gstyle="g style"
-alias gco="git checkout"
+# alias gc='HELPER_smart_branch_checkout'
+# alias gco="g checkout"
+# alias gcb="g checkout - b"
+# alias gp="g gp"
+# alias gl="g gl"
+# alias gcmsg="g commit -m"
+# alias gfeat="g feat"
+# alias gfix="g fix"
+# alias gref="g refactor"
+# alias gdocs="g docs"
+# alias gstyle="g style"
+# alias gco="git checkout"
 
 function HELPER_ghq_and_update_ghqfile() {
     ghq $@
@@ -353,20 +314,16 @@ function parallel_tmux() {
 alias pt=parallel_tmux
 alias ptf=parallel_tmux_file
 
-# ========================================================= #
-# |    Conda setup                                        | #
-# ========================================================= #
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
