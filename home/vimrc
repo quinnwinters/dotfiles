@@ -4,6 +4,11 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
+" Enable Python3 through virtual environment, but disable perl+python2
+let g:python3_host_prog = '/opt/homebrew/anaconda3/envs/neovim/bin/python'
+let g:loaded_perl_provider = 0
+let g:loaded_python_provider = 0
+
 " Specify Vundle Plugins
 call vundle#begin()
 Plugin 'junegunn/fzf' " fzf for file searching/opening
@@ -20,6 +25,7 @@ Plugin 'scrooloose/nerdcommenter' " Easy commenting / comment wrapping
 Plugin 'SirVer/ultisnips' " Install UltiSnips for snippet engine
 Plugin 'honza/vim-snippets' " Vim snippets for Python/Javascript/Scala
 Plugin 'ervandew/supertab' " SuperTab allows both YouCompeleteMe and UltiSnips to be used together
+Plugin 'valloric/youcompleteme' " Add code <Tab> completition
 call vundle#end()
 filetype plugin indent on
 
@@ -137,3 +143,15 @@ let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (us
 let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not
 vmap <C-/> :NERDCommenterToggle<cr>
+
+" Tab completition for both YouCompleteMe and UltiSnips (using SuperTab)
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_python_interpreter_path = '/opt/homebrew/anaconda3/envs/neovim/bin/python'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
