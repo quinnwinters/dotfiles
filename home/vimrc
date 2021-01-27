@@ -142,7 +142,11 @@ let g:NERDDefaultAlign = 'left' " Align line-wise comment delimeters instead of 
 let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not
-vmap <C-/> :NERDCommenterToggle<cr>
+
+" Start with NERDTree open
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
+autocmd VimEnter * wincmd w
 
 " Tab completition for both YouCompleteMe and UltiSnips (using SuperTab)
 " make YCM compatible with UltiSnips (using supertab)
