@@ -83,19 +83,27 @@ set wildmenu " tab-complition for command menu
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
-" Vim splitting for panes
-map <C-v> :vsplit<cr>
-map <C-z> :split<cr>
-map <C-n> :tabnew<cr>
+" Vim leader shortcuts
+let mapleader=" "
+map <leader>s :vsplit<CR>
+map <leader>h :split<CR>
+map <leader>w :wa<CR>
+map <leader>t :NERDTreeToggle<CR>
+map <leader>o :Files<CR>
+" map <leader>O :CtrlP<CR>
+map <leader>wq :wqa!<CR>
+
+" Change arrow movement to resize for splits
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
 
 " Search settings
 set hlsearch " highlight search results
 set ignorecase " ignore case when searching
 set smartcase " ...unless query has capital letters
 set incsearch " search incrementally forwards/backwards
-
-" Search shortcuts: space -> search fwd, ctrl-space -> search backwards
-map <space> /
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -122,9 +130,6 @@ endfunction
 function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
-
-" fzf shortcut for searching files
-map <C-t> :Files<cr>
 
 " lightline status line theme
 let g:lightline = {
