@@ -5,9 +5,13 @@ brew tap homebrew/core
 brew update
 brew upgrade
 
+brew install --force boxes
+brew install --force cmake
 brew install --force coreutils
 brew install --force curl
+brew install --force exa
 brew install --force findutils
+brew install --force fzf
 brew install --force ghq
 brew install --force gibo
 brew install --force grep

@@ -30,7 +30,7 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # |    Basic Aliases                                      | #
 # ========================================================= #
 
-alias ls="ls -lhFG"
+alias ls="exa --long --classify --group-directories-first --bytes --header --links --git --time-style=long-iso"
 alias e='nvim'
 alias v='nvim'
 alias vim='nvim'
@@ -196,38 +196,12 @@ alias -g c='| pbcopy'
 # ========================================================= #
 # |    Git Aliases                                        | #
 # ========================================================= #
-# alias g='git'
-# alias gaa='git add -u'
-
-# # Given a branch name, check it out if it exists or create it
-# # otherwise
-# function HELPER_smart_branch_checkout() {
-#     local branch="$1"
-#     git fetch --all
-#     ex_loc=$(git branch --list ${branch})
-#     ex_rem=$(git ls-remote --heads origin ${branch})
-#     if [[ -z ${ex_loc} ]] ; then
-#         git checkout $branch
-#     elif [[ -z ${ex_rem} ]] ; then
-#         git fetch origin $branch
-#         git checkout $branch
-#     else
-#         git checkout -b $branch
-#     fi
-# }
-
-# alias gc='HELPER_smart_branch_checkout'
-# alias gco="g checkout"
-# alias gcb="g checkout - b"
-# alias gp="g gp"
-# alias gl="g gl"
-# alias gcmsg="g commit -m"
-# alias gfeat="g feat"
-# alias gfix="g fix"
-# alias gref="g refactor"
-# alias gdocs="g docs"
-# alias gstyle="g style"
-# alias gco="git checkout"
+alias gfeat="g feat"
+alias gfix="g fix"
+alias gref="g refactor"
+alias gdocs="g docs"
+alias gstyle="g style"
+alias gco="git checkout"
 
 function HELPER_ghq_and_update_ghqfile() {
     ghq $@

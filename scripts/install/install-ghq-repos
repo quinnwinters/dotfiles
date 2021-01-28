@@ -1,3 +1,10 @@
 #!/bin/sh
 
 cat "$HOME"/.ghqrepos | ghq get
+
+cwd=$PWD
+
+git clone https://github.com/fteem/git-semantic-commits ~/.git-semantic-commits
+cd ~/.git-semantic-commits
+sh install.sh
+cd "$cwd"
