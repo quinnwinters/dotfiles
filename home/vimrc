@@ -1,3 +1,7 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          VIM RUNTIME AND PLUGIN SETUP                                                  """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Vundle plugins
 " Setup Vundle Plugins
 set nocompatible
@@ -11,23 +15,42 @@ let g:loaded_python_provider = 0
 
 " Specify Vundle Plugins
 call vundle#begin()
-Plugin 'junegunn/fzf' " fzf for file searching/opening
-Plugin 'itchyny/lightline.vim'  " Lightline for status line
-Plugin 'mg979/vim-visual-multi' " Multiline editing (similar to sublime/vscode)
-Plugin 'preservim/nerdtree' " NERDTree for nice file navigation
-Plugin 'editorconfig/editorconfig-vim' " Use the editorconfig files for syntax/settings
-Plugin 'dense-analysis/ale' " Linting engine display linting errors in sign column
-Plugin 'airblade/vim-gitgutter' " Git gutter to show git status
-Plugin 'christoomey/vim-tmux-navigator' " Tmux/Vim unified navigation
-Plugin 'nathanaelkane/vim-indent-guides' " Tab/indent guidelines
-Plugin 'altercation/vim-colors-solarized' " Enable solarized color scheme
-Plugin 'scrooloose/nerdcommenter' " Easy commenting / comment wrapping
-Plugin 'SirVer/ultisnips' " Install UltiSnips for snippet engine
-Plugin 'honza/vim-snippets' " Vim snippets for Python/Javascript/Scala
-Plugin 'ervandew/supertab' " SuperTab allows both YouCompeleteMe and UltiSnips to be used together
-Plugin 'valloric/youcompleteme' " Add code <Tab> completition
+
+" Appearence plugins
+Plugin 'nathanaelkane/vim-indent-guides'        " Tab/indent guidelines
+Plugin 'vim-airline/vim-airline'                " Airline for status line
+Plugin 'vim-airline/vim-airline-themes'         " Airline themes
+Plugin 'dense-analysis/ale'                     " Linting errors in sign column
+Plugin 'airblade/vim-gitgutter'                 " Git status in sign column
+Plugin 'tpope/vim-fugitive'                     " Git actions
+Plugin 'altercation/vim-colors-solarized'       " Enable solarized color scheme
+
+" Utility functions plugins
+Plugin 'junegunn/fzf'                           " fzf for file searching/opening
+Plugin 'kien/ctrlp.vim'                         " CtrlP for searching files
+Plugin 'preservim/nerdtree'                     " NERDTree for nice file navigation
+Plugin 'editorconfig/editorconfig-vim'          " Unified syntax and editor config
+Plugin 'christoomey/vim-tmux-navigator'         " Tmux/Vim unified navigation
+Plugin 'scrooloose/nerdcommenter'               " Easy commenting / comment wrapping
+
+" Language syntax and completition
+Plugin 'ervandew/supertab'                      " Tab key multi-map
+Plugin 'valloric/youcompleteme'                 " Code completition engine
+Plugin 'SirVer/ultisnips'                       " Code snippet engine
+Plugin 'scrooloose/syntastic'                   " Code syntax highlighting
+Plugin 'chiel92/vim-autoformat'                 " Code autoformatting
+Plugin 'sheerun/vim-polyglot'                   " Support for tons of languages
+
+" Language specific plugins
+Plugin 'lervag/vimtex'                          " Specific LaTeX support
+
 call vundle#end()
 filetype plugin indent on
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          BASIC VIM SETTINGS                                                            """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Visual editor settings
 set number " Always show line numbers
@@ -78,32 +101,64 @@ set noswapfile " No swapfiles (everything should be in git anyways)
 set autoread " Automatically read changes made to disk
 set encoding=utf8
 
-" Shell settings
-set wildmenu " tab-complition for command menu
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-
-" Vim leader shortcuts
-let mapleader=" "
-map <leader>s :vsplit<CR>
-map <leader>h :split<CR>
-map <leader>w :wa<CR>
-map <leader>t :NERDTreeToggle<CR>
-map <leader>o :Files<CR>
-" map <leader>O :CtrlP<CR>
-map <leader>wq :wqa!<CR>
-
-" Change arrow movement to resize for splits
-nnoremap <Up>    :resize +2<CR>
-nnoremap <Down>  :resize -2<CR>
-nnoremap <Left>  :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
-
 " Search settings
 set hlsearch " highlight search results
 set ignorecase " ignore case when searching
 set smartcase " ...unless query has capital letters
 set incsearch " search incrementally forwards/backwards
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          LEADER SHORTCUTS                                                              """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Vim leader shortcuts
+let mapleader=";"
+
+" Basic naviation shortcuts
+map <leader>; :vsplit<CR>
+map <leader>\ :split<CR>
+map <leader>o :Files<CR>
+map <leader>t :tabnew
+map <leader>/ :tabs<CR>
+
+" Buffer and code formatting and completition shortcuts
+map <leader>fm :Autoformat<CR>
+map <leader>nt :NERDTreeToggle<CR>
+" <leader>c<space> NERDCommenterToggle
+
+" Git shortcuts
+map <leader>go :Gread<CR>
+map <leader>ga :Gwrite<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gs :Gstatus<CR>
+map <leader>gl :Git pull<CR>
+map <leader>gp :Git push<CR>
+map <leader>lg :Glog -15 --reverse<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          CTRL-BASED SHORTCUTS                                                          """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic shortcuts
+nnoremap <C-;> :vsplit<CR>
+nnoremap <C-\> :split<CR>
+nnoremap <C-o> :Files<CR>
+
+" Tab navigations
+nnoremap <C-/> :tabs<CR>
+nnoremap <C-j> :tabnext<CR>
+nnoremap <C-k> :tabprevious<CR>
+
+" Change arrow movement to resize for splits
+nnoremap <C-Up>    :resize +2<CR>
+nnoremap <C-Down>  :resize -2<CR>
+nnoremap <C-Left>  :vertical resize +2<CR>
+nnoremap <C-Right> :vertical resize -2<CR>
+
+" Shell settings
+set wildmenu " tab-complition for command menu
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -131,22 +186,18 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
 
-" lightline status line theme
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          PLUGIN SETTINGS                                                               """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim airline preferences
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_statusline_ontop=1
 
 " Enable indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
-
-" NERD Commenter settings
-let g:NERDCreateDefaultMappings = 1 " Create default mappings
-let g:NERDSpaceDelims = 1 " Add spaces after comment delimeters by default
-let g:NERDCompactSexyComs = 1 " Use compact synatx for prettified multi-line comments
-let g:NERDDefaultAlign = 'left' " Align line-wise comment delimeters instead of code indentation
-let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
-let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not
 
 " Start with NERDTree open
 autocmd VimEnter * NERDTree
