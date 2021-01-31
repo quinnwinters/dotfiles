@@ -1,0 +1,11 @@
+#!/bin/sh
+
+npm install -g semantic-git-commit-cli
+npm install -g gtop
+npm install -g highlight
+npm install -g yo
+npm install -g generator-github-action
+npm install -g generator-py
+npm install -g generator-lambda-typescript
+npm install -g generator-yo-tsproject
+npm install -g speed-test

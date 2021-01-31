@@ -18,10 +18,16 @@ brew install --force grep
 brew install --force jq
 brew install --force neovim
 brew install --force node
+brew install --force nvm
+brew install --force ocaml
+brew install --force opam
 brew install --force python
+brew install --force rsync
 brew install --force sqlite
 brew install --force tmux
+brew install --force typescript
 brew install --force yarn
+brew install --force youtube-dl
 brew install --force zsh
 brew install --force zsh-completions
 brew install --force zsh-syntax-highlighting
