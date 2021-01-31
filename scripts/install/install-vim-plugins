@@ -19,3 +19,5 @@ echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
     source ~/.vimrc""" >>~/.config/nvim/init.vim
 
 conda activate base
+
+ln -f "$DOT_DIR"/home/tex.snippets "$HOME"/.vim/UltiSnips/tex.snippets
