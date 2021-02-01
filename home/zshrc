@@ -342,4 +342,3 @@ function parallel_tmux() {
 }
 alias pt=parallel_tmux
 alias ptf=parallel_tmux_file
-
