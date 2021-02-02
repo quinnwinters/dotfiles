@@ -3,18 +3,18 @@
 # ========================================================= #
 [user]
   name = Quinn Winters
-	email = email@quinnwinters.dev
+  email = email@quinnwinters.dev
 
 [url "git@github.com:"]
- 	insteadOf = "gh:"
- 	pushInsteadOf = "github:"
- 	pushInsteadOf = "git://github.com/"
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
 
- [url "git://github.com/"]
- 	insteadOf = "github:"
+[url "git://github.com/"]
+  insteadOf = "github:"
 
 [url "ssh://git@github.com/"]
- 	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 
 [core]
   excludesfile = ~/.gitignore
@@ -24,7 +24,7 @@
   whitespace = fix
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 # ========================================================= #
 # |     COLORS FOR BETTER FORMATTING                      | #
@@ -52,18 +52,15 @@
 # |     CORE SHORTCUTS                                    | #
 # ========================================================= #
 [alias]
-  l = !"git log --pretty=oneline -n 20 --graph --abbrev-commit"
-  s = !"git status -s"
-  gl = !"git pull --recurse-submodules"
-  gp = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-  df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-  ch = !"history | grep -i '(git commit|g feat|g fix|g style|g refactor|g cfeat|g cfix|g cstyle|g crefactor)'"
+  lg = !"git log --pretty=oneline -n 20 --graph --abbrev-commit"
+  st = status
+  clean-branches = "!git branch --merged master | grep -v '\\s*(master|main|develop|dev|gh-pages|docs)$' | xargs git branch -d"
 
 [ghq]
-    root = ~/Code
+  root = ~/Code
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
