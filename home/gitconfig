@@ -55,7 +55,7 @@
   lg = !"git log --pretty=oneline -n 20 --graph --abbrev-commit"
   st = status
   clean-branches = "!git branch --merged master | grep -v '\\s*(master|main|develop|dev|gh-pages|docs)$' | xargs git branch -d"
-        
+
 [ghq]
   root = ~/Code
 
