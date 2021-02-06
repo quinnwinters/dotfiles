@@ -8,11 +8,8 @@ fi
 /opt/homebrew/anaconda3/bin/conda activate neovim
 
 pip install neovim
-vim +PluginInstall +qall
-cwd=$PWD
-cd "$HOME"/.vim/bundle/youcompleteme
-python install --all
-cd "$cwd"
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath
