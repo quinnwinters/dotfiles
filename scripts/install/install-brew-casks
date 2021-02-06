@@ -13,19 +13,15 @@ brew install --cask authy
 brew install --cask anaconda
 brew install --cask bartender
 brew install --cask caffeine
-brew install --cask discord
 brew install --cask docker
 brew install --cask firefox
-brew install --cask freedom
 brew install --cask handbrake
 brew install --cask iterm2
 brew install --cask julia
 brew install --cask mactex
+brew install --cask moom
 brew install --cask signal
-brew install --cask spectacle
-brew install --cask twitch
 brew install --cask whatsapp
-brew install --cask visual-studio-code
 brew install --cask vlc
 brew install --cask zoom
 
