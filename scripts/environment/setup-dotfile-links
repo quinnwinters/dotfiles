@@ -13,6 +13,7 @@ ln -sfn "$DOT_DIR"/home/ghqrepos "$HOME"/.ghqrepos
 ln -sfn "$DOT_DIR"/home/gitconfig "$HOME"/.gitconfig
 ln -sfn "$DOT_DIR"/home/gitignore "$HOME"/.gitignore
 ln -sfn "$DOT_DIR"/home/mackup.cfg "$HOME"/.mackup.cfg
+ln -sfn "$DOT_DIR"/home/rc.conf "$HOME"/.config/ranger/rc.conf
 ln -sfn "$DOT_DIR"/home/ssh_config "$HOME"/.ssh/config
 ln -sfn "$DOT_DIR"/home/tmux.cfg "$HOME"/.tmux.cfg
 ln -sfn "$DOT_DIR"/home/vimrc "$HOME"/.vimrc
