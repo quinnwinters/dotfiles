@@ -20,4 +20,4 @@ echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
 
 conda activate base
 
-ln -f "$DOT_DIR"/home/tex.snippets "$HOME"/.vim/UltiSnips/tex.snippets
+ln -f "$DOT_DIR"/home/plaintex.snippets "$HOME"/.config/coc/ultisnips/plaintex.snippets
