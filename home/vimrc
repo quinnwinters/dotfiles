@@ -2,51 +2,32 @@
 """"""          VIM RUNTIME AND PLUGIN SETUP                                                  """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Vundle plugins
-" Setup Vundle Plugins
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-
 " Enable Python3 through virtual environment, but disable perl+python2
-let g:python3_host_prog = '/opt/homebrew/anaconda3/envs/neovim/bin/python'
+let g:python3_host_prog = '/opt/anaconda3/envs/neovim/bin/python'
 let g:loaded_perl_provider = 0
 let g:loaded_python_provider = 0
 
 " Specify Vundle Plugins
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " Appearence plugins
-Plugin 'nathanaelkane/vim-indent-guides'        " Tab/indent guidelines
-Plugin 'vim-airline/vim-airline'                " Airline for status line
-Plugin 'vim-airline/vim-airline-themes'         " Airline themes
-Plugin 'dense-analysis/ale'                     " Linting errors in sign column
-Plugin 'airblade/vim-gitgutter'                 " Git status in sign column
-Plugin 'tpope/vim-fugitive'                     " Git actions
-Plugin 'altercation/vim-colors-solarized'       " Enable solarized color scheme
+Plug 'nathanaelkane/vim-indent-guides'          " Tab/indent guidelines
+Plug 'vim-airline/vim-airline'                  " Airline for status line
+Plug 'vim-airline/vim-airline-themes'           " Airline themes
+Plug 'dense-analysis/ale'                       " Linting errors in sign column
+Plug 'airblade/vim-gitgutter'                   " Git status in sign column
+Plug 'tpope/vim-fugitive'                       " Git actions
+Plug 'altercation/vim-colors-solarized'         " Enable solarized color scheme
 
-" Utility functions plugins
-Plugin 'junegunn/fzf'                           " fzf for file searching/opening
-Plugin 'kien/ctrlp.vim'                         " CtrlP for searching files
-Plugin 'preservim/nerdtree'                     " NERDTree for nice file navigation
-Plugin 'editorconfig/editorconfig-vim'          " Unified syntax and editor config
-Plugin 'christoomey/vim-tmux-navigator'         " Tmux/Vim unified navigation
-Plugin 'scrooloose/nerdcommenter'               " Easy commenting / comment wrapping
+" Utility functions plugin
+Plug 'kien/ctrlp.vim'                           " CtrlP for searching files
+Plug 'preservim/nerdtree'                       " NERDTree for nice file navigation
+Plug 'christoomey/vim-tmux-navigator'           " Tmux/Vim unified navigation
+Plug 'scrooloose/nerdcommenter'                 " Easy commenting / comment wrapping
 
 " Language syntax and completition
-Plugin 'ervandew/supertab'                      " Tab key multi-map
-Plugin 'valloric/youcompleteme'                 " Code completition engine
-Plugin 'SirVer/ultisnips'                       " Code snippet engine
-Plugin 'scrooloose/syntastic'                   " Code syntax highlighting
-Plugin 'chiel92/vim-autoformat'                 " Code autoformatting
-Plugin 'sheerun/vim-polyglot'                   " Support for tons of languages
-
-" Language specific plugins
-Plugin 'lervag/vimtex'                          " Specific LaTeX support
-
-call vundle#end()
-filetype plugin indent on
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " COC Runs local language server
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""          BASIC VIM SETTINGS                                                            """""
@@ -113,7 +94,7 @@ set incsearch " search incrementally forwards/backwards
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Vim leader shortcuts
-let mapleader=";"
+let mapleader=" "
 
 " Basic naviation shortcuts
 map <leader>; :vsplit<CR>
@@ -121,11 +102,13 @@ map <leader>\ :split<CR>
 map <leader>o :Files<CR>
 map <leader>t :tabnew
 map <leader>/ :tabs<CR>
+map <leader>f :CtrlP<CR>
 
 " Buffer and code formatting and completition shortcuts
 map <leader>fm :Autoformat<CR>
 map <leader>nt :NERDTreeToggle<CR>
-" <leader>c<space> NERDCommenterToggle
+map <leader>wq :wqa!<CR>
+map <leader>wa :wa!<CR>
 
 " Git shortcuts
 map <leader>go :Gread<CR>
@@ -135,11 +118,18 @@ map <leader>gs :Gstatus<CR>
 map <leader>gl :Git pull<CR>
 map <leader>gp :Git push<CR>
 map <leader>lg :Glog -15 --reverse<CR>
+map <leader>gf :Git feat<CR>
+map <leader>gx :Git fix<CR>
+map <leader>gd :Git docs<CR>
+map <leader>gy :Git style<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""          CTRL-BASED SHORTCUTS                                                          """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic shortcuts
+inoremap jk <ESC>
+nmap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-;> :vsplit<CR>
 nnoremap <C-\> :split<CR>
 nnoremap <C-o> :Files<CR>
@@ -199,19 +189,106 @@ let g:airline_statusline_ontop=1
 " Enable indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
 
-" Start with NERDTree open
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
-autocmd VimEnter * wincmd w
-
 " Tab completition for both YouCompleteMe and UltiSnips (using SuperTab)
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_python_interpreter_path = '/opt/homebrew/anaconda3/envs/neovim/bin/python'
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:ycm_python_interpreter_path = '/opt/homebrew/anaconda3/envs/neovim/bin/python'
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" make ctrlp ignore gitignore'd files
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          COC CODE COMPLETE SETUP                                                       """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-vimtex',
+  \ 'coc-pyright',
+  \ 'coc-clangd',
+  \ 'coc-julia',
+  \ 'coc-metals',
+  \ 'coc-tsserver',
+  \ 'coc-java',
+  \ 'coc-sh',
+  \ 'coc-yaml'
+  \ ]
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<Tab>'
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> df <Plug>(coc-definition)
+nmap <silent> ty <Plug>(coc-type-definition)
+nmap <silent> im <Plug>(coc-implementation)
+nmap <silent> re <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
