@@ -48,12 +48,7 @@
       "Disable Window Resizing": true,
       "Description": "Default",
       "Close Sessions On End": 1,
-      "Jobs to Ignore": [
-        "rlogin",
-        "ssh",
-        "slogin",
-        "telnet"
-      ],
+      "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Scrollback Lines": 1000,
       "HotKey Window Reopens On Activation": false,
       "Draw Powerline Glyphs": true,
@@ -460,12 +455,7 @@
       "Disable Window Resizing": true,
       "Description": "Default",
       "Close Sessions On End": 1,
-      "Jobs to Ignore": [
-        "rlogin",
-        "ssh",
-        "slogin",
-        "telnet"
-      ],
+      "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Scrollback Lines": 1000,
       "HotKey Window Reopens On Activation": false,
       "Draw Powerline Glyphs": true,
@@ -871,12 +861,7 @@
       "Disable Window Resizing": true,
       "Description": "Default",
       "Close Sessions On End": 1,
-      "Jobs to Ignore": [
-        "rlogin",
-        "ssh",
-        "slogin",
-        "telnet"
-      ],
+      "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Scrollback Lines": 1000,
       "HotKey Window Reopens On Activation": false,
       "Draw Powerline Glyphs": true,
@@ -1283,12 +1268,7 @@
       "Disable Window Resizing": true,
       "Description": "Default",
       "Close Sessions On End": 1,
-      "Jobs to Ignore": [
-        "rlogin",
-        "ssh",
-        "slogin",
-        "telnet"
-      ],
+      "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Scrollback Lines": 1000,
       "HotKey Window Reopens On Activation": false,
       "Draw Powerline Glyphs": true,
@@ -1695,12 +1675,7 @@
       "Disable Window Resizing": true,
       "Description": "Default",
       "Close Sessions On End": 1,
-      "Jobs to Ignore": [
-        "rlogin",
-        "ssh",
-        "slogin",
-        "telnet"
-      ],
+      "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Scrollback Lines": 1000,
       "HotKey Window Reopens On Activation": false,
       "Draw Powerline Glyphs": true,
