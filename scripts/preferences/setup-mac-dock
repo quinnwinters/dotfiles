@@ -46,5 +46,4 @@ HELPER_add_external_user_app_to_dock "VLC"
 HELPER_add_apple_default_app_to_dock "Preview"
 HELPER_add_external_user_app_to_dock "iTerm"
 
-
 killall Dock
