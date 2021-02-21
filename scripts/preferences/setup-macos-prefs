@@ -24,7 +24,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
-defaults write com.apple.dock autohide-delay -float 1000
+defaults write com.apple.dock autohide-delay -float 0
 
 #############################################################
 #       Coding Setting Modifications                        #
