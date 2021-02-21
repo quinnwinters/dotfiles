@@ -22,7 +22,6 @@ select yn in "Yes" "No"; do
     mas lucky "Microsoft Excel"
     mas lucky "Microsoft PowerPoint"
     mas lucky "Microsoft OneDrive"
-    mas lucky "Things 3"
     mas lucky "iMovie"
     break
   else
