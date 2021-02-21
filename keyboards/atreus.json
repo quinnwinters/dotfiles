@@ -44,9 +44,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 0,
@@ -56,9 +54,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 28,
@@ -104,10 +100,7 @@
         },
         "target": 1,
         "rangeStart": 51218,
-        "categories": [
-          "layer",
-          "dualuse"
-        ]
+        "categories": ["layer", "dualuse"]
       },
       {
         "code": 51752,
@@ -118,10 +111,7 @@
         },
         "target": 2,
         "rangeStart": 51218,
-        "categories": [
-          "layer",
-          "dualuse"
-        ]
+        "categories": ["layer", "dualuse"]
       },
       {
         "code": 51993,
@@ -132,10 +122,7 @@
         },
         "target": 3,
         "rangeStart": 51218,
-        "categories": [
-          "layer",
-          "dualuse"
-        ]
+        "categories": ["layer", "dualuse"]
       },
       {
         "code": 52251,
@@ -146,10 +133,7 @@
         },
         "target": 4,
         "rangeStart": 51218,
-        "categories": [
-          "layer",
-          "dualuse"
-        ]
+        "categories": ["layer", "dualuse"]
       },
       {
         "code": 10,
@@ -166,9 +150,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 0,
@@ -178,9 +160,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 11,
@@ -219,11 +199,7 @@
         },
         "modifier": "Shift",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "shift"
-        ]
+        "categories": ["modifier", "dualuse", "shift"]
       },
       {
         "code": 49454,
@@ -234,11 +210,7 @@
         },
         "modifier": "Shift",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "shift"
-        ]
+        "categories": ["modifier", "dualuse", "shift"]
       },
       {
         "code": 27,
@@ -323,11 +295,7 @@
         },
         "modifier": "Shift",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "shift"
-        ]
+        "categories": ["modifier", "dualuse", "shift"]
       },
       {
         "code": 49468,
@@ -338,11 +306,7 @@
         },
         "modifier": "Shift",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "shift"
-        ]
+        "categories": ["modifier", "dualuse", "shift"]
       },
       {
         "code": 41,
@@ -376,11 +340,7 @@
         },
         "modifier": "Command",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "gui"
-        ]
+        "categories": ["modifier", "dualuse", "gui"]
       },
       {
         "code": 49222,
@@ -391,11 +351,7 @@
         },
         "modifier": "Control",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "ctrl"
-        ]
+        "categories": ["modifier", "dualuse", "ctrl"]
       },
       {
         "code": 49730,
@@ -406,11 +362,7 @@
         },
         "modifier": "Alt",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "alt"
-        ]
+        "categories": ["modifier", "dualuse", "alt"]
       },
       {
         "code": 49213,
@@ -421,11 +373,7 @@
         },
         "modifier": "Control",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "ctrl"
-        ]
+        "categories": ["modifier", "dualuse", "ctrl"]
       },
       {
         "code": 52,
@@ -457,11 +405,7 @@
         },
         "modifier": "Shift",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "shift"
-        ]
+        "categories": ["modifier", "dualuse", "shift"]
       }
     ],
     [
@@ -508,9 +452,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -520,9 +462,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 35,
@@ -567,9 +507,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 2079,
@@ -577,10 +515,7 @@
           "hint": null,
           "base": "@"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 31
       },
       {
@@ -589,10 +524,7 @@
           "hint": null,
           "base": "("
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 38
       },
       {
@@ -601,10 +533,7 @@
           "hint": null,
           "base": ")"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 39
       },
       {
@@ -615,9 +544,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -627,9 +554,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -639,9 +564,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 80,
@@ -685,10 +608,7 @@
           "hint": null,
           "base": ":"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 51
       },
       {
@@ -699,9 +619,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 2101,
@@ -709,10 +627,7 @@
           "hint": null,
           "base": "~"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 53
       },
       {
@@ -721,10 +636,7 @@
           "hint": null,
           "base": "{"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 47
       },
       {
@@ -733,10 +645,7 @@
           "hint": null,
           "base": "}"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 48
       },
       {
@@ -747,9 +656,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 78,
@@ -777,9 +684,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 0,
@@ -789,9 +694,7 @@
             "1u": "Blkd"
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 2102,
@@ -799,10 +702,7 @@
           "hint": null,
           "base": "<"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 54
       },
       {
@@ -811,10 +711,7 @@
           "hint": null,
           "base": ">"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 55
       },
       {
@@ -823,10 +720,7 @@
           "hint": null,
           "base": "?"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 56
       },
       {
@@ -847,10 +741,7 @@
           "hint": null,
           "base": "_"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 45
       },
       {
@@ -859,10 +750,7 @@
           "hint": null,
           "base": "+"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 46
       },
       {
@@ -877,11 +765,7 @@
         },
         "modifier": "Command",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "gui"
-        ]
+        "categories": ["modifier", "dualuse", "gui"]
       },
       {
         "code": 2101,
@@ -889,10 +773,7 @@
           "hint": null,
           "base": "~"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 53
       },
       {
@@ -901,10 +782,7 @@
           "hint": null,
           "base": "|"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 49
       },
       {
@@ -916,11 +794,7 @@
         },
         "modifier": "Control",
         "rangeStart": 49169,
-        "categories": [
-          "modifier",
-          "dualuse",
-          "ctrl"
-        ]
+        "categories": ["modifier", "dualuse", "ctrl"]
       },
       {
         "code": 2100,
@@ -928,10 +802,7 @@
           "hint": null,
           "base": "\""
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 52
       },
       {
@@ -940,10 +811,7 @@
           "hint": null,
           "base": "{"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 47
       },
       {
@@ -952,10 +820,7 @@
           "hint": null,
           "base": "}"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 48
       },
       {
@@ -972,10 +837,7 @@
           "hint": null,
           "base": "!"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 30
       },
       {
@@ -984,10 +846,7 @@
           "hint": null,
           "base": "@"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 31
       },
       {
@@ -996,10 +855,7 @@
           "hint": null,
           "base": "#"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 32
       },
       {
@@ -1008,10 +864,7 @@
           "hint": null,
           "base": "$"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 33
       },
       {
@@ -1020,10 +873,7 @@
           "hint": null,
           "base": "%"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 34
       },
       {
@@ -1034,9 +884,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1046,9 +894,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 2083,
@@ -1056,10 +902,7 @@
           "hint": null,
           "base": "^"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 35
       },
       {
@@ -1068,10 +911,7 @@
           "hint": null,
           "base": "&"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 36
       },
       {
@@ -1080,10 +920,7 @@
           "hint": null,
           "base": "*"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 37
       },
       {
@@ -1092,10 +929,7 @@
           "hint": null,
           "base": "("
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 38
       },
       {
@@ -1104,10 +938,7 @@
           "hint": null,
           "base": ")"
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 39
       },
       {
@@ -1125,9 +956,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1137,9 +966,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1149,9 +976,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1161,9 +986,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1173,9 +996,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1185,9 +1006,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 2128,
@@ -1201,10 +1020,7 @@
             "1u": "←"
           }
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 80
       },
       {
@@ -1219,10 +1035,7 @@
             "1u": "↓"
           }
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 81
       },
       {
@@ -1237,10 +1050,7 @@
             "1u": "↑"
           }
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 82
       },
       {
@@ -1255,10 +1065,7 @@
             "1u": "→"
           }
         },
-        "categories": [
-          "with-modifiers",
-          "shift"
-        ],
+        "categories": ["with-modifiers", "shift"],
         "baseCode": 79
       },
       {
@@ -1270,11 +1077,7 @@
           },
           "base": ";"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 51
       },
       {
@@ -1285,9 +1088,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1297,9 +1098,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1309,9 +1108,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1321,9 +1118,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1333,9 +1128,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1345,9 +1138,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1357,9 +1148,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1369,9 +1158,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1381,9 +1168,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1393,9 +1178,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1405,9 +1188,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1417,9 +1198,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1429,9 +1208,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1441,9 +1218,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1453,9 +1228,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1465,9 +1238,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 23664,
@@ -1481,9 +1252,7 @@
             "1u": "🔅"
           }
         },
-        "categories": [
-          "consumer"
-        ]
+        "categories": ["consumer"]
       },
       {
         "code": 23663,
@@ -1497,9 +1266,7 @@
             "1u": "🔆"
           }
         },
-        "categories": [
-          "consumer"
-        ]
+        "categories": ["consumer"]
       },
       {
         "code": 23786,
@@ -1513,9 +1280,7 @@
             "1u": "🔉"
           }
         },
-        "categories": [
-          "consumer"
-        ]
+        "categories": ["consumer"]
       },
       {
         "code": 23785,
@@ -1529,9 +1294,7 @@
             "1u": "🔊"
           }
         },
-        "categories": [
-          "consumer"
-        ]
+        "categories": ["consumer"]
       },
       {
         "code": 65535,
@@ -1541,9 +1304,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1553,9 +1314,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1565,9 +1324,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1577,9 +1334,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ],
     [
@@ -1591,9 +1346,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1603,9 +1356,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1615,9 +1366,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1627,9 +1376,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1639,9 +1386,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1651,9 +1396,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1663,9 +1406,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1675,9 +1416,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 792,
@@ -1688,11 +1427,7 @@
           },
           "base": "u"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 24
       },
       {
@@ -1704,11 +1439,7 @@
           },
           "base": "i"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 12
       },
       {
@@ -1720,11 +1451,7 @@
           },
           "base": "o"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 18
       },
       {
@@ -1735,9 +1462,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1747,9 +1472,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1759,9 +1482,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1771,9 +1492,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1783,9 +1502,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1795,9 +1512,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1807,9 +1522,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1819,9 +1532,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 779,
@@ -1832,11 +1543,7 @@
           },
           "base": "h"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 11
       },
       {
@@ -1848,11 +1555,7 @@
           },
           "base": "j"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 13
       },
       {
@@ -1864,11 +1567,7 @@
           },
           "base": "k"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 14
       },
       {
@@ -1880,11 +1579,7 @@
           },
           "base": "l"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 15
       },
       {
@@ -1896,11 +1591,7 @@
           },
           "base": ";"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 51
       },
       {
@@ -1911,9 +1602,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1923,9 +1612,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1935,9 +1622,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1947,9 +1632,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1959,9 +1642,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1971,9 +1652,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -1983,9 +1662,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 785,
@@ -1996,11 +1673,7 @@
           },
           "base": "n"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 17
       },
       {
@@ -2012,11 +1685,7 @@
           },
           "base": "m"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 16
       },
       {
@@ -2027,9 +1696,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2039,9 +1706,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2051,9 +1716,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2063,9 +1726,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2075,9 +1736,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2087,9 +1746,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2099,9 +1756,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2111,9 +1766,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2123,9 +1776,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 75,
@@ -2154,11 +1805,7 @@
           },
           "base": "'"
         },
-        "categories": [
-          "with-modifiers",
-          "ctrl",
-          "alt"
-        ],
+        "categories": ["with-modifiers", "ctrl", "alt"],
         "baseCode": 52
       },
       {
@@ -2169,9 +1816,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2181,9 +1826,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2193,9 +1836,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ],
     [
@@ -2207,9 +1848,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2219,9 +1858,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2231,9 +1868,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2243,9 +1878,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2255,9 +1888,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2267,9 +1898,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2279,9 +1908,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2291,9 +1918,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2303,9 +1928,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2315,9 +1938,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2327,9 +1948,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2339,9 +1958,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2351,9 +1968,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2363,9 +1978,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2375,9 +1988,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2387,9 +1998,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2399,9 +2008,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2411,9 +2018,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2423,9 +2028,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 20484,
@@ -2433,9 +2036,7 @@
           "hint": "Mouse",
           "base": "Left"
         },
-        "categories": [
-          "mousekeys"
-        ]
+        "categories": ["mousekeys"]
       },
       {
         "code": 20482,
@@ -2443,9 +2044,7 @@
           "hint": "Mouse",
           "base": "Down"
         },
-        "categories": [
-          "mousekeys"
-        ]
+        "categories": ["mousekeys"]
       },
       {
         "code": 20481,
@@ -2453,9 +2052,7 @@
           "hint": "Mouse",
           "base": "Up"
         },
-        "categories": [
-          "mousekeys"
-        ]
+        "categories": ["mousekeys"]
       },
       {
         "code": 20488,
@@ -2463,9 +2060,7 @@
           "hint": "Mouse",
           "base": "Right"
         },
-        "categories": [
-          "mousekeys"
-        ]
+        "categories": ["mousekeys"]
       },
       {
         "code": 65535,
@@ -2475,9 +2070,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2487,9 +2080,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2499,9 +2090,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2511,9 +2100,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2523,9 +2110,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2535,9 +2120,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2547,9 +2130,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2559,9 +2140,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2571,9 +2150,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2583,9 +2160,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2595,9 +2170,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2607,9 +2180,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2619,9 +2190,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2631,9 +2200,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2643,9 +2210,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2655,9 +2220,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2667,9 +2230,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2679,9 +2240,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2691,9 +2250,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 20546,
@@ -2704,9 +2261,7 @@
           },
           "base": "Right"
         },
-        "categories": [
-          "mousekeys"
-        ]
+        "categories": ["mousekeys"]
       },
       {
         "code": 20545,
@@ -2717,9 +2272,7 @@
           },
           "base": "Left"
         },
-        "categories": [
-          "mousekeys"
-        ]
+        "categories": ["mousekeys"]
       },
       {
         "code": 65535,
@@ -2729,9 +2282,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2741,9 +2292,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2753,9 +2302,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2765,9 +2312,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ],
     [
@@ -2779,9 +2324,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2791,9 +2334,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2803,9 +2344,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2815,9 +2354,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2827,9 +2364,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2839,9 +2374,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2851,9 +2384,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2863,9 +2394,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2875,9 +2404,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2887,9 +2414,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2899,9 +2424,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2911,9 +2434,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2923,9 +2444,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2935,9 +2454,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2947,9 +2464,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2959,9 +2474,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2971,9 +2484,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2983,9 +2494,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -2995,9 +2504,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3007,9 +2514,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3019,9 +2524,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3031,9 +2534,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3043,9 +2544,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3055,9 +2554,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3067,9 +2564,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3079,9 +2574,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3091,9 +2584,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3103,9 +2594,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3115,9 +2604,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3127,9 +2614,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3139,9 +2624,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3151,9 +2634,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3163,9 +2644,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3175,9 +2654,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3187,9 +2664,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3199,9 +2674,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3211,9 +2684,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3223,9 +2694,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3235,9 +2704,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3247,9 +2714,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3259,9 +2724,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3271,9 +2734,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3283,9 +2744,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3295,9 +2754,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3307,9 +2764,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3319,9 +2774,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3331,9 +2784,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3343,9 +2794,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ],
     [
@@ -3357,9 +2806,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3369,9 +2816,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3381,9 +2826,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3393,9 +2836,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3405,9 +2846,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3417,9 +2856,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3429,9 +2866,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3441,9 +2876,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3453,9 +2886,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3465,9 +2896,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3477,9 +2906,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3489,9 +2916,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3501,9 +2926,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3513,9 +2936,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3525,9 +2946,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3537,9 +2956,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3549,9 +2966,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3561,9 +2976,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3573,9 +2986,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3585,9 +2996,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3597,9 +3006,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3609,9 +3016,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3621,9 +3026,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3633,9 +3036,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3645,9 +3046,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3657,9 +3056,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3669,9 +3066,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3681,9 +3076,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3693,9 +3086,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3705,9 +3096,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3717,9 +3106,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3729,9 +3116,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3741,9 +3126,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3753,9 +3136,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3765,9 +3146,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3777,9 +3156,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3789,9 +3166,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3801,9 +3176,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3813,9 +3186,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3825,9 +3196,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3837,9 +3206,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3849,9 +3216,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3861,9 +3226,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3873,9 +3236,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3885,9 +3246,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3897,9 +3256,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3909,9 +3266,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3921,9 +3276,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ],
     [
@@ -3935,9 +3288,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3947,9 +3298,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3959,9 +3308,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3971,9 +3318,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3983,9 +3328,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -3995,9 +3338,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4007,9 +3348,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4019,9 +3358,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4031,9 +3368,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4043,9 +3378,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4055,9 +3388,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4067,9 +3398,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4079,9 +3408,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4091,9 +3418,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4103,9 +3428,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4115,9 +3438,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4127,9 +3448,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4139,9 +3458,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4151,9 +3468,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4163,9 +3478,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4175,9 +3488,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4187,9 +3498,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4199,9 +3508,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4211,9 +3518,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4223,9 +3528,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4235,9 +3538,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4247,9 +3548,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4259,9 +3558,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4271,9 +3568,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4283,9 +3578,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4295,9 +3588,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4307,9 +3598,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4319,9 +3608,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4331,9 +3618,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4343,9 +3628,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4355,9 +3638,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4367,9 +3648,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4379,9 +3658,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4391,9 +3668,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4403,9 +3678,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4415,9 +3688,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4427,9 +3698,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4439,9 +3708,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4451,9 +3718,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4463,9 +3728,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4475,9 +3738,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4487,9 +3748,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4499,9 +3758,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ],
     [
@@ -4513,9 +3770,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4525,9 +3780,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4537,9 +3790,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4549,9 +3800,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4561,9 +3810,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4573,9 +3820,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4585,9 +3830,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4597,9 +3840,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4609,9 +3850,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4621,9 +3860,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4633,9 +3870,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4645,9 +3880,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4657,9 +3890,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4669,9 +3900,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4681,9 +3910,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4693,9 +3920,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4705,9 +3930,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4717,9 +3940,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4729,9 +3950,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4741,9 +3960,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4753,9 +3970,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4765,9 +3980,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4777,9 +3990,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4789,9 +4000,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4801,9 +4010,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4813,9 +4020,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4825,9 +4030,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4837,9 +4040,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4849,9 +4050,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4861,9 +4060,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4873,9 +4070,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4885,9 +4080,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4897,9 +4090,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4909,9 +4100,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4921,9 +4110,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4933,9 +4120,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4945,9 +4130,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4957,9 +4140,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4969,9 +4150,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4981,9 +4160,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -4993,9 +4170,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5005,9 +4180,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5017,9 +4190,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5029,9 +4200,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5041,9 +4210,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5053,9 +4220,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5065,9 +4230,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5077,9 +4240,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ],
     [
@@ -5091,9 +4252,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5103,9 +4262,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5115,9 +4272,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5127,9 +4282,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5139,9 +4292,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5151,9 +4302,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5163,9 +4312,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5175,9 +4322,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5187,9 +4332,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5199,9 +4342,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5211,9 +4352,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5223,9 +4362,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5235,9 +4372,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5247,9 +4382,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5259,9 +4392,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5271,9 +4402,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5283,9 +4412,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5295,9 +4422,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5307,9 +4432,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5319,9 +4442,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5331,9 +4452,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5343,9 +4462,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5355,9 +4472,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5367,9 +4482,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5379,9 +4492,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5391,9 +4502,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5403,9 +4512,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5415,9 +4522,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5427,9 +4532,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5439,9 +4542,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5451,9 +4552,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5463,9 +4562,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5475,9 +4572,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5487,9 +4582,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5499,9 +4592,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5511,9 +4602,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5523,9 +4612,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5535,9 +4622,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5547,9 +4632,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5559,9 +4642,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5571,9 +4652,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5583,9 +4662,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5595,9 +4672,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5607,9 +4682,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5619,9 +4692,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5631,9 +4702,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5643,9 +4712,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       },
       {
         "code": 65535,
@@ -5655,9 +4722,7 @@
             "1u": " "
           }
         },
-        "categories": [
-          "blanks"
-        ]
+        "categories": ["blanks"]
       }
     ]
   ],
