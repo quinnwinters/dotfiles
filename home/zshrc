@@ -1,7 +1,6 @@
 source $HOME/.bashrc
 export ZSH="/Users/qwinters/.oh-my-zsh"
 
-
 # ========================================================= #
 # |     Core ZSH Settings                                 | #
 # ========================================================= #
@@ -256,7 +255,7 @@ function HELPER_tmux_launcher() {
 
   tmux switch-client -t $session || tmux attach -t $session
 }
-alias t="HELPER_tmux_launcher"
+alias tm="HELPER_tmux_launcher"
 
 function HELPER_tmux_gh_edit_session() {
   code_loc=$(ghq root)
@@ -292,7 +291,6 @@ function HELPER_tmux_gh_edit_session() {
     tmux attach
   fi
 }
-alias te="HELPER_tmux_gh_edit_session"
 
 function HELPER_tmux_gtop() {
   session="gtop"
@@ -303,7 +301,6 @@ function HELPER_tmux_gtop() {
   fi
   tmux switch-client -t $session || tmux attach -t $session
 }
-alias tp="HELPER_tmux_gtop"
 
 function HELPER_tmux_ssh() {
   echo "Enter a enter your ssh host (and flags!)"
@@ -314,7 +311,6 @@ function HELPER_tmux_ssh() {
   tmux send -t "ssh $cmd" Enter
   tmux switch-client -t $ || tmux attach -t $host
 }
-alias ts="HELPER_tmux_ssh"
 
 # Call this script and pass a text file with a list of servers. You will ssh to the servers as the current user.
 # Once connected use Ctrl + a to enter commands
@@ -343,6 +339,12 @@ function parallel_tmux() {
 alias pt=parallel_tmux
 alias ptf=parallel_tmux_file
 
+# ========================================================= #
+# |    Todo Aliases                                       | #
+# ========================================================= #
+alias td="todo.sh"
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -357,4 +359,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

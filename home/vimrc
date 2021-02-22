@@ -27,6 +27,10 @@ Plug 'scrooloose/nerdcommenter'                 " Easy commenting / comment wrap
 
 " Language syntax and completition
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " COC Runs local language server
+
+" Special Vim modes
+Plug 'dbeniamine/todo.txt-vim'                  " Todo-txt mode for vim
+Plug 'vimwiki/vimwiki'                          " VimWiki for personal notes
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,16 +104,20 @@ let mapleader=" "
 " Basic naviation shortcuts
 map <leader>; :vsplit<CR>
 map <leader>\ :split<CR>
-map <leader>o :Files<CR>
-map <leader>t :tabnew
 map <leader>/ :tabs<CR>
 map <leader>f :CtrlP<CR>
+map <leader>tn :tabnew
+map <leader>tl :tabs<cr>
+map <leader>j :tabnext<cr>
+map <leader>k :tabprevious<cr>
 
 " Buffer and code formatting and completition shortcuts
 map <leader>fm :Autoformat<CR>
 map <leader>nt :NERDTreeToggle<CR>
 map <leader>wq :wqa!<CR>
 map <leader>wa :wa!<CR>
+map <leader>qq :q!<CR>
+map <leader>qa :qa!<CR>
 
 " Git shortcuts
 map <leader>go :Gread<CR>
@@ -130,15 +138,6 @@ map <leader>gy :Git style<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic shortcuts
 inoremap jk <ESC>
-nmap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-;> :vsplit<CR>
-nnoremap <C-\> :split<CR>
-nnoremap <C-o> :Files<CR>
-
-" Tab navigations
-nnoremap <C-/> :tabs<CR>
-nnoremap <C-j> :tabnext<CR>
-nnoremap <C-k> :tabprevious<CR>
 
 " Change arrow movement to resize for splits
 nnoremap <C-Up>    :resize +2<CR>
@@ -204,24 +203,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 " make ctrlp ignore gitignore'd files
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
