@@ -1,5 +1,5 @@
 commitsOnly: true
 anyCommit: true
-allowMergeCommits: true 
-allowRevertCommits: true 
+allowMergeCommits: true
+allowRevertCommits: true
 
