@@ -29,7 +29,7 @@ Plug 'scrooloose/nerdcommenter'                 " Easy commenting / comment wrap
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " COC Runs local language server
 
 " Special Vim modes
-Plug 'dbeniamine/todo.txt-vim'                  " Todo-txt mode for vim
+Plug 'freitass/todo.txt-vim'                    " Todo-txt mode for vim
 Plug 'vimwiki/vimwiki'                          " VimWiki for personal notes
 call plug#end()
 
