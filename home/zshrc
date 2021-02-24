@@ -342,7 +342,7 @@ alias ptf=parallel_tmux_file
 # ========================================================= #
 # |    Todo Aliases                                       | #
 # ========================================================= #
-alias td="todo.sh"
+alias td="todo.sh -d $HOME/.todo.cfg"
 
 
 # >>> conda initialize >>>
