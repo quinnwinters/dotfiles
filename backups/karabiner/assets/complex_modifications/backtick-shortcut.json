@@ -1,8 +1,10 @@
 {
   "title": "Use fn+esc for inserting backtick",
-  "rules": [{
+  "rules": [
+    {
       "description": "Use fn+esc for inserting backtick",
-      "manipulators": [{
+      "manipulators": [
+        {
           "type": "basic",
           "from": {
             "key_code": "esc",
@@ -12,15 +14,20 @@
               ]
             }
           },
-          "to": [{
-            "key_code": "`"
-          }],
-          "conditions": [{
-            "type": "variable_if",
-            "name": "fn pressed",
-            "value": 1
-          }]
-        }, {
+          "to": [
+            {
+              "key_code": "`"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fn pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
           "type": "basic",
           "from": {
             "key_code": "fn",
@@ -30,18 +37,22 @@
               ]
             }
           },
-          "to": [{
-            "set_variable": {
-              "name": "fn pressed",
-              "value": 1
+          "to": [
+            {
+              "set_variable": {
+                "name": "fn pressed",
+                "value": 1
+              }
             }
-          }],
-          "to_after_key_up": [{
-            "set_variable": {
-              "name": "fn pressed",
-              "value": 0
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "fn pressed",
+                "value": 0
+              }
             }
-          }]
+          ]
         }
       ]
     }
