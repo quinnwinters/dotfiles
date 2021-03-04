@@ -354,7 +354,7 @@
         "Blue Component": 0.8352941176470589,
         "Green Component": 0.9098039215686274
       },
-      "Space": -1,
+      "Space": 0,
       "HotKey Window AutoHides": false,
       "Command": "",
       "Terminal Type": "xterm-256color",
@@ -375,7 +375,7 @@
         "Green Component": 0.6313725490196078
       },
       "HotKey Activated By Modifier": false,
-      "Initial Text": "t",
+      "Initial Text": "HELPER_tmux_launcher",
       "Background Color": {
         "Red Component": 0,
         "Color Space": "sRGB",
@@ -384,7 +384,7 @@
       },
       "Badge Top Margin": 5,
       "Transparency": 0,
-      "Screen": -2,
+      "Screen": -1,
       "Initial Use Transparency": true,
       "HotKey Characters Ignoring Modifiers": "1",
       "Bound Hosts": [],
@@ -760,7 +760,7 @@
         "Blue Component": 0.8352941176470589,
         "Green Component": 0.9098039215686274
       },
-      "Space": -1,
+      "Space": 0,
       "HotKey Window AutoHides": false,
       "Command": "",
       "Terminal Type": "xterm-256color",
@@ -781,7 +781,7 @@
         "Green Component": 0.6313725490196078
       },
       "HotKey Activated By Modifier": false,
-      "Initial Text": "te",
+      "Initial Text": "HELPER_tmux_gh_edit_session",
       "Background Color": {
         "Red Component": 0,
         "Color Space": "sRGB",
@@ -790,7 +790,7 @@
       },
       "Badge Top Margin": 5,
       "Transparency": 0,
-      "Screen": -2,
+      "Screen": -1,
       "Initial Use Transparency": true,
       "HotKey Characters Ignoring Modifiers": "",
       "Bound Hosts": [],
@@ -1167,7 +1167,7 @@
         "Blue Component": 0.8352941176470589,
         "Green Component": 0.9098039215686274
       },
-      "Space": -1,
+      "Space": 0,
       "HotKey Window AutoHides": false,
       "Command": "",
       "Terminal Type": "xterm-256color",
@@ -1188,7 +1188,7 @@
         "Green Component": 0.6313725490196078
       },
       "HotKey Activated By Modifier": false,
-      "Initial Text": "t dropdown",
+      "Initial Text": "HELPER_tmux_launcher dropdown",
       "Background Color": {
         "Red Component": 0,
         "Color Space": "sRGB",
@@ -1197,7 +1197,7 @@
       },
       "Badge Top Margin": 5,
       "Transparency": 0,
-      "Screen": -2,
+      "Screen": -1,
       "Initial Use Transparency": true,
       "HotKey Characters Ignoring Modifiers": "3",
       "Bound Hosts": [],
@@ -1574,7 +1574,7 @@
         "Blue Component": 0.8352941176470589,
         "Green Component": 0.9098039215686274
       },
-      "Space": -1,
+      "Space": 0,
       "HotKey Window AutoHides": false,
       "Command": "",
       "Terminal Type": "xterm-256color",
@@ -1595,7 +1595,7 @@
         "Green Component": 0.6313725490196078
       },
       "HotKey Activated By Modifier": false,
-      "Initial Text": "tp",
+      "Initial Text": "HELPER_tmux_gtop",
       "Background Color": {
         "Red Component": 0,
         "Color Space": "sRGB",
@@ -1604,7 +1604,7 @@
       },
       "Badge Top Margin": 5,
       "Transparency": 0,
-      "Screen": -2,
+      "Screen": -1,
       "Initial Use Transparency": true,
       "HotKey Characters Ignoring Modifiers": "",
       "Bound Hosts": [],
@@ -1981,7 +1981,7 @@
         "Blue Component": 0.8352941176470589,
         "Green Component": 0.9098039215686274
       },
-      "Space": -1,
+      "Space": 0,
       "HotKey Window AutoHides": false,
       "Command": "",
       "Terminal Type": "xterm-256color",
@@ -2002,7 +2002,7 @@
         "Green Component": 0.6313725490196078
       },
       "HotKey Activated By Modifier": false,
-      "Initial Text": "t ranger && ranger",
+      "Initial Text": "HELPER_tmux_gh_edit_session ranger && ranger",
       "Background Color": {
         "Red Component": 0,
         "Color Space": "sRGB",
@@ -2011,7 +2011,7 @@
       },
       "Badge Top Margin": 5,
       "Transparency": 0,
-      "Screen": -2,
+      "Screen": -1,
       "Initial Use Transparency": true,
       "HotKey Characters Ignoring Modifiers": "f",
       "Bound Hosts": [],

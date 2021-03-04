@@ -40,9 +40,12 @@ function HELPER_add_external_user_app_to_dock() {
 HELPER_add_external_user_app_to_dock "Authy Desktop"
 HELPER_add_external_user_app_to_dock "1Password 7"
 HELPER_add_external_user_app_to_dock "Brave Browser"
+HELPER_add_external_user_app_to_dock "Firefox"
 HELPER_add_external_user_app_to_dock "Signal"
-HELPER_add_external_user_app_to_dock "Spotify"
+HELPER_add_apple_default_app_to_dock "Music"
+HELPER_add_apple_default_app_to_dock "Podcasts"
 HELPER_add_external_user_app_to_dock "VLC"
+HELPER_add_external_user_app_to_dock "Microsoft OneNote"
 HELPER_add_apple_default_app_to_dock "Preview"
 HELPER_add_external_user_app_to_dock "iTerm"
 
