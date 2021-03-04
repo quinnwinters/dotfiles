@@ -1,8 +1,6 @@
 {
   "title": "Vim Mode Plus",
-  "maintainers": [
-    "harmtemolder"
-  ],
+  "maintainers": ["harmtemolder"],
   "homepage": "https://git.sr.ht/~harmtemolder/karabiner-vim-mode-plus",
   "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://git.sr.ht/~harmtemolder/karabiner-vim-mode-plus/blob/master/vim_mode_plus.json",
   "rules": [
@@ -137,9 +135,7 @@
           "from": {
             "key_code": "open_bracket",
             "modifiers": {
-              "mandatory": [
-                "control"
-              ]
+              "mandatory": ["control"]
             }
           },
           "to": [
@@ -358,9 +354,7 @@
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift"
-              ]
+              "modifiers": ["left_shift"]
             }
           ],
           "conditions": [
@@ -388,9 +382,7 @@
           "to": [
             {
               "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift"
-              ]
+              "modifiers": ["left_shift"]
             }
           ],
           "conditions": [
@@ -418,9 +410,7 @@
           "to": [
             {
               "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift"
-              ]
+              "modifiers": ["left_shift"]
             }
           ],
           "conditions": [
@@ -448,9 +438,7 @@
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift"
-              ]
+              "modifiers": ["left_shift"]
             }
           ],
           "conditions": [
@@ -478,10 +466,7 @@
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             }
           ],
           "conditions": [
@@ -509,10 +494,7 @@
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             }
           ],
           "conditions": [
@@ -540,17 +522,11 @@
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             }
           ],
           "conditions": [
@@ -575,18 +551,13 @@
           "from": {
             "key_code": "6",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             }
           ],
           "conditions": [
@@ -611,18 +582,13 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             }
           ],
           "conditions": [
@@ -698,10 +664,7 @@
           "to": [
             {
               "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "set_variable": {
@@ -737,18 +700,13 @@
           "from": {
             "key_code": "g",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             }
           ],
           "conditions": [
@@ -773,18 +731,13 @@
           "from": {
             "key_code": "open_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "a",
-              "modifiers": [
-                "left_shift",
-                "left_control"
-              ]
+              "modifiers": ["left_shift", "left_control"]
             }
           ],
           "conditions": [
@@ -809,18 +762,13 @@
           "from": {
             "key_code": "close_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "e",
-              "modifiers": [
-                "left_shift",
-                "left_control"
-              ]
+              "modifiers": ["left_shift", "left_control"]
             }
           ],
           "conditions": [
@@ -848,9 +796,7 @@
           "to": [
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -893,9 +839,7 @@
           "to": [
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -938,9 +882,7 @@
           "to": [
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -1022,9 +964,7 @@
           "from": {
             "key_code": "left_shift",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -1054,9 +994,7 @@
           "from": {
             "key_code": "right_shift",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -1086,9 +1024,7 @@
           "from": {
             "any": "key_code",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -1180,28 +1116,19 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1240,16 +1167,11 @@
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1288,16 +1210,11 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1336,23 +1253,15 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1382,9 +1291,7 @@
           "from": {
             "key_code": "6",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -1396,16 +1303,11 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1435,9 +1337,7 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -1449,16 +1349,11 @@
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1556,16 +1451,11 @@
             },
             {
               "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1595,9 +1485,7 @@
           "from": {
             "key_code": "g",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -1609,16 +1497,11 @@
             },
             {
               "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1648,9 +1531,7 @@
           "from": {
             "key_code": "open_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -1662,16 +1543,11 @@
             },
             {
               "key_code": "a",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1701,9 +1577,7 @@
           "from": {
             "key_code": "close_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -1715,9 +1589,7 @@
             },
             {
               "key_code": "k",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             }
           ],
           "conditions": [
@@ -1809,28 +1681,19 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1869,16 +1732,11 @@
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1917,16 +1775,11 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1965,23 +1818,15 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -2011,9 +1856,7 @@
           "from": {
             "key_code": "6",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2025,16 +1868,11 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -2064,9 +1902,7 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2078,16 +1914,11 @@
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -2185,16 +2016,11 @@
             },
             {
               "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -2224,9 +2050,7 @@
           "from": {
             "key_code": "g",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2238,16 +2062,11 @@
             },
             {
               "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -2277,9 +2096,7 @@
           "from": {
             "key_code": "open_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2291,16 +2108,11 @@
             },
             {
               "key_code": "a",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -2330,9 +2142,7 @@
           "from": {
             "key_code": "close_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2344,16 +2154,11 @@
             },
             {
               "key_code": "e",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             },
             {
               "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -2445,28 +2250,19 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2514,16 +2310,11 @@
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2571,16 +2362,11 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
+              "modifiers": ["left_shift", "left_alt"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2628,23 +2414,15 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2683,9 +2461,7 @@
           "from": {
             "key_code": "6",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2697,16 +2473,11 @@
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2745,9 +2516,7 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2759,16 +2528,11 @@
             },
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2875,16 +2639,11 @@
             },
             {
               "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2923,9 +2682,7 @@
           "from": {
             "key_code": "g",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2937,16 +2694,11 @@
             },
             {
               "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
+              "modifiers": ["left_shift", "left_command"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -2985,9 +2737,7 @@
           "from": {
             "key_code": "open_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -2999,16 +2749,11 @@
             },
             {
               "key_code": "a",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -3047,9 +2792,7 @@
           "from": {
             "key_code": "close_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -3061,16 +2804,11 @@
             },
             {
               "key_code": "e",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             },
             {
               "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -3141,9 +2879,7 @@
           "from": {
             "key_code": "x",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
@@ -3176,9 +2912,7 @@
           "to": [
             {
               "key_code": "v",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -3203,17 +2937,13 @@
           "from": {
             "key_code": "p",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "v",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -3241,9 +2971,7 @@
           "to": [
             {
               "key_code": "z",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -3268,18 +2996,13 @@
           "from": {
             "key_code": "r",
             "modifiers": {
-              "mandatory": [
-                "control"
-              ]
+              "mandatory": ["control"]
             }
           },
           "to": [
             {
               "key_code": "z",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             }
           ],
           "conditions": [
@@ -3309,12 +3032,7 @@
           "from": {
             "key_code": "h",
             "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
+              "optional": ["control", "option", "command", "shift"]
             }
           },
           "to": [
@@ -3344,12 +3062,7 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
+              "optional": ["control", "option", "command", "shift"]
             }
           },
           "to": [
@@ -3379,12 +3092,7 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
+              "optional": ["control", "option", "command", "shift"]
             }
           },
           "to": [
@@ -3414,12 +3122,7 @@
           "from": {
             "key_code": "l",
             "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
+              "optional": ["control", "option", "command", "shift"]
             }
           },
           "to": [
@@ -3452,9 +3155,7 @@
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_alt"
-              ]
+              "modifiers": ["left_alt"]
             }
           ],
           "conditions": [
@@ -3482,9 +3183,7 @@
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_alt"
-              ]
+              "modifiers": ["left_alt"]
             }
           ],
           "conditions": [
@@ -3512,15 +3211,11 @@
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -3545,17 +3240,13 @@
           "from": {
             "key_code": "6",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -3580,17 +3271,13 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -3666,9 +3353,7 @@
           "to": [
             {
               "key_code": "up_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -3704,17 +3389,13 @@
           "from": {
             "key_code": "g",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "down_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -3739,17 +3420,13 @@
           "from": {
             "key_code": "open_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "a",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             }
           ],
           "conditions": [
@@ -3774,17 +3451,13 @@
           "from": {
             "key_code": "close_bracket",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "e",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             }
           ],
           "conditions": [
@@ -3847,17 +3520,13 @@
           "from": {
             "key_code": "i",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -3924,17 +3593,13 @@
           "from": {
             "key_code": "a",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -3971,9 +3636,7 @@
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "return_or_enter"
@@ -4010,17 +3673,13 @@
           "from": {
             "key_code": "o",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
+              "mandatory": ["shift"]
             }
           },
           "to": [
             {
               "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "return_or_enter"
@@ -4178,9 +3837,7 @@
           "from": {
             "key_code": "left_shift",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4210,9 +3867,7 @@
           "from": {
             "key_code": "right_shift",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4242,9 +3897,7 @@
           "from": {
             "key_code": "left_control",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4274,9 +3927,7 @@
           "from": {
             "key_code": "right_control",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4306,9 +3957,7 @@
           "from": {
             "key_code": "left_option",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4338,9 +3987,7 @@
           "from": {
             "key_code": "right_option",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4370,9 +4017,7 @@
           "from": {
             "key_code": "left_command",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4402,9 +4047,7 @@
           "from": {
             "key_code": "right_command",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -4434,9 +4077,7 @@
           "from": {
             "any": "key_code",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
