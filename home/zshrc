@@ -240,6 +240,7 @@ alias gw="gradle_search"
 # |    Tmux Aliases                                       | #
 # ========================================================= #
 function HELPER_tmux_launcher() {
+  todo.sh -tcNA -d $HOME/.todo.cfg git-sync
   if [[ $# -eq 1 ]] ; then
     session=$1
   else
@@ -258,6 +259,7 @@ function HELPER_tmux_launcher() {
 alias tm="HELPER_tmux_launcher"
 
 function HELPER_tmux_gh_edit_session() {
+  todo.sh -tcNA -d $HOME/.todo.cfg git-sync
   code_loc=$(ghq root)
   exa --tree --level=2 --recurse --only-dirs $code_loc
   echo ""
@@ -293,6 +295,7 @@ function HELPER_tmux_gh_edit_session() {
 }
 
 function HELPER_tmux_gtop() {
+  todo.sh -tcNA -d $HOME/.todo.cfg git-sync
   session="gtop"
   tmux has-session -t $session 2>/dev/null
   if [[ $? == 0 ]] ; then
@@ -342,15 +345,10 @@ alias ptf=parallel_tmux_file
 # ========================================================= #
 # |    Todo Aliases                                       | #
 # ========================================================= #
-function HELPER_todo_with_flags() {
-    args="$@"
-    todo.sh -tcNA -d $HOME/.todo.cfg $args
-    { todo.sh -d $HOME/.todo.cfg git-sync & disown ; } &>/dev/null
-    clear && todo.sh -tcNA -d $HOME/.todo.cfg list
-}
+alias td="todo.sh -tcNA -d $HOME/.todo.cfg"
 
-alias td="HELPER_todo_with_flags"
-
+# Every terminal reload sync git and web status with remote
+todo.sh -tcNA -d $HOME/.todo.cfg git-sync
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
