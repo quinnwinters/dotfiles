@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""          VIM RUNTIME AND PLUGIN SETUP                                                  """""
+""""""          VIM PYTHON SETUP                                                              """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable Python3 through virtual environment, but disable perl+python2
@@ -7,40 +7,113 @@ let g:python3_host_prog = '/opt/anaconda3/envs/neovim/bin/python'
 let g:loaded_perl_provider = 0
 let g:loaded_python_provider = 0
 
-" Specify Vundle Plugins
-call plug#begin('~/.vim/plugged')
-
-" Appearence plugins
-Plug 'nathanaelkane/vim-indent-guides'          " Tab/indent guidelines
-Plug 'vim-airline/vim-airline'                  " Airline for status line
-Plug 'vim-airline/vim-airline-themes'           " Airline themes
-Plug 'dense-analysis/ale'                       " Linting errors in sign column
-Plug 'airblade/vim-gitgutter'                   " Git status in sign column
-Plug 'tpope/vim-fugitive'                       " Git actions
-Plug 'altercation/vim-colors-solarized'         " Enable solarized color scheme
-
-" Utility functions plugin
-Plug 'kien/ctrlp.vim'                           " CtrlP for searching files
-Plug 'preservim/nerdtree'                       " NERDTree for nice file navigation
-Plug 'christoomey/vim-tmux-navigator'           " Tmux/Vim unified navigation
-Plug 'scrooloose/nerdcommenter'                 " Easy commenting / comment wrapping
-
-" Language syntax and completition
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " COC Runs local language server
-call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""          BASIC VIM SETTINGS                                                            """""
+""""""          VIM PLUGIN SETUP                                                              """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin('~/.vim/plugged')
+
+" Appearence Plugins 
+Plug 'nathanaelkane/vim-indent-guides'        
+Plug 'altercation/vim-colors-solarized'        
+Plug 'rrethy/vim-illuminate'
+
+" Git functionality
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'                       
+Plug 'rhysd/git-messenger.vim'
+
+" Language and syntax highlighting and compleition
+Plug 'dense-analysis/ale'                       
+Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+
+" Specific language and formatting functionality
+Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim'
+Plug 'vimwiki/vimwiki'
+Plug 'freitass/todo.txt-vim'
+
+" Navigation functionality 
+Plug 'christoomey/vim-tmux-navigator'         
+Plug 'kien/ctrlp.vim'                          
+
+" Utility functions
+Plug 'scrooloose/nerdcommenter'                 
+Plug 'liuchengxu/vim-which-key'
+Plug 'voldikss/vim-floaterm'
+Plug 'metakirby5/codi.vim'
+
+call plug#end()
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          VIM PLUGIN SETUP - REMOTE DEFAULT MAPPINGS                                    """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:git_messenger_no_default_mappings=1
+let g:gitgutter_map_keys = 0
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          DISABLE EASY MODE NAVIGATION                                                  """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove newbie crutches in Command Mode
+cnoremap <Down> <Nop>
+cnoremap <Left> <Nop>
+cnoremap <Right> <Nop>
+cnoremap <Up> <Nop>
+
+" Remove newbie crutches in Insert Mode
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <Up> <Nop>
+
+" Remove newbie crutches in Normal Mode
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+
+" Remove newbie crutches in Visual Mode
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+vnoremap <Up> <Nop>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          BASIC VIM DISPLAY SETTINGS                                                    """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Visual editor settings
-set number " Always show line numbers
-set showmatch " Always show bracket/paren matches
-set colorcolumn=100 " Add a column at char=100 for visual indic of end of line
-set ruler " Show position of cursor at all times
-set nowrap " Do not wrap lines
-set updatetime=100 " Update time
-set signcolumn=yes " Column for diff relative to disk
+set relativenumber
+set colorcolumn=100
+set ruler
+set nowrap
+set signcolumn=yes
+set cmdheight=2
+
+" Basic vim settings
+set nocompatible
+syntax enable
+filetype plugin on
+set background=dark
+colorscheme solarized
+
+" Git gutter display settings
+let g:gitgutter_sign_added = 'ad'
+let g:gitgutter_sign_modified = 'md'
+let g:gitgutter_sign_removed = 'rm'
+let g:gitgutter_sign_removed_first_line = '^^'
+let g:gitgutter_sign_removed_above_and_below = '{'
+let g:gitgutter_sign_modified_removed = 'ww'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          BASIC ANNOYANCE SETTINGS                                                      """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Disable scrollbars
 set guioptions-=r
@@ -52,175 +125,174 @@ set guioptions-=L
 set novisualbell
 set noerrorbells
 
-" Whitespace / indentation settings
-set autoindent " Copy indent from current line when making new line
-set tabstop=4 " One tab = 4 spaces (specifically useful for python)
-set shiftwidth=4 "One tab = 4 spaces
-set softtabstop=-1 " Use same value as shiftwidth
-set smarttab " Tab defaults to &shiftwidth
-set expandtab " Auto exapnd tab to spaces
+" Open your splits in the right places
+set splitbelow
+set splitright
 
-" File type specific plugins allowed
-filetype plugin on
-filetype indent on
+" Share you clipboard properly 
+set clipboard=unnamed
 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
 
-" Enable syntax highlighting and dark solarized theme
-syntax enable
-set background=dark
-colorscheme solarized
-
-" File modification settings
-set nobackup " No backups (expected)
-set noswapfile " No swapfiles (everything should be in git anyways)
-set autoread " Automatically read changes made to disk
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          BASIC EDITING SETTINGS                                                        """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File modification setttings
+set nobackup 
+set nowritebackup
+set noswapfile 
+set autoread 
+set updatetime=100
 set encoding=utf8
+set hidden 
 
 " Search settings
-set hlsearch " highlight search results
-set ignorecase " ignore case when searching
-set smartcase " ...unless query has capital letters
-set incsearch " search incrementally forwards/backwards
+set hlsearch 
+set ignorecase 
+set smartcase 
+set incsearch 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""          LEADER SHORTCUTS                                                              """""
+""""""          LEADER SHORTCUTS SETTINGS                                                     """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Vim leader shortcuts
-let mapleader=" "
-let maplocalleader=";"
+" Set leader and local leader and use vim-which-key for nice auto-completion
+let mapleader="\<Space>"
+let maplocalleader=","
 
-" Basic naviation shortcuts
-map <leader>; :vsplit<CR>
-map <leader>\ :split<CR>
-map <leader>/ :tabs<CR>
-map <leader>f :CtrlP<CR>
-map <leader>tn :tabnew
-map <leader>tl :tabs<cr>
-map <leader>j :tabnext<cr>
-map <leader>k :tabprevious<cr>
+" Setup WhichKey 
+"nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+"nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
+let g:which_key_map = {}
+let g:which_key_sep = '-'
 
-" Buffer and code formatting and completition shortcuts
-map <leader>fm :Autoformat<CR>
-map <leader>nt :NERDTreeToggle<CR>
-map <leader>wq :wqa!<CR>
-map <leader>wa :wa!<CR>
-map <leader>qq :q!<CR>
-map <leader>qa :qa!<CR>
+" Single key leader shortcuts
+map <leader>f :call CocAction("format")<CR>
+map <leader>/ <Plug>(NERDCommenterToggle)
+map <leader>w :w<CR>
+map <leader>W :wa<CR>
+map <leader>Q :wq<CR>
 
-" Git shortcuts
-map <leader>go :Gread<CR>
-map <leader>ga :Gwrite<CR>
-map <leader>gc :Gcommit<CR>
-map <leader>gs :Gstatus<CR>
+" leader keys starting with a => action commands 
+let g:which_key_map.a = {}
+
+map <leader>am :MarkdownPreview<CR>
+map <leader>aM :MarkdownPreviewStop<CR>
+map <leader>ar :Codi<CR>
+map <leader>aR :Codi!<CR>
+map <leader>ax <Plug>(vimtex-compile)
+
+" leader keys starting with b => buffer commands
+let g:which_key_map.b = {}
+
+map <leader>bn :enew<CR>
+map <leader>bb :enew<BAR>:CtrlP<CR>
+map <leader>bs :vsplit<BAR>:CtrlP<CR>
+map <leader>bh :split<BAR>:CtrlP<CR>
+map <leader>bj :bnext<CR>
+map <leader>bk :bprev<CR>
+map <leader>bl :CtrlPBuffer<CR>
+
+" leader keys starting with g => git commands 
+let g:which_key_map.g = {}
+
+map <leader>gg :Git<CR>
+map <leader>ga :Git add -u<CR>
+map <leader>gs :Git status<CR>
+map <leader>gc :Git commit<CR>
+map <leader>gf :Git feat<cr>
+map <leader>gx :Git fix<cr>
+map <leader>gd :Git diff<CR>
+map <leader>gD :Gdiffsplit<CR>
+map <leader>gt :Git lg<CR>
 map <leader>gl :Git pull<CR>
 map <leader>gp :Git push<CR>
-map <leader>lg :Glog -15 --reverse<CR>
-map <leader>gf :Git feat<CR>
-map <leader>gx :Git fix<CR>
-map <leader>gd :Git docs<CR>
-map <leader>gy :Git style<CR>
+map <leader>gm <Plug>(git-messenger)
+map <leader>gG :Ggrep 
+map <leader>gR :Gread
+map <leader>gW :Gwrite
+map <leader>gB :GBrowse<CR>
+
+" leader keys starting with s => search commands
+let g:which_key_map.s = {}
+
+" leader keys starting with t => terminal commands
+let g:which_key_map.t = {}
+
+map <leader>tt :FloatermToggle
+map <leader>tn :FloatermNew --wintype=normal --height=6
+map <leader>tf :FloatermNew fzf
+map <leader>tp :FloatermNew python3
+map <leader>tn :FloatermNew node
+map <leader>to :FloatermNew top
+
+" leader keys starting with w => VimWiki commands
+let g:which_key_map.w = {}
+
+" map <leader>ww open default wiki index file 
+" map <leader>wt open wiki index file in a new tab 
+" map <leader>ws select and open wiki index file
+" map <leader>wr rename the wiki file you are in
+" map <leader>wi open diary index file for wiki 
+" map <leader>w<leader>w open today's diary file
+" map <leader>w<leader>t open today's diary file in a new tab
+
+" leader keys starting with x => todo.txt commands
+let g:which_key_map.x = {}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""          CTRL-BASED SHORTCUTS                                                          """""
+""""""          BASIC SHORTCUTS SETTINGS                                                      """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Basic shortcuts
+
+" Esc shortcuts
 inoremap jk <ESC>
+inoremap kj <ESC>
 
-" Change arrow movement to resize for splits
-nnoremap <C-Up>    :resize +2<CR>
-nnoremap <C-Down>  :resize -2<CR>
-nnoremap <C-Left>  :vertical resize +2<CR>
-nnoremap <C-Right> :vertical resize -2<CR>
-
-" Shell settings
-set wildmenu " tab-complition for command menu
+" Use Ctrl+A/E in command mode like you would in shell
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+" Git-gutter hunk navigation 
+nmap NN <Plug>(GitGutterNextHunk)
+nmap NP <Plug>(GitGutterPrevHunk)
 
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+" Git-gutter hunk interaction
+nmap gh <Plug>(GitGutterPreviewHunk)
+nmap gaa <Plug>(GitGutterStageHunk)
+nmap gun <Plug>(GitGutterUndoHunk)
 
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-function! CmdLine(str)
-    call feedkeys(":" . a:str)
-endfunction
+" When selecting code in visual mode, move the code with shift+j/k
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""          PLUGIN SETTINGS                                                               """""
+""""""          COC PLUGIN SETTINGS                                                           """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim airline preferences
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_statusline_ontop=1
 
-" Enable indent guidelines by default
-let g:indent_guides_enable_on_vim_startup = 1
-
-" Tab completition for both YouCompleteMe and UltiSnips (using SuperTab)
-" make YCM compatible with UltiSnips (using supertab)
-"let g:ycm_python_interpreter_path = '/opt/homebrew/anaconda3/envs/neovim/bin/python'
-"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-"let g:UltiSnipsExpandTrigger = "<tab>"
-"let g:UltiSnipsJumpForwardTrigger = "<tab>"
-"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" make ctrlp ignore gitignore'd files
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""          COC CODE COMPLETE SETUP                                                       """""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COC Extensions
 let g:coc_global_extensions = [
+  \ 'coc-actions', 
+  \ 'coc-floaterm',
   \ 'coc-snippets',
   \ 'coc-pairs',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-vimtex',
   \ 'coc-pyright',
   \ 'coc-clangd',
-  \ 'coc-julia',
   \ 'coc-metals',
-  \ 'coc-tsserver',
   \ 'coc-java',
+  \ 'coc-java-debug',
   \ 'coc-sh',
   \ 'coc-yaml'
   \ ]
+
+" When coc is not activating for some reason, use Ctrl+Spc to get it to trigger 
+inoremap <silent><expr> <c-space> coc#refresh()
+
+"Recommended setting to avoid |ins-coimpletion-menu|
+set shortmess+=c
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -237,20 +309,6 @@ endfunction
 
 let g:coc_snippet_next = '<Tab>'
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> df <Plug>(coc-definition)
-nmap <silent> ty <Plug>(coc-type-definition)
-nmap <silent> im <Plug>(coc-implementation)
-nmap <silent> re <Plug>(coc-references)
-
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -261,13 +319,62 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" Leader commands for various plugins
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> rn <Plug>(coc-rename)
+nmap <silent> f <Plug>(coc-format-selected)
+xmap <silent> f <Plug>(coc-format-selected)
 
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
 
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""         CTRL-P AND BUFFER OPENING SETTINGS                                             """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Ctrl-p should ignore certain types of files 
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""         CODE FORMATTING AND COMMENTING SETTINGS                                        """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Better NERDCommenter settings 
+let g:NERDCreateDefaujltMappings = 1 
+let g:NERDCompactSexyComs = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitepsace=1
+let g:NERDToggleCheckAllLines = 1
+
+" Easier NERDCommenter shortcuts
+nmap <leader>cc <Plug>NERDCommenterToggle<CR>
+vmap <leader>cc <Plug>NERDCommenterToggle<CR>
+
+" Code format and folding
+command! -nargs=0 Format :call CocAction("format")
+command! -nargs=? Fold :call CocAction("fold", <f-args>)
+command! -nargs=0 OR :call CocAction("runCommand", "editor.action.organizeImport")
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""         FLOATING TERMINAL SETTINGS                                                     """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:floaterm_title = "terminal-$1"
+let g:floaterm_wintype = "split"
+let g:floaterm_height = 15
+let g:floaterm_position = 'belowright'
+let g:floaterm_autoclose = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""         SIDE-REPL/TERMINAL SETTINGS                                                    """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:codi#virtual_text_prefix = "$ "
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          VIM-WIKI CONFIGURATION SETTINGS                                               """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimwiki_list = [ {'path': '~/Code/github.com/qwinters/personal-wiki/wiki', 'path_html': '~/Code/github.com/qwinters/personal-wiki/html', 'syntax': 'markdown', 'ext': 'md' } ]
+

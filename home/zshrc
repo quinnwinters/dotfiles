@@ -350,6 +350,14 @@ alias td="todo.sh -tcNA -d $HOME/.todo.cfg"
 # Every terminal reload sync git and web status with remote
 todo.sh -tcNA -d $HOME/.todo.cfg git-sync
 
+# ========================================================= #
+# |    YouTube Aliases                                    | #
+# ========================================================= #
+alias yt="youtube-dl --abort-on-error --print-json --restrict-filenames"
+alias yt-video="youtube-dl --abort-on-error --print-json --restrict-filenames --no-playlist"
+alias yt-playlist="youtube-dl --abort-on-error --print-json --restrict-filenames --yes-playlist"
+alias yt-music="youtube-dl --abort-on-error --print-json --restrict-filenames --yes-playlist --extract-audio"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
