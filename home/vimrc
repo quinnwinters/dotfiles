@@ -254,8 +254,8 @@ cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
 " Git-gutter hunk navigation 
-nmap nn <Plug>(GitGutterNextHunk)
-nmap np <Plug>(GitGutterPrevHunk)
+nmap NN <Plug>(GitGutterNextHunk)
+nmap NP <Plug>(GitGutterPrevHunk)
 
 " Git-gutter hunk interaction
 nmap gh <Plug>(GitGutterPreviewHunk)
@@ -283,7 +283,7 @@ let g:coc_global_extensions = [
   \ 'coc-clangd',
   \ 'coc-metals',
   \ 'coc-java',
-  \ 'coc-java-debug'
+  \ 'coc-java-debug',
   \ 'coc-sh',
   \ 'coc-yaml'
   \ ]
