@@ -345,10 +345,19 @@ alias ptf=parallel_tmux_file
 # ========================================================= #
 # |    Todo Aliases                                       | #
 # ========================================================= #
-alias td="todo.sh -tcNA -d $HOME/.todo.cfg"
+function HELPER_todo_txt_do() {
+    todo.sh -tcNA -d $HOME/.todo.cfg "$@"
+    { todo.sh -d $HOME/.todo.cfg git-sync & disown ; } &>/dev/null
+    { todo.sh -d $HOME/.todo.cfg web-sync & disown ; } &>/dev/null
+    clear
+    todo.sh -d $HOME/.todo.cfg list
+}
+alias td="HELPER_todo_txt_do"
 
 # Every terminal reload sync git and web status with remote
 todo.sh -tcNA -d $HOME/.todo.cfg git-sync
+todo.sh -tcNA -d $HOME/.todo.cfg web-sync
+clear 
 
 # ========================================================= #
 # |    YouTube Aliases                                    | #
