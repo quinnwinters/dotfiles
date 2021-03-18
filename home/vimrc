@@ -38,6 +38,11 @@ Plug 'freitass/todo.txt-vim'
 Plug 'christoomey/vim-tmux-navigator'         
 Plug 'kien/ctrlp.vim'                          
 
+" Search functionality
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Utility functions
 Plug 'scrooloose/nerdcommenter'                 
 Plug 'liuchengxu/vim-which-key'
@@ -161,17 +166,10 @@ let mapleader="\<Space>"
 let maplocalleader=","
 
 " Setup WhichKey 
-"nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 "nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 let g:which_key_map = {}
 let g:which_key_sep = '-'
-
-" Single key leader shortcuts
-map <leader>f :call CocAction("format")<CR>
-map <leader>/ <Plug>(NERDCommenterToggle)
-map <leader>w :w<CR>
-map <leader>W :wa<CR>
-map <leader>Q :wq<CR>
 
 " leader keys starting with a => action commands 
 let g:which_key_map.a = {}
@@ -186,35 +184,46 @@ map <leader>ax <Plug>(vimtex-compile)
 let g:which_key_map.b = {}
 
 map <leader>bn :enew<CR>
-map <leader>bb :enew<BAR>:CtrlP<CR>
-map <leader>bs :vsplit<BAR>:CtrlP<CR>
-map <leader>bh :split<BAR>:CtrlP<CR>
+map <leader>bo :enew<BAR>:Telescope find_files<CR>
+map <leader>bO :vsplit<BAR>:Telescope find_files<CR>
+map <leader>bf :enew<BAR>:Telescope live_grep<CR>
+map <leader>bF :vsplit<BAR>:Telescope live_grep<CR>
+map <leader>bl :Telescope buffers<CR> 
+map <leader>bL :vsplit<BAR>:Telescope buffers<CR>
 map <leader>bj :bnext<CR>
 map <leader>bk :bprev<CR>
-map <leader>bl :CtrlPBuffer<CR>
+
+" leader keys starting with c => code 
+let g:which_key_map.c = {}
+
+map <leader>cc <Plug>(NERDCommenterToggle)
+vmap <leader>cf <Plug>(coc-format-selected)
+nmap <leader>cf <Plug>(coc-format-selected) 
+nmap <leader>ca <Plug>(coc-codeaction)
+nmap <leader>cx <Plug>(coc-fix-current)
+nmap <leader>cr <Plug>(coc-rename)
 
 " leader keys starting with g => git commands 
 let g:which_key_map.g = {}
 
-map <leader>gg :Git<CR>
-map <leader>ga :Git add -u<CR>
-map <leader>gs :Git status<CR>
+map <leader>ga <Plug>(GitGutterStageHunk)
+map <leader>gu <Plug>(GitGutterUndoHunk)
+map <leader>gA :Git add -u<CR>
 map <leader>gc :Git commit<CR>
 map <leader>gf :Git feat<cr>
 map <leader>gx :Git fix<cr>
-map <leader>gd :Git diff<CR>
 map <leader>gD :Gdiffsplit<CR>
-map <leader>gt :Git lg<CR>
 map <leader>gl :Git pull<CR>
+map <leader>gL :Git lg<CR>
 map <leader>gp :Git push<CR>
+map <leadeR>gP <Plug>(GitGutterPreviewHunk)
 map <leader>gm <Plug>(git-messenger)
+map <leader>gn <Plug>(GitGutterNextHunk)
+map <leader>gN <Plug>(GitGutterPrevHunk)
 map <leader>gG :Ggrep 
 map <leader>gR :Gread
 map <leader>gW :Gwrite
 map <leader>gB :GBrowse<CR>
-
-" leader keys starting with s => search commands
-let g:which_key_map.s = {}
 
 " leader keys starting with t => terminal commands
 let g:which_key_map.t = {}
@@ -238,7 +247,20 @@ let g:which_key_map.w = {}
 " map <leader>w<leader>t open today's diary file in a new tab
 
 " leader keys starting with x => todo.txt commands
-let g:which_key_map.x = {}
+let g:which_key_map.x = {} 
+
+nnoremap <leader>x@ :%call todo#txt#sort_by_context()<CR>
+nnoremap <leader>x+ :%call todo#txt#sort_by_project()<CR>
+nnoremap <leader>xs :%call todo#txt#sort_by_date()<CR>
+nnoremap <leader>xS :%call todo#txt#sort_by_due_date()<CR>
+map <leader>xa :call todo#txt#prioritize_add('A')<CR>
+map <leader>xb :call todo#txt#prioritize_add('B')<CR>
+map <leader>xc :call todo#txt#prioritize_add('C')<CR>
+map <leader>xJ :call todo#txt#prioritize_increase()<CR>
+map <leader>xK :call todo#txt#prioritize_decrease()<CR>
+nnoremap <leader>xx :call todo#txt#mark_as_done()<CR>
+vnoremap <leader>xX :call todo#txt#mark_as_done()<CR>
+map <leader>xD :call todo#txt#remove_completed()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -253,14 +275,15 @@ inoremap kj <ESC>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
-" Git-gutter hunk navigation 
-nmap NN <Plug>(GitGutterNextHunk)
-nmap NP <Plug>(GitGutterPrevHunk)
-
-" Git-gutter hunk interaction
-nmap gh <Plug>(GitGutterPreviewHunk)
-nmap gaa <Plug>(GitGutterStageHunk)
-nmap gun <Plug>(GitGutterUndoHunk)
+" Some buffer opening commands to make things easier
+map <C-o> :enew<BAR>:Telescope find_files<CR>
+map <C-O> :vsplit<BAR>:Telescope find_files<CR>
+map <C-n> :bnext<CR>
+map <C-N> :bprev<CR>
+map <C-s> :w<CR>
+map <C-S> :wa<CR>
+map <C-q> :wq<CR>
+map <C-Q> :wqa!<CR>
 
 " When selecting code in visual mode, move the code with shift+j/k
 xnoremap K :move '<-2<CR>gv-gv
@@ -319,15 +342,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Leader commands for various plugins
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> rn <Plug>(coc-rename)
-nmap <silent> f <Plug>(coc-format-selected)
-xmap <silent> f <Plug>(coc-format-selected)
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""         CTRL-P AND BUFFER OPENING SETTINGS                                             """""
@@ -346,10 +360,6 @@ let g:NERDCompactSexyComs = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitepsace=1
 let g:NERDToggleCheckAllLines = 1
-
-" Easier NERDCommenter shortcuts
-nmap <leader>cc <Plug>NERDCommenterToggle<CR>
-vmap <leader>cc <Plug>NERDCommenterToggle<CR>
 
 " Code format and folding
 command! -nargs=0 Format :call CocAction("format")
