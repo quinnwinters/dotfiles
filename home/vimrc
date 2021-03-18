@@ -38,6 +38,11 @@ Plug 'freitass/todo.txt-vim'
 Plug 'christoomey/vim-tmux-navigator'         
 Plug 'kien/ctrlp.vim'                          
 
+" Search functionality
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Utility functions
 Plug 'scrooloose/nerdcommenter'                 
 Plug 'liuchengxu/vim-which-key'
@@ -161,20 +166,20 @@ let mapleader="\<Space>"
 let maplocalleader=","
 
 " Setup WhichKey 
-"nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 "nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 let g:which_key_map = {}
 let g:which_key_sep = '-'
 
-" Single key leader shortcuts
-map <leader>f :call CocAction("format")<CR>
-map <leader>/ <Plug>(NERDCommenterToggle)
-map <leader>w :w<CR>
-map <leader>W :wa<CR>
-map <leader>Q :wq<CR>
-
 " leader keys starting with a => action commands 
-let g:which_key_map.a = {}
+let g:which_key_map.a = {
+	\ 'name' : '+actions',
+	\ 'm' : [':MarkdownPreview<CR>', 'markdown-preview-on'],
+	\ 'M' : [':MarkdownPreviewStop<CR>', 'markdown-preview-off'],
+	\ 'r' : [':Codi<CR>', 'virtual-repl-on'],
+	\ 'R' : [':Codi!<CR>', 'virtual-repl-off'],
+	\ 'x' : ['<Plug>(vimtex-compile)', 'vimtex-compile']
+	\}
 
 map <leader>am :MarkdownPreview<CR>
 map <leader>aM :MarkdownPreviewStop<CR>
@@ -183,62 +188,158 @@ map <leader>aR :Codi!<CR>
 map <leader>ax <Plug>(vimtex-compile)
 
 " leader keys starting with b => buffer commands
-let g:which_key_map.b = {}
+let g:which_key_map.b = {
+	\ 'name' : '+buffer',
+	\ 'b' : ['enew<CR>', 'new-buffer'],
+	\ 'o' : [':enew<BAR>:Telescope find_files<CR>', 'open-file-in-buffer'],
+	\ 'O' : [':vsplit<BAR>:Telescope find_files<CR>', 'open-file-in-buffer-split'],
+	\ 'f' : [':enew<BAR>:Telescope live_grep<CR>', 'search-project-in-buffer'],
+	\ 'F' : [':vsplit<BAR>:Telescope live_grep<CR>', 'search-project-in-buffer-split'],
+	\ 'l' : [':Telescope buffers<CR>', 'search-buffers'],
+	\ 'L' : [':vsplit<BAR>:Telescope buffers<CR>', 'search-buffers-split'],
+	\ 'n' : [':bnext<CR>', 'buffer-next'], 
+	\ 'N' : [':bprev<CR>', 'buffer-prev']
+	\}
 
-map <leader>bn :enew<CR>
-map <leader>bb :enew<BAR>:CtrlP<CR>
-map <leader>bs :vsplit<BAR>:CtrlP<CR>
-map <leader>bh :split<BAR>:CtrlP<CR>
-map <leader>bj :bnext<CR>
-map <leader>bk :bprev<CR>
-map <leader>bl :CtrlPBuffer<CR>
+map <leader>bb :enew<CR>
+map <leader>bo :enew<BAR>:Telescope find_files<CR>
+map <leader>bO :vsplit<BAR>:Telescope find_files<CR>
+map <leader>bf :enew<BAR>:Telescope live_grep<CR>
+map <leader>bF :vsplit<BAR>:Telescope live_grep<CR>
+map <leader>bl :Telescope buffers<CR> 
+map <leader>bL :vsplit<BAR>:Telescope buffers<CR>
+map <leader>bn :bnext<CR>
+map <leader>bN :bprev<CR>
+
+" leader keys starting with c => code 
+let g:which_key_map.c = {
+	\ 'name' : '+code',
+	\ 'c' : ['<Plug>(NERDCommenterToggle)', 'code-comment-toggle'],
+	\ 'f' : ['<Plug>(coc-format-selected)', 'code-format'],
+	\ 'a' : ['<Plug>(coc-codeaction)', 'code-action'],
+	\ 'x' : ['<Plug>(coc-fix-current)', 'code-quickfix'],
+	\ 'r' : ['<Plug>(coc-rename)', 'code-rename']
+	\}
+
+map <leader>cc <Plug>(NERDCommenterToggle)
+vmap <leader>cf <Plug>(coc-format-selected)
+nmap <leader>cf <Plug>(coc-format-selected) 
+nmap <leader>ca <Plug>(coc-codeaction)
+nmap <leader>cx <Plug>(coc-fix-current)
+nmap <leader>cr <Plug>(coc-rename)
 
 " leader keys starting with g => git commands 
-let g:which_key_map.g = {}
+let g:which_key_map.g = {
+	\ 'name' : '+git', 
+	\ 'a' : ['<Plug>(GitGutterStageHunk)', 'git-stage-hunk'],
+	\ 'u' : ['<Plug>(GitGutterUndoHunk)', 'git-unstage-hunk'],
+	\ 'A' : [':Git add -u<CR>', 'git-add-untracked'],
+	\ 'c' : [':Git commit<CR>', 'git-commit'],
+	\ 'f' : [':Git feat<CR>', 'git-commit-feat'],
+	\ 'x' : [':Git fix<CR>', 'git-commit-fix'],
+	\ 'd' : [':Git diff<CR>', 'git-diff'],
+	\ 'D' : [':Gdiffsplit<CR>', 'git-diff-split'], 
+	\ 'l' : [':Git pull<CR>', 'git-pull'], 
+	\ 'p' : [':Git push<CR>', 'git-push'],
+	\ 'L' : [':Git lg<CR>', 'git-log'], 
+	\ 'P' : ['<Plug>(GitGutterPreviewHunk)', 'git-preview-hunk'],
+	\ 'm' : ['<Plug>(git-messenger)', 'git-blame'], 
+	\ 'n' : ['<Plug>(GitGutterNextHunk)', 'git-go-to-next-hunk'],
+	\ 'N' : ['<Plug>(GitGutterPrevHunk)', 'git-go-to-prev-hunk'],
+	\ 'G' : [':Ggrep', 'git-grep'],
+	\ 'R' : [':Gread', 'git-read'], 
+	\ 'W' : [':Gwrite', 'git-write'],  
+	\ 'B' : [':GBrowse', 'git-browse-online']
+	\}
 
-map <leader>gg :Git<CR>
-map <leader>ga :Git add -u<CR>
-map <leader>gs :Git status<CR>
+map <leader>ga <Plug>(GitGutterStageHunk)
+map <leader>gu <Plug>(GitGutterUndoHunk)
+map <leader>gA :Git add -u<CR>
 map <leader>gc :Git commit<CR>
 map <leader>gf :Git feat<cr>
 map <leader>gx :Git fix<cr>
 map <leader>gd :Git diff<CR>
 map <leader>gD :Gdiffsplit<CR>
-map <leader>gt :Git lg<CR>
 map <leader>gl :Git pull<CR>
+map <leader>gL :Git lg<CR>
 map <leader>gp :Git push<CR>
+map <leadeR>gP <Plug>(GitGutterPreviewHunk)
 map <leader>gm <Plug>(git-messenger)
+map <leader>gn <Plug>(GitGutterNextHunk)
+map <leader>gN <Plug>(GitGutterPrevHunk)
 map <leader>gG :Ggrep 
 map <leader>gR :Gread
 map <leader>gW :Gwrite
 map <leader>gB :GBrowse<CR>
 
-" leader keys starting with s => search commands
-let g:which_key_map.s = {}
-
 " leader keys starting with t => terminal commands
-let g:which_key_map.t = {}
+let g:which_key_map.t = {
+	\ 'name' : '+terminal', 
+	\ 't' : [':FloatermToggle', 'terminal-toggle'],
+	\ 'T' : [':FloatermNew --wintype=normal --height=6', 'terminal-new'],
+	\ 'f' : [':FloatermNew fzf', 'terminal-fzf'],
+	\ 'p' : [':FloatermNew python3', 'terminal-python3'],
+	\ 'n' : [':FloatermNew node', 'terminal-node'],
+	\ 'o' : [':FloatermNew top', 'terminal-top']
+	\}
 
 map <leader>tt :FloatermToggle
-map <leader>tn :FloatermNew --wintype=normal --height=6
+map <leader>tT :FloatermNew --wintype=normal --height=6
 map <leader>tf :FloatermNew fzf
 map <leader>tp :FloatermNew python3
 map <leader>tn :FloatermNew node
 map <leader>to :FloatermNew top
 
 " leader keys starting with w => VimWiki commands
-let g:which_key_map.w = {}
+let g:which_key_map.w = {
+	\ 'name' : '+vimwiki',
+	\ 'w' : ['<Plug>VimwikiIndex', 'vimwiki-index'], 
+	\ 't' : ['<Plug>VimwikiTabIndex', 'vimwiki-index-new-tab'],
+	\ 's' : ['<Plug>VimwikiUISelect', 'vimwiki-select-index'], 
+	\ 'i' : ['<Plug>VimwikiDiaryIndex', 'vimwiki-diary-index'], 
+	\ 'D' : ['<Plug>VimwikiMakeDiaryNote', 'vimwiki-diary-today'],
+	\ 'Y' : ['<Plug>VimwikiMakeYesterdayDiaryNote', 'vimwiki-diary-yesterday'], 
+	\ 'T' : ['<Plug>VimwikiMakeTomorrowDiaryNote', 'vimwiki-diary-tomorrow']
+	\}
 
+" These are alreayd built in and are just here for reminders
 " map <leader>ww open default wiki index file 
 " map <leader>wt open wiki index file in a new tab 
 " map <leader>ws select and open wiki index file
-" map <leader>wr rename the wiki file you are in
 " map <leader>wi open diary index file for wiki 
-" map <leader>w<leader>w open today's diary file
-" map <leader>w<leader>t open today's diary file in a new tab
+map <leader>wD <Plug>VimwikiMakeDiaryNote
+map <leader>wY <Plug>VimwikiMakeYesterdayDiaryNote
+map <leader>wT <Plug>VimwikiMakeTomorrowDiaryNote
 
 " leader keys starting with x => todo.txt commands
-let g:which_key_map.x = {}
+let g:which_key_map.x = {
+	\ 'name' : '+todo-txt',
+	\ '@' : [':%call todo#txt#sort_by_context()<CR>', 'todo-sort-by-context'], 
+	\ '+' : [':%call todo#txt#sort_by_project()<CR>', 'todo-sort-by-project'], 
+	\ 's' : [':%call todo#txt#sort_by_date()<CR>', 'todo-sort-by-date'], 
+	\ 'S' : [':%call todo#txt#sort_by_due_date()<CR>', 'todo-sort-by-due-date'], 
+	\ 'a' : [":call todo#txt#prioritize_add('A')<CR>", 'todo-task-priority-A'], 
+	\ 'b' : [":call todo#txt#prioritize_add('B')<CR>", 'todo-task-priority-B'],
+	\ 'c' : [":call todo#txt#prioritize_add('C')<CR>", 'todo-task-priority-C'],
+	\ 'J' : [':call todo#txt#prioritize_increase()<CR>', 'todo-task-priority-increase'], 
+	\ 'K' : [':call todo#txt#prioritize_decrease()<CR>', 'todo-task-priority-decrease'], 
+	\ 'x' : [':call todo#txt#mark_as_done()<CR>', 'todo-task-mark-as-done'],
+	\ 'X' : [':call todo#txt#mark_as_done()<CR>', 'todo-task-mark-selected-as-done'],
+	\ 'D' : [':call todo#txt#remove_completed()<CR>', 'todo-task-remove-completed']
+	\} 
+
+nnoremap <leader>x@ :%call todo#txt#sort_by_context()<CR>
+nnoremap <leader>x+ :%call todo#txt#sort_by_project()<CR>
+nnoremap <leader>xs :%call todo#txt#sort_by_date()<CR>
+nnoremap <leader>xS :%call todo#txt#sort_by_due_date()<CR>
+map <leader>xa :call todo#txt#prioritize_add('A')<CR>
+map <leader>xb :call todo#txt#prioritize_add('B')<CR>
+map <leader>xc :call todo#txt#prioritize_add('C')<CR>
+map <leader>xJ :call todo#txt#prioritize_increase()<CR>
+map <leader>xK :call todo#txt#prioritize_decrease()<CR>
+nnoremap <leader>xx :call todo#txt#mark_as_done()<CR>
+vnoremap <leader>xX :call todo#txt#mark_as_done()<CR>
+map <leader>xD :call todo#txt#remove_completed()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -253,14 +354,15 @@ inoremap kj <ESC>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
-" Git-gutter hunk navigation 
-nmap NN <Plug>(GitGutterNextHunk)
-nmap NP <Plug>(GitGutterPrevHunk)
-
-" Git-gutter hunk interaction
-nmap gh <Plug>(GitGutterPreviewHunk)
-nmap gaa <Plug>(GitGutterStageHunk)
-nmap gun <Plug>(GitGutterUndoHunk)
+" Some buffer opening commands to make things easier
+map <C-o> :enew<BAR>:Telescope find_files<CR>
+map <C-O> :vsplit<BAR>:Telescope find_files<CR>
+map <C-n> :bnext<CR>
+map <C-N> :bprev<CR>
+map <C-s> :w<CR>
+map <C-S> :wa<CR>
+map <C-q> :wq<CR>
+map <C-Q> :wqa!<CR>
 
 " When selecting code in visual mode, move the code with shift+j/k
 xnoremap K :move '<-2<CR>gv-gv
@@ -319,15 +421,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Leader commands for various plugins
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> rn <Plug>(coc-rename)
-nmap <silent> f <Plug>(coc-format-selected)
-xmap <silent> f <Plug>(coc-format-selected)
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""         CTRL-P AND BUFFER OPENING SETTINGS                                             """""
@@ -346,10 +439,6 @@ let g:NERDCompactSexyComs = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitepsace=1
 let g:NERDToggleCheckAllLines = 1
-
-" Easier NERDCommenter shortcuts
-nmap <leader>cc <Plug>NERDCommenterToggle<CR>
-vmap <leader>cc <Plug>NERDCommenterToggle<CR>
 
 " Code format and folding
 command! -nargs=0 Format :call CocAction("format")
