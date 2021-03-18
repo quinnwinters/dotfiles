@@ -276,7 +276,7 @@ map <leader>gB :GBrowse<CR>
 let g:which_key_map.t = {
 	\ 'name' : '+terminal', 
 	\ 't' : [':FloatermToggle', 'terminal-toggle'],
-	\ 'n' : [':FloatermNew --wintype=normal --height=6', 'terminal-new'],
+	\ 'T' : [':FloatermNew --wintype=normal --height=6', 'terminal-new'],
 	\ 'f' : [':FloatermNew fzf', 'terminal-fzf'],
 	\ 'p' : [':FloatermNew python3', 'terminal-python3'],
 	\ 'n' : [':FloatermNew node', 'terminal-node'],
@@ -284,7 +284,7 @@ let g:which_key_map.t = {
 	\}
 
 map <leader>tt :FloatermToggle
-map <leader>tn :FloatermNew --wintype=normal --height=6
+map <leader>tT :FloatermNew --wintype=normal --height=6
 map <leader>tf :FloatermNew fzf
 map <leader>tp :FloatermNew python3
 map <leader>tn :FloatermNew node
