@@ -76,8 +76,35 @@ snippet begin "Begin / end advanced environment" bA
 \end{$1}
 endsnippet
 
+snippet table "Table environment" bA
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{table:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{table}
+endsnippet
+
+snippet figure "Figure environment" bA
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\columnwidth]{$1.pdf_tex}
+	\caption{$2}
+	\label{fig:$1}
+\end{figure}
+$0
+endsnippet
+
 snippet theorem "Theorem environment" bA
 \begin{theorem}[$1]
+       $0
+\end{theorem}
+endsnippet
+
+snippet ltheorem "Theorem environment" bA
+\begin{theorem}[$1]\label{thm:$2}
        $0
 \end{theorem}
 endsnippet
@@ -88,8 +115,20 @@ snippet lemma "Lemma environment" bA
 \end{lemma}
 endsnippet
 
+snippet llemma "Lemma environment" bA
+\begin{lemma}\label{lma:$2}
+       $0
+\end{lemma}
+endsnippet
+
 snippet definition "Definition environment" bA
 \begin{definition}[$1]
+       $0
+\end{definition}
+endsnippet
+
+snippet ldefinition "Definition environment" bA
+\begin{definition}[$1]\label{def:$2}
        $0
 \end{definition}
 endsnippet
@@ -100,8 +139,20 @@ snippet corollary "Corollary environment" bA
 \end{corollary*}
 endsnippet
 
-snippet propisition "Proposition environment" bA
+snippet lcorollary "Corollary environment" bA
+\begin{corollary*}\label{cor:$2}
+       $0
+\end{corollary*}
+endsnippet
+
+snippet proposition "Proposition environment" bA
 \begin{proposition}[$1]
+       $0
+\end{propiosition}
+endsnippet
+
+snippet lproposition "Proposition environment" bA
+\begin{proposition}[$1]\label{prop:$2}
        $0
 \end{propiosition}
 endsnippet
@@ -112,8 +163,20 @@ snippet problem "Problem environment" bA
 \end{problem*}
 endsnippet
 
+snippet lproblem "Problem environment" bA
+\begin{problem*}[$1]\label{prob:$2}
+	$0
+\end{problem*}
+endsnippet
+
 snippet conjecture "Conjecture environment" bA
 \begin{conjecture*}[$1]
+	$0
+\end{conjecture*}
+endsnippet
+
+snippet conjecture "Conjecture environment" bA
+\begin{conjecture*}[$1]\label{conj:$2}
 	$0
 \end{conjecture*}
 endsnippet
@@ -126,6 +189,12 @@ endsnippet
 
 snippet claim "Claim environment" bA
 \begin{claim}
+	$0
+\end{claim}
+endsnippet
+
+snippet lclaim "Claim environment" bA
+\begin{claim}\label{claim:$1}
 	$0
 \end{claim}
 endsnippet
@@ -418,6 +487,11 @@ snippet 'c([A-Z])' "Mathcal style lettering" rwA
 endsnippet
 
 context "math()"
+snippet tx "Text environment" wA
+\text{ $1 } $0
+endsnippet
+
+context "math()"
 snippet Rn "n-dimensional Euclidean space" wA
 \mathbb{R}^n
 endsnippet
@@ -598,6 +672,16 @@ endsnippet
 context "math()"
 snippet abs "Absolute value" wA
 \left|$1\right| $0
+endsnippet
+
+context "math()"
+snippet floor "Floor" wA
+\left\lfloor $1 \right\rfloor $0
+endsnippet
+
+context "math()"
+snippet ceil "Ceiling" wA
+\left\lceil $1 \right\rceil $0
 endsnippet
 
 ###################################################################################################
