@@ -8,6 +8,8 @@ fi
 /opt/homebrew/anaconda3/bin/conda activate neovim
 
 pip install neovim
+pip install black
+
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
@@ -17,4 +19,9 @@ echo """set runtimepath^=~/.vim runtimepath+=~/.vim/after
 
 conda activate base
 
-ln -f "$DOT_DIR"/home/plaintex.snippets "$HOME"/.config/coc/ultisnips/plaintex.snippets
+ln -f "$HOME"/coc-settings.json "$HOME"/.config/nvim/coc-settings.json
+
+mkdir -p "$HOME"/.config/nvim/snippets
+for f in "$DOT_CIR"/snippets/*.snippets ; do 
+  ln -f $f "$HOME"/.config/nvim/snippets/"$(basename $f)"
+done
