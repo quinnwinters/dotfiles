@@ -3,9 +3,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable Python3 through virtual environment, but disable perl+python2
-let g:python3_host_prog = '/opt/anaconda3/envs/neovim/bin/python'
-let g:loaded_perl_provider = 0
-let g:loaded_python_provider = 0
+let g:python3_host_prog='/opt/anaconda3/envs/neovim/bin/python'
+let g:loaded_perl_provider=0
+let g:loaded_python_provider=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -57,7 +57,7 @@ call plug#end()
 """"""          VIM PLUGIN SETUP - REMOTE DEFAULT MAPPINGS                                    """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:git_messenger_no_default_mappings=1
-let g:gitgutter_map_keys = 0
+let g:gitgutter_map_keys=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -108,12 +108,12 @@ set background=dark
 colorscheme solarized
 
 " Git gutter display settings
-let g:gitgutter_sign_added = 'ad'
-let g:gitgutter_sign_modified = 'md'
-let g:gitgutter_sign_removed = 'rm'
-let g:gitgutter_sign_removed_first_line = '^^'
-let g:gitgutter_sign_removed_above_and_below = '{'
-let g:gitgutter_sign_modified_removed = 'ww'
+let g:gitgutter_sign_added='ad'
+let g:gitgutter_sign_modified='md'
+let g:gitgutter_sign_removed='rm'
+let g:gitgutter_sign_removed_first_line='^^'
+let g:gitgutter_sign_removed_above_and_below='{'
+let g:gitgutter_sign_modified_removed='ww'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -168,11 +168,11 @@ let maplocalleader=","
 " Setup WhichKey 
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 "nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
-let g:which_key_map = {}
-let g:which_key_sep = '-'
+let g:which_key_map={}
+let g:which_key_sep='-'
 
 " leader keys starting with a => action commands 
-let g:which_key_map.a = {
+let g:which_key_map.a={
 	\ 'name' : '+actions',
 	\ 'm' : [':MarkdownPreview<CR>', 'markdown-preview-on'],
 	\ 'M' : [':MarkdownPreviewStop<CR>', 'markdown-preview-off'],
@@ -186,9 +186,11 @@ map <leader>aM :MarkdownPreviewStop<CR>
 map <leader>ar :Codi<CR>
 map <leader>aR :Codi!<CR>
 map <leader>ax <Plug>(vimtex-compile)
+map <leader>av <Plug>(vimtex-view)
+map <leader>av <Plug>(vimtex-view)
 
 " leader keys starting with b => buffer commands
-let g:which_key_map.b = {
+let g:which_key_map.b={
 	\ 'name' : '+buffer',
 	\ 'b' : ['enew<CR>', 'new-buffer'],
 	\ 'o' : [':enew<BAR>:Telescope find_files<CR>', 'open-file-in-buffer'],
@@ -212,7 +214,7 @@ map <leader>bn :bnext<CR>
 map <leader>bN :bprev<CR>
 
 " leader keys starting with c => code 
-let g:which_key_map.c = {
+let g:which_key_map.c={
 	\ 'name' : '+code',
 	\ 'c' : ['<Plug>(NERDCommenterToggle)', 'code-comment-toggle'],
 	\ 'f' : ['<Plug>(coc-format-selected)', 'code-format'],
@@ -229,7 +231,7 @@ nmap <leader>cx <Plug>(coc-fix-current)
 nmap <leader>cr <Plug>(coc-rename)
 
 " leader keys starting with g => git commands 
-let g:which_key_map.g = {
+let g:which_key_map.g={
 	\ 'name' : '+git', 
 	\ 'a' : ['<Plug>(GitGutterStageHunk)', 'git-stage-hunk'],
 	\ 'u' : ['<Plug>(GitGutterUndoHunk)', 'git-unstage-hunk'],
@@ -273,25 +275,25 @@ map <leader>gW :Gwrite
 map <leader>gB :GBrowse<CR>
 
 " leader keys starting with t => terminal commands
-let g:which_key_map.t = {
+let g:which_key_map.t={
 	\ 'name' : '+terminal', 
-	\ 't' : [':FloatermToggle', 'terminal-toggle'],
-	\ 'T' : [':FloatermNew --wintype=normal --height=6', 'terminal-new'],
-	\ 'f' : [':FloatermNew fzf', 'terminal-fzf'],
-	\ 'p' : [':FloatermNew python3', 'terminal-python3'],
-	\ 'n' : [':FloatermNew node', 'terminal-node'],
-	\ 'o' : [':FloatermNew top', 'terminal-top']
+	\ 't' : [':FloatermToggle<CR>', 'terminal-toggle'],
+	\ 'T' : [':FloatermNew --wintype=normal --height=6<CR>', 'terminal-new'],
+	\ 'f' : [':FloatermNew fzf<CR>', 'terminal-fzf'],
+	\ 'p' : [':FloatermNew python3<CR>', 'terminal-python3'],
+	\ 'n' : [':FloatermNew node<CR>', 'terminal-node'],
+	\ 'o' : [':FloatermNew top<CR>', 'terminal-top']
 	\}
 
-map <leader>tt :FloatermToggle
-map <leader>tT :FloatermNew --wintype=normal --height=6
-map <leader>tf :FloatermNew fzf
-map <leader>tp :FloatermNew python3
-map <leader>tn :FloatermNew node
-map <leader>to :FloatermNew top
+map <leader>tt :FloatermToggle<CR>
+map <leader>tT :FloatermNew --wintype=normal --height=6<CR>
+map <leader>tf :FloatermNew fzf<CR>
+map <leader>tp :FloatermNew python3<CR>
+map <leader>tn :FloatermNew node<CR>
+map <leader>to :FloatermNew top<CR>
 
 " leader keys starting with w => VimWiki commands
-let g:which_key_map.w = {
+let g:which_key_map.w={
 	\ 'name' : '+vimwiki',
 	\ 'w' : ['<Plug>VimwikiIndex', 'vimwiki-index'], 
 	\ 't' : ['<Plug>VimwikiTabIndex', 'vimwiki-index-new-tab'],
@@ -312,7 +314,7 @@ map <leader>wY <Plug>VimwikiMakeYesterdayDiaryNote
 map <leader>wT <Plug>VimwikiMakeTomorrowDiaryNote
 
 " leader keys starting with x => todo.txt commands
-let g:which_key_map.x = {
+let g:which_key_map.x={
 	\ 'name' : '+todo-txt',
 	\ '@' : [':%call todo#txt#sort_by_context()<CR>', 'todo-sort-by-context'], 
 	\ '+' : [':%call todo#txt#sort_by_project()<CR>', 'todo-sort-by-project'], 
@@ -374,7 +376,7 @@ xnoremap J :move '>+1<CR>gv-gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " COC Extensions
-let g:coc_global_extensions = [
+let g:coc_global_extensions=[
   \ 'coc-actions', 
   \ 'coc-floaterm',
   \ 'coc-snippets',
@@ -405,11 +407,11 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
+  let col=col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_next='<Tab>'
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -427,18 +429,18 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Ctrl-p should ignore certain types of files 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""         CODE FORMATTING AND COMMENTING SETTINGS                                        """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Better NERDCommenter settings 
-let g:NERDCreateDefaujltMappings = 1 
-let g:NERDCompactSexyComs = 1
-let g:NERDCommentEmptyLines = 1
+let g:NERDCreateDefaujltMappings=1 
+let g:NERDCompactSexyComs=1
+let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitepsace=1
-let g:NERDToggleCheckAllLines = 1
+let g:NERDToggleCheckAllLines=1
 
 " Code format and folding
 command! -nargs=0 Format :call CocAction("format")
@@ -449,21 +451,35 @@ command! -nargs=0 OR :call CocAction("runCommand", "editor.action.organizeImport
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""         FLOATING TERMINAL SETTINGS                                                     """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:floaterm_title = "terminal-$1"
-let g:floaterm_wintype = "split"
-let g:floaterm_height = 15
-let g:floaterm_position = 'belowright'
-let g:floaterm_autoclose = 1
+let g:floaterm_title="terminal-$1"
+let g:floaterm_wintype="float"
+let g:floaterm_height=15
+let g:floaterm_position='belowright'
+let g:floaterm_autoclose=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""         SIDE-REPL/TERMINAL SETTINGS                                                    """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:codi#virtual_text_prefix = "$ "
+let g:codi#virtual_text_prefix="$ "
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""          VIM-WIKI CONFIGURATION SETTINGS                                               """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list = [ {'path': '~/Code/github.com/qwinters/personal-wiki/wiki', 'path_html': '~/Code/github.com/qwinters/personal-wiki/html', 'syntax': 'markdown', 'ext': 'md' } ]
+let g:vimwiki_list=[ {'path': '~/Code/github.com/qwinters/personal-wiki/wiki', 'path_html': '~/Code/github.com/qwinters/personal-wiki/html', 'syntax': 'markdown', 'ext': 'md' } ]
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""          VIMTEX + TEX-SNIPPETS CONFIGURATION SETTINGS                                  """""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" vimtex viwer settings (these only work for mac and require skim installed)
+let g:tex_flavor='latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_view_skim_activate=1
+let g:vimtex_view_skim_reading_bar=1
+
+" Let vim do concealing for latex
+set conceallevel=1
+let g:tex_conceal='abdmg'

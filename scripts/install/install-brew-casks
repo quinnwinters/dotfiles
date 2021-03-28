@@ -24,6 +24,7 @@ brew install --cask mactex
 brew install --cask mediainfo
 brew install --cask moom
 brew install --cask pdftotext
+brew install --cask skim
 brew install --cask signal
 brew install --cask vlc
 brew install --cask zoom
