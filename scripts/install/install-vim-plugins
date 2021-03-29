@@ -4,8 +4,8 @@ if [[ ! -f "/opt/anaconda3/bin/conda" ]]; then
   brew install --cask anaconda
 fi
 
-if [[ ! -d "/opt/anaconda3/envs/neovim" ]] ; then 
-    /opt/anaconda3/bin/conda environment -n neovim
+if [[ ! -d "/opt/anaconda3/envs/neovim" ]]; then
+  /opt/anaconda3/bin/conda environment -n neovim
 fi
 
 /opt/anaconda3/bin/conda activate neovim
@@ -13,8 +13,8 @@ fi
 pip install neovim
 pip install black
 
-if [[ ! -d "$HOME"/.vim/plugged ]] ; then 
-	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+if [[ ! -d "$HOME"/.vim/plugged ]]; then
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 fi
 
@@ -27,6 +27,6 @@ conda activate base
 ln -f "$DOT_DIR"/home/coc-settings.json "$HOME"/.config/nvim/coc-settings.json
 
 mkdir -p "$HOME"/.config/nvim/snippets
-for f in "$DOT_DIR"/snippets/*.snippets ; do 
+for f in "$DOT_DIR"/snippets/*.snippets; do
   ln -f "$f" "$HOME"/.config/nvim/snippets/"$(basename "$f")"
 done
