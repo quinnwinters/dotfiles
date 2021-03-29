@@ -55,5 +55,4 @@ add anything please feel free to fork/pr!
 * screenshots automatically saved as png to special screenshots folder
 * mackup to save preferences for applications to your backup engine of choice
 * vim-like atreus and ergodox mappings including nice window movement
-
 * better default applications for e.g. iterm instead of terminal, vlc instead of quicktime, and brave browser instead of safari
