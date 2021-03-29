@@ -28,5 +28,5 @@ ln -f "$DOT_DIR"/home/coc-settings.json "$HOME"/.config/nvim/coc-settings.json
 
 mkdir -p "$HOME"/.config/nvim/snippets
 for f in "$DOT_DIR"/snippets/*.snippets ; do 
-  ln -f $f "$HOME"/.config/nvim/snippets/"$(basename $f)"
+  ln -f "$f" "$HOME"/.config/nvim/snippets/"$(basename "$f")"
 done
