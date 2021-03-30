@@ -30,7 +30,7 @@
 
 snippet #imp "import ..." bA
 import $0
-endsnippet 
+endsnippet
 
 snippet #from "From ... import ..." bA
 from $1 import $0
@@ -55,12 +55,12 @@ snippet #header "Default python header and imports" bA
 # coding=utf-8
 import typing
 import logging
-$1 
+$1
 
 log = logging.getLogger(__name__)
 
 $0
-endsnippet 
+endsnippet
 
 snippet #script "Default script header and imports" bA
 #!/usr/bin/env python3
@@ -97,10 +97,10 @@ class $1(${2:object}):
     """
     $3
     """
-   
+
     def __init__(self, ${4:args}):
         """
-	$5 
+	$5
 
 	Arguments:
 	    $4
@@ -117,7 +117,7 @@ def $1(self, ${2:args}) -> ${3:None}:
 
 	Arguments:
 	    $2
-	
+
 	Returns:
 	    $3
 	"""
@@ -131,7 +131,7 @@ def $1(${2:args}) -> ${3:None}:
 
 	Arguments:
 	    $2
-	
+
 	Returns:
 	    $3
 	"""
@@ -142,10 +142,10 @@ snippet #afunc "async function" bA
 async def $1(${2:args}) -> ${3:None}:
 	"""
 	$4
-	
+
 	Arguments:
 	    $2
-	
+
 	Returns:
 	    $3
 	"""
@@ -159,7 +159,7 @@ async def $1(self, ${2:args}) -> ${3:None}:
 
 	Arguments:
 	    $2
-	
+
 	Returns:
 	    $3
 	"""
@@ -301,7 +301,7 @@ try:
 except ${2:Exception} as err:
     ${3:log.error("Processing error due to ", err)}
 $0
-endsnippet 
+endsnippet
 
 ###################################################################################################
 ### 	Python cli snippets for commonly used functions and arguments 				###
@@ -313,7 +313,7 @@ endsnippet
 
 snippet #argument "argparse argument" bA
 parser.add_argument(
-    "$1", 
+    "$1",
     help="$2",
     type=${3:str,$4}
 )
