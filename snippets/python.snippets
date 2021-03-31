@@ -37,22 +37,22 @@ from $1 import $0
 endsnippet
 
 snippet #! "#!/usr/bin/env python3" bA
-\#!/usr/bin/env python3
+#!/usr/bin/env python3
 $0
 endsnippet
 
 snippet #py2 "#!/usr/bin/env python" bA
-\#!/usr/bin/env python
+#!/usr/bin/env python
 $0
 endsnippet
 
 snippet #enc "coding=utf-8" bA
-\# coding=utf-8
+# coding=utf-8
 $0
 endsnippet
 
 snippet #header "Default python header and imports" bA
-\# coding=utf-8
+# coding=utf-8
 import typing
 import logging
 $1 
@@ -63,32 +63,44 @@ $0
 endsnippet 
 
 snippet #script "Default script header and imports" bA
-\#!/usr/bin/env python3
-\# coding=utf-8
-\# PYTHON_ARGCOMPLETE_OK
+#!/usr/bin/env python3
+# coding=utf-8
+# PYTHON_ARGCOMPLETE_OK
 
+import sys
+import os
 import argparse
 import argcomplete
 import typing
 import logging
 $1
 
-\# Arugment Setup
+# Arugment Setup
 log = logging.getLogger(__name__)
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    prog="$3"
+    description="""
+    $4
+    """,
+    epilog="""
+    $5
+    """
+)
 
-$2
+$4
 
 argcomplete.autocomplete(parser)
 
-\# Script content
+# Script content
 $0
 
-def main():
-    break
+def main(args):
+    pass 
 
+args = parser_parse(args)
 if __name__ == "__main__":
-	main()
+	log.debug("Running script with arguments", args)
+	main(args)
 endsnippet
 
 
@@ -101,69 +113,70 @@ class $1(${2:object}):
     def __init__(self, ${4:args}):
         """
 	$5 
-
 	Arguments:
 	    $4
 	"""
 	${6:super().__init__()}
-	${7:self.args=args}
+	${7:self._args=args}
 	$0
 endsnippet
 
 snippet #method "class method" bA
-def $1(self, ${2:args}) -> ${3:None}:
-	"""
-	$4
-
-	Arguments:
-	    $2
-	
-	Returns:
-	    $3
-	"""
-	$0
+def $1(
+    self,
+    ${2:args}
+    ) -> ${3:None}:
+    """
+    $4
+    Arguments:
+        $2
+    Returns:
+        $3
+    """
+    ${5:pass} 
 endsnippet
 
 snippet #func "function" bA
-def $1(${2:args}) -> ${3:None}:
-	"""
-	$4
-
-	Arguments:
-	    $2
-	
-	Returns:
-	    $3
-	"""
-	$0
+def $1(
+    ${2:args}
+    ) -> ${3:None}:
+    """
+    $4
+    Arguments:
+        $2
+    Returns:
+        $3
+    """
+    ${5:pass}
 endsnippet
 
 snippet #afunc "async function" bA
-async def $1(${2:args}) -> ${3:None}:
-	"""
-	$4
-	
-	Arguments:
-	    $2
-	
-	Returns:
-	    $3
-	"""
-	$0
+async def $1(
+    ${2:args}
+    ) -> ${3:None}:
+    """
+    $4
+    Arguments:
+        $2
+    Returns:
+        $3
+    """
+    ${5:pass}
 endsnippet
 
 snippet #amethod "async class method" bA
-async def $1(self, ${2:args}) -> ${3:None}:
-	"""
-	$4
-
-	Arguments:
-	    $2
-	
-	Returns:
-	    $3
-	"""
-	$0
+async def $1(
+    self, 
+    ${2:args}
+    ) -> ${3:None}:
+    """
+    $4
+    Arguments:
+        $2
+    Returns:
+        $3
+    """
+    ${5:pass}
 endsnippet
 
 snippet #immutable "property decorated function" bA
@@ -266,7 +279,7 @@ endsnippet
 ###################################################################################################
 
 snippet if "if block" bA
-if $1:
+if$1:
     ${2:pass}
 $0
 endsnippet
@@ -278,19 +291,19 @@ $0
 endsnippet
 
 snippet elif "elif block" bA
-elif $1:
+elif$1:
     ${2:pass}
 $0
 endsnippet
 
 snippet for "for loop" bA
-for ${1:value} in ${2:values}:
+for${1:value} in ${2:values}:
     ${3:pass}
 $0
 endsnippet
 
 snippet while "while loop" bA
-while ${1:value is not None}:
+while${1:value is not None}:
     ${2:pass}
 $0
 endsnippet
@@ -313,9 +326,11 @@ endsnippet
 
 snippet #argument "argparse argument" bA
 parser.add_argument(
-    "$1", 
-    help="$2",
-    type=${3:str,$4}
+    "$1",
+    help="""
+        $2
+    """,
+    type=${3:str}
 )
 $0
 endsnippet

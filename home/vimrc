@@ -51,41 +51,12 @@ Plug 'metakirby5/codi.vim'
 
 call plug#end()
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""          VIM PLUGIN SETUP - REMOTE DEFAULT MAPPINGS                                    """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:git_messenger_no_default_mappings=1
 let g:gitgutter_map_keys=0
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""          DISABLE EASY MODE NAVIGATION                                                  """""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove newbie crutches in Command Mode
-cnoremap <Down> <Nop>
-cnoremap <Left> <Nop>
-cnoremap <Right> <Nop>
-cnoremap <Up> <Nop>
-
-" Remove newbie crutches in Insert Mode
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-inoremap <Up> <Nop>
-
-" Remove newbie crutches in Normal Mode
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
-
-" Remove newbie crutches in Visual Mode
-vnoremap <Down> <Nop>
-vnoremap <Left> <Nop>
-vnoremap <Right> <Nop>
-vnoremap <Up> <Nop>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -94,11 +65,15 @@ vnoremap <Up> <Nop>
 
 " Visual editor settings
 set relativenumber
-set colorcolumn=100
 set ruler
 set nowrap
 set signcolumn=yes
 set cmdheight=2
+
+" Set color column dependent on the file type (normally 120, but for some
+" files just do 80)
+autocmd BufEnter * set colorcolumn=80
+autocmd BufEnter *.tex set colorcolumn=150
 
 " Basic vim settings
 set nocompatible
@@ -141,6 +116,7 @@ set clipboard=unnamed
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""          BASIC EDITING SETTINGS                                                        """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " File modification setttings
 set nobackup 
 set nowritebackup
@@ -429,7 +405,11 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Ctrl-p should ignore certain types of files 
-let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command=[
+	\ '.git/', 
+	\ 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+	\]
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""         CODE FORMATTING AND COMMENTING SETTINGS                                        """""
@@ -467,7 +447,11 @@ let g:codi#virtual_text_prefix="$ "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""          VIM-WIKI CONFIGURATION SETTINGS                                               """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list=[ {'path': '~/Code/github.com/qwinters/personal-wiki/wiki', 'path_html': '~/Code/github.com/qwinters/personal-wiki/html', 'syntax': 'markdown', 'ext': 'md' } ]
+let g:vimwiki_list=[ {
+	\ 'path': '~/Code/github.com/qwinters/personal-wiki/wiki',
+	\ 'path_html': '~/Code/github.com/qwinters/personal-wiki/html',
+	\ 'syntax': 'markdown', 'ext': 'md'
+	\} ]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
