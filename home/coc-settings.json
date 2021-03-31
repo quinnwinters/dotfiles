@@ -27,8 +27,6 @@
   "python.analysis.diagnosticMode": "openFilesOnly",
   "python.analysis.typeCheckingMode": "basic",
   "python.pythonPath": "/opt/anaconda3/envs/neovim/bin/python3",
-  "python.formatting.provider": "black",
-  "python.formatting.blackPath": "/opt/anaconda3/envs/neovim/bin/black",
 
   // Snippets
   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets"

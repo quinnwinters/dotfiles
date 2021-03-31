@@ -60,188 +60,159 @@ endglobal
 ###################################################################################################
 
 snippet mm "Inline math mode" wA
-\$\displaystyle $1 \$ $0
+\$\displaystyle $1\$$0
 endsnippet 
 
 snippet dm "Display math mode" wA
 \[
-    $1
+    $0
 \]
-$0
 endsnippet
 
 snippet begin "Begin / end advanced environment" bA
 \begin{$1}
-	$0
+\label{$2:$3}
+$0
 \end{$1}
 endsnippet
 
 snippet table "Table environment" bA
-\begin{table}[${1:htpb}]
-	\centering
-	\caption{${2:caption}}
-	\label{table:${3:label}}
-	\begin{tabular}{${5:c}}
-	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
-	\end{tabular}
+\begin{table}[h]
+    \centering
+    \caption{$1}
+    \label{table:$2}
+    \begin{tabular}{${3:c}}
+        $0${4/((?<=.)c|l|r)|./(?1: & )/g}
+    \end{tabular}
 \end{table}
 endsnippet
 
 snippet figure "Figure environment" bA
 \begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.8\columnwidth]{$1.pdf_tex}
-	\caption{$2}
-	\label{fig:$1}
+    \centering
+    \includegraphics[width=0.8\columnwidth]{$1.pdf_tex}
+    \caption{$2}
+    \label{fig:$1}
 \end{figure}
 $0
 endsnippet
 
 snippet theorem "Theorem environment" bA
-\begin{theorem}[$1]
-       $0
-\end{theorem}
-endsnippet
-
-snippet ltheorem "Theorem environment" bA
-\begin{theorem}[$1]\label{thm:$2}
-       $0
+\begin{theorem}${2:[$3]}
+\label{thm:$1}
+$0
 \end{theorem}
 endsnippet
 
 snippet lemma "Lemma environment" bA
-\begin{lemma}
-       $0
-\end{lemma}
-endsnippet
-
-snippet llemma "Lemma environment" bA
-\begin{lemma}\label{lma:$2}
-       $0
+\begin{lemma}${2:[$3]}
+\label{lma:$1}
+$0
 \end{lemma}
 endsnippet
 
 snippet definition "Definition environment" bA
-\begin{definition}[$1]
-       $0
-\end{definition}
-endsnippet
-
-snippet ldefinition "Definition environment" bA
-\begin{definition}[$1]\label{def:$2}
-       $0
+\begin{definition}${2:[$3]}
+\label{def:$1}
+$0
 \end{definition}
 endsnippet
 
 snippet corollary "Corollary environment" bA
-\begin{corollary*}
-       $0
+\begin{corollary*}${2:[$3]}
+\label{cor:$1}
+$0
 \end{corollary*}
 endsnippet
 
-snippet lcorollary "Corollary environment" bA
-\begin{corollary*}\label{cor:$2}
-       $0
-\end{corollary*}
-endsnippet
 
 snippet proposition "Proposition environment" bA
-\begin{proposition}[$1]
-       $0
-\end{propiosition}
-endsnippet
-
-snippet lproposition "Proposition environment" bA
-\begin{proposition}[$1]\label{prop:$2}
-       $0
+\begin{proposition}${2:[$3]}
+\label{prop:$1}
+$0
 \end{propiosition}
 endsnippet
 
 snippet problem "Problem environment" bA
-\begin{problem*}[$1]
-	$0
-\end{problem*}
-endsnippet
-
-snippet lproblem "Problem environment" bA
-\begin{problem*}[$1]\label{prob:$2}
-	$0
+\begin{problem*}${2:[$3]}
+\label{prob:$1}
+$0
 \end{problem*}
 endsnippet
 
 snippet conjecture "Conjecture environment" bA
-\begin{conjecture*}[$1]
-	$0
-\end{conjecture*}
-endsnippet
-
-snippet conjecture "Conjecture environment" bA
-\begin{conjecture*}[$1]\label{conj:$2}
-	$0
+\begin{conjecture*}${2:[$3]}
+\label{conj:$1}
+$0
 \end{conjecture*}
 endsnippet
 
 snippet proof "Proof environment" bA
 \begin{proof}
-	$0
+$0
 \end{proof}
 endsnippet
 
 snippet claim "Claim environment" bA
 \begin{claim}
-	$0
-\end{claim}
-endsnippet
-
-snippet lclaim "Claim environment" bA
-\begin{claim}\label{claim:$1}
-	$0
+\label{claim:$1}
+$0
 \end{claim}
 endsnippet
 
 snippet align "Align environment" bA
 \begin{align*}
-	$0
+$0
 \end{align*}
 endsnippet
 
 snippet section "Section with short title and reference label" bA
-\section[$1]{$2}\label{$3}
+\section[$1]{$2}
+\label{sec:$3}
 $0
 endsnippet
 
 snippet subsection "Subsection with short title and reference label" bA
-\subsection[$1]{$2}\label{$3}
+\subsection[$1]{$2}
+\label{subsec:$3}
 $0
 endsnippet
 
-snippet enumerateab "Enumerate with (a) style entries" bA
-\begin{enumerate}[label=(\alpha*)]
-	\item $0
+snippet enumab "Enumerate with (a) style entries" bA
+\begin{enumerate}[label=(\alph*)]
+\item $0
 \end{enumerate}
 endsnippet
 
-snippet enumeratenum "Enumerate with (1) style entries" bA
+snippet enumnum "Enumerate with (1) style entries" bA
 \begin{enumerate}[label=(\arabic*)]
-	\item $0
+\item $0
 \end{enumerate}
 endsnippet
 
 snippet enumeraterom "Enumerate with (i) sytle entries" bA
 \begin{enumerate}[label=(\roman*)]
-	\item $0 
+\item $0 
 \end{enumerate}
 endsnippet
 
 snippet itemize "Itemize" bA
 \begin{itemize}
-	\item $0
+\item $0
 \end{itemize}
+endsnippet
+
+snippet itm "Item" bA
+\item $0
+endsnippet
+
+snippet label "Label" bA
+\label{${1:lbl}:$2}
 endsnippet
 
 snippet description "Description enviornment" bA
 \begin{description}
-	\item[$1] $0
+\item[$1] $0
 \end{description}
 endsnippet
 
@@ -250,7 +221,7 @@ endsnippet
 ###################################################################################################
 
 context "math()"
-snippet aa "alpha" wA
+snippet aa "alpha" wA 
 \alpha
 endsnippet
 
@@ -296,7 +267,7 @@ endsnippet
 
 context "math()"
 snippet ee "epsilon" wA
-\epsilon
+\epsilo
 endsnippet
 
 context "math()"
@@ -321,6 +292,11 @@ endsnippet
 
 context "math()"
 snippet PH "Phi" wA
+\Phi
+endsnippet
+
+context "math()"
+snippet FF "Phi" wA
 \Phi
 endsnippet
 
@@ -409,13 +385,13 @@ snippet cce "Subset equal" wA
 endsnippet
 
 context "math()"
-snippet cc/ "Strict subset" wA
+snippet ccn "Strict subset" wA
 \subsetneq
 endsnippet
 
 context "math()"
 snippet nn "Intersection" wA
-\cap 
+\cap
 endsnippet
 
 context "math()" 
@@ -434,76 +410,111 @@ snippet NNN "Intersection" wA
 endsnippet
 
 context "math()"
-snippet ubr "Underbrace" wA
+snippet ubrace "Underbrace" wA
 \underbrace{$1}_{$2} $0
 endsnippet
 
 context "math()"
-snippet nbl "Nabla" wA
+snippet nb "Nabla" wA
 \nabla
 endsnippet 
 
 context "math()"
+snippet grad "Gradient" wA
+\nabla
+endsnippet 
+
+context "math()"
+snippet div "Divergence (of a vector field)" wA
+\text{div}
+endsnippet
+
+context "math()"
+snippet curl "Curl (of a vector field)" wA
+\text{curl}
+endsnippet
+
+context "math()"
 snippet hat "Hat environment" wA
-\hat{$1}$0
+\hat{$1}
 endsnippet
 
 context "math()"
 snippet bar "Bar environment" wA
-\overline{$1}$0
+\overline{$1}
 endsnippet
 
 context "math()"
 snippet tild "Tilde environment" wA
-\tilde{$1}$0
-endsnippet
-
-context "math()"
-snippet sqrt "Square root" wA
-\sqrt{$1} $0
+\tilde{$1}
 endsnippet
 
 context "math()"
 snippet bd "Boundary / partial symbol" wA
-\partial 
+\partial
 endsnippet 
 
 context "math()"
 snippet perp "Perpindicular" wA
-\perp
+\perp 
 endsnippet
+
+context "math()"
+snippet Aut "Automorphism group" wA
+\text{Aut}\left($1\right)$0
+endsnippet 
+
+context "math()"
+snippet Gal "Galois group" wA
+\text{Gal}\left($1\right)
+endsnippet 
 
 ###################################################################################################
 ###   Common mathematical classes of spaces and shortcuts for mathcal and mathbb fonts  	###
 ###################################################################################################
 context "math()"
 snippet 'b([A-Z])' "Mathbb style lettering" rwA
-\mathbb{`!p snip.rv=match.group(1)`}$0
+\mathbb{`!p snip.rv=match.group(1)`}
 endsnippet
 
 context "math()"
 snippet 'c([A-Z])' "Mathcal style lettering" rwA
-\mathcal{`!p snip.rv=match.group(1)`}$0
+\mathcal{`!p snip.rv=match.group(1)`}
 endsnippet
 
 context "math()"
 snippet tx "Text environment" wA
-\text{ $1 } $0
+\text{$1}$0
+endsnippet
+
+context "math()"
+snippet RN "n-dimensional Euclidean space" wA
+\mathbb{R}^{${1:n}}
 endsnippet
 
 context "math()"
 snippet Rn "n-dimensional Euclidean space" wA
-\mathbb{R}^n
+\mathbb{R}^{${1:n}}
 endsnippet
 
 context "math()"
-snippet Rd "d-dimensional Euclidean space" wA
-\mathbb{R}^d
-endsnippet 
+snippet RR "Real numbers" wA
+\mathbb{R}
+endsnippet
 
 context "math()"
-snippet RN "N-dimensional Euclidean space" wA
-\mathbb{R}^N
+snippet NN "Natural numbers" wA
+\mathbb{N}
+endsnippet
+
+context "math()"
+snippet CN "n-dimensional Complex space" wA
+\mathbb{C}^{${1:n}}
+endsnippet
+
+context "math()"
+snippet CC "Complex numbers" wA
+\mathbb{C}
 endsnippet
 
 context "math()"
@@ -551,58 +562,58 @@ endsnippet
 ###################################################################################################
 
 context "math()"
-snippet ==> "Strong right arrow" wA
-\Rightarrow
+snippet => "Strong right arrow" wA
+\Rightarrow $0
 endsnippet
 
 context "math()"
-snippet --> "Weak right arrow" wA
-\rightarrow
+snippet too "Weak right arrow" wA
+\rightarrow $0
 endsnippet
 
 context "math()"
-snippet ->o "Convergence with notes" wA
+snippet tot "Convergence with notes" wA
 \overset{$1}{\longrightarrow} $0
 endsnippet 
 
 context "math()"
-snippet ->x "Convergence with text" wA
+snippet tox "Convergence with text" wA
 \overset{\text{$1}}{\longrightarrow} $0
 endsnippet
 
 context "math()"
-snippet ->n "Convergence in a norm" wA
+snippet ton "Convergence in a norm" wA
 \overset{${1:\|\cdot\|}}{\longrightarrow} $0
 endsnippet
 
 context "math()"
-snippet ->p "Convergence in probability" wA
-\overset{\mathbb{P}}{\longrightarrow}
+snippet top "Convergence in probability" wA
+\overset{\mathbb{P}}{\longrightarrow} $0
 endsnippet
 
 context "math()"
-snippet ->m "Convergence in measure" wA
-\overset{\mu}{\longrightarrow}
+snippet tom "Convergence in measure" wA
+\overset{\mu}{\longrightarrow} $0
 endsnippet
 
 context "math()"
-snippet ->d "Convergence in distribution" wA
-\overset{d}{\longrightarrow}
+snippet tod "Convergence in distribution" wA
+\overset{d}{\longrightarrow} $0
 endsnippet
 
 context "math()"
-snippet ->wk "Weak convergence" wA
-\overset{\omega}{\longrightarrow}
+snippet towk "Weak convergence" wA
+\overset{\omega}{\longrightarrow} $0
 endsnippet
 
 context "math()"
-snippet ->ws "Weak-* convergence" wA
-\overset{\omega-*}{\longrightarrow}
+snippet tows "Weak-* convergence" wA
+\overset{\omega-*}{\longrightarrow} $0
 endsnippet
 
 context "math()"
-snippet ->u "Uniform convergence" wA
-\overset{\text{Unif}}{\longrightarrow}
+snippet tou "Uniform convergence" wA
+\overset{\text{Unif}}{\longrightarrow} $0
 endsnippet
 
 ###################################################################################################
@@ -615,13 +626,13 @@ snippet norm "Generic norm" wA
 endsnippet
 
 context "math()"
-snippet '([AXYZpq*])norm' "Norm with mathematical suffix" rwA
-\left\|${1:\cdot}\right\|_{`!p snip.rv=match.group(1)`}
+snippet '([AXYZpq1-9]|\\infty)norm' "Norm with mathematical suffix" rwA
+\left\|${1:\cdot}\right\|_{`!p snip.rv=match.group(1)`} $0
 endsnippet
 
 context "math()"
 snippet '(TV|HS|op|Lip|Geo)norm' "Norm with mathematical suffix" rwA
-\left\|${1:\cdot}\right\|_{\text{`!p snip.rv=match.group(1)`}}
+\left\|${1:\cdot}\right\|_{\text{`!p snip.rv=match.group(1)`}} $0
 endsnippet
 
 context "math()"
@@ -645,43 +656,53 @@ snippet lrs "Balanced square brakets" wA
 endsnippet
 
 context "math()"
+snippet lra "Balanced angled brackets" wA
+\left\langle $1, $2\right\rangle$0
+endsnippet
+
+context "math()"
+snippet lrn "Balanced angled brackets" wA
+\left\langle $1, $2\right\rangle$0
+endsnippet
+
+context "math()"
 snippet innerp "Balanced angled brackets" wA
-\left\langle $1 , $2 \right\rangle $0
+\left\langle $1, $2\right\rangle$0
 endsnippet
 
 context "math()"
 snippet dirac "Balanced Diract bra-ket notation" wA
-\left\langle ${1:\psi} \middle| ${2:\varphi} \right\rangle $0
+\left\langle ${1:\psi}\middle| ${2:\varphi}\right\rangle$0
 endsnippet
 
 context "math()"
 snippet wtdirac "Balanced Dirac bra-ket notation with weight matrix" wA
-\left\langle ${1:\psi} \middle| ${2:A} \middle| ${3:\varphi} \right\rangle $0
+\left\langle ${1:\psi}\middle| ${2:A}\middle| ${3:\varphi}\right\rangle$0
 endsnippet
 
 context "math()"
 snippet bra "Balanced Diract bra notation" wA
-\left\langle ${1:\psi} \right| $0
+\left\langle ${1:\psi}\right|$0
 endsnippet
 
 context "math()"
 snippet ket "Balanced Diract ket notation" wA
-\left| ${1:\varphi} \right\rangle $0
+\left|${1:\varphi}\right\rangle$0
 endsnippet
 
 context "math()"
 snippet abs "Absolute value" wA
-\left|$1\right| $0
+\left|$1\right|$0
 endsnippet
 
 context "math()"
 snippet floor "Floor" wA
-\left\lfloor $1 \right\rfloor $0
+\left\lfloor $1\right\rfloor$0
 endsnippet
 
 context "math()"
 snippet ceil "Ceiling" wA
-\left\lceil $1 \right\rceil $0
+\left\lceil $1\right\rceil$0
 endsnippet
 
 ###################################################################################################
@@ -690,107 +711,167 @@ endsnippet
 
 context "math()"
 snippet exp "Exponential environment" iA
-\exp\left( $1 \right) $0
+\exp\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet log "Logarithm environment" iA
-\log\left( $1 \right) $0
+\log\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet det "Determinent environment" iA
-\det\left( $1 \right) $0
+\det\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet tr "Trace environment" iA
-\text{tr}\left( $1 \right) $0
+\text{tr}\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet conv "Convex hull" wA
-\text{conv}\left( $1 \right) $0
+\text{conv}\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet aff "Affine hull" wA
-\text{aff}\left( $1 \right) $0
+\text{aff}\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet span "Linear span" wA
-\text{span}\left\\{ $1 \right\\} $0
+\text{span}\left\\{$1\right\\}$0
 endsnippet
 
 context "math()"
-snippet volume "Volume environment" iA
-\text{vol}\left( $1 \right) $0
+snippet vol "Volume environment" wA
+\text{vol}\left($1\right)$0
 endsnippet
 
 context "math()"
-snippet nvoln "n-dimensional Volume environment" iA
-\text{vol}_{${1:n}}\left( $2 \right) $0
+snippet nvol "n-dimensional Volume environment" wA
+\text{vol}_{${1:n}}\left($2\right)$0
 endsnippet
 
 context "math()"
-snippet PP "Probability of an event" wA
-\mathbb{P}\left\\{ $1 \right\\} $0
+snippet PP "Probability symbol" wA
+\mathbb{P}
 endsnippet
 
 context "math()"
-snippet EE "Expectation of an event" wA
-\mathb{E}\left[ $1 \right] $0
+snippet EE "Expectation symbol" wA
+\mathbb{E}
+endsnippet
+
+context "math()"
+snippet PR "Probability of an event" wA
+\mathbb{P}\left\\{${1:$2 \middle| $3}\right\\}
+endsnippet
+
+context "math()"
+snippet EX "Expecation of an event" wA
+\mathbb{E}\left[$1\right]
+endsnippet
+
+context "math()"
+snippet EA "Expectation of an absolute value" wA
+\mathbb{E}\left|$1\right|
 endsnippet
 
 context "math()"
 snippet var "Variance of a random variable" wA
-\text{Var}\left( $1 \right) $0
+\text{Var}\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet cov "Covarience of two random variables" wA
-\text{Cov}\left( $1 \right) $0
+\text{Cov}\left($1\right)$0
 endsnippet
 
 context "math()"
 snippet 1in "Indicator function for an event" wA
-\mathbbm{1}_{${1:A}}\left(${2:x}\right) $0
+\mathbbm{1}_{${1:A}}
 endsnippet
 
 context "math()"
-snippet lim "Limit" wA
-\lim_{${1:n}\to ${2:\infty}}
+snippet 1st "Indicator function for a set" wA
+\mathbbm{1}_{\left\\{${1:x} \middle| $2 \right\\}}
+endsnippet
+
+context "math()"
+snippet Lim "Limit" wA
+\lim_{${1:n}\to ${2:\infty}}$0
 endsnippet
 
 context "math()"
 snippet lsup "Limsup environment" wA
-\limsup_{${1:n} \to ${2:\infty}} 
+\limsup_{${1:n} \to ${2:\infty}}$0 
 endsnippet
 
 context "math()"
 snippet linf "Liminf environment" wA
-\liminf_{${1:n} \to ${2:\infty}} 
+\liminf_{${1:n} \to ${2:\infty}}$0 
+endsnippet
+
+context "math()"
+snippet Sup "Supremeum over a condition" wA
+\sup_{${1:x\ne 0}} $0
+endsnippet
+
+context "math()"
+snippet sSup "Supremum of a set" wA
+\sup\left\\{$1 \middle| $2\right\\}
+endsnippet
+
+context "math()"
+snippet Inf "Infimum over a condition" wA
+\inf_{${1:x\ne 0}} $0
+endsnippet
+
+context "math()"
+snippet sInf "Infimum of a set" wA
+\inf\left\\{$1 \middle| $2\right\\}
 endsnippet
 
 context "math()"
 snippet intx "Riemann integral" wA
-\int_{${1:-\infty}}^{${2:\infty}}${3:f(x)} \; d${4:x} $0
+\int_{${1:-\infty}}^{${2:\infty}} ${3:f(x)} \;d${4:x} $0
 endsnippet
 
 context "math()"
 snippet intm "Lebesgue integral" wA
-\int_{${1:A}}${2:f(x)} \;d${3:x} $0
+\int_{${1:A}} ${2:f(x)} \;d${3:x} $0
+endsnippet
+
+context "math()"
+snippet ddx "Derivative with resepct to x" wA
+\frac{d}{dx}
+endsnippet 
+
+context "math()"
+snippet ddt "Derivative with respect to t" wA
+\frac{d}{dt}
+endsnippet 
+
+context "math()"
+snippet Ddu "Directional derivative" wA
+D_{${1:u}}
+endsnippet 
+
+context "math()"
+snippet Ndu "Gradient with respect to a direction" wA
+\nabla_{${1:u}}
 endsnippet
 
 context "math()"
 snippet dfdx "Derivative" wA
-\frac{d${1:f}}{d${2:x}} $0
+\frac{d${1:f}}{d${2:x}}$0
 endsnippet 
 
 context "math()"
 snippet pfpx "Partial derivative" wA
-\frac{\partial ${1:f}}{\partial ${2:x_i}} $0
+\frac{\partial ${1:f}}{\partial ${2:x_i}}$0
 endsnippet
 
 context "math()"
@@ -860,7 +941,7 @@ endsnippet
 
 context "math()"
 snippet eigs "Eigenvalues" wA 
-\text{eigvals}\left($1\right)
+\text{eigvals}\left($1\right)$0
 endsnippet
 
 context "math()"
@@ -884,52 +965,27 @@ endsnippet
 
 context "math()"
 snippet // "Fraction" iA
-\\frac{$1}{$2}$0
-endsnippet
-
-snippet / "Fraction" i
-\\frac{${VISUAL}}{$1} $0
-endsnippet 
-
-context "math()"
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" rwA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
-endsnippet
-
-priority 1000
-context "math()"
-snippet '^.*\)/' "(...) Fraction" rwA
-`!p
-stripped = match.string[:-1]
-depth = 0
-i = len(stripped) - 1
-while True:
-	if stripped[i] == ')': depth += 1
-	if stripped[i] == '(': depth -= 1
-	if depth == 0: break;
-	i-= 1
-snip.rv = stripped[0:i] + " \\frac{" + stripped[i+1:-1] + "}"
-`{$1}$0
+\\frac{$1}{$2}
 endsnippet
 
 context "math()"
-snippet rt "Square root" wA
-\sqrt{$1} $0
+snippet frac "Fraction" iA
+\\frac{$1}{$2}
+endsnippet
+
+context "math()"
+snippet 'froot' "n-th order root" wA
+\left($3\right)^{\frac{${1:1}}{${2:n}}}
 endsnippet 
 
 context "math()"
-snippet '([2-9])rt' "n-th order root" rwA
-\left( $1 \right)^{\frac{1}{`!p snip.rv=match.group(1)`}} $0
-endsnippet 
+snippet sqrt "Square root" wA
+\sqrt{$1}
+endsnippet
 
 context "math()"
-snippet 'frt' "n-th order root" wA
-\left( $3 \right)^{\frac{${1:1}}{${2:n}}} $0
-endsnippet 
-
-context "math()"
-snippet '(p|q|n|m|n-1)rt' "n-th order root" riA
-\left( $1 \right)^{\frac{1}{`!p snip.rv=match.group(1)`}} $0
+snippet '(p|q|n|m|n-1)root' "n-th order root" riA
+\left($1\right)^{\frac{1}{`!p snip.rv=match.group(1)`}}
 endsnippet 
 
 ###################################################################################################
@@ -937,58 +993,58 @@ endsnippet
 ###################################################################################################
 
 context "math()"
-snippet ^^ "Superscript" iA
+snippet ^ "Superscript" iA
 ^{$1}$0
 endsnippet 
 
 context "math()"
-snippet __ "Subscript" iA
+snippet _ "Subscript" iA
 _{$1}$0
 endsnippet 
 
 context "math()"
 snippet '([ABCEFGHKTUVXYZabcfgtx])(\d)' "Auto subscript 1-digit" rwA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1} $0
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
 context "math()"
 snippet '([ABCEFGHKTUVXYZabcfgtxy])([jkimn])' "Auto subscript for sequences and vectors" rwA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1} $0
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
 context "math()"
 snippet "([A-Za-z])bar" "Bar" riA
-\overline{`!p snip.rv=match.group(1)`}
+\overline{`!p snip.rv=match.group(1)`}$0
 endsnippet
 
 context "math()"
 snippet "([A-Za-z])hat" "Hat" riA
-\hat{`!p snip.rv=match.group(1)`}
+\hat{`!p snip.rv=match.group(1)`}$0
 endsnippet
 
 context "math()"
 snippet "([A-Za-z])vec" "Vector" riA
-\vec{`!p snip.rv=match.group(1)`}
+\vec{`!p snip.rv=match.group(1)`}$0
 endsnippet
 
 context "math()"
-snippet "([A-Za-z])star" "Dual / star" riA
-`!p snip.rv=match.group(1)`^{\ast}
+snippet "([A-Za-z]|\\[A-z]*|}|]|\)|\||)star" "Dual / star" riA
+`!p snip.rv=match.group(1)`^{\ast}$0
 endsnippet
 
 context "math()"
-snippet "([A-Za-z])vvv" "Inverse" riA
-`!p snip.rv=match.group(1)`^{-1}
+snippet '(([A-Za-z]|\\[A-z]*|}|\]|\)|\||)\\inv' "Inverse" riA
+`!p snip.rv=match.group(1)`^{-1}$0
 endsnippet
 
 context "math()"
-snippet "([A-Za-z])crc" "Circ / interior / polar" riA
-`!p snip.rv=match.group(1)`^{\circ}
+snippet "([A-Za-z])circ" "Circ / interior / polar" riA
+`!p snip.rv=match.group(1)`^{\circ} $0
 endsnippet
 
 context "math()"
 snippet "([A-Za-z])dag" "Dagger suffix" riA
-`!p snip.rv=match.group(1)`^{\dagger}
+`!p snip.rv=match.group(1)`^{\dagger}$0
 endsnippet
 
 ###################################################################################################
@@ -996,42 +1052,42 @@ endsnippet
 ###################################################################################################
 context "math()"
 snippet '(f|g|h|T|p|q|s|t|z)xx' "Designated function letter" rwA
-`!p snip.rv=match.group(1)`\left( ${1:x} \right)$0
+`!p snip.rv=match.group(1)`\left(${1:x}\right)$0
 endsnippet 
 
 context "math()"
 snippet '(f|g|h|T|p|q|s|t|z)xb' "Designated function letter with subscript" rwA
-`!p snip.rv=match.group(1)`_{${1:n}}\left( ${2:x} \right)$0
+`!p snip.rv=match.group(1)`_{${1:n}}\left(${2:x}\right)$0
 endsnippet 
 
 context "math()"
 snippet '(f|g|h|T|p|q|s|t|z)xu' "Designated function letter with superscript" rwA
-`!p snip.rv=match.group(1)`^{${1:(n)}}\left( ${2:x} \right)$0
+`!p snip.rv=match.group(1)`^{${1:(n)}}\left(${2:x}\right)$0
 endsnippet
 
 context "math()"
 snippet '(f|g|h|T|p|q|s|t|z)xa' "Designated function letter with both susbscript and superscript" rwA
-`!p snip.rv=match.group(1)`_{${1:n}}^{${2:(m)}}\left( ${3:x} \right)$0
+`!p snip.rv=match.group(1)`_{${1:n}}^{${2:(m)}}\left(${3:x}\right)$0
 endsnippet 
 
 context "math()"
-snippet xxx "Function signature" iA
-\left( ${1:x} \right)$0
+snippet xx "Function signature" iA
+\left(${1:x}\right)$0
 endsnippet
 
 context "math()"
-snippet xxb "Function signature" iA
-_{${1:n}}\left( ${2:x} \right)$0
+snippet xb "Function signature" iA
+_{${1:n}}\left(${2:x}\right)$0
 endsnippet
 
 context "math()"
-snippet xxu "Function signature" iA
-^{${1:\ast}}\left( ${2:x} \right)$0
+snippet xu "Function signature" iA
+^{${1:\ast}}\left(${2:x}\right)$0
 endsnippet
 
 context "math()"
-snippet xxa "Function signature" iA 
-^{${1:\ast}}_{${2:n}}\left( ${2:x} \right)$0
+snippet xa "Function signature" iA 
+^{${1:\ast}}_{${2:n}}\left(${2:x}\right)$0
 endsnippet
 
 ###################################################################################################
