@@ -53,7 +53,7 @@ def begin_theorem(shorthand, label, name):
     label = "\\label{" + shorthand + ":" + labelify(label) + "}"
     name = "[" + name.strip() + "]" if len(name) > 0  else ""
     environment = environment_for_shorthand(shorthand)
-    return "\n\n\\begin{" + environment + "}" + name + "\n" + label + "\n"
+    return "\n\n\\begin{" + environment + "}" + name + label + "\n"
 
 def end_theorem(shorthand, *args):
     environment = environment_for_shorthand(shorthand)
@@ -91,7 +91,7 @@ def create_section(level, short_title, long_title):
     for _ in range(num_subsections):
     	command = "sub" + command
     prefix = command.replace("tion", "")
-    return "\\" + command + "[" + short_title + "]{" + long_title + "}\n" \
+    return "\\" + command + "[" + short_title + "]{" + long_title + "}" \
     	+ "\\label{" + prefix + ":" + label + "}\n\n"
 endglobal
 
