@@ -23,7 +23,7 @@ global !p
 import re
 
 ###################################################################################################
-### 	PYTHON: Different contexts for snippets so they only sometimes auto expand 		###
+### 	PYTHON: Default snippet utilitiy functions 						###
 ###################################################################################################
 def math():
     return vim.eval('vimtex#syntax#in_mathzone()') == '1'
@@ -44,8 +44,430 @@ def clean(match_group):
     .replace("\n", "\\n")\
     .replace("\r", "\\r")\
     .replace("\b", "\\b")
+
+###################################################################################################
+### 	PYTHON: Environment snippet functions (e.g. theorems, sections etc.) 			###
+###################################################################################################
+env_to_sh = {
+    "thm": "theorem",
+    "lma": "lemma",
+    "prf": "proof",
+    "conj": "conjecture",
+    "cor": "corollary",
+    "sec": "section",
+    "sub": "subsection",
+    "eqn": "equation",
+    "aln": "align",
+    "prob": "problem",
+    "exm": "example",
+    "rmk": "remark",
+    "prp": "proposition",
+    "clm": "claim",
+    "exr": "exercise",
+    "def": "definition",
+}
+sh_to_env = { val: key for key, val in env_to_sh.items() }
+def environment_for_shorthand(shorthand):
+    return env_to_sh[shorthand]
+
+def shorthand_for_envornment(environment):
+    return sh_to_env[environment]
+
+def labelify(string):
+    """Takes a string and makes it label acceptable"""
+    without_common_accents = string.replace("ü", "u") \
+    	.replace("ö", "o")\
+    	.replace("ä", "a")\
+    	.replace("å", "a")\
+    	.replace("é", "e")\
+    	.replace("á", "a")\
+    	.replace("ó", "o")\
+    	.replace("ß", "ss")
+    just_alpha_numeric = re.sub("[^A-z0-9]*", "", without_common_accents)
+    return just_alpha_numeric.strip()
+
+def begin_theorem(shorthand, label, name):
+    label = "\\label{" + shorthand + ":" + labelify(label) + "}"
+    name = "[" + name.strip() + "]" if len(name) > 0  else ""
+    environment = environment_for_shorthand(shorthand)
+    return "\n\n\\begin{" + environment + "}" + name + label + "\n"
+
+def end_theorem(shorthand, *args):
+    environment = environment_for_shorthand(shorthand)
+    return "\\end{" + environment + "}\n\n"
+
+def begin_enum(number_style, additional_args):
+    if number_style == "ab":
+    	number_style = "\\alph"
+    elif number_style == "num":
+    	number_style = "\\arabic"
+    elif number_style == "rom":
+    	number_style = "\\roman"
+    else:
+    	raise ValueError("Unsupposted number style: " + number_style)
+    additional_args = ", " + additional_args if len(additional_args) > 0 else ""
+    return "\\begin{enumerate}[label={" + number_style + "*}" \
+    	+ additional_args + "]\n"
+def end_enum(number_style, additional_args):
+    return "\\end{enumerate}\n\n"
+
+def begin_item(additional_args):
+    additional_args = "" if len(additional_args) == 0 \
+    	else "[ " + additional_args + " ]"
+    return "\\begin{itemize}" + additional_args + "\n"
+
+def end_item(additional_args):
+    return "\\end{itemize}\n\n"
+
+def create_section(level, short_title, long_title):
+    label = labelify(short_title)
+    num_subsections = len(level)
+    if num_subsections > 2:
+    	raise ValueError("Cannot support more than 3 levels of sections")
+    command = "section"
+    for _ in range(num_subsections):
+    	command = "sub" + command
+    prefix = command.replace("tion", "")
+    return "\\" + command + "[" + short_title + "]{" + long_title + "}" \
+    	+ "\\label{" + prefix + ":" + label + "}\n\n"
+
+###################################################################################################
+### 	PYTHON: Math and Math-symbol helper functions 						###
+###################################################################################################
+greek_shorthand_map = {
+    "DE": "Delta",
+    "DL": "Delta",
+    "FF": "Phi",
+    "GG": "Gamma",
+    "LM": "Lambda",
+    "OM": "Omega",
+    "OO": "Omega",
+    "PH": "Phi",
+    "PI": "Pi",
+    "PP": "Psi",
+    "PS": "Psi",
+    "TH": "Theta",
+    "VD": "varDelta",
+    "VF": "varPhi",
+    "VG": "varGamma",
+    "VL": "varLambda",
+    "VO": "varOmega",
+    "VP": "varPsi",
+    "VS": "varSigma",
+    "VT": "varTheta",
+    "VX": "varXi",
+    "XI": "Xi",
+    "aa": "alpha",
+    "bb": "beta",
+    "cc": "chi",
+    "ch": "chi",
+    "dd": "delta",
+    "de": "delta",
+    "dl": "delta",
+    "ee": "varepsilon",
+    "ep": "varepsilon",
+    "et": "eta",
+    "ff": "varphi",
+    "gg": "gamma",
+    "ka": "kappa",
+    "kk": "kappa",
+    "ll": "ell",
+    "lm": "lambda",
+    "mm": "mu",
+    "nn": "nu",
+    "no": "varnothing",
+    "om": "omega",
+    "oo": "omega",
+    "ph": "varphi",
+    "pi": "pi",
+    "pp": "psi",
+    "ps": "psi",
+    "re": "epsilon",
+    "rf": "phi",
+    "rh": "rho",
+    "ro": "rho",
+    "sg": "sigma",
+    "ss": "sigma",
+    "ta": "tau",
+    "th": "theta",
+    "tt": "theta",
+    "vt": "vartheta",
+    "xi": "xi",
+    "ze": "zeta",
+    "zz": "zeta"
+}
+def greek_letter(lettercode):
+    if lettercode not in greek_shorthand_map:
+    	return "g" + lettercode
+    return "\\" + greek_shorthand_map[lettercode]
+
+math_symb_shorthand_map = {
+    "Dwa": "Downarrow",
+    "NN": "bigcap",
+    "OP": "bigoplus",
+    "OT": "bigotimes",
+    "SC": "bigsqcup",
+    "TO": "Longrightarrow",
+    "UU": "bigcup",
+    "Upa": "Uparrow",
+    "VV": "bigvee",
+    "WW": "bigwedge",
+    "ap": "approx",
+    "cce": "subseteq",
+    "ccn": "subsetneq",
+    "cd": "cdots",
+    "cr": "circ",
+    "dd": "ddots",
+    "dwa": "downarrow",
+    "dwt": "searrow",
+    "em": "hookrightarrow",
+    "ex": "exists",
+    "fa": "forall",
+    "gr": "nabla",
+    "hb": "hbar",
+    "ld": "ldots",
+    "lt": "ltimes",
+    "me": "preceq",
+    "mj": "prec",
+    "mp": "longmapsto",
+    "nb": "nabla",
+    "neq": "nea",
+    "nex": "nexists",
+    "nin": "notin",
+    "nme": "npreceq",
+    "nmj": "nprec",
+    "nn": "cap",
+    "nse": "nsimeq",
+    "nsi": "nsim",
+    "oo": "infty",
+    "op": "oplus",
+    "ot": "otimes",
+    "pd": "partial",
+    "pr": "perp",
+    "sc": "sqcup",
+    "se": "simeq",
+    "si": "sim",
+    "sm": "setminus",
+    "sse": "supseteq",
+    "ssn": "supsetneq",
+    "tm": "times",
+    "to": "longrightarrow",
+    "upa": "uparrow",
+    "upt": "nearrow",
+    "uu": "cup",
+    "vd": "vdots",
+    "vv": "vee",
+    "ww": "wedge"
+}
+def math_symb(symbcode):
+    if symbcode not in math_symb_shorthand_map:
+    	return "m" + symbcode
+    return "\\" + math_symb_shorthand_map[symbcode]
+
+convergence_types_map = {
+    "EE": "\\mathbb{E}",
+    "Frob": "\\|\\cdot\\|_{\\text{Frob}}",
+    "HS": "\\|\\cdot\\|_{\\text{HS}}",
+    "L1": "\\|\\cdot\\|_{\\mathcal{L}^{1}}",
+    "L2": "\\|\\cdot\\|_{\\mathcal{L}^{2}}",
+    "Li": "\\|\\cdot\\|_{\\mathcal{L}^{\\infty}}",
+    "Lp": "\\|\\cdot\\|_{\\mathcal{L}^{p}}",
+    "Lq": "\\|\\cdot\\|_{\\mathcal{L}^{q}}",
+    "PP": "\\mathbb{P}",
+    "TV": "\\|\\cdot\\|_{\\text{TV}}",
+    "ab": "|\\cdot|",
+    "ae": "a.e.",
+    "as": "a.s.",
+    "d": "d",
+    "e": "\\mathbb{E}",
+    "ee": "\\mathbb{E}",
+    "gg": "\\gamma",
+    "l1": "\\|\\cdot\\|_{1}",
+    "l2": "\\|\\cdot\\|_{2}",
+    "li": "\\|\\cdot\\|_{\\infty}",
+    "lp": "\\|\\cdot\\|_{p}",
+    "lq": "\\|\\cdot\\|_{q}",
+    "mm": "\\mu",
+    "mu": "\\mu",
+    "n": "\\|\\cdot\\|",
+    "nu": "\\nu",
+    "op": "\\|\\cdot\\|_{\\text{op}}",
+    "p": "\\mathbb{P}",
+    "pp": "\\mathbb{P}",
+    "rh": "\\rho",
+    "sg": "\\sigma",
+    "sgs": "\\sigma-\\ast",
+    "un": "\\text{Unif}",
+    "wk": "w",
+    "ws": "w-\\ast",
+}
+
+def converge_in(shorthand):
+    if not shorthand in convergence_types_map:
+        overtext = shorthand
+    else:
+        overtext = convergence_types_map[shorthand]
+    return "\\overset{" + overtext + "}{\\longrightarrow}"
+
+def converge_two_args(arg_1, arg_2):
+    if arg_1.strip().lower().startswith("wh"):
+        return converge_when(arg_2)
+    else:
+        return converge_as(arg_1, arg_2)
+
+def converge_when(condition):
+    return "\\overset{\\stack{when}{" + condition + "}}{\\longrightarrow}"
+
+def converge_as(variable, limit):
+    return "\\overset{" + variable +"\\to " + limit + "}{\\longrightarrow}"
+
+sum_type_environments = {
+    "cprod": "coprod",
+    "dprod": "bigotimes",
+    "dsum": "bigoplus",
+    "dunion": "bigsqcup",
+    "eval": "biggr|",
+    "iiint": "iiint",
+    "iint": "iint",
+    "int": "int",
+    "inter": "bigcap",
+    "oiiint": "oiiint",
+    "oiint": "oiint",
+    "oint": "oint",
+    "prod": "prod",
+    "sum": "sum",
+    "union": "bigcup",
+    "vee": "bigvee",
+    "wedge": "bigwedge"
+}
+
+def sum_env(sum_type_sh, lower, upper, stack=False):
+    sum_env_symb = sum_type_environments[sum_type_sh]
+    if stack:
+    	# note: intuiition is reversed for stacking - first arg goes on top
+        return "\\" + sum_env_symb + "_{\\substack{" + lower + "}{" + upper +"}}"
+    if len(lower) > 0:
+        lower = "_{" + lower + "}"
+    if len(upper) > 0:
+        upper = "^{" + upper + "}"
+    return "\\" + sum_env_symb + lower + upper
+
+left_right_notations = {
+  "norm": ("\\left\\|", "\\right\\|"),
+  "pnorm": ("\\left\\|", "\\right\\|_{p}"),
+  "qnorm": ("\\left\\|", "\\right\\|_{q}"),
+  "1norm": ("\\left\\|", "\\right\\|_{1}"),
+  "2norm": ("\\left\\|", "\\right\\|_{2}"),
+  "infnorm": ("\\left\\|", "\\right\\|_{\infty}"),
+  "tvnorm": ("\\left\\|", "\\right\\|_{\\text{TV}}"),
+  "tvnorm": ("\\left\\|", "\\right\\|_{\\text{TV}}"),
+  "hsnorm": ("\\left\\|", "\\right\\|_{\\text{HS}}"),
+  "lnorm": ("\\left\\|", "\\right\\|_{L}"),
+  "knorm": ("\\left\\|", "\\right\\|_{K}"),
+  "fnorm": ("\\left\\|", "\\right\\|_{F}"),
+  "frobnorm": ("\\left\\|", "\\right\\|_{\\text{Frob}}"),
+  "anorm": ("\\left\\|", "\\right\\|_{A}"),
+  "lpnorm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{p}}"),
+  "lqnorm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{q}}"),
+  "l1norm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{1}}"),
+  "l2norm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^2}"),
+  "linfnorm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{\infty}}"),
+  "w1norm": ("\\left\\|", "\\right\\|_{W_1}"),
+  "wpnorm": ("\\left\\|", "\\right\\|_{W_p}"),
+  "dualnorm": ("\\left\\|", "\\right\\|_{\\ast}"),
+  "starnorm": ("\\left\\|", "\\right\\|_{\\ast}"),
+  "lipnorm": ("\\left\\|", "\\right\\|_{\\text{Lip}}"),
+  "geonorm": ("\\left\\|", "\\right\\|_{\\text{Geo}}"),
+  "floor": ("\\left\\lfloor", "\\right\\rfloor"),
+  "ceil": ("\\left\\lceil", "\\right\\rceil"),
+  "abs": ("\\left|", "\\right|"),
+  "bra": ("\\left\\langle", "\\right|"),
+  "ket": ("\\left|", "\\right\\rangle"),
+  "lrs": ("\\left[", "\\right]"),
+  "lrp": ("\\left(", "\\right)"),
+  "paren": ("\\left(", "\\right)"),
+  "parenthesis": ("\\left(", "\\right)"),
+  "lrc": ("\\left\\lbrace", "\\right\\rbrace"),
+  "bracket": ("\\left\\lbrace", "\\right\\rbrace"),
+  "curly": ("\\left\\lbrace", "\\right\\rbrace"),
+  "lrs": ("\\left[", "\\right]"),
+  "squarebracket": ("\\left[", "\\right]"),
+  "braces": ("\\left[", "\\right]")
+}
+
+def left_right_env(lrenv, inner_content="\\cdot"):
+    if not lrenv in left_right_notations:
+    	raise ValueError("Unacceptable left/right environment")
+    left, right = left_right_notations[lrenv]
+    return left + " " + inner_content + " " + right
+
+left_middle_right_notations = {
+    "innerp": ("\\left\\langle", " , ", "\\right\\rangle"),
+    "dirac": ("\\left\\langle", "\\;\\middle|\\;", "\\right\\rangle"),
+    "braket": ("\\left\\langle", "\\;\\middle|\\;", "\\right\\rangle"),
+    "set": ("\\left\\lbrace", "\;\\middle|\\;", "\\right\\rbrace"),
+    "lie": ("\\left[", ",", "\\right]"),
+    "condpr": ("\\mathbb{P}\\left[", "\\;\\middle|\\;", "\\right]"),
+    "condex": ("\\mathbb{E}\\left[", "\\;\\middle|\\;", "\\right]"),
+    "collec": ("\\left\\lbrace", ",", "\\right\\rbrace")
+}
+def left_middle_right_env(lmrenv, *args):
+    if not lmrenv in left_middle_right_notations:
+    	raise ValueError("Unacceptable left/middle/right environment")
+    left, middle, right = left_middle_right_notations[lmrenv]
+    if len(args) == 2:
+    	return left + " " + args[0] \
+    	+ " " + middle \
+    	+ " " + args[1] \
+    	+ " " + right
+    middle_args = args[1:-1]
+    code = left + " " + args[0] + " "
+    for middle_argument in middle_args:
+        code = code + " " + middle + " " + middle_argument + " " + middle + " "
+    code = code + " " + args[-1] + " " + right
+    return code
+
+hats_and_shoes = {
+  "bar": "overline",
+  "hat": "widehat",
+  "tild": "widetilde",
+  "dot": "dot",
+  "ddot": "ddot",
+  "dddot": "dddot",
+  "vec": "vec",
+  "oleft": "overleftarrow",
+  "oright": "overrightarrow",
+  "uleft": "underleftarrow",
+  "uright": "underrightarrow",
+  "ubr": "underbrace",
+  "obr": "overbrace",
+  "uline": "underline",
+  "oline": "overline"
+}
+def add_hat_or_shoe(clothing, wearer):
+    if not clothing in hats_and_shoes:
+        raise ValueError("Suffix not understood")
+    return "\\" + hats_and_shoes[clothing] + "{" + wearer + "}"
+
+suffixes = {
+  "prime": "\\prime",
+  "inv": "-1",
+  "ast": "\\ast",
+  "star": "\\ast",
+  "dag": "\\dat",
+  "circ": "\\circ",
+  "compl": "\\complement",
+  "perp": "\\perp",
+  "tr": "\\top",
+  "sq": "2",
+  "flat": "\\flat",
+  "sharp": "\\sharp"
+}
 endglobal
 
+###################################################################################################
+### 	SNIPS: Snippets for general LaTeX documents 						###
+###################################################################################################
 context "not_math()"
 snippet mm "Inline math mode" wA
 \$\displaystyle $1 \$$0
@@ -142,4 +564,816 @@ endsnippet
 context "not_math()"
 snippet %SfEverywhere "Use sans-serif text everywhere by default (including math)" bA
 \usepackage{cmbright}
+endsnippet
+
+###################################################################################################
+### 	SNIPS: Snippets for theorem/section/other type environments 				###
+###################################################################################################
+context "not_math()"
+snippet %AmsTheoremsHeader "AMS-Style thoerems header" bA
+\usepackage[amsmath, thmmarks, hyperref, amsthm]{ntheorem}
+\usepackage{thmtools}
+% Uncomment this section to remove the parenthesis for notes from theorems
+%\makeatletter
+%\newtheoremstyle{noparens-style}%
+%{\item[\theorem@headerfont ##1 ##2.]}%
+%{\item[\theorem@headerfont ##1 ##2: ##3.]}%
+%\makeatother
+%\theoremstyle{noparens-style}
+
+\makeatletter
+\newtheoremstyle{ams-style}%
+{\item[\theorem@headerfont ##1 ##2\theorem@separator]}%
+{\item[\theorem@headerfont ##1 ##2 {\normalfont\upshape (##3)}\theorem@separator]}%
+\makeatother
+\theoremstyle{ams-style}
+\theoremseparator{.}
+
+% AMS-Plain style environments go here
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+% AMS-Definition style environments go here
+\theorembodyfont{\upshape}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{property}[theorem]{Property}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{problem}[theorem]{Problem}
+
+% AMS-Remark style environments go here
+\theorempreskip{}
+\theorempostskip{}
+\theoremheaderfont{\normalfont\itshape}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{notation}[theorem]{Notation}
+
+% Customized proof environment
+\makeatletter
+% Switch the line below from \newenvironment{boldproof} to \renewenvironment{proof}
+% to override the default proof environment with the nicer looking version
+\newenvironment{boldproof}[1][\proofname]
+{\par
+	\normalfont\topsep6\p@\@plus6\p@\relax\trivlist
+	\item[\hskip\labelsep\scshape#1\@addpunct{.}]
+	\mbox{}
+	\smallskip
+\par
+\nobreak}
+{
+\begin{flushright}
+	\ensuremath{\blacksquare}
+\end{flushright}
+\endtrivlist\@endpefalse}
+\makeatother
+endsnippet
+
+context "not_math()"
+snippet %FramedTheoremsHeader "Framed-style theorems" bA
+% Framed theorem and environments
+\usepackage[amsmath, thmmarks, hyperref, amsthm]{ntheorem}
+\usepackage{thmtools}
+
+\usepackage[framemethod=tikz]{mdframed}
+\mdfdefinestyle{grey-box}{%
+	roundcorner=6pt,%
+	backgroundcolor=gray!20,%
+	frametitlerule=true,%
+	frametitleaboveskip=5pt,%
+	frametitlebelowskip=4pt,%
+	frametitlebackgroundcolor=gray!35,%
+	subtitlebackgroundcolor=gray!35,%
+	subtitleaboveline=true,%
+	subtitlebelowline=true,%
+	innertopmargin=6pt,%
+	innerbottommargin=6pt,%
+	nobreak=true,%
+	ntheorem=true
+}
+\mdtheorem[style=grey-box]{theorem}{Theorem}[section]
+\mdtheorem[style=grey-box]{proposition}[theorem]{Proposition}
+\mdtheorem[style=grey-box]{conjecture}[theorem]{Conjecture}
+\mdtheorem[style=grey-box]{definition}[theorem]{Definition}
+\mdtheorem[style=grey-box]{axiom}[theorem]{Axiom}
+
+\mdfdefinestyle{bold-clear-box}{%
+	roundcorner=1pt,%
+	frametitleaboveskip=5pt,%
+	frametitlebelowskip=4pt,%
+	subtitleaboveline=true,%
+	subtitlebelowline=true,%
+	innertopmargin=6pt,%
+	innerbottommargin=6pt,%
+	nobreak=true,%
+	ntheorem=true
+}
+\mdtheorem[style=bold-clear-box]{property}[theorem]{Property}
+\mdtheorem[style=bold-clear-box]{properties}[theorem]{Properties}
+\mdtheorem[style=bold-clear-box]{notation}[theorem]{Notation}
+
+\mdfdefinestyle{italics-clear-box}{%
+	roundcorner=1pt,%
+	frametitlefont={\normalfont\itshape},%
+	frametitleaboveskip=5pt,%
+	frametitlebelowskip=4pt,%
+	subtitleaboveline=false,%
+	subtitlebelowline=false,%
+	innertopmargin=0pt,%
+	innerbottommargin=6pt,%
+	nobreak=true,%
+	ntheorem=true
+}
+\mdtheorem[style=italics-clear-box]{lemma}[theorem]{Lemma}
+
+\theoremstyle{break}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont\upshape}
+\newtheorem{exercise}[theorem]{Exercise}
+\surroundwithmdframed[style=bold-clear-box]{exercise}
+\crefname{exercise}{exercise}{exercises}
+\let\oldexercise\exercise
+\renewcommand{\exercise}{\crefalias{theorem}{exercise}\oldexercise}
+
+\theoremstyle{empty}
+\newtheorem{problem}{Problem}
+\surroundwithmdframed[style=bold-clear-box]{problem}
+\crefname{problem}{problem}{problems}
+\let\oldproblem\problem
+\renewcommand{\problem}{\crefalias{theorem}{problem}\oldproblem}
+
+\mdfdefinestyle{invisible-box}{%
+	frametitlefont={\normalfont\bfseries},%
+	frametitleaboveskip=0pt,%
+	frametitlebelowskip=0pt,%
+	subtitleaboveline=false,%
+	subtitlebelowline=false,%
+	hidealllines=true,%
+	innertopmargin=0pt,%
+	innerbottommargin=0pt,%
+	innerleftmargin=0pt,%
+	innerrightmargin=0pt,%
+	nobreak=false,%
+	ntheorem=true
+}
+\mdtheorem[style=invisible-box]{counterexample}[theorem]{Counterexample}
+\mdtheorem[style=invisible-box]{example}[theorem]{Example}
+
+% Fixing theorem numbering
+\crefname{theorem}{theorem}{theorems}
+\crefname{proposition}{proposition}{propositions}
+\crefname{conjecture}{conjecture}{conjectures}
+\crefname{definition}{definition}{definitions}
+\crefname{lemma}{lemma}{lemmas}
+\crefname{example}{example}{examples}
+\crefname{remark}{remark}{remarks}
+\crefname{property}{property}{properties}
+\crefname{properties}{properties}{properties}
+\crefname{algorithm}{algorithm}{algorithms}
+\crefname{axiom}{axiom}{axioms}
+\crefname{note}{note}{notes}
+\crefname{claim}{claim}{claims}
+\crefname{notation}{notation}{notations}
+\crefname{counterexample}{counterexample}{counterexamples}
+
+
+% this jumbled garbage fixes a bug with cleverref where you cannot refer to the mdtheorem environments
+% that share a counter due to some buggy counter issues.
+\let\oldproposition\proposition
+\renewcommand{\proposition}{\crefalias{theorem}{proposition}\oldproposition}
+\let\oldconjecture\conjecture
+\renewcommand{\conjecture}{\crefalias{theorem}{conjecture}\oldconjecture}
+\let\olddefinition\definition
+\renewcommand{\definition}{\crefalias{theorem}{definition}\olddefinition}
+\let\oldlemma\lemma
+\renewcommand{\lemma}{\crefalias{theorem}{lemma}\oldlemma}
+\let\oldexample\example
+\renewcommand{\example}{\crefalias{theorem}{example}\oldexample}
+\let\oldremark\remark
+\renewcommand{\remark}{\crefalias{theorem}{remark}\oldremark}
+\let\oldproperty\property
+\renewcommand{\property}{\crefalias{theorem}{property}\oldproperty}
+\let\oldproperties\properties
+\renewcommand{\properties}{\crefalias{theorem}{properties}\oldproperties}
+\let\oldaxiom\axiom
+\renewcommand{\axiom}{\crefalias{theorem}{axiom}\oldaxiom}
+\let\oldnote\note
+\renewcommand{\note}{\crefalias{theorem}{note}\oldnote}
+\let\oldclaim\claim
+\renewcommand{\claim}{\crefalias{theorem}{claim}\oldclaim}
+\let\oldnotation\notation
+\renewcommand{\notation}{\crefalias{theorem}{notation}\oldnotation}
+\let\oldcounterexample\counterexample
+\renewcommand{\counterexample}{\crefalias{theorem}{counterexample}\oldcounterexample}
+
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]
+{\par
+	\normalfont\topsep6\p@\@plus6\p@\relax\trivlist
+	\item[\hskip\labelsep\scshape#1\@addpunct{.}]
+	\mbox{}
+	\smallskip
+	\par
+	\nobreak}
+{
+	\begin{flushright}
+		\ensuremath{\blacksquare}
+	\end{flushright}
+	\endtrivlist\@endpefalse}
+\makeatother
+endsnippet
+
+
+context "not_math()"
+snippet %MintdCodeHeader "Header for setting up code listings with commond languages" bA
+% Note: THIS COMMAND IS DANGEROUS
+% This command changes the pdflatex command that TeXStudio uses to run your code which
+% does open up all sorts of potential security holes! Do not use this unless you are working
+% entirely with LaTeX code you understand and have verified is security hole free.
+% !TeX TXS-program:pdflatex = pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+\usepackage[section]{minted}
+\definecolor{lg}{gray}{0.97}
+
+\setminted{
+	tabsize=4,
+	autogobble,
+	mathescape,
+	breaklines,
+	linenos,
+	firstnumber=auto,
+	numbersep=6pt,
+	python3=true,
+	frame=single,
+	bgcolor=lg
+}
+\newminted[awk]{awk}{style=emacs}
+\newminted[shell]{shell}{style=pastie}
+\newminted[cpp]{cpp}{style=colorful}
+\newminted[cython]{cython}{style=colorful}
+\newminted[go]{go}{style=default}
+\newminted[haskell]{haskell}{style=default}
+\newminted[ipython]{ipython3}{style=perldoc}
+\newminted[java]{java}{style=vs}
+\newminted[js]{js}{style=vs}
+\newminted[nginx]{nginx}{style=borland}
+\newminted[ocaml]{ocaml}{style=default}
+\newminted[python]{python3}{style=perldoc}
+\newminted[scala]{scala}{style=vs}
+\newminted[yaml]{yaml}{style=borland}
+
+\newmintedfile[awkfile]{awk}{style=emacs}
+\newmintedfile[shellfile]{shell}{style=pastie}
+\newmintedfile[cppfile]{cpp}{style=colorful}
+\newmintedfile[cythonfile]{cython}{style=colorful}
+\newmintedfile[gofile]{go}{style=default}
+\newmintedfile[haskellfile]{haskell}{style=default}
+\newmintedfile[ipythonfile]{ipython3}{style=perldoc}
+\newmintedfile[javafile]{java}{style=vs}
+\newmintedfile[jsfile]{js}{style=vs}
+\newmintedfile[nginxfile]{nginx}{style=borland}
+\newmintedfile[ocamlfile]{ocaml}{style=default}
+\newmintedfile[pythonfile]{python3}{style=perldoc}
+\newmintedfile[scalafile]{scala}{style=vs}
+\newmintedfile[yamlfile]{yaml}{style=borland}
+
+\crefname{listing}{program}{programs}
+\renewcommand{\listingscaption}{Program}
+\renewcommand{\listoflistingscaption}{List of Programs}
+endsnippet
+
+context "not_math()"
+snippet %ReferencesHeader "Setup LaTeX document for internal and external references" bA
+% Setting up the bibliography and refererncing packages
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{references.bib}
+\usepackage{hyperref}
+% add in the following to the hypersetup above for metadata if desired
+	% pdftitle=\thetitle,
+	% pdfauthor=\theauthor,
+	% pdfsubject=Math,
+	% pdfkeywords=Keyword1,...
+\hypersetup{
+	linktoc=all,
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=red,
+	urlcolor=blue
+}
+\usepackage[nameinlink]{cleveref}
+\usepackage{nameref}
+\renewcommand{\cref}[1]{\Cref{#1}}
+\newcommand{\nref}[1]{\nameref{#1}}
+endsnippet
+
+context "not_math()"
+snippet %FiguresHeader "Setup LaTeX document for support for inkscape figures" bA
+% Setting up pre-amble packages for including figures nicely
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+endsnippet
+
+context "not_math()"
+snippet %TheoremAppendex "Add theorem/definition/examples appendix" bA
+\section{Index of Material}
+\label{index}
+
+\subsection{List of Definitions, Notations, and Axioms}
+\label{index:definitions}
+\listtheorems{definition, axiom, notation}
+\medskip
+
+\subsection{List of Theorems and Proven Statements}
+\label{index:theorems}
+\listtheorems{theorem, proposition, property, properties, lemma}
+\medskip
+endsnippet
+
+context "not_math()"
+snippet %ListingsAppendix "Add listings/programs to appendix" bA
+\begingroup
+\let\oldnumberline\numberline
+\renewcommand{\numberline}[1]{Program \oldnumberline{#1}}
+\listoflistings
+\endgroup
+
+\medskip
+endsnippet
+
+context "not_math()"
+snippet %CollectedReferences "Bibliography/references for the document" bA
+\section{Collected References}
+\label{references}
+\printbibliography[heading=none]
+\newpage
+endsnippet
+
+context "not_math()"
+snippet %SectionReferences "Setup section references for the doucment" bA
+\begin{refsegment}
+
+
+$1
+
+
+\subsection{References}
+\leavevmode\printbibliography[segment=\therefsegment, heading=none]
+\end{refsegment}
+endsnippet
+
+context "not_math()"
+snippet 'enum;' "Enumerate" rbA
+`!p snip.rv=begin_enum("num", "")`
+\item $0
+`!p snip.rv=end_enum("num", "")`
+endsnippet
+
+context "not_math()"
+snippet 'enum:(ab|num|rom);' "Enumerate with specific number style" rbA
+`!p snip.rv=begin_enum(match.group(1), "")`
+\item $0
+`!p snip.rv=end_enum(match.group(1), "")`
+endsnippet
+
+context "not_math()"
+snippet 'enum:(ab|num|rom):(.*);' "Enumerate with specific number style and additional args" rbA
+`!p snip.rv=begin_enum(match.group(1), match.group(2))`
+\item $0
+`!p snip.rv=end_enum(match.group(1), match.group(2))`
+endsnippet
+
+context "not_math()"
+snippet item; "Itemize" rbA
+`!p snip.rv=begin_item("")`
+\item $0
+`!p snip.rv=end_item("")`
+endsnippet
+
+context "not_math()"
+snippet item:(.*); "Itemize" rbA
+`!p snip.rv=begin_item(match.group(1))`
+\item $0
+`!p snip.rv=end_item(match.group(1))`
+endsnippet
+
+context "not_math()"
+snippet description "Description enviornment" bA
+\begin{description}
+\item[$1] $0
+\end{description}
+endsnippet
+
+context "not_math()"
+snippet '(thm|lma|prf|conj|cor|def|prop|exm|exr|prob|rmk|eqn|aln|clm):([^:]*);' "LaTeX theorem-style environment" rbA
+`!p snip.rv=begin_theorem(match.group(1), match.group(2), "")`
+$0
+`!p snip.rv=end_theorem(match.group(1), match.group(2), "")`
+endsnippet
+
+context "not_math()"
+snippet '(thm|lma|prf|conj|cor|def|prop|exm|exr|prob|rmk|eqn|aln|clm):(.*):(.*);' "LaTeX theorem-style environment" rbA
+`!p snip.rv=begin_theorem(match.group(1), match.group(2), match.group(3))`
+$0
+`!p snip.rv=end_theorem(match.group(1), match.group(2), match.group(3))`
+endsnippet
+
+context "not_math()"
+snippet '(s*)sec:([^:]*);' "(Sub)section with single title" rbA
+`!p snip.rv=create_section(match.group(1), match.group(2), match.group(2))`
+endsnippet
+
+context "not_math()"
+snippet '(s*)sec:(.*):(.*);' "(Sub)section with short title and long title" rbA
+`!p snip.rv=create_section(match.group(1), match.group(2), match.group(3))`
+endsnippet
+
+context "not_math()"
+snippet ref:(.*); "Reference" rwA
+\Cref{`!p snip.rv=labelify(match.group(1))`} $0
+endsnippet
+
+snippet label:(.*); "Label" rwA
+\label{`!p snip.rv=labelify(match.group(1))`} $0
+endsnippet
+
+context "not_math()"
+snippet url:(.*); "Hyperlink" rbA
+\href{`!p snip.rv=clean(match.group(1))`}{$1}
+endsnippet
+
+context "not_math()"
+snippet "url:([^:]*):(.*);" "Hyperlink with short title" rbA
+\href{`!p snip.rv=clean(match.group(2))`}{`!p snip.rv=clean(match.group(1))`}
+endsnippet
+
+###################################################################################################
+###  SNIP: Common greek letters and mathematical symbols 					###
+###################################################################################################
+
+context "math()"
+snippet 'g([A-z]{2})' "Greek letters" rwA
+`!p snip.rv=greek_letter(match.group(1))`
+endsnippet
+
+context "math()"
+snippet 'm([A-z]{2,3})' "Mathematical symbols" rwA
+`!p snip.rv=math_symb(match.group(1))`
+endsnippet
+
+context "math()"
+snippet to; "Convergence" wA
+\longrightarrow
+endsnippet
+
+context "math()"
+snippet 'to:(.*);' "Convergence in some space" "rwA"
+`!p snip.rv=converge_in(match.group(1))`
+endsnippet
+
+context "math()"
+snippet 'to:(.*):(.*);' "Convergence wwith a condition" rwA
+`!p snip.rv=converge_two_args(match.group(1), match.group(2))`
+endsnippet
+
+priority 20
+context "math()"
+snippet 'dd([A-z\\\{\}0-9_^]+);' "Derivative operator shorthand" rwA
+\\frac{d}{d `!p snip.rv =clean(match.group(1))`}
+endsnippet
+
+priority 20
+context "math()"
+snippet 'pp([A-z\\\{\}0-9_^]+);' "Partial derivative operator shorthand" rwA
+\\frac{\\partial}{\\partial `!p snip.rv =clean(match.group(1))`}
+endsnippet
+
+priority 10
+context "math()"
+snippet 'd([A-z()\\\{\}0-9_^]+)d([A-z\\\{\}0-9_^]+);' "Derivative of a function or measure shorthand expression" rwA
+\\frac{d`!p snip.rv=clean(match.group(1))`}{d`!p snip.rv =clean(match.group(2))`}
+endsnippet
+
+priority 1
+context "math()"
+snippet 'd([A-z()\\\{\}0-9_^]+):d([A-z\\\{\}0-9_^]+);' "Derivative of a function or measure shorthand expression (with better capture for denomenator)" rwA
+\\frac{d`!p snip.rv=clean(match.group(1))`}{d`!p snip.rv =clean(match.group(2))`}
+endsnippet
+
+priority 10
+context "math()"
+snippet 'p([A-z()\\\{\}0-9_^]+)p([A-z\\\{\}0-9_^]+);' "Partial derivative of a function shorthand expression" rwA
+\\frac{\\partial `!p snip.rv=clean(match.group(1))`}{\\partial `!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+priority 1
+context "math()"
+snippet 'p([A-z()\\\{\}0-9_^]+):p([A-z\\\{\}0-9_^]+);' "Partial derivative of a function shorthand expression (with better capture for denomenator)" rwA
+\\frac{\\partial `!p snip.rv=clean(match.group(1))`}{\\partial `!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge);' "Summation-type symbols" rwA
+`!p snip.rv = sum_env(match.group(1), "", "")`
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge):([^:]*);' "Summation-type symbols with lower arguments" rwA
+`!p snip.rv = sum_env(match.group(1), clean(match.group(2)), "")`
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge):([^:]*):(.*);' "Summation-type symbols with lower and upper arguments" rwA
+`!p snip.rv = sum_env(match.group(1), clean(match.group(2)), clean(match.group(3)))`
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge)_stack:([^:]*):(.*);' "Summation-type symbols with lower and upper arguments" rwA
+`!p snip.rv = sum_env(match.group(1), clean(match.group(2)), clean(match.group(3)), stack=True)`
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max);" "Limit and set extrema mathematical symbols" rwA
+`!p snip.rv = "\\" + match.group(1)`
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max):([^:]*);" "Limit and set extrema mathematical symbols with a subscript" rwA
+`!p snip.rv="\\" + match.group(1)`_{`!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max):([^:]*):(.*);" "Limit and set extrema mathematical symbols with a subscript" rwA
+`!p snip.rv="\\" + match.group(1)`\\left\\{ `!p snip.rv=clean(match.group(2))` \\;\\middle|\\; `!p snip.rv=clean(match.group(3))` \\right\\}
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max)_stack:([^:]*):(.*);" "Limit and set extrema mathematical symbols with a subscript" rwA
+`!p snip.rv="\\" + match.group(1)`_{\substack{`!p snip.rv = clean(match.group(2))`}{`!p snip.rv = clean(match.group(3))`}}
+endsnippet
+
+###################################################################################################
+###   SNIP: Common general mathematical words and functions 					###
+###################################################################################################
+
+context "math()"
+snippet "(div|curl|vol|tr|conv|area|aff|span|Unif|Cov|Var|eigvals|eigvecs|Re|Im);" "Math-text functions" rwA
+\\text{`!p snip.rv=clean(match.group(1))`}
+endsnippet
+
+context "math()"
+snippet "(div|curl|vol|tr|conv|area|aff|span|Unif|Cov|Var|eigvals|eigvecs|Re|Im):(.*);" "Math-text functions" rwA
+\\text{`!p snip.rv=clean(match.group(1))`}\\left(`!p snip.rv=clean(match.group(2))`\\right)
+endsnippet
+
+context "math()"
+snippet "(det|log|ln|lg|exp|deg|ker|Gamma|zeta|chi|mu|nu|delta|theta|phi|varphi|pi|psi|gcd|hom);" "Mathematical / special functions" rwA
+\\`!p snip.rv =clean(match.group(1))`
+endsnippet
+
+context "math()"
+snippet "(det|log|ln|lg|exp|deg|ker|Gamma|zeta|chi|mu|nu|delta|theta|phi|varphi|pi|psi|gcd|hom):(.*);" "Mathematical / special functions" rwA
+\\`!p snip.rv=clean(match.group(1)) + "\\left(" + match.group(2) + "\\right)"`
+endsnippet
+
+context "math()"
+snippet "(cos|tan|sin|sinh|cosh|tanh);" "Trigonometric functions" rwA
+\\`!p snip.rv =clean(match.group(1))`
+endsnippet
+
+context "math()"
+snippet "(cos|tan|sin|sinh|cosh|tanh):(.*);" "Trigonometric functions" rwA
+\\`!p snip.rv=clean(match.group(1)) + "\\left(" + match.group(2) + "\\right)"`
+endsnippet
+
+context "math()"
+snippet "arc(cos|tan|sin|sinh|cosh|tanh);" "Trigonometric functions" rwA
+\\arc`!p snip.rv =clean(match.group(1))`
+endsnippet
+
+context "math()"
+snippet "arc(cos|tan|sin|sinh|cosh|tanh):(.*);" "Trigonometric functions" rwA
+\\arc`!p snip.rv=clean(match.group(1)) + "\\left(" + match.group(2) + "\\right)"`
+endsnippet
+
+context "math()"
+snippet '(norm|ceil|floor|abs|bra|ket);' "Zero-argument left/right balanced environments" rwA
+`!p snip.rv=left_right_env(match.group(1))`
+endsnippet
+
+context "math()"
+snippet '(norm|ceil|floor|abs|bra|ket):(.*);' "Single-argument left/right balanced environments" rwA
+`!p snip.rv=left_right_env(match.group(1), clean(match.group(2)))`
+endsnippet
+
+context "math()"
+snippet '([A-z0-9]+)norm;' "Zero-argument specific type of norm" rwA
+`!p snip.rv=left_right_env(match.group(1).lower()+"norm")`
+endsnippet
+
+context "math()"
+snippet '([A-z0-9]+)norm:(.*);' "Specific type of norm on an object" rwA
+`!p snip.rv=left_right_env(match.group(1).lower()+"norm", clean(match.group(2)))`
+endsnippet
+
+context "math()"
+snippet '(paren|parenthesis|lrp|lrs|squarebracket|braces|lrc|curly|bracket);' "Balenced left/right brackets" rwA
+`!p snip.rv=left_right_notations[match.group(1)][0]` $1 `!p snip.rv=left_right_notations[match.group(2)][1]`
+endsnippet
+
+context "math()"
+snippet '(paren|parenthesis|lrp|lrs|squarebracket|braces|lrc|curly|bracket):(.*);' "Balenced left/right brackets" rwA
+`!p snip.rv=left_right_env(match.group(1), clean(match.group(2)))`
+endsnippet
+
+context "math()"
+snippet "(innerp|dirac|bracket|set|lie|condpr|condex|collec):([^:]*);" "Left/middle/right environments with one argument filled in" rwA
+`!p snip.rv=left_middle_right_env(match.group(1), "\\cdot", clean(match.group(2)))`
+endsnippet
+
+priority 20
+context "math()"
+snippet "(innerp|dirac|bracket|set|lie|condpr|condex|collec):([^:]*):([^:]*);" "Left/middle/right environments with two arguments filled in" rwA
+`!p snip.rv=left_middle_right_env(match.group(1), clean(match.group(2)), clean(match.group(3)))`
+endsnippet
+
+priority 10
+context "math()"
+snippet "(dirac|bracket|collec):([^:]*):([^:]*):([^:]*);" "Left/middle/right environments with three or more arguments arguments" rwA
+`!p snip.rv=left_middle_right_env(match.group(1), clean(match.group(2)), clean(match.group(3)), clean(match.group(4)))`
+endsnippet
+
+###################################################################################################
+###  SNIP: Common suffixes for symbols 								###
+###################################################################################################
+
+context "math()"
+snippet '([A-z0-9()\\_^\[\]]+)(bar|hat|tild|dot|ddot|dddot|vec|oright|oleft|uright|uleft)' "Common notational / verbal suffixes" rwA
+`!p snip.rv=add_hat_or_shoe(match.group(2), clean(match.group(1)))`
+endsnippet
+
+context "math()"
+snippet '([A-z0-9()\\_^\[\]]+)(prime|ast|star|dag|circ|compl|inv|sq|flat|sharp|tr);' "Common suffixes for super scripts" rwA
+`!p snip.rv=clean(match.group(1))`^{`!p snip.rv=suffixes[match.group(2)]`}
+endsnippet
+
+###################################################################################################
+###  SNIP: Common fraction and root environments 						###
+###################################################################################################
+context "math()"
+snippet ''([A-z0-9()\\_^\[\]]+):root:([0-9]|n);' "Specific number root" rwA
+`!p
+if match.group(2) == "0":
+    snip.rv = "1"
+elif match.group(2) == "1":
+    snip.rv = clean(match.group(1))
+elif match.group(2) == "2":
+    snip.rv = "\\sqrt{" + clean(match.group(1)) + "}"
+else:
+    snip.rv = "\\sqrt[" + match.group(1) +"]{" + clean(match.group(1)) + "}"
+`
+endsnippet
+
+context "math()"
+snippet  '([A-z0-9()\\_^\[\]]+):root:([^0-9n][^:]*|..+);' "Generic root" rwA
+\\left(`!p snip.rv=clean(match.group(1))`\\right)^{`!p snip.rv=clean(match.group(2))`}
+endsnippet
+
+context "math()"
+snippet  '([A-z0-9()\\_^\[\]]+):root:([^:]*):([^:*]);' "Generic root" rwA
+\\left(`!p snip.rv=clean(match.group(1))`\\right)^{\frace{`!p snip.rv=clean(match.group(2))`}{`!p snip.rv=clean(match.group(3))`}}
+endsnippet
+
+context "math()"
+snippet // "Fraction" iA
+\\frac{$1}{$2}
+endsnippet
+
+context "math()"
+snippet 'frac:([^:]*):(.*);' "Fraction of two arguments" rwA
+\\frac{`!p snip.rv = clean(match.group(1))`}{`!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+###################################################################################################
+###  SNIP: Generic common math terms that are best with explicit shortcuts 			###
+###################################################################################################
+
+context "math()"
+snippet ^ "Superscript with brackets" riA
+^{$1}$0
+endsnippet
+
+context "math()"
+snippet _ "Subscript with brakets" riA
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet '(RR|CC|QQ|ZZ|NN|TT|OO|EE|PP|UU|HH|DD|SS)' "Common mathbb letters" rwA
+\mathbb{`!p snip.rv=match.group(1)[0]`}
+endsnippet
+
+context "math()"
+snippet '(AA|LL|FF|GG|BB|MM|XX|YY)' "Common mathcal letters" rwA
+\mathcal{`!p snip.rv=match.group(1)[0]`}
+endsnippet
+
+context "math()"
+snippet 'bb([A-Z])' "Mathbb lettering" rwA
+\mathbb{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet 'cc([A-Z])' "Mathcal lettering" rwA
+\mathcal{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet 'ff([A-Z])' "Mathfrak lettering" rwA
+\mathfrak{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet '(R|C|T|S)(n|n+1|n-1|d|d+1|d-1|k|m)' "Common spaces" rwA
+\mathbb{`!p snip.rv=match.group(1)`}^{`!p snip.rv=match.group(2)`}
+endsnippet
+
+context "math()"
+snippet 1in "Indicator function for an event" wA
+\mathbbm{1}
+endsnippet
+
+###################################################################################################
+###  SNIP: Row and column vector and matrix enviornments 					###
+###################################################################################################
+context "math()"
+snippet 'colvec:([^;]*);' "Automatic column vector of a : separated collection" rwA
+\begin{pmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = "\\\\ \n"
+snip.rv = separator.join(elements)
+`
+\end{pmatrix}
+endsnippet
+
+context "math()"
+snippet 'rowvec:([^;]*);' "Automatic row vector of a : separated collection" rwA
+\begin{pmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = " & \n"
+snip.rv = separator.join(elements)
+`
+\end{pmatrix}
+endsnippet
+
+context "math()"
+snippet matrix; "p-Matrix environment" iA
+\begin{pmatrix}
+    $1
+\end{pmatrix}
+$0
+endsnippet
+
+context "math()"
+snippet 'bcolvec:([^;]*);' "Automatic column vector of a : separated collection" rwA
+\begin{bmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = "\\\\ \n"
+snip.rv = separator.join(elements)
+`
+\end{bmatrix}
+endsnippet
+
+context "math()"
+snippet 'rowvec:([^;]*);' "Automatic row vector of a : separated collection" rwA
+\begin{bmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = " & \n"
+snip.rv = separator.join(elements)
+`
+\end{bmatrix}
+endsnippet
+
+context "math()"
+snippet bmatrix; "p-Matrix environment" iA
+\begin{bmatrix}
+    $1
+\end{bmatrix}
+$0
 endsnippet
