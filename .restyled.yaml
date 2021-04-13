@@ -1,4 +1,3 @@
-auto: true
 commit_template: "style: Restyled by ${restyler.name}"
 statuses:
   differences: true
