@@ -413,6 +413,54 @@ snippet %FiguresHeader "Setup LaTeX document for support for inkscape figures" b
 endsnippet
 
 context "not_math()"
+snippet %TheoremAppendex "Add theorem/definition/examples appendix" bA
+\section{Index of Material}
+\label{index}
+
+\subsection{List of Definitions, Notations, and Axioms}
+\label{index:definitions}
+\listtheorems{definition, axiom, notation}
+\medskip
+
+\subsection{List of Theorems and Proven Statements}
+\label{index:theorems}
+\listtheorems{theorem, proposition, property, properties, lemma}
+\medskip
+endsnippet
+
+context "not_math()"
+snippet %ListingsAppendix "Add listings/programs to appendix" bA
+\begingroup
+\let\oldnumberline\numberline
+\renewcommand{\numberline}[1]{Program \oldnumberline{#1}}
+\listoflistings
+\endgroup
+
+\medskip
+endsnippet
+
+context "not_math()"
+snippet %CollectedReferences "Bibliography/references for the document" bA
+\section{Collected References}
+\label{references}
+\printbibliography[heading=none]
+\newpage
+endsnippet
+
+context "not_math()"
+snippet %SectionReferences "Setup section references for the doucment" bA
+\begin{refsegment}
+
+
+$1
+
+
+\subsection{References}
+\leavevmode\printbibliography[segment=\therefsegment, heading=none]
+\end{refsegment}
+endsnippet
+
+context "not_math()"
 snippet 'enum;' "Enumerate" rbA
 `!p snip.rv=begin_enum("num", "")`
 \item $0
