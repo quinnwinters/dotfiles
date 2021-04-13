@@ -1,0 +1,498 @@
+global !p
+import re
+
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+def not_math():
+    return not math()
+def comment():
+    return vim.eval('vimtex#syntax#in_comment()') == '1'
+def env(name):
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+    return x != '0' and y != '0'
+
+env_to_sh = {
+    "thm": "theorem",
+    "lma": "lemma",
+    "prf": "proof",
+    "conj": "conjecture",
+    "cor": "corollary",
+    "sec": "section",
+    "sub": "subsection",
+    "eqn": "equation",
+    "aln": "align",
+    "prob": "problem",
+    "exm": "example",
+    "rmk": "remark",
+    "prp": "proposition",
+    "clm": "claim",
+    "exr": "exercise",
+    "def": "definition",
+}
+sh_to_env = { val: key for key, val in env_to_sh.items() }
+def environment_for_shorthand(shorthand):
+    return env_to_sh[shorthand]
+
+def shorthand_for_envornment(environment):
+    return sh_to_env[environment]
+
+def labelify(string):
+    """Takes a string and makes it label acceptable"""
+    without_common_accents = string.replace("ü", "u") \
+    	.replace("ö", "o")\
+    	.replace("ä", "a")\
+    	.replace("å", "a")\
+    	.replace("é", "e")\
+    	.replace("á", "a")\
+    	.replace("ó", "o")\
+    	.replace("ß", "ss")
+    just_alpha_numeric = re.sub("[^A-z0-9]*", "", without_common_accents)
+    return just_alpha_numeric.strip()
+
+def begin_theorem(shorthand, label, name):
+    label = "\\label{" + shorthand + ":" + labelify(label) + "}"
+    name = "[" + name.strip() + "]" if len(name) > 0  else ""
+    environment = environment_for_shorthand(shorthand)
+    return "\n\n\\begin{" + environment + "}" + name + label + "\n"
+
+def end_theorem(shorthand, *args):
+    environment = environment_for_shorthand(shorthand)
+    return "\\end{" + environment + "}\n\n"
+
+def begin_enum(number_style, additional_args):
+    if number_style == "ab":
+    	number_style = "\\alph"
+    elif number_style == "num":
+    	number_style = "\\arabic"
+    elif number_style == "rom":
+    	number_style = "\\roman"
+    else:
+    	raise ValueError("Unsupposted number style: " + number_style)
+    additional_args = ", " + additional_args if len(additional_args) > 0 else ""
+    return "\\begin{enumerate}[label={" + number_style + "*}" \
+    	+ additional_args + "]\n"
+def end_enum(number_style, additional_args):
+    return "\\end{enumerate}\n\n"
+
+def begin_item(additional_args):
+    additional_args = "" if len(additional_args) == 0 \
+    	else "[ " + additional_args + " ]"
+    return "\\begin{itemize}" + additional_args + "\n"
+
+def end_item(additional_args):
+    return "\\end{itemize}\n\n"
+
+def create_section(level, short_title, long_title):
+    label = labelify(short_title)
+    num_subsections = len(level)
+    if num_subsections > 2:
+    	raise ValueError("Cannot support more than 3 levels of sections")
+    command = "section"
+    for _ in range(num_subsections):
+    	command = "sub" + command
+    prefix = command.replace("tion", "")
+    return "\\" + command + "[" + short_title + "]{" + long_title + "}" \
+    	+ "\\label{" + prefix + ":" + label + "}\n\n"
+endglobal
+
+context "not_math()"
+snippet %AmsTheoremsHeader "AMS-Style thoerems header" bA
+\usepackage[amsmath, thmmarks, hyperref, amsthm]{ntheorem}
+\usepackage{thmtools}
+% Uncomment this section to remove the parenthesis for notes from theorems
+%\makeatletter
+%\newtheoremstyle{noparens-style}%
+%{\item[\theorem@headerfont ##1 ##2.]}%
+%{\item[\theorem@headerfont ##1 ##2: ##3.]}%
+%\makeatother
+%\theoremstyle{noparens-style}
+
+\makeatletter
+\newtheoremstyle{ams-style}%
+{\item[\theorem@headerfont ##1 ##2\theorem@separator]}%
+{\item[\theorem@headerfont ##1 ##2 {\normalfont\upshape (##3)}\theorem@separator]}%
+\makeatother
+\theoremstyle{ams-style}
+\theoremseparator{.}
+
+% AMS-Plain style environments go here
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+% AMS-Definition style environments go here
+\theorembodyfont{\upshape}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{property}[theorem]{Property}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{problem}[theorem]{Problem}
+
+% AMS-Remark style environments go here
+\theorempreskip{}
+\theorempostskip{}
+\theoremheaderfont{\normalfont\itshape}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{notation}[theorem]{Notation}
+
+% Customized proof environment
+\makeatletter
+% Switch the line below from \newenvironment{boldproof} to \renewenvironment{proof}
+% to override the default proof environment with the nicer looking version
+\newenvironment{boldproof}[1][\proofname]
+{\par
+	\normalfont\topsep6\p@\@plus6\p@\relax\trivlist
+	\item[\hskip\labelsep\scshape#1\@addpunct{.}]
+	\mbox{}
+	\smallskip
+\par
+\nobreak}
+{
+\begin{flushright}
+	\ensuremath{\blacksquare}
+\end{flushright}
+\endtrivlist\@endpefalse}
+\makeatother
+endsnippet
+
+context "not_math()"
+snippet %FramedTheoremsHeader "Framed-style theorems" bA
+% Framed theorem and environments
+\usepackage[amsmath, thmmarks, hyperref, amsthm]{ntheorem}
+\usepackage{thmtools}
+
+\usepackage[framemethod=tikz]{mdframed}
+\mdfdefinestyle{grey-box}{%
+	roundcorner=6pt,%
+	backgroundcolor=gray!20,%
+	frametitlerule=true,%
+	frametitleaboveskip=5pt,%
+	frametitlebelowskip=4pt,%
+	frametitlebackgroundcolor=gray!35,%
+	subtitlebackgroundcolor=gray!35,%
+	subtitleaboveline=true,%
+	subtitlebelowline=true,%
+	innertopmargin=6pt,%
+	innerbottommargin=6pt,%
+	nobreak=true,%
+	ntheorem=true
+}
+\mdtheorem[style=grey-box]{theorem}{Theorem}[section]
+\mdtheorem[style=grey-box]{proposition}[theorem]{Proposition}
+\mdtheorem[style=grey-box]{conjecture}[theorem]{Conjecture}
+\mdtheorem[style=grey-box]{definition}[theorem]{Definition}
+\mdtheorem[style=grey-box]{axiom}[theorem]{Axiom}
+
+\mdfdefinestyle{bold-clear-box}{%
+	roundcorner=1pt,%
+	frametitleaboveskip=5pt,%
+	frametitlebelowskip=4pt,%
+	subtitleaboveline=true,%
+	subtitlebelowline=true,%
+	innertopmargin=6pt,%
+	innerbottommargin=6pt,%
+	nobreak=true,%
+	ntheorem=true
+}
+\mdtheorem[style=bold-clear-box]{property}[theorem]{Property}
+\mdtheorem[style=bold-clear-box]{properties}[theorem]{Properties}
+\mdtheorem[style=bold-clear-box]{notation}[theorem]{Notation}
+
+\mdfdefinestyle{italics-clear-box}{%
+	roundcorner=1pt,%
+	frametitlefont={\normalfont\itshape},%
+	frametitleaboveskip=5pt,%
+	frametitlebelowskip=4pt,%
+	subtitleaboveline=false,%
+	subtitlebelowline=false,%
+	innertopmargin=0pt,%
+	innerbottommargin=6pt,%
+	nobreak=true,%
+	ntheorem=true
+}
+\mdtheorem[style=italics-clear-box]{lemma}[theorem]{Lemma}
+
+\theoremstyle{break}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont\upshape}
+\newtheorem{exercise}[theorem]{Exercise}
+\surroundwithmdframed[style=bold-clear-box]{exercise}
+\crefname{exercise}{exercise}{exercises}
+\let\oldexercise\exercise
+\renewcommand{\exercise}{\crefalias{theorem}{exercise}\oldexercise}
+
+\theoremstyle{empty}
+\newtheorem{problem}{Problem}
+\surroundwithmdframed[style=bold-clear-box]{problem}
+\crefname{problem}{problem}{problems}
+\let\oldproblem\problem
+\renewcommand{\problem}{\crefalias{theorem}{problem}\oldproblem}
+
+\mdfdefinestyle{invisible-box}{%
+	frametitlefont={\normalfont\bfseries},%
+	frametitleaboveskip=0pt,%
+	frametitlebelowskip=0pt,%
+	subtitleaboveline=false,%
+	subtitlebelowline=false,%
+	hidealllines=true,%
+	innertopmargin=0pt,%
+	innerbottommargin=0pt,%
+	innerleftmargin=0pt,%
+	innerrightmargin=0pt,%
+	nobreak=false,%
+	ntheorem=true
+}
+\mdtheorem[style=invisible-box]{counterexample}[theorem]{Counterexample}
+\mdtheorem[style=invisible-box]{example}[theorem]{Example}
+
+% Fixing theorem numbering
+\crefname{theorem}{theorem}{theorems}
+\crefname{proposition}{proposition}{propositions}
+\crefname{conjecture}{conjecture}{conjectures}
+\crefname{definition}{definition}{definitions}
+\crefname{lemma}{lemma}{lemmas}
+\crefname{example}{example}{examples}
+\crefname{remark}{remark}{remarks}
+\crefname{property}{property}{properties}
+\crefname{properties}{properties}{properties}
+\crefname{algorithm}{algorithm}{algorithms}
+\crefname{axiom}{axiom}{axioms}
+\crefname{note}{note}{notes}
+\crefname{claim}{claim}{claims}
+\crefname{notation}{notation}{notations}
+\crefname{counterexample}{counterexample}{counterexamples}
+
+
+% this jumbled garbage fixes a bug with cleverref where you cannot refer to the mdtheorem environments
+% that share a counter due to some buggy counter issues.
+\let\oldproposition\proposition
+\renewcommand{\proposition}{\crefalias{theorem}{proposition}\oldproposition}
+\let\oldconjecture\conjecture
+\renewcommand{\conjecture}{\crefalias{theorem}{conjecture}\oldconjecture}
+\let\olddefinition\definition
+\renewcommand{\definition}{\crefalias{theorem}{definition}\olddefinition}
+\let\oldlemma\lemma
+\renewcommand{\lemma}{\crefalias{theorem}{lemma}\oldlemma}
+\let\oldexample\example
+\renewcommand{\example}{\crefalias{theorem}{example}\oldexample}
+\let\oldremark\remark
+\renewcommand{\remark}{\crefalias{theorem}{remark}\oldremark}
+\let\oldproperty\property
+\renewcommand{\property}{\crefalias{theorem}{property}\oldproperty}
+\let\oldproperties\properties
+\renewcommand{\properties}{\crefalias{theorem}{properties}\oldproperties}
+\let\oldaxiom\axiom
+\renewcommand{\axiom}{\crefalias{theorem}{axiom}\oldaxiom}
+\let\oldnote\note
+\renewcommand{\note}{\crefalias{theorem}{note}\oldnote}
+\let\oldclaim\claim
+\renewcommand{\claim}{\crefalias{theorem}{claim}\oldclaim}
+\let\oldnotation\notation
+\renewcommand{\notation}{\crefalias{theorem}{notation}\oldnotation}
+\let\oldcounterexample\counterexample
+\renewcommand{\counterexample}{\crefalias{theorem}{counterexample}\oldcounterexample}
+
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]
+{\par
+	\normalfont\topsep6\p@\@plus6\p@\relax\trivlist
+	\item[\hskip\labelsep\scshape#1\@addpunct{.}]
+	\mbox{}
+	\smallskip
+	\par
+	\nobreak}
+{
+	\begin{flushright}
+		\ensuremath{\blacksquare}
+	\end{flushright}
+	\endtrivlist\@endpefalse}
+\makeatother
+endsnippet
+
+
+context "not_math()"
+snippet %MintdCodeHeader "Header for setting up code listings with commond languages" bA
+% Note: THIS COMMAND IS DANGEROUS
+% This command changes the pdflatex command that TeXStudio uses to run your code which
+% does open up all sorts of potential security holes! Do not use this unless you are working
+% entirely with LaTeX code you understand and have verified is security hole free.
+% !TeX TXS-program:pdflatex = pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+\usepackage[section]{minted}
+\definecolor{lg}{gray}{0.97}
+
+\setminted{
+	tabsize=4,
+	autogobble,
+	mathescape,
+	breaklines,
+	linenos,
+	firstnumber=auto,
+	numbersep=6pt,
+	python3=true,
+	frame=single,
+	bgcolor=lg
+}
+\newminted[awk]{awk}{style=emacs}
+\newminted[shell]{shell}{style=pastie}
+\newminted[cpp]{cpp}{style=colorful}
+\newminted[cython]{cython}{style=colorful}
+\newminted[go]{go}{style=default}
+\newminted[haskell]{haskell}{style=default}
+\newminted[ipython]{ipython3}{style=perldoc}
+\newminted[java]{java}{style=vs}
+\newminted[js]{js}{style=vs}
+\newminted[nginx]{nginx}{style=borland}
+\newminted[ocaml]{ocaml}{style=default}
+\newminted[python]{python3}{style=perldoc}
+\newminted[scala]{scala}{style=vs}
+\newminted[yaml]{yaml}{style=borland}
+
+\newmintedfile[awkfile]{awk}{style=emacs}
+\newmintedfile[shellfile]{shell}{style=pastie}
+\newmintedfile[cppfile]{cpp}{style=colorful}
+\newmintedfile[cythonfile]{cython}{style=colorful}
+\newmintedfile[gofile]{go}{style=default}
+\newmintedfile[haskellfile]{haskell}{style=default}
+\newmintedfile[ipythonfile]{ipython3}{style=perldoc}
+\newmintedfile[javafile]{java}{style=vs}
+\newmintedfile[jsfile]{js}{style=vs}
+\newmintedfile[nginxfile]{nginx}{style=borland}
+\newmintedfile[ocamlfile]{ocaml}{style=default}
+\newmintedfile[pythonfile]{python3}{style=perldoc}
+\newmintedfile[scalafile]{scala}{style=vs}
+\newmintedfile[yamlfile]{yaml}{style=borland}
+
+\crefname{listing}{program}{programs}
+\renewcommand{\listingscaption}{Program}
+\renewcommand{\listoflistingscaption}{List of Programs}
+endsnippet
+
+context "not_math()"
+snippet %ReferencesHeader "Setup LaTeX document for internal and external references" bA
+% Setting up the bibliography and refererncing packages
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{references.bib}
+\usepackage{hyperref}
+% add in the following to the hypersetup above for metadata if desired
+	% pdftitle=\thetitle,
+	% pdfauthor=\theauthor,
+	% pdfsubject=Math,
+	% pdfkeywords=Keyword1,...
+\hypersetup{
+	linktoc=all,
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=red,
+	urlcolor=blue
+}
+\usepackage[nameinlink]{cleveref}
+\usepackage{nameref}
+\renewcommand{\cref}[1]{\Cref{#1}}
+\newcommand{\nref}[1]{\nameref{#1}}
+endsnippet
+
+context "not_math()"
+snippet %FiguresHeader "Setup LaTeX document for support for inkscape figures" bA
+% Setting up pre-amble packages for including figures nicely
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+endsnippet
+
+context "not_math()"
+snippet 'enum;' "Enumerate" rbA
+`!p snip.rv=begin_enum("num", "")`
+\item $0
+`!p snip.rv=end_enum("num", "")`
+endsnippet
+
+context "not_math()"
+snippet 'enum:(ab|num|rom);' "Enumerate with specific number style" rbA
+`!p snip.rv=begin_enum(match.group(1), "")`
+\item $0
+`!p snip.rv=end_enum(match.group(1), "")`
+endsnippet
+
+context "not_math()"
+snippet 'enum:(ab|num|rom):(.*);' "Enumerate with specific number style and additional args" rbA
+`!p snip.rv=begin_enum(match.group(1), match.group(2))`
+\item $0
+`!p snip.rv=end_enum(match.group(1), match.group(2))`
+endsnippet
+
+context "not_math()"
+snippet item; "Itemize" rbA
+`!p snip.rv=begin_item("")`
+\item $0
+`!p snip.rv=end_item("")`
+endsnippet
+
+context "not_math()"
+snippet item:(.*); "Itemize" rbA
+`!p snip.rv=begin_item(match.group(1))`
+\item $0
+`!p snip.rv=end_item(match.group(1))`
+endsnippet
+
+context "not_math()"
+snippet description "Description enviornment" bA
+\begin{description}
+\item[$1] $0
+\end{description}
+endsnippet
+
+context "not_math()"
+snippet '(thm|lma|prf|conj|cor|def|prop|exm|exr|prob|rmk|eqn|aln|clm):([^:]*);' "LaTeX theorem-style environment" rbA
+`!p snip.rv=begin_theorem(match.group(1), match.group(2), "")`
+$0
+`!p snip.rv=end_theorem(match.group(1), match.group(2), "")`
+endsnippet
+
+context "not_math()"
+snippet '(thm|lma|prf|conj|cor|def|prop|exm|exr|prob|rmk|eqn|aln|clm):(.*):(.*);' "LaTeX theorem-style environment" rbA
+`!p snip.rv=begin_theorem(match.group(1), match.group(2), match.group(3))`
+$0
+`!p snip.rv=end_theorem(match.group(1), match.group(2), match.group(3))`
+endsnippet
+
+context "not_math()"
+snippet '(s*)sec:([^:]*);' "(Sub)section with single title" rbA
+`!p snip.rv=create_section(match.group(1), match.group(2), match.group(2))`
+endsnippet
+
+context "not_math()"
+snippet '(s*)sec:(.*):(.*);' "(Sub)section with short title and long title" rbA
+`!p snip.rv=create_section(match.group(1), match.group(2), match.group(3))`
+endsnippet
+
+context "not_math()"
+snippet ref:(.*); "Reference" rwA
+\Cref{`!p snip.rv=labelify(match.group(1))`} $0
+endsnippet
+
+snippet label:(.*); "Label" rwA
+\label{`!p snip.rv=labelify(match.group(1))`} $0
+endsnippet
+
+context "not_math()"
+snippet url:(.*); "Hyperlink" rbA
+\href{`!p snip.rv=clean(match.group(1))`}{$1}
+endsnippet
+
+context "not_math()"
+snippet "url:([^:]*):(.*);" "Hyperlink with short title" rbA
+\href{`!p snip.rv=clean(match.group(2))`}{`!p snip.rv=clean(match.group(1))`}
+endsnippet

@@ -1,0 +1,721 @@
+
+global !p
+import re
+
+###################################################################################################
+### 	PYTHON: Different contexts for snippets so they only sometimes auto expand 		###
+###################################################################################################
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+def not_math():
+    return not math()
+def comment():
+    return vim.eval('vimtex#syntax#in_comment()') == '1'
+def env(name):
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+    return x != '0' and y != '0'
+
+# Annoyingly chracters like \t get matched to tab through their python regex lib
+# so for any python string group we have to clean them up so that you can still
+# capture common LaTeX phrases like \to
+def clean(match_group):
+    return match_group.replace("\t", "\\t")\
+    	.replace("\f", "\\f")\
+    .replace("\n", "\\n")\
+    .replace("\r", "\\r")\
+    .replace("\b", "\\b")
+
+###################################################################################################
+### 	PYTHONN: Helper methods for common symbols and greek letters 				###
+###################################################################################################
+
+greek_shorthand_map = {
+    "DE": "Delta",
+    "DL": "Delta",
+    "FF": "Phi",
+    "GG": "Gamma",
+    "LM": "Lambda",
+    "OM": "Omega",
+    "OO": "Omega",
+    "PH": "Phi",
+    "PI": "Pi",
+    "PP": "Psi",
+    "PS": "Psi",
+    "TH": "Theta",
+    "VD": "varDelta",
+    "VF": "varPhi",
+    "VG": "varGamma",
+    "VL": "varLambda",
+    "VO": "varOmega",
+    "VP": "varPsi",
+    "VS": "varSigma",
+    "VT": "varTheta",
+    "VX": "varXi",
+    "XI": "Xi",
+    "aa": "alpha",
+    "bb": "beta",
+    "cc": "chi",
+    "ch": "chi",
+    "dd": "delta",
+    "de": "delta",
+    "dl": "delta",
+    "ee": "varepsilon",
+    "ep": "varepsilon",
+    "et": "eta",
+    "ff": "varphi",
+    "gg": "gamma",
+    "ka": "kappa",
+    "kk": "kappa",
+    "ll": "ell",
+    "lm": "lambda",
+    "mm": "mu",
+    "nn": "nu",
+    "no": "varnothing",
+    "om": "omega",
+    "oo": "omega",
+    "ph": "varphi",
+    "pi": "pi",
+    "pp": "psi",
+    "ps": "psi",
+    "re": "epsilon",
+    "rf": "phi",
+    "rh": "rho",
+    "ro": "rho",
+    "sg": "sigma",
+    "ss": "sigma",
+    "ta": "tau",
+    "th": "theta",
+    "tt": "theta",
+    "vt": "vartheta",
+    "xi": "xi",
+    "ze": "zeta",
+    "zz": "zeta"
+}
+def greek_letter(lettercode):
+    if lettercode not in greek_shorthand_map:
+    	return "g" + lettercode
+    return "\\" + greek_shorthand_map[lettercode]
+
+math_symb_shorthand_map = {
+    "Dwa": "Downarrow",
+    "NN": "bigcap",
+    "OP": "bigoplus",
+    "OT": "bigotimes",
+    "SC": "bigsqcup",
+    "TO": "Longrightarrow",
+    "UU": "bigcup",
+    "Upa": "Uparrow",
+    "VV": "bigvee",
+    "WW": "bigwedge",
+    "ap": "approx",
+    "cce": "subseteq",
+    "ccn": "subsetneq",
+    "cd": "cdots",
+    "cr": "circ",
+    "dd": "ddots",
+    "dwa": "downarrow",
+    "dwt": "searrow",
+    "em": "hookrightarrow",
+    "ex": "exists",
+    "fa": "forall",
+    "gr": "nabla",
+    "hb": "hbar",
+    "ld": "ldots",
+    "lt": "ltimes",
+    "me": "preceq",
+    "mj": "prec",
+    "mp": "longmapsto",
+    "nb": "nabla",
+    "neq": "nea",
+    "nex": "nexists",
+    "nin": "notin",
+    "nme": "npreceq",
+    "nmj": "nprec",
+    "nn": "cap",
+    "nse": "nsimeq",
+    "nsi": "nsim",
+    "oo": "infty",
+    "op": "oplus",
+    "ot": "otimes",
+    "pd": "partial",
+    "pr": "perp",
+    "sc": "sqcup",
+    "se": "simeq",
+    "si": "sim",
+    "sm": "setminus",
+    "sse": "supseteq",
+    "ssn": "supsetneq",
+    "tm": "times",
+    "to": "longrightarrow",
+    "upa": "uparrow",
+    "upt": "nearrow",
+    "uu": "cup",
+    "vd": "vdots",
+    "vv": "vee",
+    "ww": "wedge"
+}
+def math_symb(symbcode):
+    if symbcode not in math_symb_shorthand_map:
+    	return "m" + symbcode
+    return "\\" + math_symb_shorthand_map[symbcode]
+
+convergence_types_map = {
+    "EE": "\\mathbb{E}",
+    "Frob": "\\|\\cdot\\|_{\\text{Frob}}",
+    "HS": "\\|\\cdot\\|_{\\text{HS}}",
+    "L1": "\\|\\cdot\\|_{\\mathcal{L}^{1}}",
+    "L2": "\\|\\cdot\\|_{\\mathcal{L}^{2}}",
+    "Li": "\\|\\cdot\\|_{\\mathcal{L}^{\\infty}}",
+    "Lp": "\\|\\cdot\\|_{\\mathcal{L}^{p}}",
+    "Lq": "\\|\\cdot\\|_{\\mathcal{L}^{q}}",
+    "PP": "\\mathbb{P}",
+    "TV": "\\|\\cdot\\|_{\\text{TV}}",
+    "ab": "|\\cdot|",
+    "ae": "a.e.",
+    "as": "a.s.",
+    "d": "d",
+    "e": "\\mathbb{E}",
+    "ee": "\\mathbb{E}",
+    "gg": "\\gamma",
+    "l1": "\\|\\cdot\\|_{1}",
+    "l2": "\\|\\cdot\\|_{2}",
+    "li": "\\|\\cdot\\|_{\\infty}",
+    "lp": "\\|\\cdot\\|_{p}",
+    "lq": "\\|\\cdot\\|_{q}",
+    "mm": "\\mu",
+    "mu": "\\mu",
+    "n": "\\|\\cdot\\|",
+    "nu": "\\nu",
+    "op": "\\|\\cdot\\|_{\\text{op}}",
+    "p": "\\mathbb{P}",
+    "pp": "\\mathbb{P}",
+    "rh": "\\rho",
+    "sg": "\\sigma",
+    "sgs": "\\sigma-\\ast",
+    "un": "\\text{Unif}",
+    "wk": "w",
+    "ws": "w-\\ast",
+}
+
+def converge_in(shorthand):
+    if not shorthand in convergence_types_map:
+        overtext = shorthand
+    else:
+        overtext = convergence_types_map[shorthand]
+    return "\\overset{" + overtext + "}{\\longrightarrow}"
+
+def converge_two_args(arg_1, arg_2):
+    if arg_1.strip().lower().startswith("wh"):
+        return converge_when(arg_2)
+    else:
+        return converge_as(arg_1, arg_2)
+
+def converge_when(condition):
+    return "\\overset{\\stack{when}{" + condition + "}}{\\longrightarrow}"
+
+def converge_as(variable, limit):
+    return "\\overset{" + variable +"\\to " + limit + "}{\\longrightarrow}"
+
+sum_type_environments = {
+    "cprod": "coprod",
+    "dprod": "bigotimes",
+    "dsum": "bigoplus",
+    "dunion": "bigsqcup",
+    "eval": "biggr|",
+    "iiint": "iiint",
+    "iint": "iint",
+    "int": "int",
+    "inter": "bigcap",
+    "oiiint": "oiiint",
+    "oiint": "oiint",
+    "oint": "oint",
+    "prod": "prod",
+    "sum": "sum",
+    "union": "bigcup",
+    "vee": "bigvee",
+    "wedge": "bigwedge"
+}
+
+def sum_env(sum_type_sh, lower, upper, stack=False):
+    sum_env_symb = sum_type_environments[sum_type_sh]
+    if stack:
+    	# note: intuiition is reversed for stacking - first arg goes on top
+        return "\\" + sum_env_symb + "_{\\substack{" + lower + "}{" + upper +"}}"
+    if len(lower) > 0:
+        lower = "_{" + lower + "}"
+    if len(upper) > 0:
+        upper = "^{" + upper + "}"
+    return "\\" + sum_env_symb + lower + upper
+
+left_right_notations = {
+  "norm": ("\\left\\|", "\\right\\|"),
+  "pnorm": ("\\left\\|", "\\right\\|_{p}"),
+  "qnorm": ("\\left\\|", "\\right\\|_{q}"),
+  "1norm": ("\\left\\|", "\\right\\|_{1}"),
+  "2norm": ("\\left\\|", "\\right\\|_{2}"),
+  "infnorm": ("\\left\\|", "\\right\\|_{\infty}"),
+  "tvnorm": ("\\left\\|", "\\right\\|_{\\text{TV}}"),
+  "tvnorm": ("\\left\\|", "\\right\\|_{\\text{TV}}"),
+  "hsnorm": ("\\left\\|", "\\right\\|_{\\text{HS}}"),
+  "lnorm": ("\\left\\|", "\\right\\|_{L}"),
+  "knorm": ("\\left\\|", "\\right\\|_{K}"),
+  "fnorm": ("\\left\\|", "\\right\\|_{F}"),
+  "frobnorm": ("\\left\\|", "\\right\\|_{\\text{Frob}}"),
+  "anorm": ("\\left\\|", "\\right\\|_{A}"),
+  "lpnorm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{p}}"),
+  "lqnorm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{q}}"),
+  "l1norm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{1}}"),
+  "l2norm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^2}"),
+  "linfnorm": ("\\left\\|", "\\right\\|_{\\mathcal{L}^{\infty}}"),
+  "w1norm": ("\\left\\|", "\\right\\|_{W_1}"),
+  "wpnorm": ("\\left\\|", "\\right\\|_{W_p}"),
+  "dualnorm": ("\\left\\|", "\\right\\|_{\\ast}"),
+  "starnorm": ("\\left\\|", "\\right\\|_{\\ast}"),
+  "lipnorm": ("\\left\\|", "\\right\\|_{\\text{Lip}}"),
+  "geonorm": ("\\left\\|", "\\right\\|_{\\text{Geo}}"),
+  "floor": ("\\left\\lfloor", "\\right\\rfloor"),
+  "ceil": ("\\left\\lceil", "\\right\\rceil"),
+  "abs": ("\\left|", "\\right|"),
+  "bra": ("\\left\\langle", "\\right|"),
+  "ket": ("\\left|", "\\right\\rangle"),
+  "lrs": ("\\left[", "\\right]"),
+  "lrp": ("\\left(", "\\right)"),
+  "paren": ("\\left(", "\\right)"),
+  "parenthesis": ("\\left(", "\\right)"),
+  "lrc": ("\\left\\lbrace", "\\right\\rbrace"),
+  "bracket": ("\\left\\lbrace", "\\right\\rbrace"),
+  "curly": ("\\left\\lbrace", "\\right\\rbrace"),
+  "lrs": ("\\left[", "\\right]"),
+  "squarebracket": ("\\left[", "\\right]"),
+  "braces": ("\\left[", "\\right]")
+}
+
+def left_right_env(lrenv, inner_content="\\cdot"):
+    if not lrenv in left_right_notations:
+    	raise ValueError("Unacceptable left/right environment")
+    left, right = left_right_notations[lrenv]
+    return left + " " + inner_content + " " + right
+
+left_middle_right_notations = {
+    "innerp": ("\\left\\langle", " , ", "\\right\\rangle"),
+    "dirac": ("\\left\\langle", "\\;\\middle|\\;", "\\right\\rangle"),
+    "braket": ("\\left\\langle", "\\;\\middle|\\;", "\\right\\rangle"),
+    "set": ("\\left\\lbrace", "\;\\middle|\\;", "\\right\\rbrace"),
+    "lie": ("\\left[", ",", "\\right]"),
+    "condpr": ("\\mathbb{P}\\left[", "\\;\\middle|\\;", "\\right]"),
+    "condex": ("\\mathbb{E}\\left[", "\\;\\middle|\\;", "\\right]"),
+    "collec": ("\\left\\lbrace", ",", "\\right\\rbrace")
+}
+def left_middle_right_env(lmrenv, *args):
+    if not lmrenv in left_middle_right_notations:
+    	raise ValueError("Unacceptable left/middle/right environment")
+    left, middle, right = left_middle_right_notations[lmrenv]
+    if len(args) == 2:
+    	return left + " " + args[0] \
+    	+ " " + middle \
+    	+ " " + args[1] \
+    	+ " " + right
+    middle_args = args[1:-1]
+    code = left + " " + args[0] + " "
+    for middle_argument in middle_args:
+        code = code + " " + middle + " " + middle_argument + " " + middle + " "
+    code = code + " " + args[-1] + " " + right
+    return code
+
+hats_and_shoes = {
+  "bar": "overline",
+  "hat": "widehat",
+  "tild": "widetilde",
+  "dot": "dot",
+  "ddot": "ddot",
+  "dddot": "dddot",
+  "vec": "vec",
+  "oleft": "overleftarrow",
+  "oright": "overrightarrow",
+  "uleft": "underleftarrow",
+  "uright": "underrightarrow",
+  "ubr": "underbrace",
+  "obr": "overbrace",
+  "uline": "underline",
+  "oline": "overline"
+}
+def add_hat_or_shoe(clothing, wearer):
+    if not clothing in hats_and_shoes:
+        raise ValueError("Suffix not understood")
+    return "\\" + hats_and_shoes[clothing] + "{" + wearer + "}"
+
+suffixes = {
+  "prime": "\\prime",
+  "inv": "-1",
+  "ast": "\\ast",
+  "star": "\\ast",
+  "dag": "\\dat",
+  "circ": "\\circ",
+  "compl": "\\complement",
+  "perp": "\\perp",
+  "tr": "\\top",
+  "sq": "2",
+  "flat": "\\flat",
+  "sharp": "\\sharp"
+}
+
+endglobal
+
+###################################################################################################
+###  SNIP: Common greek letters and mathematical symbols 					###
+###################################################################################################
+
+context "math()"
+snippet 'g([A-z]{2})' "Greek letters" rwA
+`!p snip.rv=greek_letter(match.group(1))`
+endsnippet
+
+context "math()"
+snippet 'm([A-z]{2,3})' "Mathematical symbols" rwA
+`!p snip.rv=math_symb(match.group(1))`
+endsnippet
+
+context "math()"
+snippet to; "Convergence" wA
+\longrightarrow
+endsnippet
+
+context "math()"
+snippet 'to:(.*);' "Convergence in some space" "rwA"
+`!p snip.rv=converge_in(match.group(1))`
+endsnippet
+
+context "math()"
+snippet 'to:(.*):(.*);' "Convergence wwith a condition" rwA
+`!p snip.rv=converge_two_args(match.group(1), match.group(2))`
+endsnippet
+
+priority 20
+context "math()"
+snippet 'dd([A-z\\\{\}0-9_^]+);' "Derivative operator shorthand" rwA
+\\frac{d}{d `!p snip.rv =clean(match.group(1))`}
+endsnippet
+
+priority 20
+context "math()"
+snippet 'pp([A-z\\\{\}0-9_^]+);' "Partial derivative operator shorthand" rwA
+\\frac{\\partial}{\\partial `!p snip.rv =clean(match.group(1))`}
+endsnippet
+
+priority 10
+context "math()"
+snippet 'd([A-z()\\\{\}0-9_^]+)d([A-z\\\{\}0-9_^]+);' "Derivative of a function or measure shorthand expression" rwA
+\\frac{d`!p snip.rv=clean(match.group(1))`}{d`!p snip.rv =clean(match.group(2))`}
+endsnippet
+
+priority 1
+context "math()"
+snippet 'd([A-z()\\\{\}0-9_^]+):d([A-z\\\{\}0-9_^]+);' "Derivative of a function or measure shorthand expression (with better capture for denomenator)" rwA
+\\frac{d`!p snip.rv=clean(match.group(1))`}{d`!p snip.rv =clean(match.group(2))`}
+endsnippet
+
+priority 10
+context "math()"
+snippet 'p([A-z()\\\{\}0-9_^]+)p([A-z\\\{\}0-9_^]+);' "Partial derivative of a function shorthand expression" rwA
+\\frac{\\partial `!p snip.rv=clean(match.group(1))`}{\\partial `!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+priority 1
+context "math()"
+snippet 'p([A-z()\\\{\}0-9_^]+):p([A-z\\\{\}0-9_^]+);' "Partial derivative of a function shorthand expression (with better capture for denomenator)" rwA
+\\frac{\\partial `!p snip.rv=clean(match.group(1))`}{\\partial `!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge);' "Summation-type symbols" rwA
+`!p snip.rv = sum_env(match.group(1), "", "")`
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge):([^:]*);' "Summation-type symbols with lower arguments" rwA
+`!p snip.rv = sum_env(match.group(1), clean(match.group(2)), "")`
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge):([^:]*):(.*);' "Summation-type symbols with lower and upper arguments" rwA
+`!p snip.rv = sum_env(match.group(1), clean(match.group(2)), clean(match.group(3)))`
+endsnippet
+
+context "math()"
+snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge)_stack:([^:]*):(.*);' "Summation-type symbols with lower and upper arguments" rwA
+`!p snip.rv = sum_env(match.group(1), clean(match.group(2)), clean(match.group(3)), stack=True)`
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max);" "Limit and set extrema mathematical symbols" rwA
+`!p snip.rv = "\\" + match.group(1)`
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max):([^:]*);" "Limit and set extrema mathematical symbols with a subscript" rwA
+`!p snip.rv="\\" + match.group(1)`_{`!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max):([^:]*):(.*);" "Limit and set extrema mathematical symbols with a subscript" rwA
+`!p snip.rv="\\" + match.group(1)`\\left\\{ `!p snip.rv=clean(match.group(2))` \\;\\middle|\\; `!p snip.rv=clean(match.group(3))` \\right\\}
+endsnippet
+
+context "math()"
+snippet "(lim|sup|inf|limsup|liminf|min|max)_stack:([^:]*):(.*);" "Limit and set extrema mathematical symbols with a subscript" rwA
+`!p snip.rv="\\" + match.group(1)`_{\substack{`!p snip.rv = clean(match.group(2))`}{`!p snip.rv = clean(match.group(3))`}}
+endsnippet
+
+###################################################################################################
+###   SNIP: Common general mathematical words and functions 					###
+###################################################################################################
+
+context "math()"
+snippet "(div|curl|vol|tr|conv|area|aff|span|Unif|Cov|Var|eigvals|eigvecs|Re|Im);" "Math-text functions" rwA
+\\text{`!p snip.rv=clean(match.group(1))`}
+endsnippet
+
+context "math()"
+snippet "(div|curl|vol|tr|conv|area|aff|span|Unif|Cov|Var|eigvals|eigvecs|Re|Im):(.*);" "Math-text functions" rwA
+\\text{`!p snip.rv=clean(match.group(1))`}\\left(`!p snip.rv=clean(match.group(2))`\\right)
+endsnippet
+
+context "math()"
+snippet "(det|log|ln|lg|exp|deg|ker|Gamma|zeta|chi|mu|nu|delta|theta|phi|varphi|pi|psi|gcd|hom);" "Mathematical / special functions" rwA
+\\`!p snip.rv =clean(match.group(1))`
+endsnippet
+
+context "math()"
+snippet "(det|log|ln|lg|exp|deg|ker|Gamma|zeta|chi|mu|nu|delta|theta|phi|varphi|pi|psi|gcd|hom):(.*);" "Mathematical / special functions" rwA
+\\`!p snip.rv=clean(match.group(1)) + "\\left(" + match.group(2) + "\\right)"`
+endsnippet
+
+context "math()"
+snippet "(cos|tan|sin|sinh|cosh|tanh);" "Trigonometric functions" rwA
+\\`!p snip.rv =clean(match.group(1))`
+endsnippet
+
+context "math()"
+snippet "(cos|tan|sin|sinh|cosh|tanh):(.*);" "Trigonometric functions" rwA
+\\`!p snip.rv=clean(match.group(1)) + "\\left(" + match.group(2) + "\\right)"`
+endsnippet
+
+context "math()"
+snippet "arc(cos|tan|sin|sinh|cosh|tanh);" "Trigonometric functions" rwA
+\\arc`!p snip.rv =clean(match.group(1))`
+endsnippet
+
+context "math()"
+snippet "arc(cos|tan|sin|sinh|cosh|tanh):(.*);" "Trigonometric functions" rwA
+\\arc`!p snip.rv=clean(match.group(1)) + "\\left(" + match.group(2) + "\\right)"`
+endsnippet
+
+context "math()"
+snippet '(norm|ceil|floor|abs|bra|ket);' "Zero-argument left/right balanced environments" rwA
+`!p snip.rv=left_right_env(match.group(1))`
+endsnippet
+
+context "math()"
+snippet '(norm|ceil|floor|abs|bra|ket):(.*);' "Single-argument left/right balanced environments" rwA
+`!p snip.rv=left_right_env(match.group(1), clean(match.group(2)))`
+endsnippet
+
+context "math()"
+snippet '([A-z0-9]+)norm;' "Zero-argument specific type of norm" rwA
+`!p snip.rv=left_right_env(match.group(1).lower()+"norm")`
+endsnippet
+
+context "math()"
+snippet '([A-z0-9]+)norm:(.*);' "Specific type of norm on an object" rwA
+`!p snip.rv=left_right_env(match.group(1).lower()+"norm", clean(match.group(2)))`
+endsnippet
+
+context "math()"
+snippet '(paren|parenthesis|lrp|lrs|squarebracket|braces|lrc|curly|bracket);' "Balenced left/right brackets" rwA
+`!p snip.rv=left_right_notations[match.group(1)][0]` $1 `!p snip.rv=left_right_notations[match.group(2)][1]`
+endsnippet
+
+context "math()"
+snippet '(paren|parenthesis|lrp|lrs|squarebracket|braces|lrc|curly|bracket):(.*);' "Balenced left/right brackets" rwA
+`!p snip.rv=left_right_env(match.group(1), clean(match.group(2)))`
+endsnippet
+
+context "math()"
+snippet "(innerp|dirac|bracket|set|lie|condpr|condex|collec):([^:]*);" "Left/middle/right environments with one argument filled in" rwA
+`!p snip.rv=left_middle_right_env(match.group(1), "\\cdot", clean(match.group(2)))`
+endsnippet
+
+priority 20
+context "math()"
+snippet "(innerp|dirac|bracket|set|lie|condpr|condex|collec):([^:]*):([^:]*);" "Left/middle/right environments with two arguments filled in" rwA
+`!p snip.rv=left_middle_right_env(match.group(1), clean(match.group(2)), clean(match.group(3)))`
+endsnippet
+
+priority 10
+context "math()"
+snippet "(dirac|bracket|collec):([^:]*):([^:]*):([^:]*);" "Left/middle/right environments with three or more arguments arguments" rwA
+`!p snip.rv=left_middle_right_env(match.group(1), clean(match.group(2)), clean(match.group(3)), clean(match.group(4)))`
+endsnippet
+
+###################################################################################################
+###  SNIP: Common suffixes for symbols 								###
+###################################################################################################
+
+context "math()"
+snippet '([A-z0-9()\\_^\[\]]+)(bar|hat|tild|dot|ddot|dddot|vec|oright|oleft|uright|uleft)' "Common notational / verbal suffixes" rwA
+`!p snip.rv=add_hat_or_shoe(match.group(2), clean(match.group(1)))`
+endsnippet
+
+context "math()"
+snippet '([A-z0-9()\\_^\[\]]+)(prime|ast|star|dag|circ|compl|inv|sq|flat|sharp|tr);' "Common suffixes for super scripts" rwA
+`!p snip.rv=clean(match.group(1))`^{`!p snip.rv=suffixes[match.group(2)]`}
+endsnippet
+
+###################################################################################################
+###  SNIP: Common fraction and root environments 						###
+###################################################################################################
+context "math()"
+snippet ''([A-z0-9()\\_^\[\]]+):root:([0-9]|n);' "Specific number root" rwA
+`!p
+if match.group(2) == "0":
+    snip.rv = "1"
+elif match.group(2) == "1":
+    snip.rv = clean(match.group(1))
+elif match.group(2) == "2":
+    snip.rv = "\\sqrt{" + clean(match.group(1)) + "}"
+else:
+    snip.rv = "\\sqrt[" + match.group(1) +"]{" + clean(match.group(1)) + "}"
+`
+endsnippet
+
+context "math()"
+snippet  '([A-z0-9()\\_^\[\]]+):root:([^0-9n][^:]*|..+);' "Generic root" rwA
+\\left(`!p snip.rv=clean(match.group(1))`\\right)^{`!p snip.rv=clean(match.group(2))`}
+endsnippet
+
+context "math()"
+snippet  '([A-z0-9()\\_^\[\]]+):root:([^:]*):([^:*]);' "Generic root" rwA
+\\left(`!p snip.rv=clean(match.group(1))`\\right)^{\frace{`!p snip.rv=clean(match.group(2))`}{`!p snip.rv=clean(match.group(3))`}}
+endsnippet
+
+context "math()"
+snippet // "Fraction" iA
+\\frac{$1}{$2}
+endsnippet
+
+context "math()"
+snippet 'frac:([^:]*):(.*);' "Fraction of two arguments" rwA
+\\frac{`!p snip.rv = clean(match.group(1))`}{`!p snip.rv = clean(match.group(2))`}
+endsnippet
+
+###################################################################################################
+###  SNIP: Generic common math terms that are best with explicit shortcuts 			###
+###################################################################################################
+
+context "math()"
+snippet ^ "Superscript with brackets" riA
+^{$1}$0
+endsnippet
+
+context "math()"
+snippet _ "Subscript with brakets" riA
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet '(RR|CC|QQ|ZZ|NN|TT|OO|EE|PP|UU|HH|DD|SS)' "Common mathbb letters" rwA
+\mathbb{`!p snip.rv=match.group(1)[0]`}
+endsnippet
+
+context "math()"
+snippet '(AA|LL|FF|GG|BB|MM|XX|YY)' "Common mathcal letters" rwA
+\mathcal{`!p snip.rv=match.group(1)[0]`}
+endsnippet
+
+context "math()"
+snippet 'bb([A-Z])' "Mathbb lettering" rwA
+\mathbb{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet 'cc([A-Z])' "Mathcal lettering" rwA
+\mathcal{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet 'ff([A-Z])' "Mathfrak lettering" rwA
+\mathfrak{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet '(R|C|T|S)(n|n+1|n-1|d|d+1|d-1|k|m)' "Common spaces" rwA
+\mathbb{`!p snip.rv=match.group(1)`}^{`!p snip.rv=match.group(2)`}
+endsnippet
+
+context "math()"
+snippet 1in "Indicator function for an event" wA
+\mathbbm{1}
+endsnippet
+
+###################################################################################################
+###  SNIP: Row and column vector and matrix enviornments 					###
+###################################################################################################
+context "math()"
+snippet 'colvec:([^;]*);' "Automatic column vector of a : separated collection" rwA
+\begin{pmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = "\\\\ \n"
+snip.rv = separator.join(elements)
+`
+\end{pmatrix}
+endsnippet
+
+context "math()"
+snippet 'rowvec:([^;]*);' "Automatic row vector of a : separated collection" rwA
+\begin{pmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = " & \n"
+snip.rv = separator.join(elements)
+`
+\end{pmatrix}
+endsnippet
+
+context "math()"
+snippet matrix; "p-Matrix environment" iA
+\begin{pmatrix}
+    $1
+\end{pmatrix}
+$0
+endsnippet
+
+context "math()"
+snippet 'bcolvec:([^;]*);' "Automatic column vector of a : separated collection" rwA
+\begin{bmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = "\\\\ \n"
+snip.rv = separator.join(elements)
+`
+\end{bmatrix}
+endsnippet
+
+context "math()"
+snippet 'rowvec:([^;]*);' "Automatic row vector of a : separated collection" rwA
+\begin{bmatrix}
+`!p
+elements = clean(match.group(1)).split(":")
+separator = " & \n"
+snip.rv = separator.join(elements)
+`
+\end{bmatrix}
+endsnippet
+
+context "math()"
+snippet bmatrix; "p-Matrix environment" iA
+\begin{bmatrix}
+    $1
+\end{bmatrix}
+$0
+endsnippet
