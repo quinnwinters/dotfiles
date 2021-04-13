@@ -9,15 +9,15 @@ def math():
     return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 def not_math():
     return not math()
-def comment(): 
+def comment():
     return vim.eval('vimtex#syntax#in_comment()') == '1'
 def env(name):
-    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
     return x != '0' and y != '0'
 
 # Annoyingly chracters like \t get matched to tab through their python regex lib
 # so for any python string group we have to clean them up so that you can still
-# capture common LaTeX phrases like \to 
+# capture common LaTeX phrases like \to
 def clean(match_group):
     return match_group.replace("\t", "\\t")\
     	.replace("\f", "\\f")\
@@ -26,7 +26,7 @@ def clean(match_group):
     .replace("\b", "\\b")
 
 ###################################################################################################
-### 	PYTHONN: Helper methods for common symbols and greek letters 				###	
+### 	PYTHONN: Helper methods for common symbols and greek letters 				###
 ###################################################################################################
 
 greek_shorthand_map = {
@@ -245,7 +245,7 @@ def sum_env(sum_type_sh, lower, upper, stack=False):
         lower = "_{" + lower + "}"
     if len(upper) > 0:
         upper = "^{" + upper + "}"
-    return "\\" + sum_env_symb + lower + upper 
+    return "\\" + sum_env_symb + lower + upper
 
 left_right_notations = {
   "norm": ("\\left\\|", "\\right\\|"),
@@ -282,7 +282,7 @@ left_right_notations = {
   "lrp": ("\\left(", "\\right)"),
   "paren": ("\\left(", "\\right)"),
   "parenthesis": ("\\left(", "\\right)"),
-  "lrc": ("\\left\\lbrace", "\\right\\rbrace"), 
+  "lrc": ("\\left\\lbrace", "\\right\\rbrace"),
   "bracket": ("\\left\\lbrace", "\\right\\rbrace"),
   "curly": ("\\left\\lbrace", "\\right\\rbrace"),
   "lrs": ("\\left[", "\\right]"),
@@ -326,7 +326,7 @@ hats_and_shoes = {
   "bar": "overline",
   "hat": "widehat",
   "tild": "widetilde",
-  "dot": "dot", 
+  "dot": "dot",
   "ddot": "ddot",
   "dddot": "dddot",
   "vec": "vec",
@@ -354,7 +354,7 @@ suffixes = {
   "compl": "\\complement",
   "perp": "\\perp",
   "tr": "\\top",
-  "sq": "2", 
+  "sq": "2",
   "flat": "\\flat",
   "sharp": "\\sharp"
 }
@@ -429,22 +429,22 @@ endsnippet
 context "math()"
 snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge);' "Summation-type symbols" rwA
 `!p snip.rv = sum_env(match.group(1), "", "")`
-endsnippet 
+endsnippet
 
 context "math()"
 snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge):([^:]*);' "Summation-type symbols with lower arguments" rwA
 `!p snip.rv = sum_env(match.group(1), clean(match.group(2)), "")`
-endsnippet 
+endsnippet
 
 context "math()"
 snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge):([^:]*):(.*);' "Summation-type symbols with lower and upper arguments" rwA
 `!p snip.rv = sum_env(match.group(1), clean(match.group(2)), clean(match.group(3)))`
-endsnippet 
+endsnippet
 
 context "math()"
 snippet '(sum|prod|cprod|dprod|dsum|eval|union|dunion|inter|int|iint|iiint|oint|oiint|oiiint|vee|wedge)_stack:([^:]*):(.*);' "Summation-type symbols with lower and upper arguments" rwA
 `!p snip.rv = sum_env(match.group(1), clean(match.group(2)), clean(match.group(3)), stack=True)`
-endsnippet 
+endsnippet
 
 context "math()"
 snippet "(lim|sup|inf|limsup|liminf|min|max);" "Limit and set extrema mathematical symbols" rwA
@@ -467,7 +467,7 @@ snippet "(lim|sup|inf|limsup|liminf|min|max)_stack:([^:]*):(.*);" "Limit and set
 endsnippet
 
 ###################################################################################################
-###   SNIP: Common general mathematical words and functions 					### 
+###   SNIP: Common general mathematical words and functions 					###
 ###################################################################################################
 
 context "math()"
@@ -551,7 +551,7 @@ snippet "(innerp|dirac|bracket|set|lie|condpr|condex|collec):([^:]*):([^:]*);" "
 `!p snip.rv=left_middle_right_env(match.group(1), clean(match.group(2)), clean(match.group(3)))`
 endsnippet
 
-priority 10 
+priority 10
 context "math()"
 snippet "(dirac|bracket|collec):([^:]*):([^:]*):([^:]*);" "Left/middle/right environments with three or more arguments arguments" rwA
 `!p snip.rv=left_middle_right_env(match.group(1), clean(match.group(2)), clean(match.group(3)), clean(match.group(4)))`
@@ -567,7 +567,7 @@ snippet '([A-z0-9()\\_^\[\]]+)(bar|hat|tild|dot|ddot|dddot|vec|oright|oleft|urig
 endsnippet
 
 context "math()"
-snippet '([A-z0-9()\\_^\[\]]+)(prime|ast|star|dag|circ|compl|inv|sq|flat|sharp|tr);' "Common suffixes for super scripts" rwA 
+snippet '([A-z0-9()\\_^\[\]]+)(prime|ast|star|dag|circ|compl|inv|sq|flat|sharp|tr);' "Common suffixes for super scripts" rwA
 `!p snip.rv=clean(match.group(1))`^{`!p snip.rv=suffixes[match.group(2)]`}
 endsnippet
 
@@ -578,7 +578,7 @@ context "math()"
 snippet ''([A-z0-9()\\_^\[\]]+):root:([0-9]|n);' "Specific number root" rwA
 `!p
 if match.group(2) == "0":
-    snip.rv = "1" 
+    snip.rv = "1"
 elif match.group(2) == "1":
     snip.rv = clean(match.group(1))
 elif match.group(2) == "2":
@@ -609,7 +609,7 @@ snippet 'frac:([^:]*):(.*);' "Fraction of two arguments" rwA
 endsnippet
 
 ###################################################################################################
-###  SNIP: Generic common math terms that are best with explicit shortcuts 			### 
+###  SNIP: Generic common math terms that are best with explicit shortcuts 			###
 ###################################################################################################
 
 context "math()"
@@ -644,7 +644,7 @@ endsnippet
 
 context "math()"
 snippet 'ff([A-Z])' "Mathfrak lettering" rwA
-\mathfrak{`!p snip.rv=match.group(1)`} 
+\mathfrak{`!p snip.rv=match.group(1)`}
 endsnippet
 
 context "math()"

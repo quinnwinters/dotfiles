@@ -14,19 +14,19 @@ let g:loaded_python_provider=0
 
 call plug#begin('~/.vim/plugged')
 
-" Appearence Plugins 
-Plug 'nathanaelkane/vim-indent-guides'        
-Plug 'altercation/vim-colors-solarized'        
+" Appearence Plugins
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'altercation/vim-colors-solarized'
 Plug 'rrethy/vim-illuminate'
 
 " Git functionality
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'                       
+Plug 'tpope/vim-fugitive'
 Plug 'rhysd/git-messenger.vim'
 
 " Language and syntax highlighting and compleition
-Plug 'dense-analysis/ale'                       
-Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Specific language and formatting functionality
 Plug 'lervag/vimtex'
@@ -34,9 +34,9 @@ Plug 'iamcco/markdown-preview.nvim'
 Plug 'vimwiki/vimwiki'
 Plug 'freitass/todo.txt-vim'
 
-" Navigation functionality 
-Plug 'christoomey/vim-tmux-navigator'         
-Plug 'kien/ctrlp.vim'                          
+" Navigation functionality
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'kien/ctrlp.vim'
 
 " Search functionality
 Plug 'nvim-lua/popup.nvim'
@@ -44,7 +44,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " Utility functions
-Plug 'scrooloose/nerdcommenter'                 
+Plug 'scrooloose/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm'
 Plug 'metakirby5/codi.vim'
@@ -71,7 +71,7 @@ set nowrap
 set signcolumn=yes
 set cmdheight=2
 
-" Set color column dependent on the file type but extend for latex files 
+" Set color column dependent on the file type but extend for latex files
 autocmd BufEnter * set colorcolumn=80
 autocmd BufEnter *.tex set colorcolumn=150
 
@@ -109,7 +109,7 @@ set noerrorbells
 set splitbelow
 set splitright
 
-" Share you clipboard properly 
+" Share you clipboard properly
 set clipboard=unnamed
 
 
@@ -118,19 +118,19 @@ set clipboard=unnamed
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " File modification setttings
-set nobackup 
+set nobackup
 set nowritebackup
-set noswapfile 
-set autoread 
+set noswapfile
+set autoread
 set updatetime=100
 set encoding=utf8
-set hidden 
+set hidden
 
 " Search settings
-set hlsearch 
-set ignorecase 
-set smartcase 
-set incsearch 
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,13 +141,13 @@ set incsearch
 let mapleader="\<Space>"
 let maplocalleader=","
 
-" Setup WhichKey 
+" Setup WhichKey
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 "nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 let g:which_key_map={}
 let g:which_key_sep='-'
 
-" leader keys starting with a => action commands 
+" leader keys starting with a => action commands
 let g:which_key_map.a={
 	\ 'name' : '+actions',
 	\ 'm' : [':MarkdownPreview<CR>', 'markdown-preview-on'],
@@ -175,7 +175,7 @@ let g:which_key_map.b={
 	\ 'F' : [':vsplit<BAR>:Telescope live_grep<CR>', 'search-project-in-buffer-split'],
 	\ 'l' : [':Telescope buffers<CR>', 'search-buffers'],
 	\ 'L' : [':vsplit<BAR>:Telescope buffers<CR>', 'search-buffers-split'],
-	\ 'n' : [':bnext<CR>', 'buffer-next'], 
+	\ 'n' : [':bnext<CR>', 'buffer-next'],
 	\ 'N' : [':bprev<CR>', 'buffer-prev']
 	\}
 
@@ -184,12 +184,12 @@ map <leader>bo :enew<BAR>:Telescope find_files<CR>
 map <leader>bO :vsplit<BAR>:Telescope find_files<CR>
 map <leader>bf :enew<BAR>:Telescope live_grep<CR>
 map <leader>bF :vsplit<BAR>:Telescope live_grep<CR>
-map <leader>bl :Telescope buffers<CR> 
+map <leader>bl :Telescope buffers<CR>
 map <leader>bL :vsplit<BAR>:Telescope buffers<CR>
 map <leader>bn :bnext<CR>
 map <leader>bN :bprev<CR>
 
-" leader keys starting with c => code 
+" leader keys starting with c => code
 let g:which_key_map.c={
 	\ 'name' : '+code',
 	\ 'c' : ['<Plug>(NERDCommenterToggle)', 'code-comment-toggle'],
@@ -201,14 +201,14 @@ let g:which_key_map.c={
 
 map <leader>cc <Plug>(NERDCommenterToggle)
 vmap <leader>cf <Plug>(coc-format-selected)
-nmap <leader>cf <Plug>(coc-format-selected) 
+nmap <leader>cf <Plug>(coc-format-selected)
 nmap <leader>ca <Plug>(coc-codeaction)
 nmap <leader>cx <Plug>(coc-fix-current)
 nmap <leader>cr <Plug>(coc-rename)
 
-" leader keys starting with g => git commands 
+" leader keys starting with g => git commands
 let g:which_key_map.g={
-	\ 'name' : '+git', 
+	\ 'name' : '+git',
 	\ 'a' : ['<Plug>(GitGutterStageHunk)', 'git-stage-hunk'],
 	\ 'u' : ['<Plug>(GitGutterUndoHunk)', 'git-unstage-hunk'],
 	\ 'A' : [':Git add -u<CR>', 'git-add-untracked'],
@@ -216,17 +216,17 @@ let g:which_key_map.g={
 	\ 'f' : [':Git feat<CR>', 'git-commit-feat'],
 	\ 'x' : [':Git fix<CR>', 'git-commit-fix'],
 	\ 'd' : [':Git diff<CR>', 'git-diff'],
-	\ 'D' : [':Gdiffsplit<CR>', 'git-diff-split'], 
-	\ 'l' : [':Git pull<CR>', 'git-pull'], 
+	\ 'D' : [':Gdiffsplit<CR>', 'git-diff-split'],
+	\ 'l' : [':Git pull<CR>', 'git-pull'],
 	\ 'p' : [':Git push<CR>', 'git-push'],
-	\ 'L' : [':Git lg<CR>', 'git-log'], 
+	\ 'L' : [':Git lg<CR>', 'git-log'],
 	\ 'P' : ['<Plug>(GitGutterPreviewHunk)', 'git-preview-hunk'],
-	\ 'm' : ['<Plug>(git-messenger)', 'git-blame'], 
+	\ 'm' : ['<Plug>(git-messenger)', 'git-blame'],
 	\ 'n' : ['<Plug>(GitGutterNextHunk)', 'git-go-to-next-hunk'],
 	\ 'N' : ['<Plug>(GitGutterPrevHunk)', 'git-go-to-prev-hunk'],
 	\ 'G' : [':Ggrep', 'git-grep'],
-	\ 'R' : [':Gread', 'git-read'], 
-	\ 'W' : [':Gwrite', 'git-write'],  
+	\ 'R' : [':Gread', 'git-read'],
+	\ 'W' : [':Gwrite', 'git-write'],
 	\ 'B' : [':GBrowse', 'git-browse-online']
 	\}
 
@@ -245,14 +245,14 @@ map <leadeR>gP <Plug>(GitGutterPreviewHunk)
 map <leader>gm <Plug>(git-messenger)
 map <leader>gn <Plug>(GitGutterNextHunk)
 map <leader>gN <Plug>(GitGutterPrevHunk)
-map <leader>gG :Ggrep 
+map <leader>gG :Ggrep
 map <leader>gR :Gread
 map <leader>gW :Gwrite
 map <leader>gB :GBrowse<CR>
 
 " leader keys starting with t => terminal commands
 let g:which_key_map.t={
-	\ 'name' : '+terminal', 
+	\ 'name' : '+terminal',
 	\ 't' : [':FloatermToggle<CR>', 'terminal-toggle'],
 	\ 'T' : [':FloatermNew --wintype=normal --height=6<CR>', 'terminal-new'],
 	\ 'f' : [':FloatermNew fzf<CR>', 'terminal-fzf'],
@@ -271,20 +271,20 @@ map <leader>to :FloatermNew top<CR>
 " leader keys starting with w => VimWiki commands
 let g:which_key_map.w={
 	\ 'name' : '+vimwiki',
-	\ 'w' : ['<Plug>VimwikiIndex', 'vimwiki-index'], 
+	\ 'w' : ['<Plug>VimwikiIndex', 'vimwiki-index'],
 	\ 't' : ['<Plug>VimwikiTabIndex', 'vimwiki-index-new-tab'],
-	\ 's' : ['<Plug>VimwikiUISelect', 'vimwiki-select-index'], 
-	\ 'i' : ['<Plug>VimwikiDiaryIndex', 'vimwiki-diary-index'], 
+	\ 's' : ['<Plug>VimwikiUISelect', 'vimwiki-select-index'],
+	\ 'i' : ['<Plug>VimwikiDiaryIndex', 'vimwiki-diary-index'],
 	\ 'D' : ['<Plug>VimwikiMakeDiaryNote', 'vimwiki-diary-today'],
-	\ 'Y' : ['<Plug>VimwikiMakeYesterdayDiaryNote', 'vimwiki-diary-yesterday'], 
+	\ 'Y' : ['<Plug>VimwikiMakeYesterdayDiaryNote', 'vimwiki-diary-yesterday'],
 	\ 'T' : ['<Plug>VimwikiMakeTomorrowDiaryNote', 'vimwiki-diary-tomorrow']
 	\}
 
 " These are alreayd built in and are just here for reminders
-" map <leader>ww open default wiki index file 
-" map <leader>wt open wiki index file in a new tab 
+" map <leader>ww open default wiki index file
+" map <leader>wt open wiki index file in a new tab
 " map <leader>ws select and open wiki index file
-" map <leader>wi open diary index file for wiki 
+" map <leader>wi open diary index file for wiki
 map <leader>wD <Plug>VimwikiMakeDiaryNote
 map <leader>wY <Plug>VimwikiMakeYesterdayDiaryNote
 map <leader>wT <Plug>VimwikiMakeTomorrowDiaryNote
@@ -292,19 +292,19 @@ map <leader>wT <Plug>VimwikiMakeTomorrowDiaryNote
 " leader keys starting with x => todo.txt commands
 let g:which_key_map.x={
 	\ 'name' : '+todo-txt',
-	\ '@' : [':%call todo#txt#sort_by_context()<CR>', 'todo-sort-by-context'], 
-	\ '+' : [':%call todo#txt#sort_by_project()<CR>', 'todo-sort-by-project'], 
-	\ 's' : [':%call todo#txt#sort_by_date()<CR>', 'todo-sort-by-date'], 
-	\ 'S' : [':%call todo#txt#sort_by_due_date()<CR>', 'todo-sort-by-due-date'], 
-	\ 'a' : [":call todo#txt#prioritize_add('A')<CR>", 'todo-task-priority-A'], 
+	\ '@' : [':%call todo#txt#sort_by_context()<CR>', 'todo-sort-by-context'],
+	\ '+' : [':%call todo#txt#sort_by_project()<CR>', 'todo-sort-by-project'],
+	\ 's' : [':%call todo#txt#sort_by_date()<CR>', 'todo-sort-by-date'],
+	\ 'S' : [':%call todo#txt#sort_by_due_date()<CR>', 'todo-sort-by-due-date'],
+	\ 'a' : [":call todo#txt#prioritize_add('A')<CR>", 'todo-task-priority-A'],
 	\ 'b' : [":call todo#txt#prioritize_add('B')<CR>", 'todo-task-priority-B'],
 	\ 'c' : [":call todo#txt#prioritize_add('C')<CR>", 'todo-task-priority-C'],
-	\ 'J' : [':call todo#txt#prioritize_increase()<CR>', 'todo-task-priority-increase'], 
-	\ 'K' : [':call todo#txt#prioritize_decrease()<CR>', 'todo-task-priority-decrease'], 
+	\ 'J' : [':call todo#txt#prioritize_increase()<CR>', 'todo-task-priority-increase'],
+	\ 'K' : [':call todo#txt#prioritize_decrease()<CR>', 'todo-task-priority-decrease'],
 	\ 'x' : [':call todo#txt#mark_as_done()<CR>', 'todo-task-mark-as-done'],
 	\ 'X' : [':call todo#txt#mark_as_done()<CR>', 'todo-task-mark-selected-as-done'],
 	\ 'D' : [':call todo#txt#remove_completed()<CR>', 'todo-task-remove-completed']
-	\} 
+	\}
 
 nnoremap <leader>x@ :%call todo#txt#sort_by_context()<CR>
 nnoremap <leader>x+ :%call todo#txt#sort_by_project()<CR>
@@ -353,7 +353,7 @@ xnoremap J :move '>+1<CR>gv-gv
 
 " COC Extensions
 let g:coc_global_extensions=[
-  \ 'coc-actions', 
+  \ 'coc-actions',
   \ 'coc-floaterm',
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -368,7 +368,7 @@ let g:coc_global_extensions=[
   \ 'coc-yaml'
   \ ]
 
-" When coc is not activating for some reason, use Ctrl+Spc to get it to trigger 
+" When coc is not activating for some reason, use Ctrl+Spc to get it to trigger
 inoremap <silent><expr> <c-space> coc#refresh()
 
 "Recommended setting to avoid |ins-coimpletion-menu|
@@ -404,9 +404,9 @@ endfunction
 """"""         CTRL-P AND BUFFER OPENING SETTINGS                                             """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Ctrl-p should ignore certain types of files 
+" Ctrl-p should ignore certain types of files
 let g:ctrlp_user_command=[
-	\ '.git/', 
+	\ '.git/',
 	\ 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
 	\]
 
@@ -415,8 +415,8 @@ let g:ctrlp_user_command=[
 """"""         CODE FORMATTING AND COMMENTING SETTINGS                                        """""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Better NERDCommenter settings 
-let g:NERDCreateDefaujltMappings=1 
+" Better NERDCommenter settings
+let g:NERDCreateDefaujltMappings=1
 let g:NERDCompactSexyComs=1
 let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitepsace=1

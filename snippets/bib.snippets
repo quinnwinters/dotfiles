@@ -25,7 +25,7 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 ###################################################################################################################
-### Snippets for bibtex from vim-snippets: 									### 
+### Snippets for bibtex from vim-snippets: 									###
 ### https://github.com/honza/vim-snippets/blob/67e506c5598c19de4fcdf8780377a92aaddfdbad/UltiSnips/bib.snippets 	###
 ###################################################################################################################
 
@@ -42,7 +42,7 @@ snippet @online "Online resource" bA
 $0
 endsnippet
 
-snippet @article "Article reference" bA 
+snippet @article "Article reference" bA
 @article{ ${1:name} ,
   author 	= 	{${2:author}},
   title 	= 	{${3:title}},
@@ -57,12 +57,12 @@ snippet @article "Article reference" bA
 $0
 endsnippet
 
-snippet @book "Book reference" bA 
+snippet @book "Book reference" bA
 @book{ ${1:name} ,
   author 	= 	{${2:author}},
   title 	=  	{${3:title}},
   series 	= 	{${4:series}},
-  volume 	= 	{${5:volume}}, 
+  volume 	= 	{${5:volume}},
   edition 	= 	{${6:edition}},
   publisher 	=  	{${7:publisher}},
   address 	= 	{${8:address}},
@@ -77,9 +77,9 @@ snippet @inbook "In-book references" bA
   author 	= 	{${2:author}},
   title 	=  	{${3:title}},
   chapter 	= 	{${4:chapter}},
-  booktitle 	= 	{${5:booktitle}}, 
+  booktitle 	= 	{${5:booktitle}},
   series 	= 	{${6:series}},
-  volume 	= 	{${7:volume}}, 
+  volume 	= 	{${7:volume}},
   edition 	= 	{${8:edition}},
   publisher 	=  	{${9:publisher}},
   address 	= 	{${10:address}},
@@ -91,11 +91,11 @@ $0
 endsnippet
 
 snippet @phdthesis "PhD thesis reference" bA
-@phdthesis{ ${1:name} , 
+@phdthesis{ ${1:name} ,
   author 	= 	{${2:author}},
   title 	=  	{${3:title}},
-  publisher 	= 	{${4:University, Department}}, 
-  address 	= 	{${5:University Address}}, 
+  publisher 	= 	{${4:University, Department}},
+  address 	= 	{${5:University Address}},
   month 	= 	{${6:MMM}},
   year 		= 	{${7:YYYY}},
   url 		= 	{${8:https://university.edu/dept/publication.pdf}}
@@ -104,11 +104,11 @@ $0
 endsnippet
 
 snippet @masterthesis "PhD thesis reference" bA
-@masterthesis{ ${1:name} , 
+@masterthesis{ ${1:name} ,
   author 	= 	{${2:author}},
   title 	=  	{${3:title}},
-  publisher 	= 	{${4:University, Department}}, 
-  address 	= 	{${5:University Address}}, 
+  publisher 	= 	{${4:University, Department}},
+  address 	= 	{${5:University Address}},
   month 	= 	{${6:MMM}},
   year 		= 	{${7:YYYY}},
   url 		= 	{${8:https://university.edu/dept/publication.pdf}}
@@ -117,7 +117,7 @@ $0
 endsnippet
 
 snippet @accepted "Accepted for publication" bA
-@preprint{ ${1:name} , 
+@preprint{ ${1:name} ,
   author 	= 	{${2:author}},
   title 	= 	{${3:title}},
   journal 	= 	{${4:journal}},
@@ -127,11 +127,11 @@ $0
 endsnippet
 
 snippet @preprint "Pre-print publication" bA
-@preprint{ ${1:name} , 
+@preprint{ ${1:name} ,
   author 	= 	{${2:author}},
   title 	= 	{${3:title}},
   month		= 	{${4:MMM}},
-  year 		= 	{${5:YYYY}}, 
+  year 		= 	{${5:YYYY}},
   url 		= 	{${6:https://arxiv.org/thing}},
   note 		= 	{(Pre-Print)}
 }
@@ -145,11 +145,11 @@ snippet @arxiv "Publication archive arXiv information" wA
 endsnippet
 
 snippet @notes "Online notes" bA
-@unpublished{ ${1:name} , 
+@unpublished{ ${1:name} ,
   author 	= 	{${2:author}},
   title 	= 	{${3:title}},
   month		= 	{${4:MMM}},
-  year 		= 	{${5:YYYY}}, 
+  year 		= 	{${5:YYYY}},
   url 		= 	{${6:https://arxiv.org/thing}},
   note 		= 	{(Pre-Print)}
 }

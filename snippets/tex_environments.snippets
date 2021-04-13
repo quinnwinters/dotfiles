@@ -5,10 +5,10 @@ def math():
     return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 def not_math():
     return not math()
-def comment(): 
+def comment():
     return vim.eval('vimtex#syntax#in_comment()') == '1'
 def env(name):
-    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
     return x != '0' and y != '0'
 
 env_to_sh = {
@@ -20,13 +20,13 @@ env_to_sh = {
     "sec": "section",
     "sub": "subsection",
     "eqn": "equation",
-    "aln": "align", 
+    "aln": "align",
     "prob": "problem",
     "exm": "example",
     "rmk": "remark",
-    "prp": "proposition", 
+    "prp": "proposition",
     "clm": "claim",
-    "exr": "exercise", 
+    "exr": "exercise",
     "def": "definition",
 }
 sh_to_env = { val: key for key, val in env_to_sh.items() }
@@ -34,7 +34,7 @@ def environment_for_shorthand(shorthand):
     return env_to_sh[shorthand]
 
 def shorthand_for_envornment(environment):
-    return sh_to_env[environment] 
+    return sh_to_env[environment]
 
 def labelify(string):
     """Takes a string and makes it label acceptable"""
@@ -70,7 +70,7 @@ def begin_enum(number_style, additional_args):
     	raise ValueError("Unsupposted number style: " + number_style)
     additional_args = ", " + additional_args if len(additional_args) > 0 else ""
     return "\\begin{enumerate}[label={" + number_style + "*}" \
-    	+ additional_args + "]\n" 
+    	+ additional_args + "]\n"
 def end_enum(number_style, additional_args):
     return "\\end{enumerate}\n\n"
 
@@ -320,8 +320,8 @@ endsnippet
 context "not_math()"
 snippet %MintdCodeHeader "Header for setting up code listings with commond languages" bA
 % Note: THIS COMMAND IS DANGEROUS
-% This command changes the pdflatex command that TeXStudio uses to run your code which 
-% does open up all sorts of potential security holes! Do not use this unless you are working 
+% This command changes the pdflatex command that TeXStudio uses to run your code which
+% does open up all sorts of potential security holes! Do not use this unless you are working
 % entirely with LaTeX code you understand and have verified is security hole free.
 % !TeX TXS-program:pdflatex = pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
 \usepackage[section]{minted}
@@ -402,7 +402,7 @@ context "not_math()"
 snippet %FiguresHeader "Setup LaTeX document for support for inkscape figures" bA
 % Setting up pre-amble packages for including figures nicely
 \usepackage{graphicx}
-\usepackage{import} 
+\usepackage{import}
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}

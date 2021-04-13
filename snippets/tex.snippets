@@ -1,9 +1,9 @@
 ###################################################################################################
-###    Python code to allow for context switching and smarter snippets 				### 
+###    Python code to allow for context switching and smarter snippets 				###
 ###    ------------------------------------------------------------------------- 		###
 ###      Snippets in this file can be marked with different contexts which allow them to be     ###
 ###      used only in specific cases. The Python code relies on being able to call vimtex       ###
-###      functions. 										### 
+###      functions. 										###
 ### 												###
 ###      For example a snippet defined as: 							###
 ### 												###
@@ -15,7 +15,7 @@
 ###      will properly expand if in a math environment e.g. $to$ will become $\rightarrow$      ###
 ###      but will not expand if used in the context of regular paragraph text. 			###
 ### 												###
-###      For more information, see the blog post by Giles Castel: 				### 
+###      For more information, see the blog post by Giles Castel: 				###
 ### 		https://castel.dev/post/lecture-notes-1/ 					###
 ###################################################################################################
 
@@ -29,15 +29,15 @@ def math():
     return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 def not_math():
     return not math()
-def comment(): 
+def comment():
     return vim.eval('vimtex#syntax#in_comment()') == '1'
 def env(name):
-    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
     return x != '0' and y != '0'
 
 # Annoyingly chracters like \t get matched to tab through their python regex lib
 # so for any python string group we have to clean them up so that you can still
-# capture common LaTeX phrases like \to 
+# capture common LaTeX phrases like \to
 def clean(match_group):
     return match_group.replace("\t", "\\t")\
     	.replace("\f", "\\f")\
@@ -49,7 +49,7 @@ endglobal
 context "not_math()"
 snippet mm "Inline math mode" wA
 \$\displaystyle $1 \$$0
-endsnippet 
+endsnippet
 
 context "not_math()"
 snippet dm "Display math mode" wA

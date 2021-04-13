@@ -219,9 +219,9 @@ function HELPER_build_tex() {
 
     pdflatex -interaction=nonstopmode $filename
     biber $fileprefix
-    pdflatex -interaction=nonstopmode $filename 
-    latexmk -c 
-    open $pdfname 
+    pdflatex -interaction=nonstopmode $filename
+    latexmk -c
+    open $pdfname
 
     cd $curdir
 }
@@ -274,11 +274,11 @@ function HELPER_tmux_launcher() {
     tmux new-session -s $session -d
   fi
 
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
 	tmux switch -t $session
-  else 
+  else
 	tmux attach -t $session
-  fi  
+  fi
 }
 alias tm-session="HELPER_tmux_launcher"
 alias tm="tm-session"
@@ -315,9 +315,9 @@ function HELPER_tmux_gh_edit_session() {
     tmux select-pane -U
     tmux send -t $session "cd $project_path && vim ." Enter
   fi
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $project
-  else 
+  else
     tmux attach -t $project
   fi
 }
@@ -330,9 +330,9 @@ function HELPER_tmux_gtop() {
     tmux new -s $session -d
     tmxu send -t $session "gtop" Enter
   fi
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $session
-  else 
+  else
     tmux attach -t $session
   fi
 }
@@ -345,9 +345,9 @@ function HELPER_tmux_ranger() {
     tmux new -s $session -d
     tmxu send -t $session "ranger" Enter
   fi
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $session
-  else 
+  else
     tmux attach -t $session
   fi
 }
@@ -361,9 +361,9 @@ function HELPER_tmux_ssh() {
   session=$("ssh $cmd ($ts)" | tr -c "[:alpha:][:digit:]:" "-")
   tmux new-session -s $session -d
   tmux send -t "ssh $cmd" Enter
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $session
-  else 
+  else
     tmux attach -t $session
   fi
 }
