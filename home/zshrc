@@ -205,6 +205,27 @@ function HELPER_ghq_and_update_ghqfile() {
 }
 alias gh=HELPER_ghq_and_update_ghqfile
 
+# ========================================================= #
+# |    LaTeX/Biber Aliases                                | #
+# ========================================================= #
+function HELPER_build_tex() {
+    curdir=$(pwd)
+    texdir="$(dirname $1)"
+    filename="$(basename $1).tex"
+    pdfname="$1.pdf"
+    fileprefix="$1"
+
+    cd $texdir
+
+    pdflatex -interaction=nonstopmode $filename
+    biber $fileprefix
+    pdflatex -interaction=nonstopmode $filename
+    latexmk -c
+    open $pdfname
+
+    cd $curdir
+}
+alias cpdf=HELPER_build_tex
 
 # ========================================================= #
 # |    Java/Gradle Aliases                                | #
@@ -253,11 +274,11 @@ function HELPER_tmux_launcher() {
     tmux new-session -s $session -d
   fi
 
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
 	tmux switch -t $session
-  else 
+  else
 	tmux attach -t $session
-  fi  
+  fi
 }
 alias tm-session="HELPER_tmux_launcher"
 alias tm="tm-session"
@@ -294,9 +315,9 @@ function HELPER_tmux_gh_edit_session() {
     tmux select-pane -U
     tmux send -t $session "cd $project_path && vim ." Enter
   fi
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $project
-  else 
+  else
     tmux attach -t $project
   fi
 }
@@ -309,9 +330,9 @@ function HELPER_tmux_gtop() {
     tmux new -s $session -d
     tmxu send -t $session "gtop" Enter
   fi
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $session
-  else 
+  else
     tmux attach -t $session
   fi
 }
@@ -324,43 +345,13 @@ function HELPER_tmux_ranger() {
     tmux new -s $session -d
     tmxu send -t $session "ranger" Enter
   fi
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $session
-  else 
+  else
     tmux attach -t $session
   fi
 }
 alias tm-ranger="HELPER_tmux_ranger"
-
-function HELPER_tmux_todo_txt() {
-  session="todo-txt"
-  tmux has-session -t $session 2>/dev/null
-  if [[ $? == 0 ]] ; then
-    tmux new -s $session -d
-    tmxu send -t $session "td list" Enter
-  fi
-  if [[ -n "$TMUX" ]] ; then 
-    tmux switch -t $session
-  else 
-    tmux attach -t $session
-  fi
-}
-alias tm-todo="HELPER_tmux_todo_txt"
-
-function HELPER_tmux_vimwiki() {
-  session="vimwiki"
-  tmux has-session -t $session 2>/dev/null
-  if [[ $? == 0 ]] ; then
-    tmux new -s $session -d
-    tmxu send -t $session "vim -c VimwikiIndex" Enter
-  fi
-  if [[ -n "$TMUX" ]] ; then 
-    tmux switch -t $session
-  else 
-    tmux attach -t $session
-  fi
-}
-alias tm-todo="HELPER_tmux_vimwiki"
 
 function HELPER_tmux_ssh() {
   echo "Enter a enter your ssh host (and flags!)"
@@ -370,9 +361,9 @@ function HELPER_tmux_ssh() {
   session=$("ssh $cmd ($ts)" | tr -c "[:alpha:][:digit:]:" "-")
   tmux new-session -s $session -d
   tmux send -t "ssh $cmd" Enter
-  if [[ -n "$TMUX" ]] ; then 
+  if [[ -n "$TMUX" ]] ; then
     tmux switch -t $session
-  else 
+  else
     tmux attach -t $session
   fi
 }
@@ -404,23 +395,6 @@ function parallel_tmux() {
 }
 alias pt=parallel_tmux
 alias ptf=parallel_tmux_file
-
-# ========================================================= #
-# |    Todo Aliases                                       | #
-# ========================================================= #
-function HELPER_todo_txt_do() {
-    todo.sh -tcNA -d $HOME/.todo.cfg "$@"
-    { todo.sh -d $HOME/.todo.cfg git-sync & disown ; } &>/dev/null
-    { todo.sh -d $HOME/.todo.cfg web-sync & disown ; } &>/dev/null
-    clear
-    todo.sh -d $HOME/.todo.cfg list
-}
-alias td="HELPER_todo_txt_do"
-
-# Every terminal reload sync git and web status with remote
-todo.sh -tcNA -d $HOME/.todo.cfg git-sync
-todo.sh -tcNA -d $HOME/.todo.cfg web-sync
-clear 
 
 # ========================================================= #
 # |    YouTube Aliases                                    | #
