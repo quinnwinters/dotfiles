@@ -48,6 +48,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm'
 Plug 'metakirby5/codi.vim'
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
@@ -70,8 +71,7 @@ set nowrap
 set signcolumn=yes
 set cmdheight=2
 
-" Set color column dependent on the file type (normally 120, but for some
-" files just do 80)
+" Set color column dependent on the file type but extend for latex files 
 autocmd BufEnter * set colorcolumn=80
 autocmd BufEnter *.tex set colorcolumn=150
 
