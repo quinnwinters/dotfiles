@@ -1,8 +1,8 @@
 ## Installation
 
 When installing please run the following scripts in order (you can copy-paste
-below into a bash script if you want, but its recommended you test things between
-scripts to make sure things aren't broken)
+below into a bash script if you want, but its recommended you test things
+between scripts to make sure things aren't broken)
 
 ```shell
 ./scripts/environment/setup-shell-tools 	# No need to test
@@ -20,5 +20,5 @@ scripts to make sure things aren't broken)
 ./scripts/install/install-vim-plugins 		# A good time to test that vim doesn't break
 
 ./scripts/preferences/setup-mac-dock		# No need to test, just look at dock
-./scripts/preferences/setup-macos-prefs 	# No need to test, but might need to adjust things in systems prefs still 
+./scripts/preferences/setup-macos-prefs 	# No need to test, but might need to adjust things in systems prefs still
 ```
