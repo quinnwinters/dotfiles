@@ -1,0 +1,35 @@
+# unbind old configurations
+unbind-key -a
+set-option -g prefix C-t
+set -g status-right ' #{?client_prefix,#[reverse]<Prefix>#[noreverse] ,}"#{=21:pane_title}" %Y-%m-%d %H:%M:%S' 
+new-session -n $HOST
+set-option -g allow-rename off
+set -g history-limit 5000
+set -g base-index 1
+setw -g pane-base-index 1
+set -g renumber-windows on
+
+# Resize windows with meta-arrows (despite being anti-pattern)
+bind-key -n M-Up resize-pane -U 2
+bind-key -n M-Down resize-pane -D 2
+bind-key -n M-Left resize-pane -L 2
+bind-key -n M-Right resize-pane -R 2
+
+# Silence pesky inturruptions
+set -g visual-activity off
+set -g visual-bell off
+set -g visual-silence off
+setw -g monitor-activity off
+set -g bell-action none
+
+# Fix scrolling
+set-option -g mouse on
+bind-key -t vi-copy WheelUpPane scroll-up
+bind-key -t vi-copy WheelDownPane scroll-down
+
+# Tmux themes
+set -g @plugin 'seebi/tmux-colors-solarized'
+
+# Tmux/vim navigation
+set -g @plugin 'christoomey/vim-tmux-navigator'
+run '~/.tmux/plugins/tpm/tpm'

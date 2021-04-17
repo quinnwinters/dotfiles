@@ -1,0 +1,420 @@
+source $HOME/.bashrc
+export ZSH="/Users/qwinters/.oh-my-zsh"
+
+# ========================================================= #
+# |     Core ZSH Settings                                 | #
+# ========================================================= #
+
+export VISUAL=nvim
+export EDITOR=$VISUAL
+export GIT_EDITOR=$VISUAL
+ZSH_THEME="gallois"
+HIST_STAMPS="yyyy-dd-mm"
+
+plugins=(
+  docker
+  git
+  git-auto-fetch
+  jsontools
+)
+
+source $ZSH/oh-my-zsh.sh
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' insert-tab pending
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ========================================================= #
+# |    Basic Aliases                                      | #
+# ========================================================= #
+
+alias ls="exa --long --classify --group-directories-first --bytes --header --links --git --time-style=long-iso"
+alias e='nvim'
+alias v='nvim'
+alias vim='nvim'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias diff='diff --color=auto'
+alias sudo='sudo '
+alias move='rsync --archive --compress-level=3 --copy-links --partial --inplace --progress --rsh=ssh -r'
+alias free='df -h'
+alias used='du -h -d 2'
+alias reload="exec $SHELL -l"
+alias path='echo -e ${PATH//:/\\n}'
+alias isoTime='date +"%H:%M:%SZ"'
+alias isoTimestamp='date +"%Y-%m-%dT%H:%M:%SZ"'
+alias isoDate='date +"%Y-%m-%d"'
+alias diff="colordiff --ignore-space-change -u"
+alias crontab="VIM_CRONTAB=true crontab"
+
+function clip() {
+    pbcopy < "${@}"
+}
+
+
+# ========================================================= #
+# |    Adv. Navigation Aliases                            | #
+# ========================================================= #
+
+# Given a file, detects what type it is and:
+# 1) cd's to it if it's a directory
+# 2) opens it in Vim if it's a text file
+# 3) throws an error if it's a binary file
+function smart_open {
+    filepath="${1}"
+    if ! [ -e "${filepath}" ]; then
+        echo "Error: No such file at '${filepath}'" >&2
+        return 1
+    fi
+
+    # TODO Handle multiple input files
+    filetype="$(file "${filepath}" | awk '{print $NF}')"
+    return_code=0
+    case "${filetype}" in
+        text)
+            vim "${filepath}"
+            ;;
+        directory)
+            cd "${filepath}"
+            ;;
+        *)
+            # TODO handle PDF & JPG types
+            echo "Error: Unknown filetype '${filetype}'" >&2
+            return_code=1
+            ;;
+    esac
+    return "${return_code}"
+}
+alias o="smart_open"
+
+# Make find not suck, and exclude some sensible defaults
+alias cif="find . ! -name '*.class' -and -iname"
+function fuzzy_find() {
+    ARGS="${@}"
+    cif "*${ARGS// /*}*"
+}
+function fuzzy_ls() {
+    ARGS="${@}"
+    cif "*${ARGS// /*}*" -maxdepth 1
+}
+alias fl="fuzzy_ls"
+alias ff="fuzzy_find"
+
+# $1 - arguments to pass to ls
+# $2 - function to use to sort ls results (head|tail)
+# $3 - number of results to ask for from head/tail
+function _ls_results {
+    ls "$1" | "$2" -n "$3"
+}
+
+# Returns the __ most-recently-modified files
+function newest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-tr' 'tail' "$NUM_RESULTS"
+}
+alias latest="newest"
+
+# Returns the __ least-recently-modified files
+function oldest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-tr' 'head' "$NUM_RESULTS"
+}
+alias earliest="oldest"
+
+# Returns the __ first files alphabetically from ls
+function first {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '' 'head' "$NUM_RESULTS"
+}
+
+# Returns the __ last files alphabetically from ls
+function last {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '' 'tail' "$NUM_RESULTS"
+}
+
+# Returns the __ biggest files by filesize
+function biggest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-Sr' 'head' "$NUM_RESULTS"
+}
+
+# Returns the __ smallest files by filesize
+function smallest {
+    if [[ $# -eq 0 ]]; then
+        NUM_RESULTS=1
+    else
+        NUM_RESULTS=$1
+    fi
+    _ls_results '-Sr' 'tail' "$NUM_RESULTS"
+}
+
+
+# ========================================================= #
+# |    Piping Aliases                                     | #
+# ========================================================= #
+alias -g gr='| grep -i --color=auto'
+alias -g h='| head'
+alias -g hn='| head -n'
+alias -g h5='| head -n 5'
+alias -g h10='| head -n 10'
+alias -g t='| tail'
+alias -g tf='| tail -f'
+alias -g tn='| tail -n'
+alias -g t5='| tail -n 5'
+alias -g t10='| tail -n 10'
+alias -g s='| sort'
+alias -g u='| uniq -c'
+alias -g c='| pbcopy'
+
+
+# ========================================================= #
+# |    Git Aliases                                        | #
+# ========================================================= #
+alias gfeat="g feat"
+alias gfix="g fix"
+alias gref="g refactor"
+alias gdocs="g docs"
+alias gstyle="g style"
+alias gco="git checkout"
+
+function HELPER_ghq_and_update_ghqfile() {
+    ghq $@
+    { ghq list ; cat $DOT_DIR/home/ghqrepos } | sort | uniq -u > $DOT_DIR/home/ghqrepos
+}
+alias gh=HELPER_ghq_and_update_ghqfile
+
+# ========================================================= #
+# |    LaTeX/Biber Aliases                                | #
+# ========================================================= #
+function HELPER_build_tex() {
+    curdir=$(pwd)
+    texdir="$(dirname $1)"
+    filename="$(basename $1).tex"
+    pdfname="$1.pdf"
+    fileprefix="$1"
+
+    cd $texdir
+
+    pdflatex -interaction=nonstopmode $filename
+    biber $fileprefix
+    pdflatex -interaction=nonstopmode $filename
+    latexmk -c
+    open $pdfname
+
+    cd $curdir
+}
+alias cpdf=HELPER_build_tex
+
+# ========================================================= #
+# |    Java/Gradle Aliases                                | #
+# ========================================================= #
+
+# Searches for a gradlew file up the tree and uses it for gradle commands
+# Add 'nocd' as the first argument to run the gradle commands from the directory you're in at the moment
+function gradle_search() {
+    ORIG_DIR="$PWD"
+    while [[ "$PWD" != "/" ]]; do
+        if [[ -f "./gradlew" ]]; then
+            if [[ "$1" == "nocd" ]]; then
+                GRADLE_DIR=$(pwd)
+                cd "$ORIG_DIR"
+                echo "$GRADLE_DIR"/gradlew "${@:2}"
+                "$GRADLE_DIR"/gradlew "${@:2}"
+            else
+                ./gradlew --daemon "$@"
+                cd "$ORIG_DIR"
+            fi
+            return 0
+        else
+            cd ..
+        fi
+    done
+    cd "${ORIG_DIR}"
+    echo "No gradlew file found in any parent directories" >&2
+}
+alias gw="gradle_search"
+
+
+# ========================================================= #
+# |    Tmux Aliases                                       | #
+# ========================================================= #
+function HELPER_tmux_launcher() {
+  if [[ $# -eq 1 ]] ; then
+    session=$1
+  else
+    tmux ls
+    echo "Choose your session or specify a new one:\n"
+    read session
+  fi
+
+  tmux has-session -t $session 2>/dev/null
+  if [[ $? != 0 ]] ; then
+    tmux new-session -s $session -d
+  fi
+
+  if [[ -n "$TMUX" ]] ; then
+	tmux switch -t $session
+  else
+	tmux attach -t $session
+  fi
+}
+alias tm-session="HELPER_tmux_launcher"
+alias tm="tm-session"
+alias tms="tmux switch -t"
+
+function HELPER_tmux_gh_edit_session() {
+  code_loc=$(ghq root)
+  exa --tree --level=3 --recurse --only-dirs $code_loc
+  echo ""
+  echo "Choose a project to open"
+  read project_input
+
+  num_projects=$(ghq list | grep -i $project_input | wc -l | sed -e 's/^[ \t]*//')
+
+  while [[ ! $num_projects == 1 ]] ; do
+    if [[ $num_projects -gt 1 ]] ; then
+      echo "Invalid input - '$project_input' was ambiguous. Please specify more of the path"
+    else
+      echo "Invalid input - '$project_input' was not found. Please enter a valid project"
+    fi
+    read project_input
+    num_projects=$(ghq list | grep -i $project_input | wc -l | sed -e 's/^[ \t]*//')
+  done
+
+  project_name=$(ghq list | grep -i $project_input)
+  project=$(echo $project_name | tr -c "[:alpha:][:digit:]\n" "-")
+  project_path="$code_loc/$project_name"
+  tmux has-session -t $project 2>/dev/null
+  if [[ $? != 0 ]] ; then
+    tmux new -s $session -d
+    tmux split-window -v
+    tmux send -t $session "cd $project_path" Enter
+    tmux resize-pane -D 15
+    tmux select-pane -U
+    tmux send -t $session "cd $project_path && vim ." Enter
+  fi
+  if [[ -n "$TMUX" ]] ; then
+    tmux switch -t $project
+  else
+    tmux attach -t $project
+  fi
+}
+alias tm-project="HELPER_tmux_gh_edit_session"
+
+function HELPER_tmux_gtop() {
+  session="gtop"
+  tmux has-session -t $session 2>/dev/null
+  if [[ $? == 0 ]] ; then
+    tmux new -s $session -d
+    tmxu send -t $session "gtop" Enter
+  fi
+  if [[ -n "$TMUX" ]] ; then
+    tmux switch -t $session
+  else
+    tmux attach -t $session
+  fi
+}
+alias tm-top="HELPER_tmux_gtop"
+
+function HELPER_tmux_ranger() {
+  session="ranger"
+  tmux has-session -t $session 2>/dev/null
+  if [[ $? == 0 ]] ; then
+    tmux new -s $session -d
+    tmxu send -t $session "ranger" Enter
+  fi
+  if [[ -n "$TMUX" ]] ; then
+    tmux switch -t $session
+  else
+    tmux attach -t $session
+  fi
+}
+alias tm-ranger="HELPER_tmux_ranger"
+
+function HELPER_tmux_ssh() {
+  echo "Enter a enter your ssh host (and flags!)"
+  read cmd
+  cmd=$(echo "$cmd" | sed -e 's/\s*ssh//g' | sed -e 's/^[ \t]*//')
+  ts=$(isoTimestamp)
+  session=$("ssh $cmd ($ts)" | tr -c "[:alpha:][:digit:]:" "-")
+  tmux new-session -s $session -d
+  tmux send -t "ssh $cmd" Enter
+  if [[ -n "$TMUX" ]] ; then
+    tmux switch -t $session
+  else
+    tmux attach -t $session
+  fi
+}
+alias tm-ssh="HELPER_tmux_ssh"
+
+# Call this script and pass a text file with a list of servers. You will ssh to the servers as the current user.
+# Once connected use Ctrl + a to enter commands
+# de/syncronize panes = Ctrl + a + s
+# Change panes = Ctrl + a + arrow-keys
+# Zoom into pane = Ctrl + a + z
+function parallel_tmux_file() {
+    parallel_tmux $(cat $1)
+}
+
+function parallel_tmux() {
+    tmux new-session -s $(date +"%F_%H-%M-%S") -d
+    count=-1
+    for i in "${@}"; do
+      let count=${count}+1
+      if [ $count -eq 0 ]; then
+        tmux new-window "ssh $i"
+      else
+        tmux split-window -h "ssh $i"
+        tmux select-layout tiled
+      fi
+    done
+    tmux set-window-option synchronize-panes on
+    tmux attach
+}
+alias pt=parallel_tmux
+alias ptf=parallel_tmux_file
+
+# ========================================================= #
+# |    YouTube Aliases                                    | #
+# ========================================================= #
+alias yt="youtube-dl --abort-on-error --print-json --restrict-filenames"
+alias yt-video="youtube-dl --abort-on-error --print-json --restrict-filenames --no-playlist"
+alias yt-playlist="youtube-dl --abort-on-error --print-json --restrict-filenames --yes-playlist"
+alias yt-music="youtube-dl --abort-on-error --print-json --restrict-filenames --yes-playlist --extract-audio"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

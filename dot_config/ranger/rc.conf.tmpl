@@ -1,0 +1,109 @@
+
+# Prevent ranger from permenantly deleting files by moving to trash instead
+map DD shell trash %s
+set confirm_on_delete always
+
+# Basic layout preferences
+set column_ratios 1,3,4
+set colorscheme solarized
+set draw_borders outline
+
+# Display file system key information
+set display_size_in_status_bar true
+set display_free_space_in_status_bar true
+
+# Hide compilation files
+set hidden_filter ^\.|\.(?:pyc|pyo|bak|swp)$|^lost\+found$|^__(py)?cache__$
+set show_hidden false
+
+# Preview preferences
+set preview_files true
+set preview_directories true
+set collapse_preview true
+
+# Use good version control views
+set vcs_aware false
+set vcs_backend_git enabled
+
+# Show use the images!
+set preview_images_method iterm2
+
+# Enable mouse support while I'm still a n00b
+# TODO: Remove this when I've become l33t
+set mouse_enabled true
+
+# Use titles for nice navigating in both ranger and tmux
+set update_title true
+set update_tmux_title true
+
+# Sorting preferences for filesystem
+set sort natural
+set sort_case_insensitive true
+set sort_directories_first true
+
+# Setup some great aliases
+alias e     edit
+alias q     quit
+alias q!    quit!
+alias qa    quitall
+alias qa!   quitall!
+alias qall  quitall
+alias qall! quitall!
+
+alias find       scout -efts
+alias mark       scout -mr
+alias unmark     scout -Mr
+alias search     scout -rs
+
+map :  console
+map ;  console
+map !  console shell%space
+
+map f  console find%space
+map cd console cd%space
+
+map gh cd ~/Code/github.com/
+map qw cd ~/Code/github.com/qwinters
+map dw cd ~/Downloads
+map dc cd ~/OneDrive/Documents
+map dt cd ~/Documents/dotfiles
+
+map yp yank path
+map yd yank dir
+map yn yank name
+map y. yank name_without_extension
+
+map /  console search%space
+map n  search_next
+map N  search_next forward=False
+map ct search_next order=tag
+map cs search_next order=size
+map ci search_next order=mimetype
+map cc search_next order=ctime
+map cm search_next order=mtime
+map ca search_next order=atime
+
+map <C-t>     tab_new
+map <C-w>     tab_close
+map <TAB>     tab_move 1
+map <S-TAB>   tab_move -1
+
+map zh    set show_hidden!
+map <C-h> set show_hidden!
+
+tmap <up>        taskview_move up=1
+tmap <down>      taskview_move down=1
+tmap <home>      taskview_move to=0
+tmap <end>       taskview_move to=-1
+tmap <pagedown>  taskview_move down=1.0  pages=True
+tmap <pageup>    taskview_move up=1.0    pages=True
+tmap <C-d>       taskview_move down=0.5  pages=True
+tmap <C-u>       taskview_move up=0.5    pages=True
+
+copytmap <UP>       k  <C-p>
+copytmap <DOWN>     j  <C-n> <CR>
+copytmap <HOME>     g
+copytmap <END>      G
+copytmap <C-u>      u
+copytmap <PAGEDOWN> n  f  <C-F>  <Space>
+copytmap <PAGEUP>   p  b  <C-B>

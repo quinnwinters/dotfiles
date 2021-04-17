@@ -1,0 +1,61 @@
+
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+priority -50
+
+snippet str "String element" bA
+"${1:key}": "${2:value}", 
+endsnippet
+
+snippet num "Number element" bA
+"${1:key}", ${2:0}, 
+endsnippet
+
+snippet array "New array" bA
+[
+    ${VISUAL}$0
+]
+endsnippet
+
+snippet narr "Named array element" bA
+"${1:key}" : [
+    $2
+],$0
+endsnippet
+
+snippet obj "New object" bA
+{
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet nobj "Named object element" bA
+"${1:key}": {
+    $2
+},
+$0
+endsnippet
