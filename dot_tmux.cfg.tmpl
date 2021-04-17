@@ -1,7 +1,7 @@
 # unbind old configurations
 unbind-key -a
 set-option -g prefix C-t
-set -g status-right ' #{?client_prefix,#[reverse]<Prefix>#[noreverse] ,}"#{=21:pane_title}" %Y-%m-%d %H:%M:%S' 
+set -g status-right ' #{?client_prefix,#[reverse]<Prefix>#[noreverse] ,}"#{=21:pane_title}" %Y-%m-%d %H:%M:%S'
 new-session -n $HOST
 set-option -g allow-rename off
 set -g history-limit 5000
