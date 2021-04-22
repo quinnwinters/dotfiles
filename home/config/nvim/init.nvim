@@ -1,0 +1,14 @@
+" Use ~/.vimrc for the general configuration files
+" in order to maintain compatability with vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+
+" Install all the plugins 
+source ~/.config/install/plugins.vim
+
+" Load actual neovim specific settings (based on plugins)
+source ~/.config/settings/appearence.vim
+source ~/.config/settings/environment.vim
+soruce ~/.config/settings/functions.vim
+source ~/.config/settings/shortcuts.vim

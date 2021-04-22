@@ -1,0 +1,58 @@
+{
+  // CoC general preferences
+  "coc.source.file.priority": 5,
+  "coc.source.around.priority": 2,
+  "coc.source.buffer.priority": 3,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "markdown",
+    "python",
+    "tex",
+    "yaml"
+  ],
+  // Diagnostic
+  "diagnostic.errorSign": "X",
+  "diagnostic.warningSign": "~",
+  "diagnostic.infoSign": "i",
+  // Explorer
+  "explorer.width": 30,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "o": "open",
+    "O": "open:vsplit"
+  },
+  // Git
+  "git.branchChracter": "b",
+  "git.changedDecorator": "c",
+  "git.conflictedDecorator": "X",
+  "git.stagedDecorator": "s",
+  "git.untrackedDecorator": "u",
+  // Python
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.pythonPath": "/opt/anaconda3/envs/neovim/bin/python3",
+  "python.formatting.autopep8Path": "/opt/anaconda3/envs/neovim/bin/autopep8",
+  "python.formatting.blackPath": "/opt/anaconda3/envs/neovim/bin/black",
+  "python.linting.pytypeEnabled": true,
+  "python.linting.pycodestyleEnabled": true,
+  "python.linting.pydocstyleEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.prospectorEnabled": true,
+  // Snippets
+  "snippets.priority": 1,
+  "snippets.shortcut": "s",
+  "snippets.triggerChracters": "<CR>",
+  "snippets.loadFromExtensions": false,
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+  // tabnine,
+  "tabnine.priority": 10,
+  "tabnine.disable_file_regex": ["[.]tex$", "[.]bib$"],
+  // Yaml
+  "yaml.format.enable": true,
+  "yaml.format.singleQuote": true,
+  "yaml.format.proseWrap": "always",
+  "yaml.format.printWidth": 80
+}
