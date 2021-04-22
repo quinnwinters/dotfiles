@@ -56,7 +56,7 @@ in this repo. It will backup the existing dotfiles in place by moving them from 
 
 for homeobj in home/*; do
   should_link=true
-  dotobj=".$(basename $homeobj)"
+  dotobj=".$(basename "$homeobj")"
   if [[ -f "$HOME"/"$dotobj" ]] || [[ -d "$HOME"/"$dotobj" ]]; then
     echo "~/$dotobj already exists in home folder. Should we override it?"
     select yn in "Yes" "No"; do
@@ -69,8 +69,8 @@ for homeobj in home/*; do
       fi
     done
   fi
-  if $should_link; then
-    ln -sfn "$(pwd)/$homeobj" "$HOME"/"$dotobj"
+  if "$should_link"; then
+    ln -sfn "$PWD/$homeobj" "$HOME"/"$dotobj"
   fi
 done
 
