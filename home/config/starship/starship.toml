@@ -17,7 +17,7 @@ vicmd_symbol = "[⇒](bold dimmed green)"
 
 [directory]
 truncation_length = 6
-truncate_to_repo = true 
+truncate_to_repo = true
 truncation_symbol = "…/"
 format = "[$path]($style) "
 style = "bold dimmed italic cyan"
@@ -36,11 +36,10 @@ format = "[$symbol$branch]($style) "
 deleted = "[Del${count}](bold dimmed red)"
 renamed = "[Rnm${count}](bold dimmed white)"
 staged = "[Stg$count](bold dimmed yellow)"
-modified = "[Mod$count](bold dimmed cyan)" 
+modified = "[Mod$count](bold dimmed cyan)"
 untracked = "[Untr$count](bold dimmed purple)"
 format = "〈$conflicted$deleted$renamed$modified$staged$untracked〉"
 
 [hostname]
 ssh_only=false
 style = "bold dimmed blue"
-

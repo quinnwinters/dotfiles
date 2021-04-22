@@ -48,7 +48,7 @@ select yn in "Yes" "No"; do
   fi
 done
 
-header """ Linking dotfiles 
+header """ Linking dotfiles
 ----
 By default this script will replace all existing dotfiles with symlinks to the dotfiles contained
 in this repo. It will backup the existing dotfiles in place by moving them from {thing} to {thing}.bkup
@@ -76,8 +76,8 @@ done
 
 header """ Installing homebrew formula
 ----
-This script will install all the formula specified in your brew file found under ~/.config/brewfile/Brewfile. 
-If you don't want any of the formula, or you just want to skip this step, you can do so now, but note that 
+This script will install all the formula specified in your brew file found under ~/.config/brewfile/Brewfile.
+If you don't want any of the formula, or you just want to skip this step, you can do so now, but note that
 this might cause errors with other parts of the installation
 """
 
