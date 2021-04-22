@@ -15,11 +15,7 @@
   "explorer.width": 30,
   "explorer.previewAction.onHover": false,
   "explorer.keyMappings.global": {
-    "<cr>": [
-      "expandable?",
-      "expand",
-      "open"
-    ],
+    "<cr>": ["expandable?", "expand", "open"],
     "o": "open",
     "O": "open:vsplit"
   },
@@ -46,10 +42,7 @@
   "snippets.loadFromExtensions": false,
   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
   "tabnine.priority": 10,
-  "tabnine.disable_file_regex": [
-    "[.]tex$",
-    "[.]bib$"
-  ],
+  "tabnine.disable_file_regex": ["[.]tex$", "[.]bib$"],
   "yaml.format.enable": true,
   "yaml.format.singleQuote": true,
   "yaml.format.proseWrap": "always",

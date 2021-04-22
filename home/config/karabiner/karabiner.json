@@ -29,9 +29,7 @@
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -52,9 +50,7 @@
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -75,9 +71,7 @@
                 "from": {
                   "key_code": "h",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -98,9 +92,7 @@
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -114,9 +106,7 @@
                 "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -153,9 +143,7 @@
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "mandatory": [
-                      "shift"
-                    ]
+                    "mandatory": ["shift"]
                   }
                 },
                 "to": [
@@ -178,9 +166,7 @@
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "mandatory": [
-                      "shift"
-                    ]
+                    "mandatory": ["shift"]
                   }
                 },
                 "to": [
@@ -203,9 +189,7 @@
                 "from": {
                   "key_code": "h",
                   "modifiers": {
-                    "mandatory": [
-                      "shift"
-                    ]
+                    "mandatory": ["shift"]
                   }
                 },
                 "to": [
@@ -228,9 +212,7 @@
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "mandatory": [
-                      "shift"
-                    ]
+                    "mandatory": ["shift"]
                   }
                 },
                 "to": [
@@ -246,9 +228,7 @@
                 "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -279,17 +259,13 @@
                   "key_code": "escape",
                   "modifiers": {
                     "mandatory": "right_shift",
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
                   {
                     "key_code": "grave_accent_and_tilde",
-                    "modifiers": [
-                      "left_shift"
-                    ]
+                    "modifiers": ["left_shift"]
                   }
                 ],
                 "type": "basic"
@@ -310,9 +286,7 @@
                 "from": {
                   "key_code": "esc",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -326,9 +300,7 @@
                 "from": {
                   "key_code": "fn",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
