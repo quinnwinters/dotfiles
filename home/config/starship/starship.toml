@@ -1,0 +1,45 @@
+add_newline = false
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$conda\
+$character\
+"""
+
+[character]
+success_symbol = "[⇒](bold dimmed green)"
+error_symbol = "[⇒](bold dimmed red)"
+vicmd_symbol = "[⇒](bold dimmed green)"
+
+[directory]
+truncation_length = 6
+truncate_to_repo = true
+truncation_symbol = "…/"
+format = "[$path]($style) "
+style = "bold dimmed italic cyan"
+disabled = false
+
+[directory.substitutions]
+"~/Code/github.com" = "…/gh"
+"~/OneDrive/Documents" = "…/docs"
+"~/OneDrive/Pictures" = "…/pics"
+
+[git_branch]
+style = "bold dimmed purple"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+deleted = "[Del${count}](bold dimmed red)"
+renamed = "[Rnm${count}](bold dimmed white)"
+staged = "[Stg$count](bold dimmed yellow)"
+modified = "[Mod$count](bold dimmed cyan)"
+untracked = "[Untr$count](bold dimmed purple)"
+format = "〈$conflicted$deleted$renamed$modified$staged$untracked〉"
+
+[hostname]
+ssh_only=false
+style = "bold dimmed blue"
