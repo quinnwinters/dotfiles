@@ -107,14 +107,14 @@ have already set this up you should skip this step
       echo "When that is done, type verified below"
       while read -r response; do
         case "$response" in
-        verified)
-          echo "Authentication with OneDrive Established!"
-          break
-          ;;
-        *)
-          echo "You have not verified that the OneDrive is setup!!"
-          echo "Please follow the instructions to continue"
-          ;;
+          verified)
+            echo "Authentication with OneDrive Established!"
+            break
+            ;;
+          *)
+            echo "You have not verified that the OneDrive is setup!!"
+            echo "Please follow the instructions to continue"
+            ;;
         esac
       done
     else
