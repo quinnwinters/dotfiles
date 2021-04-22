@@ -48,7 +48,7 @@ select yn in "Yes" "No"; do
   fi
 done
 
-header """ Linking dotfiles 
+header """ Linking dotfiles
 ----
 By default this script will replace all existing dotfiles with symlinks to the dotfiles contained
 in this repo. It will backup the existing dotfiles in place by moving them from {thing} to {thing}.bkup
@@ -56,7 +56,7 @@ in this repo. It will backup the existing dotfiles in place by moving them from 
 
 for homeobj in home/*; do
   should_link=true
-  dotobj=".$(basename $homeobj)"
+  dotobj=".$(basename "$homeobj")"
   if [[ -f "$HOME"/"$dotobj" ]] || [[ -d "$HOME"/"$dotobj" ]]; then
     echo "~/$dotobj already exists in home folder. Should we override it?"
     select yn in "Yes" "No"; do
@@ -69,15 +69,15 @@ for homeobj in home/*; do
       fi
     done
   fi
-  if $should_link; then
-    ln -sfn "$(pwd)/$homeobj" "$HOME"/"$dotobj"
+  if "$should_link"; then
+    ln -sfn "$PWD/$homeobj" "$HOME"/"$dotobj"
   fi
 done
 
 header """ Installing homebrew formula
 ----
-This script will install all the formula specified in your brew file found under ~/.config/brewfile/Brewfile. 
-If you don't want any of the formula, or you just want to skip this step, you can do so now, but note that 
+This script will install all the formula specified in your brew file found under ~/.config/brewfile/Brewfile.
+If you don't want any of the formula, or you just want to skip this step, you can do so now, but note that
 this might cause errors with other parts of the installation
 """
 
@@ -107,14 +107,14 @@ have already set this up you should skip this step
       echo "When that is done, type verified below"
       while read -r response; do
         case "$response" in
-        verified)
-          echo "Authentication with OneDrive Established!"
-          break
-          ;;
-        *)
-          echo "You have not verified that the OneDrive is setup!!"
-          echo "Please follow the instructions to continue"
-          ;;
+          verified)
+            echo "Authentication with OneDrive Established!"
+            break
+            ;;
+          *)
+            echo "You have not verified that the OneDrive is setup!!"
+            echo "Please follow the instructions to continue"
+            ;;
         esac
       done
     else

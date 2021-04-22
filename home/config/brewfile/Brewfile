@@ -61,7 +61,7 @@ cask sqlectron
 cask vlc
 cask zoom
 
-# Brewfile 
+# Brewfile
 tap rcmdnk/file
 brew brew-file
 

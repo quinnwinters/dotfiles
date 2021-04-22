@@ -87,7 +87,7 @@ let g:leader_map['e'] = {
 "nnoremap <silent> <leader>fl :<C-u>CocFzfList location<CR>
 "nnoremap <silent> <leader>fo :<C-u>CocFzfList outline<CR>
 "nnoremap <silent> <leader>fs :<C-u>CocFzfList symbols<CR>
-let g:leader_map['f'] = { 
+let g:leader_map['f'] = {
     \ 'name': '+fzf',
     \ 'f' : [':<C-u>CocFzfList<CR>', 'coc-fzf-list'],
     \ 'a' : [':<C-u>CocFzfList diagnostics<CR>', 'coc-fzf-errors'],
@@ -107,7 +107,7 @@ let g:leader_map['f'] = {
 "nnoremap <silent> <leader>gd :<C-u>CocCommand git.diffCached<CR>
 "nnoremap <silent> <leader>gp :<C-u>CocCommand git.push<CR>
 "nnoremap <silent> <leader>gf :<C-u>CocCommand git.foldUnchanged<CR>
-let g:leader_map['g'] = { 
+let g:leader_map['g'] = {
     \ 'name': '+git',
     \ 'i' : [':<C-u>CocCommand git.chunkInfo<CR>', 'coc-git-chunk-info'],
     \ 'a' : [':<C-u>CocCommand git.chunkStage<CR>', 'coc-git-chunk-stage'],
@@ -117,12 +117,12 @@ let g:leader_map['g'] = {
     \ 'f' : [':<C-u>CocCommand git.foldUnchanged<CR>', 'coc-git-fold-unchanged']
     \ }
 
-" tex 
+" tex
 "nnoremap <silent> <leader>xi :<C-u>VimtexInfo<CR>
 "nnoremap <silent> <leader>xt :<C-u>VimtexTocToggle<CR>
 "nnoremap <silent> <leader>xo :<C-u>VimtexCompile<BAR>:VimtexClean<CR>
 "nnoremap <silent> <leader>xv :<C-u>VimtexView<CR>
-let g:leader_map['x'] = { 
+let g:leader_map['x'] = {
     \ 'name': '+tex',
     \ 'i' :  [':<C-u>VimtexInfo<CR>', 'vimtex-document-info'],
     \ 't' :  [':<C-u>VimtexTocToggle<CR>', 'vimtex-toc-sidebar'],
