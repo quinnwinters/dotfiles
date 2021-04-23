@@ -36,7 +36,7 @@ for homeobj in home/*; do
       echo ""
       if [[ $REPLY =~ ^[Yy]$ ]] ; then 
         mv "$HOME"/"$dotobj" "$HOME"/"$dotobj.bkup"
-        ln -sfn "$(pwd)"/"$homeobj" "$HOME"/"$dotobj"
+        ln -sfn "$PWD"/"$homeobj" "$HOME"/"$dotobj"
         break
       elif [[ $REPLY =~ ^[Nn]$ ]]; then 
         echo "Skipping ~/$dotobj"
@@ -46,7 +46,7 @@ for homeobj in home/*; do
       fi 
     done
   else 
-    ln -sfn "$(pwd)"/"$homeobj" "$HOME"/"$dotobj"
+    ln -sfn "$PWD"/"$homeobj" "$HOME"/"$dotobj"
   fi
 done
 
@@ -64,7 +64,7 @@ while true ; do
     sleep 1
     read -p "Enter your github email: " email
     ssh-keygen -t rsa -b 4096 -C "$email"
-    eval $(ssh -agent -s)
+    eval "$(ssh -agent -s)"
     read -p "Enter the location of where you stored your ssh key: " sshkey
     ssh-add -K "$sshkey"
     pbcopy <"$sshkey.pub"
