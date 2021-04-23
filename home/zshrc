@@ -47,7 +47,7 @@ alias -g NOERR='2> /dev/null'
 alias -g SILENT='> /dev/null 2>&1'
 
 # if you have zsh configuration files, source them
-[[ -d "$HOME/.config/zsh" ]] && for f in "$HOME/.config/zsh/**/*.zsh"; do
+[[ -d "$HOME/.config/zsh" ]] && for f in $HOME/.config/zsh/**/*.zsh ; do
     echo "Sourcing $f"
     source $f
 done
@@ -71,3 +71,5 @@ unset __conda_setup
 
 export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
 eval $(starship init zsh)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
