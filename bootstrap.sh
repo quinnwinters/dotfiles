@@ -31,22 +31,22 @@ for homeobj in home/*; do
   should_link=true
   dotobj=".$(basename "$homeobj")"
   if [[ -f "$HOME"/"$dotobj" ]] || [[ -d "$HOME"/"$dotobj" ]]; then
-    while true ; do 
+    while true; do
       read -p "There is already a file at ~/$dotobj Do you want to override it (existing content will be backed up) [y/n]? " -n 1 -r
       echo ""
-      if [[ $REPLY =~ ^[Yy]$ ]] ; then 
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
         mv "$HOME"/"$dotobj" "$HOME"/"$dotobj.bkup"
-        ln -sfn "$(pwd)"/"$homeobj" "$HOME"/"$dotobj"
+        ln -sfn "$PWD"/"$homeobj" "$HOME"/"$dotobj"
         break
-      elif [[ $REPLY =~ ^[Nn]$ ]]; then 
+      elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "Skipping ~/$dotobj"
         break
-      else 
+      else
         echo "Unable to read response. Please try again"
-      fi 
+      fi
     done
-  else 
-    ln -sfn "$(pwd)"/"$homeobj" "$HOME"/"$dotobj"
+  else
+    ln -sfn "$PWD"/"$homeobj" "$HOME"/"$dotobj"
   fi
 done
 
@@ -57,28 +57,27 @@ security and convenience purposes). You should only have to setup authentication
 for github once per computer.
 """
 
-while true ; do 
+while true; do
   read -p "Do you want to continue with setting up github ssh authentication [y/n]? " -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]] ; then 
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo ""
     sleep 1
     read -p "Enter your github email: " email
     ssh-keygen -t rsa -b 4096 -C "$email"
-    eval $(ssh -agent -s)
+    eval "$(ssh -agent -s)"
     read -p "Enter the location of where you stored your ssh key: " sshkey
     ssh-add -K "$sshkey"
     pbcopy <"$sshkey.pub"
     echo "Go to https://github.com/settings/keys and add your key"
     sleep 20
     break
-  elif [[ $REPLY =~ ^[Nn]$ ]]; then 
+  elif [[ $REPLY =~ ^[Nn]$ ]]; then
     echo "Skipping github ssh setup"
     break
-  else 
+  else
     echo "Unable to read response. Please try again"
-  fi 
+  fi
 done
-
 
 header """ Installing homebrew formula
 ----
@@ -87,21 +86,20 @@ If you don't want any of the formula, or you just want to skip this step, you ca
 this might cause errors with other parts of the installation
 """
 
-while true ; do 
+while true; do
   read -p "Do you want to install all formula in ~/.config/brewfile/Brewfile at this time [y/n]? " -n 1 -r
   echo ""
-  if [[ $REPLY =~ ^[Yy]$ ]] ; then 
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
     brew install rcmdnk/file/brew-file
     brew file install -f "$HOME"/.config/brewfile/Brewfile
     break
-  elif [[ $REPLY =~ ^[Nn]$ ]] ; then 
+  elif [[ $REPLY =~ ^[Nn]$ ]]; then
     echo "Skipping brewfile install"
     break
-  else 
+  else
     echo "Unable to read response. Please try again"
-  fi 
-done 
-
+  fi
+done
 
 if [[ -d /Applications/OneDrive.app ]]; then
   header """Microsoft OneDrive Sync
@@ -109,7 +107,7 @@ About to setup authentication with Microsoft OneDrive and link folders up. If yo
 have already set this up you should skip this step
     """
 
-  while true ; do
+  while true; do
     read -p "Would you like to setup OneDrive sync [y/n]? " -n 1 -r
     echo ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -130,10 +128,10 @@ have already set this up you should skip this step
             ;;
         esac
       done
-    elif [[ $REPLY =~ ^[Nn]$ ]] ; then 
+    elif [[ $REPLY =~ ^[Nn]$ ]]; then
       echo "Skipping OneDrive setup"
       break
-    else 
+    else
       echo "Unable ot read response. Please try again"
     fi
   done
