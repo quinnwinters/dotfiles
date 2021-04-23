@@ -55,7 +55,7 @@ let maplocalleader=";"
 
 " Esc shortcuts
 inoremap jj <ESC>
-inoremap kk <ESC>
+inoremap jk <ESC>
 
 " Use Ctrl+A/E in command mode like you would in shell
 cnoremap <C-A> <Home>
