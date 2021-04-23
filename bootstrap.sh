@@ -21,33 +21,6 @@ function header() {
   echo "$@" | boxes -d simple -p a1l2r2
 }
 
-header """MANUAL ACTION: GITHUB SSH AUTHENTICATION
-----
-By default these dotfiles use github over ssh for all operation (for both
-security and convenience purposes). You should only have to setup authentication
-for github once per computer.
-"""
-
-echo "Do you want to continue with setting up github ssh authentication? [Y/n]"
-select yn in "Yes" "No"; do
-  if [[ $yn == "Yes" ]]; then
-    echo "Enter your github email below:"
-    read -r email
-    ssh-keygen -t rsa -b 4096 -C "$email"
-    eval "$(ssh -agent -s)"
-    echo "Enter the location of where you stored your key to add it to your ssh agent"
-    read -r sshkey
-    ssh-add -K "$sshkey"
-    pbcopy <"$sshkey"
-    echo "Go to https://github.com/settings/keys and paste your key into your ssh key list in settings"
-    sleep 10
-    break
-  else
-    echo "Skipping setting up github ssh"
-    break
-  fi
-done
-
 header """ Linking dotfiles
 ----
 By default this script will replace all existing dotfiles with symlinks to the dotfiles contained
@@ -58,19 +31,51 @@ for homeobj in home/*; do
   should_link=true
   dotobj=".$(basename "$homeobj")"
   if [[ -f "$HOME"/"$dotobj" ]] || [[ -d "$HOME"/"$dotobj" ]]; then
-    echo "~/$dotobj already exists in home folder. Should we override it?"
-    select yn in "Yes" "No"; do
-      if [[ $yn == "Yes" ]]; then
+    while true; do
+      read -p "There is already a file at ~/$dotobj Do you want to override it (existing content will be backed up) [y/n]? " -n 1 -r
+      echo ""
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
         mv "$HOME"/"$dotobj" "$HOME"/"$dotobj.bkup"
+        ln -sfn "$PWD"/"$homeobj" "$HOME"/"$dotobj"
+        break
+      elif [[ $REPLY =~ ^[Nn]$ ]]; then
+        echo "Skipping ~/$dotobj"
         break
       else
-        should_link=false
-        break
+        echo "Unable to read response. Please try again"
       fi
     done
+  else
+    ln -sfn "$PWD"/"$homeobj" "$HOME"/"$dotobj"
   fi
-  if "$should_link"; then
-    ln -sfn "$PWD/$homeobj" "$HOME"/"$dotobj"
+done
+
+header """MANUAL ACTION: GITHUB SSH AUTHENTICATION
+----
+By default these dotfiles use github over ssh for all operation (for both
+security and convenience purposes). You should only have to setup authentication
+for github once per computer.
+"""
+
+while true; do
+  read -p "Do you want to continue with setting up github ssh authentication [y/n]? " -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo ""
+    sleep 1
+    read -p "Enter your github email: " email
+    ssh-keygen -t rsa -b 4096 -C "$email"
+    eval "$(ssh -agent -s)"
+    read -p "Enter the location of where you stored your ssh key: " sshkey
+    ssh-add -K "$sshkey"
+    pbcopy <"$sshkey.pub"
+    echo "Go to https://github.com/settings/keys and add your key"
+    sleep 20
+    break
+  elif [[ $REPLY =~ ^[Nn]$ ]]; then
+    echo "Skipping github ssh setup"
+    break
+  else
+    echo "Unable to read response. Please try again"
   fi
 done
 
@@ -81,14 +86,18 @@ If you don't want any of the formula, or you just want to skip this step, you ca
 this might cause errors with other parts of the installation
 """
 
-echo "Do you want to install the formula from your brewfile? [Y/n]"
-select yn in "Yes" "No"; do
-  if [[ $yn == "Yes" ]]; then
-    brew file install
+while true; do
+  read -p "Do you want to install all formula in ~/.config/brewfile/Brewfile at this time [y/n]? " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    brew install rcmdnk/file/brew-file
+    brew file install -f "$HOME"/.config/brewfile/Brewfile
+    break
+  elif [[ $REPLY =~ ^[Nn]$ ]]; then
+    echo "Skipping brewfile install"
     break
   else
-    echo "Skipping installation"
-    break
+    echo "Unable to read response. Please try again"
   fi
 done
 
@@ -98,14 +107,16 @@ About to setup authentication with Microsoft OneDrive and link folders up. If yo
 have already set this up you should skip this step
     """
 
-  echo "Would you like to setup OneDrive sync?"
-  select yn in "Yes" "No"; do
-    if [[ $yn == "Yes" ]]; then
+  while true; do
+    read -p "Would you like to setup OneDrive sync [y/n]? " -n 1 -r
+    echo ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
       echo "Opening the applications folder in finder. You have to authenticate with OneDrive Manually"
       open /Applications
       sleep 15
       echo "When that is done, type verified below"
       while read -r response; do
+        echo ""
         case "$response" in
           verified)
             echo "Authentication with OneDrive Established!"
@@ -117,10 +128,11 @@ have already set this up you should skip this step
             ;;
         esac
       done
-    else
+    elif [[ $REPLY =~ ^[Nn]$ ]]; then
       echo "Skipping OneDrive setup"
       break
+    else
+      echo "Unable ot read response. Please try again"
     fi
-    break
   done
 fi
