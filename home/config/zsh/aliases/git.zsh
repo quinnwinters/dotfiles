@@ -25,21 +25,21 @@ alias gl='git pull'
 
 
 function __autocomplete_branch() {
-    git branch --list 
+    git branch --list
 }
 
 function HELPER_checkout_if_exists_or_create() {
     git fetch --all --quiet
-    if [[ $# == 1 ]] ; then 
+    if [[ $# == 1 ]] ; then
         branch="$1"
 	exists=$(git show-ref refs/heads/$branch)
 	if [ -n "$exists" ]; then
     	    git checkout $branch
-	else 
-	   read "Branch $branch does not exist. Current branches are:\n $(git branch --list). Do you want to create $branch [y/n]? " -n 1 -r 
-	   if [[ $REPLY == ^[Yy]$ ]] ; then 
+	else
+	   read "Branch $branch does not exist. Current branches are:\n $(git branch --list). Do you want to create $branch [y/n]? " -n 1 -r
+	   if [[ $REPLY == ^[Yy]$ ]] ; then
 		git checkout -b $branch
-	   fi 
+	   fi
 	fi
     else
 	git branch "$@"
@@ -49,21 +49,21 @@ alias gco=HELPER_checkout_if_exists_or_create
 
 function HELPER_create_if_new_else_checkout() {
     git fetch --all --quiet
-    if [[ $# == 1 ]] ; then 
+    if [[ $# == 1 ]] ; then
 	branch="$1"
 	exists=$(git show-ref refs/heads/$branch)
-	if [[ -n "$exists" ]] ; then 
+	if [[ -n "$exists" ]] ; then
 	    read "Branch $branch already exists. Do you mean to check it out [y/n]? " -n 1 -r
-	    if [[ $REPLY == ^[Yy]$ ]] ; then 
+	    if [[ $REPLY == ^[Yy]$ ]] ; then
 		git checkout $branch
-	    else 
+	    else
 		git checkout -b $branch
 	    fi
 	else
 	    git checkout -b $branch
-	fi 
-    else 
+	fi
+    else
 	git chekcout $@
-    fi 
+    fi
 }
 alias gcb=HELPER_create_if_new_else_checkout
