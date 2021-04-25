@@ -1,3 +1,5 @@
 home/config/coc/**/*
+home/config/gh/hosts.yml
+home/config/gh/state.yml
 home/config/nvim/autoload/**/*
 **/*/.netrwhist

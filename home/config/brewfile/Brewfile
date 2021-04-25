@@ -32,6 +32,7 @@ brew tmux
 brew typescript
 brew yarn
 brew youtube-dl
+brew ydiff
 brew zsh
 brew zsh-completions
 brew zsh-syntax-highlighting

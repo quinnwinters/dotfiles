@@ -20,6 +20,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " git/github support
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
+    Plug 'stsewd/fzf-checkout.vim'
 
     " fzf support
     Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
@@ -28,6 +29,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " tmux support
     Plug 'christoomey/vim-tmux-navigator'
+
+    " terminal support 
+    Plug 'voldikss/vim-floaterm'
 
     " hint support
     Plug 'liuchengxu/vim-which-key'

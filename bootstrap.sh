@@ -55,7 +55,7 @@ header """MANUAL ACTION: GITHUB SSH AUTHENTICATION
 By default these dotfiles use github over ssh for all operation (for both
 security and convenience purposes). You should only have to setup authentication
 for github once per computer.
-"""
+""" 
 
 while true ; do 
   read -p "Do you want to continue with setting up github ssh authentication [y/n]? " -n 1 -r
