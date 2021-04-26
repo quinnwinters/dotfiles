@@ -1,17 +1,18 @@
 " Install all the coc extension
 let g:coc_global_extensions = [
   \ 'coc-actions',
+  \ 'coc-conventional',
   \ 'coc-explorer',
   \ 'coc-git',
-  \ 'coc-java-debug',
   \ 'coc-java',
+  \ 'coc-java-debug',
   \ 'coc-json',
   \ 'coc-metals',
   \ 'coc-pairs',
   \ 'coc-pyright',
   \ 'coc-sh',
-  \ 'coc-tabnine',
   \ 'coc-snippets',
+  \ 'coc-tabnine',
   \ 'coc-yaml'
   \ ]
 
@@ -45,8 +46,8 @@ let g:coc_explorer_global_presets={
   \      'root-uri': '~/.config/nvim',
   \   },
   \   'cocConfig' : {
-  \       'root-uri': '~/.config/
-  \   }
+  \       'root-uri': '~/.config/',
+  \   },
   \   'floating': {
   \      'position': 'floating',
   \   },

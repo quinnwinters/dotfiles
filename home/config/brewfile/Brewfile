@@ -15,6 +15,7 @@ brew ghq
 brew gibo
 brew grep
 brew jq
+brew lazygit
 brew mackup
 brew mas
 brew neovim --HEAD
@@ -32,6 +33,7 @@ brew tmux
 brew typescript
 brew yarn
 brew youtube-dl
+brew ydiff
 brew zsh
 brew zsh-completions
 brew zsh-syntax-highlighting

@@ -7,4 +7,14 @@ source ~/.config/nvim/install/plugins.vim
 source ~/.config/nvim/settings/appearence.vim
 source ~/.config/nvim/settings/environment.vim
 source ~/.config/nvim/settings/functions.vim
-source ~/.config/nvim/settings/shortcuts.vim
+
+" Load plugin specific configurations
+source ~/.config/nvim/extensions/coc.vim
+source ~/.config/nvim/extensions/floaterm.vim
+source ~/.config/nvim/extensions/fzf.vim
+source ~/.config/nvim/extensions/vimtex.vim
+
+" Load shortcuts for leader, localleader, and <C-*>
+source ~/.config/nvim/shortcuts/ctrl.vim
+source ~/.config/nvim/shortcuts/leader.vim
+source ~/.config/nvim/shortcuts/localleader.vim
