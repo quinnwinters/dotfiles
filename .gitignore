@@ -1,3 +1,7 @@
 home/config/coc/**/*
+home/config/gh/hosts.yml
+home/config/gh/state.yml
 home/config/nvim/autoload/**/*
+home/ssh/known_hosts
+home/ssh/id_rsa_*
 **/*/.netrwhist
