@@ -13,6 +13,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " better editing experience
     Plug 'terryma/vim-multiple-cursors'
     Plug 'editorconfig/editorconfig-vim'
+    Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-obsession'
@@ -20,6 +21,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " git/github support
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
+    Plug 'stsewd/fzf-checkout.vim'
 
     " fzf support
     Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
@@ -29,8 +31,25 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " tmux support
     Plug 'christoomey/vim-tmux-navigator'
 
+    " terminal support
+    Plug 'voldikss/vim-floaterm'
+
+    " ipython support
+    Plug 'jpalardy/vim-slime', { 'for': 'python' }
+    Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
+
+    " markdown support
+    Plug 'vim-pandoc/vim-pandoc'
+    Plug 'vim-pandoc/vim-pandoc-syntax' 
+    Plug 'gabrielelana/vim-markdown'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}   
+
     " hint support
     Plug 'liuchengxu/vim-which-key'
+
+    " airline support 
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Automatically install missing plugins on startup
