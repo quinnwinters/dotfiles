@@ -8,8 +8,8 @@ function! VScratch()
     file scratch
 endfunction
 
-function! HScratch() 
-    split 
+function! HScratch()
+    split
     noswapfile hide enew
     setlocal buftype=nofile
     setlocal bufhidden=hide
