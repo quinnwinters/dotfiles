@@ -15,9 +15,9 @@ nnoremap <silent> <C-e> :FloatermNew ranger<CR>
 nnoremap <silent> <C-g> :FloatermNew lazygit<CR>
 nnoremap <silent> <C-s> :w!<CR>
 
-" Commands that require additional support / are custom 
+" Commands that require additional support / are custom
 
-" R => replace selection 
+" R => replace selection
 vnoremap <silent> <C-r> "hy:%s/<C-r>h//gc<left><left><left> "find and replace
 " B => search buffers
 nnoremap <silent> <C-b> :Buffers<CR>

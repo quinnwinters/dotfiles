@@ -9,4 +9,3 @@ let g:tex_conceal='abdmg'
 nnoremap <silent> <C-v> <Plug>(vimtex-view)<CR>
 nnoremap <silent> <C-x> <Plug>(vimtex-compile)<CR>
 nnoremap <silent> <C-;> <Plug>(vimtex-toc-toggle)<CR>
-

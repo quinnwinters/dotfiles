@@ -40,14 +40,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " markdown support
     Plug 'vim-pandoc/vim-pandoc'
-    Plug 'vim-pandoc/vim-pandoc-syntax' 
+    Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'gabrielelana/vim-markdown'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}   
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
     " hint support
     Plug 'liuchengxu/vim-which-key'
 
-    " airline support 
+    " airline support
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 call plug#end()

@@ -16,5 +16,3 @@ function! AirlineInit()
     let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
-
-
