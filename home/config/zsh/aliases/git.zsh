@@ -1,69 +1,62 @@
-# Git aliases
-function HELPER_git_status_default() {
-    git fetch --all --quiet
-    if [[ $# == 0 ]]; then
-        git status
-    else
-        git $@
-    fi
+function current_branch() {
+  git branch --show-current
 }
-alias g=HELPER_git_status_default
 
-function HELPER_push_origin_default() {
-    git fetch --all --quiet
-    if [[ $# == 0 ]]; then
-        current_branch=$(git branch --list | grep -i "*" | tr -d "* ")
-        git push -u origin $current_branch
-    else
-        git push $@
-    fi
+function git_main_branch() {
+  if [[ -n "$(git branch --list main)" ]]; then
+    echo main
+  else
+    echo master
+  fi
 }
-alias gp=HELPER_push_origin_default
 
+alias g='git'
+alias ga='git add'
 alias gaa='git add --all'
-alias gl='git pull'
+alias gc='git commit -v'
+alias gcb='git checkout -b'
+alias gcm='git checkout $(git_main_branch)'
+alias gcd='git checkout develop'
+alias gco='git checkout'
+alias gdf="ydiff -s -w0"
+alias gf='git fetch --all --prune'
 
-
-function __autocomplete_branch() {
-    git branch --list
+function gpull() {
+  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+    git pull origin "${*}"
+  else
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    git pull origin "${b:=$1}"
+  fi
 }
+compdef _git gpull=git-checkout
+alias gl=gpull
 
-function HELPER_checkout_if_exists_or_create() {
-    git fetch --all --quiet
-    if [[ $# == 1 ]] ; then
-        branch="$1"
-	exists=$(git show-ref refs/heads/$branch)
-	if [ -n "$exists" ]; then
-    	    git checkout $branch
-	else
-	   read "Branch $branch does not exist. Current branches are:\n $(git branch --list). Do you want to create $branch [y/n]? " -n 1 -r
-	   if [[ $REPLY == ^[Yy]$ ]] ; then
-		git checkout -b $branch
-	   fi
-	fi
-    else
-	git branch "$@"
-    fi
+function gpullr() {
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git pull --rebase origin "${b:=$1}"
 }
-alias gco=HELPER_checkout_if_exists_or_create
+compdef _git gpullr=git-checkout
+alias glr=gpullr
 
-function HELPER_create_if_new_else_checkout() {
-    git fetch --all --quiet
-    if [[ $# == 1 ]] ; then
-	branch="$1"
-	exists=$(git show-ref refs/heads/$branch)
-	if [[ -n "$exists" ]] ; then
-	    read "Branch $branch already exists. Do you mean to check it out [y/n]? " -n 1 -r
-	    if [[ $REPLY == ^[Yy]$ ]] ; then
-		git checkout $branch
-	    else
-		git checkout -b $branch
-	    fi
-	else
-	    git checkout -b $branch
-	fi
-    else
-	git chekcout $@
-    fi
+function gpush() {
+  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+    git push origin "${*}"
+  else
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    git push origin "${b:=$1}"
+  fi
 }
-alias gcb=HELPER_create_if_new_else_checkout
+compdef _git gpush=git-checkout
+alias gp=gpush
+
+function gpushf() {
+  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+    git push --force origin "${*}"
+  else
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    git push --force origin "${b:=$1}"
+  fi
+}
+compdef _git gpushf=git-checkout
+alias gpf=gpushf
