@@ -5,3 +5,4 @@ home/config/nvim/autoload/**/*
 home/ssh/known_hosts
 home/ssh/id_rsa_*
 **/*/.netrwhist
+home/config/texstudio/**/*
